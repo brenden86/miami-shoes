@@ -1,0 +1,46 @@
+// Lato - main paragraph font
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+// Oswald - Heading Font
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap');
+
+// font families
+$main-font: "Lato", "Segoe UI", Verdana, sans-serif;
+$heading-font: "Oswald", "Segoe UI", Verdana, sans-serif;
+
+// font weights
+$thin: 100;
+$light: 300;
+$regular: 400;
+$medium: 500;
+$semibold: 600;
+$bold: 700;
+$black: 900;
+
+// color variables
+$font-color: #2a2a2a;
+$font-light: #b8b8b8;
+$bg-color: #f8f9fa;
+$bg-dark: #f1f3f4;
+$hover: #ebebeb;
+
+$primary-color: #eb4791;
+$primary-color-light: #ffbcd8;
+$primary-color-text:  #FFF0F7;
+$primary-color-hover: #f35ea1;
+$secondary-color: #40b5e6;
+$secondary-color-light: #e5f7ff;
+$secondary-color-text: #f3fcff;
+$secondary-color-hover: #58c2f0;
+
+// style variables
+$border-radius-main: 6px;
+$box-shadow-main: 2px 2px 2px rgba(0, 0, 0, 0.2);
+
+// size variables
+$column-gutter-main: 25%;
+$column-gap-main: 1rem;
+$header-height: 7rem;
+$header-padding-bottom: 1rem;
+$input-padding: .5rem 1rem;
+$input-gap: .3rem;
+$icon-size: .8rem;

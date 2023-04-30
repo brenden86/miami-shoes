@@ -1,0 +1,80 @@
+@import 'var';
+@import 'mixins';
+
+header {
+  @include flex(row, center, stretch);
+  gap: $column-gap-main;
+  height: $header-height;
+  position: fixed;
+  width: 100%;
+  background: white;
+  box-shadow: $box-shadow-main;
+}
+
+.header-section {
+  @include flex(row, stretch, flex-end);
+
+  &.left {
+    justify-content: flex-end;
+    width: $column-gutter-main;
+
+    a {
+      height: 100%;
+    }
+
+    .logo-image {
+      padding: 1rem;
+    }
+  }
+
+  &.center {
+    @include flex(row, flex-start, flex-end);
+    flex-grow: 1;
+    gap: 5rem;
+
+  }
+
+  &.right {
+    width: $column-gutter-main;
+    margin-bottom: $header-padding-bottom;
+  }
+
+}
+
+// navigation
+
+.header-navigation {
+  @include flex(row, center, stretch);
+  height: 100%;
+
+  a {
+    @include flex(row, center, flex-end);
+    position: relative;
+    font-family: $heading-font;
+    font-weight: $semibold;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    color: $font-color;
+    padding: $header-padding-bottom 2rem;
+
+    &:hover {
+      color: $primary-color;
+      text-decoration: none;
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        height: 5px;
+        width: 100%;
+        background: $primary-color;
+      }
+    }
+
+  }
+}
+
+#header-search {
+  @include flex(row, flex-end, flex-end);
+  flex-grow: 1;
+  padding-bottom: $header-padding-bottom;
+}

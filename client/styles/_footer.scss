@@ -1,0 +1,97 @@
+@import 'var';
+@import 'mixins';
+
+footer {
+  a {
+    color: $primary-color-text;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.footer-wrapper {
+  @include flex(column, center, center);
+  margin: 3rem;
+}
+
+/**********************
+    PRIMARY FOOTER
+**********************/
+
+.footer-main {
+  @include flex(row, center, center);
+  background: $primary-color;
+  color: $primary-color-text;
+
+  a {
+    font-weight: $semibold;
+  }
+}
+
+
+.social-bar {
+  @include flex(row, center, center);
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.social-icons {
+  @include flex(row, center, center);
+  gap: .5rem;
+}
+
+.footer-links {
+  @include flex(row, center, flex-start);
+  gap: 1rem;
+}
+
+.footer-column {
+  @include flex(column, center, flex-start);
+  min-width: 230px;
+  max-width: 400px;
+  h3 {
+    padding-bottom: .5rem;
+  }
+
+  a {
+    margin: .3rem 0;
+  }
+
+  i {
+    font-size: 1.5rem;
+    vertical-align: middle;
+    padding: 5px;
+  }
+}
+
+/**********************
+    SECONDARY FOOTER
+**********************/
+
+.footer-secondary {
+  @include flex(row, center, center);
+  color: $font-light;
+  background: white;
+}
+
+.footer-logo {
+  height: 100px;
+}
+
+.site-links {
+  margin-top: 1rem;
+  a {
+    color: inherit;
+    padding: 0 .5rem;
+
+    &:not(:last-child) {
+      border-right: .1rem solid;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

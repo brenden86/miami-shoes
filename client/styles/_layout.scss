@@ -1,0 +1,139 @@
+@import 'var';
+
+* {
+  font-family: $main-font;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  color: $font-color;
+}
+
+main {
+  // clear space for header
+  padding-top: $header-height;
+  background: $bg-color;
+}
+
+h1, h2, h3, h4 {
+  font-family: $heading-font;
+  font-weight: $semibold;
+  text-transform: uppercase;
+  margin: 0; // remove default margin
+
+  span {
+    color: $primary-color;
+    font-family: inherit; 
+  }
+}
+
+p {
+  margin-top: 0;
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+// icon size when using bootstrap icons
+i {
+  font-size: 1rem;
+  color: inherit;
+}
+
+.icon-link {
+  line-height: 0; // fixes icon height being greater than width
+  @include flex(row, center, center);
+  padding: $icon-size;
+  border-radius: 20rem;
+  color: $primary-color;
+  background: transparent;
+  transition: background 100ms;
+  
+  &:hover {
+    background: $primary-color-light;
+  }
+
+  i {
+    font-size: 1.5rem;
+  }
+
+  span {
+    color: inherit;
+    font-weight: bold;
+    margin: 0 .3rem;
+  }
+
+  &.light {
+    color: $primary-color-text;
+    &:hover {
+      background: $primary-color-hover;
+    }
+  }
+}
+
+button {
+  outline: none;
+  border: none;
+  background: $primary-color;
+  color: $primary-color-text;
+  font-family: $heading-font;
+  font-weight: $semibold;
+  padding: $input-padding;
+  border-radius: $border-radius-main;
+  text-transform: uppercase;
+  transition: background 100ms;
+
+  &:hover {
+    background: $primary-color-hover;
+    cursor: pointer;
+  }
+
+  &.secondary {
+    background: $secondary-color;
+    color: $secondary-color-text;
+
+    &:hover {
+      background: $secondary-color-hover;
+    }
+  }
+}
+
+
+input[type="text"] {
+  padding: $input-padding;
+  border-radius: $border-radius-main;
+  border: 1px solid $font-light;
+}
+
+.input-wrapper {
+  @include flex(column, flex-start, flex-start);
+  gap: $input-gap;
+  
+  input {
+    min-width: 200px;
+    max-width: 400px;
+  }
+  
+  &.inline {
+    @include flex(row, flex-start, flex-end);
+    align-self: stretch;
+    
+    input[type="text"] {
+      flex-grow: 1;
+    }
+  }
+}
+
+.logo-image {
+  height: 100%;
+  width: auto;
+}

@@ -1,0 +1,14 @@
+@import 'mixins';
+@import 'layout';
+@import 'header';
+@import 'footer';
+
+// class to highlight elements when debugging css
+.debug {
+  border: 1px dashed orange !important;
+}
+
+.debug2 {
+  border: 1px dotted purple !important;
+
+}
