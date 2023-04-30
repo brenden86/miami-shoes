@@ -15,28 +15,35 @@ header {
   @include flex(row, stretch, flex-end);
 
   &.left {
-    justify-content: flex-end;
-    width: $column-gutter-main;
+    justify-content: flex-end;    
+    flex-basis: 25%;
 
     a {
       height: 100%;
     }
-
+    
     .logo-image {
       padding: 1rem;
     }
   }
-
+  
   &.center {
     @include flex(row, flex-start, flex-end);
     flex-grow: 1;
+    min-width: 800px;
     gap: 5rem;
-
+    // width: clamp(500px, 60%, 976px);
+    
   }
-
+  
   &.right {
-    width: $column-gutter-main;
-    margin-bottom: $header-padding-bottom;
+    flex-basis: 25%;
+    
+    .header-section-wrapper {
+      margin-bottom: $header-padding-bottom;
+      
+    }
+    
   }
 
 }
@@ -45,7 +52,6 @@ header {
 
 .header-navigation {
   @include flex(row, center, stretch);
-  height: 100%;
 
   a {
     @include flex(row, center, flex-end);

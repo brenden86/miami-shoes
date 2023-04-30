@@ -157,7 +157,7 @@ header {
 }
 .header-section.left {
   justify-content: flex-end;
-  width: 25%;
+  flex-basis: 25%;
 }
 .header-section.left a {
   height: 100%;
@@ -171,10 +171,13 @@ header {
   justify-content: flex-start;
   align-items: flex-end;
   flex-grow: 1;
+  min-width: 800px;
   gap: 5rem;
 }
 .header-section.right {
-  width: 25%;
+  flex-basis: 25%;
+}
+.header-section.right .header-section-wrapper {
   margin-bottom: 1rem;
 }
 
@@ -183,7 +186,6 @@ header {
   flex-direction: row;
   justify-content: center;
   align-items: stretch;
-  height: 100%;
 }
 .header-navigation a {
   display: flex;
