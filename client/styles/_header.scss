@@ -3,9 +3,10 @@
 
 header {
   @include flex(row, center, stretch);
-  gap: $column-gap-main;
+  // gap: $column-gap-main; 
   height: $header-height;
   position: fixed;
+  z-index: 10;
   width: 100%;
   background: white;
   box-shadow: $box-shadow-main;
@@ -30,15 +31,15 @@ header {
   &.center {
     @include flex(row, flex-start, flex-end);
     flex-grow: 1;
-    min-width: 800px;
-    gap: 5rem;
-    // width: clamp(500px, 60%, 976px);
+    min-width: 900px;
+    max-width: 1200px;
+    // match main-content-wrapper
+    gap: 4rem;
     
   }
   
   &.right {
     flex-basis: 25%;
-    
     .header-section-wrapper {
       margin-bottom: $header-padding-bottom;
       
@@ -83,4 +84,7 @@ header {
   @include flex(row, flex-end, flex-end);
   flex-grow: 1;
   padding-bottom: $header-padding-bottom;
+  input {
+    max-width: 300px;
+  }
 }

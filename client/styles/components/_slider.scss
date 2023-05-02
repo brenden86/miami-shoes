@@ -1,0 +1,31 @@
+
+.slider-container {
+  @include flex(column, flex-start, flex-end);
+  gap: .5rem;
+}
+
+.slider-images {
+  width: 100%;
+  height: clamp(400px, 25vw, 600px);
+  display: flex;
+  position: relative;
+  box-shadow: $box-shadow-main;
+  overflow: hidden;
+}
+
+.image-wrapper {
+  width: 100%;
+  position: relative;
+  left: -200%; // controls which image is displayed
+  display: flex;
+
+}
+
+.slider-image {
+  flex-shrink: 0;
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-size: cover;
+}
+

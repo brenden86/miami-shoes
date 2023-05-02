@@ -1,0 +1,32 @@
+
+.brands-container {
+  width: 100%;
+  position: relative;
+}
+
+.brands-wrapper {
+  @include flex(row, flex-start, center);
+  gap: 1.5rem;
+  overflow-x: auto;
+  &:hover {
+    cursor: grab;
+  }
+}
+
+.brand-card {
+  @include flex(row, center, center);
+  flex-shrink: 0;
+  background: $bg-dark;
+  width: 150px;
+  height: 150px;
+  transition: all 100ms;
+
+  &:hover {
+    background: $hover;
+  }
+
+  img {
+    width: 100%;
+    padding: 2rem;
+  }
+}

@@ -1,4 +1,5 @@
 @import 'var';
+@import 'mixins';
 
 * {
   font-family: $main-font;
@@ -10,19 +11,27 @@ html, body {
   margin: 0;
   padding: 0;
   color: $font-color;
+  background: $bg-color;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
 }
 
 main {
   // clear space for header
-  padding-top: $header-height;
-  background: $bg-color;
+  margin-top: $header-height;
+  @include flex(row, center, center);
+  padding: 1.5rem 0rem;
+
 }
 
 h1, h2, h3, h4 {
   font-family: $heading-font;
   font-weight: $semibold;
   text-transform: uppercase;
-  margin: 0; // remove default margin
+  margin-top: 0; // remove default top margin
 
   span {
     color: $primary-color;
@@ -92,6 +101,13 @@ button {
   text-transform: uppercase;
   transition: background 100ms;
 
+  &.small {
+    padding: $input-padding-small;
+    i {
+      font-size: .8rem;
+    }
+  }
+
   &:hover {
     background: $primary-color-hover;
     cursor: pointer;
@@ -136,4 +152,18 @@ input[type="text"] {
 .logo-image {
   height: 100%;
   width: auto;
+}
+
+/****************************************
+    MAIN PAGE CONTENT LAYOUT
+*****************************************/
+
+.main-content-wrapper {
+  width: clamp(900px, 50%, 1200px);
+  @include flex(column, center, center);
+  gap: 1rem;
+}
+
+.content-block {
+  width: 100%;
 }
