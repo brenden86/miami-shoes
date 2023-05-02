@@ -103,12 +103,6 @@ button {
   text-transform: uppercase;
   transition: background 100ms;
 }
-button.small {
-  padding: 0.25rem 0.5rem;
-}
-button.small i {
-  font-size: 0.8rem;
-}
 button:hover {
   background: #f35ea1;
   cursor: pointer;
@@ -149,6 +143,12 @@ input[type=text] {
 }
 .input-wrapper.inline input[type=text] {
   flex-grow: 1;
+}
+.input-wrapper.small button, .input-wrapper.small input {
+  padding: 0.25rem 0.5rem;
+}
+.input-wrapper.small button i, .input-wrapper.small input i {
+  font-size: 0.8rem;
 }
 
 .logo-image {

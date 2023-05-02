@@ -101,13 +101,6 @@ button {
   text-transform: uppercase;
   transition: background 100ms;
 
-  &.small {
-    padding: $input-padding-small;
-    i {
-      font-size: .8rem;
-    }
-  }
-
   &:hover {
     background: $primary-color-hover;
     cursor: pointer;
@@ -145,6 +138,15 @@ input[type="text"] {
     
     input[type="text"] {
       flex-grow: 1;
+    }
+  }
+
+  &.small {
+    button, input {
+      padding: $input-padding-small;
+      i {
+        font-size: .8rem;
+      }
     }
   }
 }
