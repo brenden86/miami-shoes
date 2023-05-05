@@ -161,11 +161,40 @@ input[type="text"] {
 *****************************************/
 
 .main-content-wrapper {
-  width: clamp(900px, 50%, 1200px);
-  @include flex(column, center, center);
+  @include flex(row, center, flex-start);
+  width: 100%;
   gap: 1rem;
+}
+
+.main-content {
+  @include flex(column, center, center);
+  width: clamp(900px, 50%, 1200px);
+  gap: 1rem;
+  
 }
 
 .content-block {
   width: 100%;
+  // border: 1px dashed cyan;
+
+  
 }
+
+.card {
+  background: white;
+  border-radius: $border-radius-main;
+  border: 1px solid $bg-dark;
+  padding: 1rem;
+  box-shadow: $box-shadow-main;
+}
+
+.results-found {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: $font-light;
+  span {
+    font-weight: $semibold;
+    color: $font-color;
+  }
+}
+
