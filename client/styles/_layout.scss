@@ -116,21 +116,57 @@ button {
   }
 }
 
+// checkbox input label
+.checkbox-container {
+  @include flex(row, flex-start, center);
+  gap: 5px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+  
+  // hide input element
+  input {
+    height: 0;
+    width: 0;
+    display: none;
+  }
+
+  .checkbox {
+    @include flex(row, center, center);
+    width: 20px;
+    height: 20px;
+    line-height: 0;
+    border: 2px solid #757575;
+    border-radius: $border-radius-small;
+    color: transparent; // hide checkmark
+    
+    i {
+      font-size: 1.5rem;
+    }
+  }
+  
+  input:checked ~ .checkbox {
+    background: $primary-color;
+    color: white;
+    border: 0;
+  }
+}
+
 
 input[type="text"] {
   padding: $input-padding;
   border-radius: $border-radius-main;
-  border: 1px solid $font-light;
+  border: $border-light;
+  font-size: 1rem;
 }
 
 .input-wrapper {
   @include flex(column, flex-start, flex-start);
   gap: $input-gap;
-  
-  input {
-    min-width: 200px;
-    max-width: 400px;
-  }
   
   &.inline {
     @include flex(row, flex-start, flex-end);
@@ -138,12 +174,16 @@ input[type="text"] {
     
     input[type="text"] {
       flex-grow: 1;
+      min-width: 200px;
+      max-width: 400px;
     }
   }
 
   &.small {
     button, input {
       padding: $input-padding-small;
+      font-size: .8rem;
+      
       i {
         font-size: .8rem;
       }

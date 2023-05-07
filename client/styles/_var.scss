@@ -34,9 +34,11 @@ $secondary-color-text: #f3fcff;
 $secondary-color-hover: #58c2f0;
 
 // style variables
+$border-light: 1px solid $font-light;
 $border-radius-main: 6px;
 $border-radius-small: 4px;
 $box-shadow-main: 2px 2px 2px rgba(0, 0, 0, 0.2);
+$box-shadow-small: 0px 0px 4px rgba(0, 0, 0, 0.5);
 
 // size variables
 $column-gap-main: 1rem;
