@@ -19,10 +19,13 @@
   background: $bg-dark;
   width: 150px;
   height: 150px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
   transition: all 100ms;
 
   &:hover {
-    background: $hover;
+    background: $hover-dark;
   }
 
   img {

@@ -2,7 +2,7 @@
 .category-cards-wrapper {
   @include flex(row, space-evenly, flex-start, wrap);
   gap: 1rem 2rem;
-
+  margin: 4rem 0;
 }
 
 .category-card {
@@ -23,7 +23,7 @@
       }
     }
 
-    background: $bg-dark;
+    background: $hover;
   }
 }
 
