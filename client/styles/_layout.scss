@@ -1,5 +1,6 @@
 @import 'var';
 @import 'mixins';
+@import 'product-page';
 
 * {
   font-family: $main-font;
@@ -52,6 +53,12 @@ a {
   }
 }
 
+ul {
+  margin: 0;
+}
+
+
+
 // icon size when using bootstrap icons
 i {
   font-size: 1rem;
@@ -93,7 +100,7 @@ button {
   outline: none;
   border: none;
   background: $primary-color;
-  color: $primary-color-text;
+  color: white;
   font-family: $heading-font;
   font-weight: $semibold;
   padding: $input-padding;
@@ -113,6 +120,11 @@ button {
     &:hover {
       background: $secondary-color-hover;
     }
+  }
+
+  &:disabled {
+    background: $font-light;
+    cursor: initial;
   }
 }
 

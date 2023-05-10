@@ -55,13 +55,16 @@
   }
 }
 
-.product-colors-wrapper {
-  @include flex(row, flex-end, center);
-  gap: 5px;
-  align-self: flex-end;
-  max-width: 180px; // match product image width
-  overflow: hidden;
-  
+.product-card {
+  .product-colors-wrapper {
+    @include flex(row, flex-end, center);
+    gap: 5px;
+    align-self: flex-end;
+    max-width: 180px; // match product image width
+    overflow: hidden;
+    
+  }
+
 }
 
 .product-color {
