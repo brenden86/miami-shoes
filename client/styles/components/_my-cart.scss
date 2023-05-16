@@ -1,0 +1,119 @@
+
+.cart-container {
+  margin-bottom: 1rem;
+}
+
+.cart-wrapper {
+  @include flex(column, flex-start, stretch);
+  gap: 1.5rem;
+}
+
+/****************************
+CART HEADER
+****************************/
+
+.cart-header {
+  @include flex(row, space-between, flex-start);
+}
+
+.cart-header-buttons {
+  @include flex(row, flex-end, center);
+  gap: 1rem;
+  
+}
+
+/****************************
+CART ITEMS
+****************************/
+
+.cart-item {
+  @include flex(row, flex-start, stretch);
+  border-top: 2px solid $hover-dark;
+  padding: 1rem 0;
+  gap: 1rem;
+  
+  .item-image {
+    @include flex(row, flex-start, center);
+    width: clamp(150px, 20%, 200px);
+    
+    img {
+      max-width: 100%;
+    }
+  }
+  
+  .item-details-wrapper {
+    @include flex(row, space-between, stretch);
+    flex-grow: 1;
+    
+    .item-details {
+      @include flex(column, flex-start, flex-start);
+      min-width: 20%;
+      
+      .item-name {
+        font-weight: $bold;
+        text-transform: uppercase;
+        font-size: 1.2rem;
+        margin-bottom: .5rem;
+      }
+      
+      .item-property {
+        font-weight: $semibold;
+        
+        span {
+          font-weight: $regular;
+        }
+      }
+      
+      &.right {
+        justify-content: space-between;
+        margin-left: 1rem;
+      }
+      
+      .price {
+        font-weight: $semibold;
+        font-size: 1.2rem;
+      }
+      
+      .remove-item {
+        align-self: flex-end;
+        
+      }
+    }
+  }
+}
+
+.clear-cart-button {
+  align-self: flex-end;
+  font-size: 1.2rem;
+}
+
+
+/****************************
+    ORDER SUMMARY SIDEBAR
+****************************/
+
+.order-summary-container {
+  width: clamp(230px, 20%, 380px);
+
+  h1 {
+    padding: 0 1rem;
+  }
+}
+
+.order-summary-item-wrapper {
+  @include flex(row, space-between, flex-end);
+  margin-bottom: .5rem;
+  padding: 0 1rem;
+  font-size: 1.2rem;
+
+  &.total {
+    text-transform: uppercase;
+    font-weight: $semibold;
+    border-top: 2px solid $font-light;
+    padding-top: .5rem;
+  }
+}
+
+.summary-item-value {
+  font-weight: $semibold;
+}

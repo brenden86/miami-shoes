@@ -39,9 +39,6 @@
   font-weight: 600;
   color: #eb4791;
 }
-.product-column .breadcrumbs a:hover {
-  text-decoration: underline;
-}
 .product-column .info-group {
   margin: 1rem 0;
 }
@@ -234,6 +231,7 @@ i {
 }
 .icon-link:hover {
   background: #ffbcd8;
+  cursor: pointer;
 }
 .icon-link i {
   font-size: 1.5rem;
@@ -248,6 +246,20 @@ i {
 }
 .icon-link.light:hover {
   background: #f35ea1;
+}
+
+.text-button {
+  display: inline;
+  color: #eb4791;
+  font-weight: 600;
+}
+.text-button i {
+  padding-right: 0.5rem;
+  font-size: inherit;
+}
+.text-button:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 button {
@@ -360,6 +372,26 @@ input[type=text] {
   width: auto;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e2e6e7;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #eb4791;
+  border-radius: 10px;
+  border: 3px solid #e2e6e7;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #f35ea1;
+}
+
 /****************************************
     MAIN PAGE CONTENT LAYOUT
 *****************************************/
@@ -370,17 +402,20 @@ input[type=text] {
   align-items: flex-start;
   flex-wrap: nowrap;
   width: 100%;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .main-content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: nowrap;
   width: clamp(900px, 50%, 1200px);
   gap: 1rem;
+}
+.main-content.narrow {
+  width: clamp(600px, 50%, 1000px);
 }
 
 .content-block {
@@ -799,6 +834,7 @@ footer h3 {
   display: flex;
   gap: 1rem;
   overflow: auto;
+  padding-bottom: 1rem;
 }
 
 .product-card {
@@ -1008,6 +1044,139 @@ footer h3 {
 }
 .filter-size input:checked ~ .checkbox {
   border: 1px solid #eb4791;
+  font-weight: 600;
+}
+
+.cart-container {
+  margin-bottom: 1rem;
+}
+
+.cart-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+}
+
+/****************************
+CART HEADER
+****************************/
+.cart-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+.cart-header-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 1rem;
+}
+
+/****************************
+CART ITEMS
+****************************/
+.cart-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  border-top: 2px solid #e2e6e7;
+  padding: 1rem 0;
+  gap: 1rem;
+}
+.cart-item .item-image {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: clamp(150px, 20%, 200px);
+}
+.cart-item .item-image img {
+  max-width: 100%;
+}
+.cart-item .item-details-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  flex-grow: 1;
+}
+.cart-item .item-details-wrapper .item-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  min-width: 20%;
+}
+.cart-item .item-details-wrapper .item-details .item-name {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+.cart-item .item-details-wrapper .item-details .item-property {
+  font-weight: 600;
+}
+.cart-item .item-details-wrapper .item-details .item-property span {
+  font-weight: 400;
+}
+.cart-item .item-details-wrapper .item-details.right {
+  justify-content: space-between;
+  margin-left: 1rem;
+}
+.cart-item .item-details-wrapper .item-details .price {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.cart-item .item-details-wrapper .item-details .remove-item {
+  align-self: flex-end;
+}
+
+.clear-cart-button {
+  align-self: flex-end;
+  font-size: 1.2rem;
+}
+
+/****************************
+    ORDER SUMMARY SIDEBAR
+****************************/
+.order-summary-container {
+  width: clamp(230px, 20%, 380px);
+}
+.order-summary-container h1 {
+  padding: 0 1rem;
+}
+
+.order-summary-item-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  margin-bottom: 0.5rem;
+  padding: 0 1rem;
+  font-size: 1.2rem;
+}
+.order-summary-item-wrapper.total {
+  text-transform: uppercase;
+  font-weight: 600;
+  border-top: 2px solid #b8b8b8;
+  padding-top: 0.5rem;
+}
+
+.summary-item-value {
   font-weight: 600;
 }
 
