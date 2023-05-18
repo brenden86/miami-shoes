@@ -16,12 +16,6 @@ CART HEADER
   @include flex(row, space-between, flex-start);
 }
 
-.cart-header-buttons {
-  @include flex(row, flex-end, center);
-  gap: 1rem;
-  
-}
-
 /****************************
 CART ITEMS
 ****************************/
@@ -101,12 +95,20 @@ CART ITEMS
 }
 
 .order-summary-item-wrapper {
-  @include flex(row, space-between, flex-end);
-  margin-bottom: .5rem;
+  @include flex(row, space-between, flex-start);
+  margin-bottom: 1rem;
   padding: 0 1rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
+
+  span {
+    color: $font-light;
+    font-weight: $semibold;
+    font-size: .8rem;
+    display: block;
+  }
 
   &.total {
+    font-size: 1.2rem;
     text-transform: uppercase;
     font-weight: $semibold;
     border-top: 2px solid $font-light;

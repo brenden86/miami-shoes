@@ -1,6 +1,7 @@
 @import 'var';
 @import 'mixins';
 @import 'product-page';
+@import 'checkout';
 
 * {
   font-family: $main-font;
@@ -63,6 +64,8 @@ ul {
 i {
   font-size: 1rem;
   color: inherit;
+  display: inline-block;
+  transition: all 100ms ease-in;
 }
 
 .icon-link {
@@ -114,6 +117,11 @@ i {
   }
 }
 
+// input placeholder color
+::placeholder {
+  color: $font-light;
+}
+
 button {
   outline: none;
   border: none;
@@ -144,16 +152,34 @@ button {
     background: $font-light;
     cursor: initial;
   }
+
+  &.next {
+    &:hover {
+      i {
+        transform: translateX(5px);
+      }
+    }
+  }
+
+  &.prev {
+    &:hover {
+      i {
+        transform: translateX(-5px);
+      }
+    }
+  }
 }
 
-// checkbox input label
+// CUSTOM CHECKBOX
+
+// container is <label>
 .checkbox-container {
   @include flex(row, flex-start, center);
   gap: 5px;
   user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
-
+  
   &:hover {
     cursor: pointer;
   }
@@ -186,12 +212,130 @@ button {
   }
 }
 
+// CUSTOM RADIO BUTTON
 
-input[type="text"] {
+.radio-container {
+  @include flex(row, flex-start, center);
+  gap: .5rem;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+
+  
+  .radio {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid $primary-color;
+    position: relative;
+    flex-shrink: 0;
+    
+  }
+  
+  &.large {
+    position: relative;
+    font-size: 1.2rem;
+    font-weight: $semibold;
+    margin: 1rem;
+
+  }
+  
+  // descriptive light text under radio label
+  .label-descriptor {
+    position: absolute;
+    top: 100%;
+    left: 2rem;
+    color: $font-light;
+    font-size: initial;
+    font-weight: initial;
+  }
+
+  input {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  input:checked ~ .radio {
+    &::after {
+      // radio marker
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      background: $primary-color;
+      border-radius: 50%;
+    }
+
+  }
+
+  input:disabled ~ .radio {
+    border-color: $font-light;
+
+    &::after {
+      // radio marker
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      background: transparent;
+      border-radius: 50%;
+    }
+
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+textarea,
+select {
   padding: $input-padding;
   border-radius: $border-radius-main;
   border: $border-light;
   font-size: 1rem;
+  width: clamp(150px, 50%, 400px);
+  resize: none;
+
+  &:focus {
+    outline-color: $primary-color;
+  }
+}
+
+select {
+  // for some reason the select element has
+  // slightly more padding than regular text inputs
+  padding-top: .42rem;
+  padding-bottom: .42rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+}
+
+fieldset {
+  border: none;
+  margin: 1rem 0;
+  padding: .25rem 0;
+
+  &.hidden {
+    display: none;
+  }
 }
 
 .input-wrapper {
@@ -202,10 +346,9 @@ input[type="text"] {
     @include flex(row, flex-start, flex-end);
     align-self: stretch;
     
-    input[type="text"] {
+    input {
       flex-grow: 1;
-      min-width: 200px;
-      max-width: 400px;
+      
     }
   }
 
@@ -218,6 +361,23 @@ input[type="text"] {
         font-size: .8rem;
       }
     }
+  }
+}
+
+.add-field-button {
+  display: inline-block;
+  color: $font-light;
+  font-size: .8rem;
+  font-weight: $bold;
+  text-transform: uppercase;
+  padding: $input-padding;
+  i {
+    font-size: inherit;
+  }
+  
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
   }
 }
 
@@ -249,6 +409,24 @@ input[type="text"] {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: $primary-color-hover;
+}
+
+// hides visually but still accessible to screen readers
+.sr-only {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
+
+// "back" text link and "continue" button most likely
+.form-navigation-buttons {
+  @include flex(row, flex-end, center);
+  gap: 1rem;
+  
 }
 
 /****************************************

@@ -2,10 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
 // Oswald - Heading Font
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap');
+// Roboto Mono - Monospace font
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;600;700&display=swap');
 
 // font families
 $main-font: "Lato", "Segoe UI", Verdana, sans-serif;
 $heading-font: "Oswald", "Segoe UI", Verdana, sans-serif;
+$monospace: 'Roboto Mono', monospace;
 
 // font weights
 $thin: 100;
@@ -24,6 +27,7 @@ $bg-dark: #f1f3f4;
 $hover: #f1f3f4;
 $hover-light: #fafafa;
 $hover-dark: #e2e6e7;
+$gray-md: rgba(0, 0, 0, 0.5);
 
 $primary-color: #eb4791;
 $primary-color-light: #ffbcd8;
@@ -39,7 +43,7 @@ $border-light: 1px solid $font-light;
 $border-radius-main: 6px;
 $border-radius-small: 4px;
 $box-shadow-main: 2px 2px 2px rgba(0, 0, 0, 0.2);
-$box-shadow-small: 0px 0px 4px rgba(0, 0, 0, 0.5);
+$box-shadow-small: 0px 0px 4px $gray-md;
 
 // size variables
 $column-gap-main: 1rem;

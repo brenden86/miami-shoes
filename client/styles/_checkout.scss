@@ -1,0 +1,172 @@
+
+.checkout-progress {
+  position: relative;
+  margin: 2rem;
+}
+
+.checkout-progress-bar {
+  @include flex(row, center, center);
+  position: absolute;
+  z-index: 1;
+  background: $font-light;
+  top: calc(1.5rem + 2px); // half of circle's height + border
+  // these must be adjusted if icon size/text is adjusted
+  width: calc(100% - 2rem);
+  margin-left: 1rem;
+  
+  .progress-segment {
+      height: 1rem;
+      flex-grow: 1;
+      &.complete {
+        background: $primary-color;
+      }
+  
+    }
+  
+  }
+  
+  .progress-steps-wrapper {
+    @include flex(row, space-between, center);
+    position: relative;
+    z-index: 1;
+    
+  }
+  
+  .checkout-step {
+    color: $font-light;
+    @include flex(column, center, center);
+    h1 {
+      font-size: 1.2rem;
+      margin: 0;
+    }
+    
+    &.active {
+      color: $primary-color;
+      .checkout-step-icon {
+        border-color: $primary-color;
+      }
+    }
+    
+    &.complete {
+      color: $primary-color;
+      .checkout-step-icon {
+        border-color: $primary-color;
+      background: $primary-color;
+      color: white;
+      
+    }
+
+    
+  }
+  
+  
+}
+
+.checkout-step-icon {
+  @include flex(row, center, center);
+  color: transparent;
+  background: white; // matches card background
+  border: 4px solid $font-light;
+  margin-bottom: .5rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  
+  i {
+    font-size: 3rem;
+  }
+  
+}
+
+.checkout-fields {
+  margin: 0 2rem;
+}
+
+
+
+
+// Credit Card Inputs
+
+.credit-card-container {
+  position: relative;
+  width: 420px;
+  height: 240px;
+  background: $bg-dark;
+  border: 2px solid $gray-md;
+  border-radius: 20px;
+  font-size: .8rem;
+  color: $font-light;
+  padding: 1rem;
+  margin-top: 1rem;
+  
+  &::after {
+    content: "";
+    width: 100%;
+    height: 36px;
+    background: $font-color;
+    position: absolute;
+    top: 24px;
+    left: 0;
+  }
+  
+  .credit-card-inputs {
+    position: relative;
+    top: 30%;
+  }
+  
+  .card-input-wrapper {
+    @include flex(row, flex-start, flex-start);
+    gap: .5rem;
+    margin-bottom: .5rem;
+    
+    .card-input {
+      @include flex(column, flex-start, flex-start);
+      
+      input[type="text"] {
+        width: auto;
+        font-family: $monospace;
+        border-radius: 0;
+        border: none;
+      }
+    }
+  }
+  
+  .payment-processor {
+    position: absolute;
+    bottom: 1rem; // match card padding
+    right: 1rem;
+    span {
+      display: block;
+      margin-bottom: 5px;
+    }
+    img {
+      max-height: 20px;
+    }
+  }
+}
+
+
+#basic-info-fields {display: none;}
+#shipping-payment-fields {display: none;}
+// #checkout-review {display: none;}
+
+// ORDER REVIEW
+
+#checkout-review {
+  .cart-header {
+    margin-bottom: 1rem;
+    h1 {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+    .form-navigation-buttons {
+      align-self: flex-end;
+    }
+  }
+
+  .item-details {
+    .price {
+      color: inherit;
+    }
+  }
+}

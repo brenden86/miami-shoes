@@ -1,9 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;600;700&display=swap");
 .product-wrapper {
   display: flex;
   flex-direction: row;
@@ -156,6 +159,173 @@
   font-size: 1.2rem;
 }
 
+.checkout-progress {
+  position: relative;
+  margin: 2rem;
+}
+
+.checkout-progress-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  position: absolute;
+  z-index: 1;
+  background: #b8b8b8;
+  top: calc(1.5rem + 2px);
+  width: calc(100% - 2rem);
+  margin-left: 1rem;
+}
+.checkout-progress-bar .progress-segment {
+  height: 1rem;
+  flex-grow: 1;
+}
+.checkout-progress-bar .progress-segment.complete {
+  background: #eb4791;
+}
+
+.progress-steps-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  position: relative;
+  z-index: 1;
+}
+
+.checkout-step {
+  color: #b8b8b8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+.checkout-step h1 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+.checkout-step.active {
+  color: #eb4791;
+}
+.checkout-step.active .checkout-step-icon {
+  border-color: #eb4791;
+}
+.checkout-step.complete {
+  color: #eb4791;
+}
+.checkout-step.complete .checkout-step-icon {
+  border-color: #eb4791;
+  background: #eb4791;
+  color: white;
+}
+
+.checkout-step-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  color: transparent;
+  background: white;
+  border: 4px solid #b8b8b8;
+  margin-bottom: 0.5rem;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+.checkout-step-icon i {
+  font-size: 3rem;
+}
+
+.checkout-fields {
+  margin: 0 2rem;
+}
+
+.credit-card-container {
+  position: relative;
+  width: 420px;
+  height: 240px;
+  background: #f1f3f4;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  font-size: 0.8rem;
+  color: #b8b8b8;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+.credit-card-container::after {
+  content: "";
+  width: 100%;
+  height: 36px;
+  background: #2a2a2a;
+  position: absolute;
+  top: 24px;
+  left: 0;
+}
+.credit-card-container .credit-card-inputs {
+  position: relative;
+  top: 30%;
+}
+.credit-card-container .card-input-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.credit-card-container .card-input-wrapper .card-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+.credit-card-container .card-input-wrapper .card-input input[type=text] {
+  width: auto;
+  font-family: "Roboto Mono", monospace;
+  border-radius: 0;
+  border: none;
+}
+.credit-card-container .payment-processor {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+}
+.credit-card-container .payment-processor span {
+  display: block;
+  margin-bottom: 5px;
+}
+.credit-card-container .payment-processor img {
+  max-height: 20px;
+}
+
+#basic-info-fields {
+  display: none;
+}
+
+#shipping-payment-fields {
+  display: none;
+}
+
+#checkout-review .cart-header {
+  margin-bottom: 1rem;
+}
+#checkout-review .cart-header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+#checkout-review .cart-header .form-navigation-buttons {
+  align-self: flex-end;
+}
+#checkout-review .item-details .price {
+  color: inherit;
+}
+
 * {
   font-family: "Lato", "Segoe UI", Verdana, sans-serif;
   box-sizing: border-box;
@@ -214,6 +384,8 @@ ul {
 i {
   font-size: 1rem;
   color: inherit;
+  display: inline-block;
+  transition: all 100ms ease-in;
 }
 
 .icon-link {
@@ -262,6 +434,10 @@ i {
   cursor: pointer;
 }
 
+::placeholder {
+  color: #b8b8b8;
+}
+
 button {
   outline: none;
   border: none;
@@ -288,6 +464,12 @@ button.secondary:hover {
 button:disabled {
   background: #b8b8b8;
   cursor: initial;
+}
+button.next:hover i {
+  transform: translateX(5px);
+}
+button.prev:hover i {
+  transform: translateX(-5px);
 }
 
 .checkbox-container {
@@ -331,11 +513,114 @@ button:disabled {
   border: 0;
 }
 
-input[type=text] {
+.radio-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+.radio-container .radio {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #eb4791;
+  position: relative;
+  flex-shrink: 0;
+}
+.radio-container.large {
+  position: relative;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1rem;
+}
+.radio-container .label-descriptor {
+  position: absolute;
+  top: 100%;
+  left: 2rem;
+  color: #b8b8b8;
+  font-size: initial;
+  font-weight: initial;
+}
+.radio-container input {
+  width: 0;
+  height: 0;
+  display: none;
+}
+.radio-container input:checked ~ .radio::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  background: #eb4791;
+  border-radius: 50%;
+}
+.radio-container input:disabled ~ .radio {
+  border-color: #b8b8b8;
+}
+.radio-container input:disabled ~ .radio::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  background: transparent;
+  border-radius: 50%;
+}
+.radio-container:hover {
+  cursor: pointer;
+}
+
+input[type=text],
+input[type=tel],
+input[type=email],
+input[type=password],
+input[type=number],
+input[type=search],
+textarea,
+select {
   padding: 0.5rem 1rem;
   border-radius: 6px;
   border: 1px solid #b8b8b8;
   font-size: 1rem;
+  width: clamp(150px, 50%, 400px);
+  resize: none;
+}
+input[type=text]:focus,
+input[type=tel]:focus,
+input[type=email]:focus,
+input[type=password]:focus,
+input[type=number]:focus,
+input[type=search]:focus,
+textarea:focus,
+select:focus {
+  outline-color: #eb4791;
+}
+
+select {
+  padding-top: 0.42rem;
+  padding-bottom: 0.42rem;
+}
+select:hover {
+  cursor: pointer;
+}
+
+fieldset {
+  border: none;
+  margin: 1rem 0;
+  padding: 0.25rem 0;
+}
+fieldset.hidden {
+  display: none;
 }
 
 .input-wrapper {
@@ -354,10 +639,8 @@ input[type=text] {
   flex-wrap: nowrap;
   align-self: stretch;
 }
-.input-wrapper.inline input[type=text] {
+.input-wrapper.inline input {
   flex-grow: 1;
-  min-width: 200px;
-  max-width: 400px;
 }
 .input-wrapper.small button, .input-wrapper.small input {
   padding: 0.25rem 0.5rem;
@@ -365,6 +648,22 @@ input[type=text] {
 }
 .input-wrapper.small button i, .input-wrapper.small input i {
   font-size: 0.8rem;
+}
+
+.add-field-button {
+  display: inline-block;
+  color: #b8b8b8;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+}
+.add-field-button i {
+  font-size: inherit;
+}
+.add-field-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
 
 .logo-image {
@@ -390,6 +689,25 @@ input[type=text] {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #f35ea1;
+}
+
+.sr-only {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.form-navigation-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 1rem;
 }
 
 /****************************************
@@ -1071,15 +1389,6 @@ CART HEADER
   flex-wrap: nowrap;
 }
 
-.cart-header-buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: 1rem;
-}
-
 /****************************
 CART ITEMS
 ****************************/
@@ -1163,13 +1472,20 @@ CART ITEMS
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   flex-wrap: nowrap;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   padding: 0 1rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
+}
+.order-summary-item-wrapper span {
+  color: #b8b8b8;
+  font-weight: 600;
+  font-size: 0.8rem;
+  display: block;
 }
 .order-summary-item-wrapper.total {
+  font-size: 1.2rem;
   text-transform: uppercase;
   font-weight: 600;
   border-top: 2px solid #b8b8b8;
