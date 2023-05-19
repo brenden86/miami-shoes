@@ -348,7 +348,10 @@ fieldset {
     
     input {
       flex-grow: 1;
-      
+    }
+
+    .checkbox-container {
+      margin-bottom: .5rem;
     }
   }
 
