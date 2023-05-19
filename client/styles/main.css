@@ -304,14 +304,6 @@
   max-height: 20px;
 }
 
-#basic-info-fields {
-  display: none;
-}
-
-#checkout-review {
-  display: none;
-}
-
 #checkout-review .cart-header {
   margin-bottom: 1rem;
 }
@@ -324,6 +316,18 @@
 }
 #checkout-review .item-details .price {
   color: inherit;
+}
+
+#basic-info-fields {
+  display: none;
+}
+
+#shipping-payment-fields {
+  display: none;
+}
+
+#checkout-review {
+  display: none;
 }
 
 * {
@@ -616,11 +620,18 @@ select:hover {
 
 fieldset {
   border: none;
-  margin: 1rem 0;
   padding: 0.25rem 0;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
 }
 fieldset.hidden {
   display: none;
+}
+fieldset legend {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
 }
 
 .input-wrapper {
@@ -638,12 +649,13 @@ fieldset.hidden {
   align-items: flex-end;
   flex-wrap: nowrap;
   align-self: stretch;
+  margin-top: 0.3rem;
 }
 .input-wrapper.inline input {
   flex-grow: 1;
 }
 .input-wrapper.inline .checkbox-container {
-  margin-bottom: 0.5rem;
+  margin: 0.25rem 0;
 }
 .input-wrapper.small button, .input-wrapper.small input {
   padding: 0.25rem 0.5rem;

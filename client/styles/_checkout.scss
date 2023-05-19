@@ -56,9 +56,7 @@
       
     }
 
-    
   }
-  
   
 }
 
@@ -146,9 +144,6 @@
 }
 
 
-#basic-info-fields {display: none;}
-// #shipping-payment-fields {display: none;}
-#checkout-review {display: none;}
 
 // ORDER REVIEW
 
@@ -163,10 +158,16 @@
       align-self: flex-end;
     }
   }
-
+  
   .item-details {
     .price {
       color: inherit;
     }
   }
 }
+
+// To hide form sections for debugging
+
+#basic-info-fields {display: none;}
+#shipping-payment-fields {display: none;}
+#checkout-review {display: none;}

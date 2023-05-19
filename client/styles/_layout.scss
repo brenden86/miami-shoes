@@ -330,11 +330,19 @@ select {
 
 fieldset {
   border: none;
-  margin: 1rem 0;
   padding: .25rem 0;
+  margin-top: 4rem;
+  margin-bottom: 1rem;
 
   &.hidden {
     display: none;
+  }
+  
+  legend {
+    font-size: 1.2rem;
+    font-weight: $semibold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
   }
 }
 
@@ -345,13 +353,14 @@ fieldset {
   &.inline {
     @include flex(row, flex-start, flex-end);
     align-self: stretch;
+    margin-top: .3rem;
     
     input {
       flex-grow: 1;
     }
 
     .checkbox-container {
-      margin-bottom: .5rem;
+      margin: .25rem 0;
     }
   }
 
