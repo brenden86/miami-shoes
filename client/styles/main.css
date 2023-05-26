@@ -474,8 +474,10 @@ footer h3 {
 .image-wrapper {
   width: 100%;
   position: relative;
-  left: -200%;
   display: flex;
+  left: 0;
+  transition: left 800ms;
+  transition-timing-function: cubic-bezier(0.29, 0.99, 0.84, 1);
 }
 
 .slider-image {
