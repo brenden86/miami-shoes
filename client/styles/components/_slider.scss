@@ -16,8 +16,10 @@
 .image-wrapper {
   width: 100%;
   position: relative;
-  left: -200%; // controls which image is displayed
   display: flex;
+  left: 0;
+  transition: left 800ms;
+  transition-timing-function: cubic-bezier(.29,.99,.84,1);
 
 }
 
