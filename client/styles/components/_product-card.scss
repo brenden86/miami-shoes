@@ -1,9 +1,21 @@
 
-
 .product-card-container {
+  overflow: hidden;
+  position: relative;
+
+  img, a {
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+}
+
+.product-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   justify-items: center;
+  position: relative;
 
   &.card {
     .product-card:hover {
@@ -15,8 +27,6 @@
   &.inline {
     display: flex;
     gap: 1rem;
-    overflow: auto;
-    padding-bottom: 1rem; // space for scrollbar
   }
 }
 
@@ -29,6 +39,7 @@
   &:hover {
     background: $hover;
   }
+
   
 }
 
