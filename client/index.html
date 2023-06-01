@@ -9,7 +9,9 @@
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles/main.css">
-  <script src="./js/modules/slider.js" async></script>
+  <script src="./js/modules/slider.js" defer></script>
+  <script src="./js/modules/drag-scroll.js" defer></script>
+
 </head> 
 <body>
   <div id="root">
@@ -98,145 +100,149 @@
     <!-- featured products -->
     <div class="content-block">
       <h1><span>Hot</span> Right Now</h1>
-      <div class="product-card-container inline">
+      <div class="product-card-container">
 
-        <div class="product-card-wrapper">
-          <a href="#" class="product-card">
-              <div class="badge">new</div>
-              <div class="product-card-image">
-                <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
-              </div>
-              <div class="product-colors-wrapper">
-                <div class="product-color">
-                  <div class="color-swatch primary" style="background: #1a2a47"></div>
-                  <div class="color-swatch" style="background: silver"></div>
+        <div class="product-cards inline drag-scroll">
+
+          <div class="product-card-wrapper">
+            <a href="#" class="product-card">
+                <div class="badge">new</div>
+                <div class="product-card-image">
+                  <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
                 </div>
-                <div class="product-color">
-                  <div class="color-swatch primary" style="background: #c71616"></div>
-                  <div class="color-swatch" style="background: #202020"></div>
+                <div class="product-colors-wrapper">
+                  <div class="product-color">
+                    <div class="color-swatch primary" style="background: #1a2a47"></div>
+                    <div class="color-swatch" style="background: silver"></div>
+                  </div>
+                  <div class="product-color">
+                    <div class="color-swatch primary" style="background: #c71616"></div>
+                    <div class="color-swatch" style="background: #202020"></div>
+                  </div>
                 </div>
-              </div>
-              <div class="product-info">
-                <div class="brand">Nike</div>
-                <div class="product-name">Monarch</div>
-                <div class="price">$59.99</div>
-              </div>
-          </a>
-        </div>
-        <div class="product-card-wrapper">
-          <a href="#" class="product-card">
-              <div class="badge">new</div>
-              <div class="product-card-image">
-                <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
-              </div>
-              <div class="product-colors-wrapper">
-                <div class="product-color">
-                  <div class="color-swatch primary" style="background: #1a2a47"></div>
-                  <div class="color-swatch" style="background: silver"></div>
+                <div class="product-info">
+                  <div class="brand">Nike</div>
+                  <div class="product-name">Monarch</div>
+                  <div class="price">$59.99</div>
                 </div>
-                <div class="product-color">
-                  <div class="color-swatch primary" style="background: #c71616"></div>
-                  <div class="color-swatch" style="background: #202020"></div>
+            </a>
+          </div>
+          <div class="product-card-wrapper">
+            <a href="#" class="product-card">
+                <div class="badge">new</div>
+                <div class="product-card-image">
+                  <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
                 </div>
-              </div>
-              <div class="product-info">
-                <div class="brand">Nike</div>
-                <div class="product-name">Monarch</div>
-                <div class="price">$59.99</div>
-              </div>
-          </a>
-        </div>
-        <div class="product-card-wrapper">
-          <a href="#" class="product-card">
-              <div class="badge">new</div>
-              <div class="product-card-image">
-                <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
-              </div>
-              <div class="product-colors-wrapper">
-                <div class="product-color">
-                  <div class="color-swatch primary" style="background: #1a2a47"></div>
-                  <div class="color-swatch" style="background: silver"></div>
+                <div class="product-colors-wrapper">
+                  <div class="product-color">
+                    <div class="color-swatch primary" style="background: #1a2a47"></div>
+                    <div class="color-swatch" style="background: silver"></div>
+                  </div>
+                  <div class="product-color">
+                    <div class="color-swatch primary" style="background: #c71616"></div>
+                    <div class="color-swatch" style="background: #202020"></div>
+                  </div>
                 </div>
-                <div class="product-color">
-                  <div class="color-swatch primary" style="background: #c71616"></div>
-                  <div class="color-swatch" style="background: #202020"></div>
+                <div class="product-info">
+                  <div class="brand">Nike</div>
+                  <div class="product-name">Monarch</div>
+                  <div class="price">$59.99</div>
                 </div>
-              </div>
-              <div class="product-info">
-                <div class="brand">Nike</div>
-                <div class="product-name">Monarch</div>
-                <div class="price">$59.99</div>
-              </div>
-          </a>
-        </div>
-        <div class="product-card-wrapper">
-          <a href="#" class="product-card">
-              <div class="badge">new</div>
-              <div class="product-card-image">
-                <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
-              </div>
-              <div class="product-colors-wrapper">
-                <div class="product-color">
-                  <div class="color-swatch primary" style="background: #1a2a47"></div>
-                  <div class="color-swatch" style="background: silver"></div>
+            </a>
+          </div>
+          <div class="product-card-wrapper">
+            <a href="#" class="product-card">
+                <div class="badge">new</div>
+                <div class="product-card-image">
+                  <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
                 </div>
-                <div class="product-color">
-                  <div class="color-swatch primary" style="background: #c71616"></div>
-                  <div class="color-swatch" style="background: #202020"></div>
+                <div class="product-colors-wrapper">
+                  <div class="product-color">
+                    <div class="color-swatch primary" style="background: #1a2a47"></div>
+                    <div class="color-swatch" style="background: silver"></div>
+                  </div>
+                  <div class="product-color">
+                    <div class="color-swatch primary" style="background: #c71616"></div>
+                    <div class="color-swatch" style="background: #202020"></div>
+                  </div>
                 </div>
-              </div>
-              <div class="product-info">
-                <div class="brand">Nike</div>
-                <div class="product-name">Monarch</div>
-                <div class="price">$59.99</div>
-              </div>
-          </a>
-        </div>
-        <div class="product-card-wrapper">
-          <a href="#" class="product-card">
-              <div class="badge">new</div>
-              <div class="product-card-image">
-                <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
-              </div>
-              <div class="product-colors-wrapper">
-                <div class="product-color">
-                  <div class="color-swatch primary" style="background: #1a2a47"></div>
-                  <div class="color-swatch" style="background: silver"></div>
+                <div class="product-info">
+                  <div class="brand">Nike</div>
+                  <div class="product-name">Monarch</div>
+                  <div class="price">$59.99</div>
                 </div>
-                <div class="product-color">
-                  <div class="color-swatch primary" style="background: #c71616"></div>
-                  <div class="color-swatch" style="background: #202020"></div>
+            </a>
+          </div>
+          <div class="product-card-wrapper">
+            <a href="#" class="product-card">
+                <div class="badge">new</div>
+                <div class="product-card-image">
+                  <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
                 </div>
-              </div>
-              <div class="product-info">
-                <div class="brand">Nike</div>
-                <div class="product-name">Monarch</div>
-                <div class="price">$59.99</div>
-              </div>
-          </a>
-        </div>
-        <div class="product-card-wrapper">
-          <a href="#" class="product-card">
-              <div class="badge">new</div>
-              <div class="product-card-image">
-                <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
-              </div>
-              <div class="product-colors-wrapper">
-                <div class="product-color">
-                  <div class="color-swatch primary" style="background: #1a2a47"></div>
-                  <div class="color-swatch" style="background: silver"></div>
+                <div class="product-colors-wrapper">
+                  <div class="product-color">
+                    <div class="color-swatch primary" style="background: #1a2a47"></div>
+                    <div class="color-swatch" style="background: silver"></div>
+                  </div>
+                  <div class="product-color">
+                    <div class="color-swatch primary" style="background: #c71616"></div>
+                    <div class="color-swatch" style="background: #202020"></div>
+                  </div>
                 </div>
-                <div class="product-color">
-                  <div class="color-swatch primary" style="background: #c71616"></div>
-                  <div class="color-swatch" style="background: #202020"></div>
+                <div class="product-info">
+                  <div class="brand">Nike</div>
+                  <div class="product-name">Monarch</div>
+                  <div class="price">$59.99</div>
                 </div>
-              </div>
-              <div class="product-info">
-                <div class="brand">Nike</div>
-                <div class="product-name">Monarch</div>
-                <div class="price">$59.99</div>
-              </div>
-          </a>
+            </a>
+          </div>
+          <div class="product-card-wrapper">
+            <a href="#" class="product-card">
+                <div class="badge">new</div>
+                <div class="product-card-image">
+                  <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
+                </div>
+                <div class="product-colors-wrapper">
+                  <div class="product-color">
+                    <div class="color-swatch primary" style="background: #1a2a47"></div>
+                    <div class="color-swatch" style="background: silver"></div>
+                  </div>
+                  <div class="product-color">
+                    <div class="color-swatch primary" style="background: #c71616"></div>
+                    <div class="color-swatch" style="background: #202020"></div>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <div class="brand">Nike</div>
+                  <div class="product-name">Monarch</div>
+                  <div class="price">$59.99</div>
+                </div>
+            </a>
+          </div>
+          <div class="product-card-wrapper">
+            <a href="#" class="product-card">
+                <div class="badge">new</div>
+                <div class="product-card-image">
+                  <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
+                </div>
+                <div class="product-colors-wrapper">
+                  <div class="product-color">
+                    <div class="color-swatch primary" style="background: #1a2a47"></div>
+                    <div class="color-swatch" style="background: silver"></div>
+                  </div>
+                  <div class="product-color">
+                    <div class="color-swatch primary" style="background: #c71616"></div>
+                    <div class="color-swatch" style="background: #202020"></div>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <div class="brand">Nike</div>
+                  <div class="product-name">Monarch</div>
+                  <div class="price">$59.99</div>
+                </div>
+            </a>
+          </div>
+
         </div>
 
       </div>
@@ -247,7 +253,7 @@
     <div class="content-block">
 
       <div class="category-cards-container">
-        <div class="category-cards-wrapper">
+        <div class="category-cards-wrapper drag-scroll">
 
           <a href="#" class="category-card">
 
@@ -336,7 +342,7 @@
       <h1><span>Top</span> Brands</h1>
 
       <div class="brands-container">
-        <div class="brands-wrapper">
+        <div class="brands-wrapper drag-scroll">
           
           <a class="brand-card" href="#">
             <img src="./images/logos/Adidas_Logo.png" alt="adidas">
