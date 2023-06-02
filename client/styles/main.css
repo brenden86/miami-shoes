@@ -38,6 +38,9 @@
 .product-column .thumbnail-wrapper .thumbnail:hover {
   opacity: 0.8;
 }
+.product-column .thumbnail-wrapper .thumbnail.selected {
+  box-shadow: 0px 0px 5px #eb4791;
+}
 .product-column .breadcrumbs {
   font-weight: 600;
   color: #eb4791;
