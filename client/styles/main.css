@@ -26,6 +26,22 @@
 .product-column img:hover {
   cursor: pointer;
 }
+.product-column .selected-image {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding-bottom: 100%;
+  position: relative;
+}
+.product-column .selected-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  min-width: 100%;
+}
 .product-column .thumbnail-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
@@ -34,6 +50,11 @@
 }
 .product-column .thumbnail-wrapper .thumbnail {
   transition: all 100ms;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 .product-column .thumbnail-wrapper .thumbnail:hover {
   opacity: 0.8;

@@ -9,11 +9,29 @@
   width: 50%;
 
   img {
+    // min-width: 100%;
+    // min-height: 100%;
+    // flex-shrink: 0;
     max-width: 100%;
     border: 1px solid $bg-dark;
     &:hover {
       cursor: pointer;
     }
+  }
+
+  .selected-image {
+    @include flex(row, center, center);
+    padding-bottom: 100%;
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      min-height: 100%;
+      min-width: 100%;
+    }
+    
   }
 
   .thumbnail-wrapper {
@@ -24,13 +42,16 @@
     
     .thumbnail {
       transition: all 100ms;
+      @include flex(row, center, center);
 
       &:hover {
         opacity: 0.8;
       }
 
       &.selected {
-        box-shadow: $box-shadow-color;
+        // img {
+          box-shadow: $box-shadow-color;
+        // }
       }
     }
   }
