@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Miami Shoes | Home</title>
-
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="styles/main.css">
-  <script src="./js/modules/slider.js" defer></script>
-  <script src="./js/modules/drag-scroll.js" defer></script>
-
-</head> 
-<body>
-  <div id="root">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miami Shoes | Home</title>
     
-
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./styles/main.css">
+    <script src="./js/modules/slider.js" defer></script>
+    <script src="./js/modules/drag-scroll.js" defer></script>
+    
+  </head> 
+  <body>
+    <div id="root">
+      
 <!----------- 
     HEADER    
 ------------->
-<?php include('./header.php');?>
+<?php include(__DIR__.'/header.php');?>
 
 <!------------------
     MAIN CONTENT    
@@ -70,7 +69,7 @@
             <a href="#" class="product-card">
                 <div class="badge">new</div>
                 <div class="product-card-image">
-                  <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
+                  <img src="client/images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
                 </div>
                 <div class="product-colors-wrapper">
                   <div class="product-color">
@@ -364,7 +363,7 @@
 <!----------- 
     FOOTER    
 ------------->
-<?php include('./footer.php');?>
+<?php include(__DIR__ . '/footer.php');?>
 
 </div>
 </body>

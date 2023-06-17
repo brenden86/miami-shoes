@@ -29,7 +29,7 @@
   <!--header right section-->
   <div class="header-section right">
     <div class="header-section-wrapper">
-      <a href="./my-cart.php" class="icon-link">
+      <a href="/my-cart" class="icon-link">
         <i class="bi-cart"></i>
         <span>Cart (2)</span>
       </a>
