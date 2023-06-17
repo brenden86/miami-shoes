@@ -19,7 +19,7 @@
 <!----------- 
     HEADER    
 ------------->
-<?php include(__DIR__.'/header.php');?>
+<?php include('header.php');?>
 
 <!------------------
     MAIN CONTENT    
@@ -69,7 +69,7 @@
             <a href="#" class="product-card">
                 <div class="badge">new</div>
                 <div class="product-card-image">
-                  <img src="client/images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
+                  <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
                 </div>
                 <div class="product-colors-wrapper">
                   <div class="product-color">
@@ -363,7 +363,7 @@
 <!----------- 
     FOOTER    
 ------------->
-<?php include(__DIR__ . '/footer.php');?>
+<?php include('footer.php');?>
 
 </div>
 </body>
