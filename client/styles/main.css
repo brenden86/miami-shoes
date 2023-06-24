@@ -342,14 +342,6 @@
   color: inherit;
 }
 
-#basic-info-fields {
-  display: none;
-}
-
-#shipping-payment-fields {
-  display: none;
-}
-
 .order-confirmation-wrapper {
   margin: 3rem;
 }
