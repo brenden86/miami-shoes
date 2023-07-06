@@ -8,7 +8,6 @@ $dsn = "mysql:host=" . DB_HOST . ";dbname=$dbname";
 
 try {
   $db = new PDO($dsn, DB_USER, DB_PASS);
-  echo "database connected.\n";
 } catch (Exception $e) {
   echo $e->getMessage();
 }

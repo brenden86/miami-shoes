@@ -9,6 +9,7 @@
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles/main.css">
+  <script src="./js/modules/image-fallback.js" defer></script>
 </head>
 <body>
   <div id="root">
@@ -356,172 +357,77 @@
 
       <div class="product-card-container card">
         <div class="product-cards">
-          <div class="product-card-wrapper">
-            <a href="#" class="product-card">
-                <div class="badge">new</div>
-                <div class="product-card-image">
-                  <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
-                </div>
-                <div class="product-colors-wrapper">
-                  <div class="product-color">
-                    <div class="color-swatch primary" style="background: #1a2a47"></div>
-                    <div class="color-swatch" style="background: silver"></div>
-                  </div>
-                  <div class="product-color">
-                    <div class="color-swatch primary" style="background: #c71616"></div>
-                    <div class="color-swatch" style="background: #202020"></div>
-                  </div>
-                </div>
-                <div class="product-info">
-                  <div class="brand">Nike</div>
-                  <div class="product-name">Monarch</div>
-                  <div class="price">$59.99</div>
-                </div>
-            </a>
-          </div>
 
-          <div class="product-card-wrapper">
-            <a href="#" class="product-card">
-                <div class="badge">new</div>
-                <div class="product-card-image">
-                  <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
-                </div>
-                <div class="product-colors-wrapper">
-                  <div class="product-color">
-                    <div class="color-swatch primary" style="background: #1a2a47"></div>
-                    <div class="color-swatch" style="background: silver"></div>
-                  </div>
-                  <div class="product-color">
-                    <div class="color-swatch primary" style="background: #c71616"></div>
-                    <div class="color-swatch" style="background: #202020"></div>
-                  </div>
-                </div>
-                <div class="product-info">
-                  <div class="brand">Nike</div>
-                  <div class="product-name">Monarch</div>
-                  <div class="price">$59.99</div>
-                </div>
-            </a>
-          </div>
+        <?php
+          // connect to database
+          require __DIR__ . '/../database/dbconnect.php';
 
-          <div class="product-card-wrapper">
-            <a href="#" class="product-card">
-                <div class="badge">new</div>
-                <div class="product-card-image">
-                  <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
-                </div>
-                <div class="product-colors-wrapper">
-                  <div class="product-color">
-                    <div class="color-swatch primary" style="background: #1a2a47"></div>
-                    <div class="color-swatch" style="background: silver"></div>
-                  </div>
-                  <div class="product-color">
-                    <div class="color-swatch primary" style="background: #c71616"></div>
-                    <div class="color-swatch" style="background: #202020"></div>
-                  </div>
-                </div>
-                <div class="product-info">
-                  <div class="brand">Nike</div>
-                  <div class="product-name">Monarch</div>
-                  <div class="price">$59.99</div>
-                </div>
-            </a>
-          </div>
+          // get products
+          $products_query = $db->query('SELECT * FROM products');
+          $products = $products_query->fetchAll(PDO::FETCH_ASSOC);
 
-          <div class="product-card-wrapper">
-            <a href="#" class="product-card">
-                <div class="badge">new</div>
-                <div class="product-card-image">
-                  <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
-                </div>
-                <div class="product-colors-wrapper">
-                  <div class="product-color">
-                    <div class="color-swatch primary" style="background: #1a2a47"></div>
-                    <div class="color-swatch" style="background: silver"></div>
-                  </div>
-                  <div class="product-color">
-                    <div class="color-swatch primary" style="background: #c71616"></div>
-                    <div class="color-swatch" style="background: #202020"></div>
-                  </div>
-                </div>
-                <div class="product-info">
-                  <div class="brand">Nike</div>
-                  <div class="product-name">Monarch</div>
-                  <div class="price">$59.99</div>
-                </div>
-            </a>
-          </div>
+          // loop through products
+          foreach($products as $product => $field) {
 
+          // output html
+          echo '
           <div class="product-card-wrapper">
-            <a href="#" class="product-card">
+            <a href="/client/product-page.php" class="product-card">
                 <div class="badge">new</div>
                 <div class="product-card-image">
-                  <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
+                  <img src="' . $field['thumb_url'] . '" alt="' . $field['brand'] . ' ' . $field['prod_name'] . '">
                 </div>
-                <div class="product-colors-wrapper">
-                  <div class="product-color">
-                    <div class="color-swatch primary" style="background: #1a2a47"></div>
-                    <div class="color-swatch" style="background: silver"></div>
-                  </div>
-                  <div class="product-color">
-                    <div class="color-swatch primary" style="background: #c71616"></div>
-                    <div class="color-swatch" style="background: #202020"></div>
-                  </div>
-                </div>
+                <div class="product-colors-wrapper">';
+
+                // get color variants for current product
+                $prod_name = $field['prod_name'];
+                $color_variants_query = $db->prepare('SELECT prim_color, sec_color FROM products WHERE prod_name = :prodname');
+                $color_variants_query->execute(['prodname' => $prod_name]);
+                $color_variants = $color_variants_query->fetchAll(PDO::FETCH_ASSOC);
+                
+                // loop through variants
+                foreach($color_variants as $color) {
+
+                  // prepare statements
+                  $prim_hex_query = $db->prepare('SELECT color_hex FROM prod_colors WHERE color_name = :primcolor');
+                  $sec_hex_query = $db->prepare('SELECT color_hex FROM prod_colors WHERE color_name = :seccolor');
+                  // execute queries
+                  $prim_hex_query->execute(['primcolor' => $color['prim_color']]);
+                  $sec_hex_query->execute(['seccolor' => $color['sec_color']]);
+                  // fetch results
+                  $prim_hex = $prim_hex_query->fetch(PDO::FETCH_ASSOC);
+                  $sec_hex = $sec_hex_query->fetch(PDO::FETCH_ASSOC);
+
+                  // set secondary hex equal to primary if there is no secondary color
+                  if (!$sec_hex) {
+                    $sec_hex = $prim_hex;
+                  }
+
+                  echo '
+                    <div class="product-color">
+                      <div class="color-swatch primary" style="background: #' . $prim_hex['color_hex'] . '"></div>
+                      <div class="color-swatch" style="background: #' . $sec_hex['color_hex'] . '"></div>
+                    </div>
+                  
+                  ';
+                }
+                
+               echo '</div>
                 <div class="product-info">
-                  <div class="brand">Nike</div>
-                  <div class="product-name">Monarch</div>
-                  <div class="price">$59.99</div>
+                  <div class="brand">' . strtoupper($field['brand']) . '</div>
+                  <div class="product-name">' . strtoupper($field['prod_name']) . '</div>
+                  <div class="price">$' . $field['price'] . '</div>
                 </div>
             </a>
           </div>
-          <div class="product-card-wrapper">
-            <a href="#" class="product-card">
-                <div class="badge">new</div>
-                <div class="product-card-image">
-                  <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
-                </div>
-                <div class="product-colors-wrapper">
-                  <div class="product-color">
-                    <div class="color-swatch primary" style="background: #1a2a47"></div>
-                    <div class="color-swatch" style="background: silver"></div>
-                  </div>
-                  <div class="product-color">
-                    <div class="color-swatch primary" style="background: #c71616"></div>
-                    <div class="color-swatch" style="background: #202020"></div>
-                  </div>
-                </div>
-                <div class="product-info">
-                  <div class="brand">Nike</div>
-                  <div class="product-name">Monarch</div>
-                  <div class="price">$59.99</div>
-                </div>
-            </a>
-          </div>
+          '; // END ECHO
           
-          <div class="product-card-wrapper">
-            <a href="#" class="product-card">
-                <div class="badge">new</div>
-                <div class="product-card-image">
-                  <img src="./images/thumbnails/monarch-white-silver.jpg" alt="nike-monarch">
-                </div>
-                <div class="product-colors-wrapper">
-                  <div class="product-color">
-                    <div class="color-swatch primary" style="background: #1a2a47"></div>
-                    <div class="color-swatch" style="background: silver"></div>
-                  </div>
-                  <div class="product-color">
-                    <div class="color-swatch primary" style="background: #c71616"></div>
-                    <div class="color-swatch" style="background: #202020"></div>
-                  </div>
-                </div>
-                <div class="product-info">
-                  <div class="brand">Nike</div>
-                  <div class="product-name">Monarch</div>
-                  <div class="price">$59.99</div>
-                </div>
-            </a>
-          </div>
+
+          // END foreach
+          }
+        ?>
+
+
         </div>
       </div>
 
@@ -559,6 +465,10 @@
     FOOTER    
 ------------->
 <?php include('./footer.php');?>
+
+<?php
+  $db = null;
+?>
 
 </div>
 </body>
