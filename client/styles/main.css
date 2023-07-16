@@ -65,6 +65,7 @@
 .product-column .breadcrumbs {
   font-weight: 600;
   color: #eb4791;
+  text-transform: uppercase;
 }
 .product-column .info-group {
   margin: 1rem 0;
@@ -83,6 +84,7 @@
 .product-column .info-group span {
   font-weight: 600;
   margin: 0 0.5rem;
+  text-transform: uppercase;
 }
 .product-column .info-group .product-colors-wrapper {
   display: flex;
@@ -92,28 +94,20 @@
   flex-wrap: nowrap;
   gap: 0.5rem;
 }
-.product-column .info-group .product-colors-wrapper .product-color-input {
-  display: flex;
-}
-.product-column .info-group .product-colors-wrapper input {
-  width: 0;
-  height: 0;
-  display: none;
-}
-.product-column .info-group .product-colors-wrapper input:checked ~ .radio {
-  border: 2px solid #eb4791;
-  box-sizing: content-box;
-}
-.product-column .info-group .product-colors-wrapper input:disabled ~ .radio {
-  opacity: 0.5;
-}
 .product-column .info-group .product-colors-wrapper .product-color {
   height: 2rem;
   width: 2rem;
 }
 .product-column .info-group .product-colors-wrapper .product-color:hover {
-  cursor: pointer;
   opacity: 0.8;
+}
+.product-column .info-group .product-colors-wrapper .product-color.selected:after {
+  content: "";
+  width: 100%;
+  height: 4px;
+  background: #eb4791;
+  position: absolute;
+  bottom: -8px;
 }
 .product-column .info-group .sizes-wrapper {
   display: flex;
@@ -1336,9 +1330,12 @@ footer h3 {
   width: 100%;
   height: 100%;
 }
-.product-color .color-swatch.primary {
+.product-color .color-swatch.secondary {
   position: absolute;
-  clip-path: polygon(0 0, 100% 0, 0 100%);
+  top: 0;
+  left: 0;
+  clip-path: polygon(0 100%, 100% 100%, 100% 0);
+  scale: 0.9;
 }
 
 .brand {

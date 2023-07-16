@@ -372,8 +372,8 @@
           // output html
           echo '
           <div class="product-card-wrapper">
-            <a href="/client/product-page.php" class="product-card">
-                <div class="badge">new</div>
+            <a href="/client/product-page.php?id=' . $field['prod_id'] . '" class="product-card">
+                <div class="badge">' . $field['prod_id'] . '</div>
                 <div class="product-card-image">
                   <img src="' . $field['thumb_url'] . '" alt="' . $field['brand'] . ' ' . $field['prod_name'] . '">
                 </div>
@@ -387,6 +387,8 @@
                 
                 // loop through variants
                 foreach($color_variants as $color) {
+
+                  // GET HEX VALUES FOR COLOR BLOCKS
 
                   // prepare statements
                   $prim_hex_query = $db->prepare('SELECT color_hex FROM prod_colors WHERE color_name = :primcolor');
@@ -406,7 +408,7 @@
                   echo '
                     <div class="product-color">
                       <div class="color-swatch primary" style="background: #' . $prim_hex['color_hex'] . '"></div>
-                      <div class="color-swatch" style="background: #' . $sec_hex['color_hex'] . '"></div>
+                      <div class="color-swatch secondary" style="background: #' . $sec_hex['color_hex'] . '"></div>
                     </div>
                   
                   ';
