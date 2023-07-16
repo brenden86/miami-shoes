@@ -2,7 +2,7 @@
   
   <!-- header left section -->
   <div class="header-section left">
-    <a href="/">
+    <a href="/client/">
       <img src="images/logo-placeholder.jpg" class="logo-image" alt="logo" />
     </a>
   </div>
@@ -11,10 +11,10 @@
   <div class="header-section center">
     <!--nav links-->
     <nav class="header-navigation">
-      <a href="">Mens</a>
-      <a href="">Womens</a>
-      <a href="">Brands</a>
-      <a href="">Sale</a>
+      <a href="/client/product-search.php?gender=1">Mens</a>
+      <a href="/client/product-search.php?gender=2">Womens</a>
+      <a href="/client/product-search.php">Brands</a>
+      <a href="/client/product-search.php">Sale</a>
     </nav>
     
     <form id="header-search" class="input-wrapper inline">
