@@ -8,16 +8,16 @@
 
         <h3>Connect with us!</h3>
         <div class="social-icons">
-          <a href="www.instagram.com" class="icon-link light">
+          <a href="https://www.instagram.com" class="icon-link light">
             <i class="bi-instagram"></i>
           </a>
-          <a href="www.facebook.com" class="icon-link light">
+          <a href="https://www.facebook.com" class="icon-link light">
             <i class="bi-facebook"></i>
           </a>
-          <a href="www.twitter.com" class="icon-link light">
+          <a href="https://www.twitter.com" class="icon-link light">
             <i class="bi-twitter"></i>
           </a>
-          <a href="www.pinterest.com" class="icon-link light">
+          <a href="https://www.pinterest.com" class="icon-link light">
             <i class="bi-pinterest"></i>
           </a>
         </div>
@@ -68,7 +68,7 @@
 
     <div class="footer-wrapper">
 
-      <a href="/" class="footer-logo">
+      <a href="/client/" class="footer-logo">
         <img src="images/logo-placeholder.jpg" class="logo-image" alt="logo" />
       </a>
 
