@@ -10,10 +10,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles/main.css">
   <script src="./js/modules/image-fallback.js" defer></script>
+  
 </head>
 <body>
   <div id="root">
     
+
 
 <!----------- 
     HEADER    
@@ -359,75 +361,78 @@
         <div class="product-cards">
 
         <?php
-          // connect to database
-          require __DIR__ . '/../database/dbconnect.php';
+            // connect to database
+            require __DIR__ . '/../database/dbconnect.php';
 
-          // get products
-          $products_query = $db->query('SELECT * FROM products');
-          $products = $products_query->fetchAll(PDO::FETCH_ASSOC);
+            // get products
+            
+            $products_query = $db->query('SELECT * FROM products');
+            $products = $products_query->fetchAll(PDO::FETCH_ASSOC);
 
-          // loop through products
-          foreach($products as $product => $field) {
+            // loop through products
+            foreach($products as $product => $field) {
 
-          // output html
-          echo '
-          <div class="product-card-wrapper">
-            <a href="/client/product-page.php?id=' . $field['prod_id'] . '" class="product-card">
-                <div class="badge">' . $field['prod_id'] . '</div>
-                <div class="product-card-image">
-                  <img src="' . $field['thumb_url'] . '" alt="' . $field['brand'] . ' ' . $field['prod_name'] . '">
-                </div>
-                <div class="product-colors-wrapper">';
+            // output html
+            echo '
+            <div class="product-card-wrapper">
+              <a href="/client/product-page.php?id=' . $field['prod_id'] . '" class="product-card">
+                  <div class="badge">' . $field['prod_id'] . '</div>
+                  <div class="product-card-image">
+                    <img src="' . $field['thumb_url'] . '" alt="' . $field['brand'] . ' ' . $field['prod_name'] . '">
+                  </div>
+                  <div class="product-colors-wrapper">';
 
-                // get color variants for current product
-                $prod_name = $field['prod_name'];
-                $color_variants_query = $db->prepare('SELECT prim_color, sec_color FROM products WHERE prod_name = :prodname');
-                $color_variants_query->execute(['prodname' => $prod_name]);
-                $color_variants = $color_variants_query->fetchAll(PDO::FETCH_ASSOC);
-                
-                // loop through variants
-                foreach($color_variants as $color) {
-
-                  // GET HEX VALUES FOR COLOR BLOCKS
-
-                  // prepare statements
-                  $prim_hex_query = $db->prepare('SELECT color_hex FROM prod_colors WHERE color_name = :primcolor');
-                  $sec_hex_query = $db->prepare('SELECT color_hex FROM prod_colors WHERE color_name = :seccolor');
-                  // execute queries
-                  $prim_hex_query->execute(['primcolor' => $color['prim_color']]);
-                  $sec_hex_query->execute(['seccolor' => $color['sec_color']]);
-                  // fetch results
-                  $prim_hex = $prim_hex_query->fetch(PDO::FETCH_ASSOC);
-                  $sec_hex = $sec_hex_query->fetch(PDO::FETCH_ASSOC);
-
-                  // set secondary hex equal to primary if there is no secondary color
-                  if (!$sec_hex) {
-                    $sec_hex = $prim_hex;
-                  }
-
-                  echo '
-                    <div class="product-color">
-                      <div class="color-swatch primary" style="background: #' . $prim_hex['color_hex'] . '"></div>
-                      <div class="color-swatch secondary" style="background: #' . $sec_hex['color_hex'] . '"></div>
-                    </div>
+                  // get color variants for current product
+                  $prod_name = $field['prod_name'];
+                  $color_variants_query = $db->prepare('SELECT prim_color, sec_color FROM products WHERE prod_name = :prodname');
+                  $color_variants_query->execute(['prodname' => $prod_name]);
+                  $color_variants = $color_variants_query->fetchAll(PDO::FETCH_ASSOC);
                   
-                  ';
-                }
-                
-               echo '</div>
-                <div class="product-info">
-                  <div class="brand">' . strtoupper($field['brand']) . '</div>
-                  <div class="product-name">' . strtoupper($field['prod_name']) . '</div>
-                  <div class="price">$' . $field['price'] . '</div>
-                </div>
-            </a>
-          </div>
-          '; // END ECHO
-          
+                  // loop through variants
+                  foreach($color_variants as $color) {
 
-          // END foreach
-          }
-        ?>
+                    // GET HEX VALUES FOR COLOR BLOCKS
+
+                    // prepare statements
+                    $prim_hex_query = $db->prepare('SELECT color_hex FROM prod_colors WHERE color_name = :primcolor');
+                    $sec_hex_query = $db->prepare('SELECT color_hex FROM prod_colors WHERE color_name = :seccolor');
+                    // execute queries
+                    $prim_hex_query->execute(['primcolor' => $color['prim_color']]);
+                    $sec_hex_query->execute(['seccolor' => $color['sec_color']]);
+                    // fetch results
+                    $prim_hex = $prim_hex_query->fetch(PDO::FETCH_ASSOC);
+                    $sec_hex = $sec_hex_query->fetch(PDO::FETCH_ASSOC);
+
+                    // set secondary hex equal to primary if there is no secondary color
+                    if (!$sec_hex) {
+                      $sec_hex = $prim_hex;
+                    }
+
+                    echo '
+                      <div class="product-color">
+                        <div class="color-swatch primary" style="background: #' . $prim_hex['color_hex'] . '"></div>
+                        <div class="color-swatch secondary" style="background: #' . $sec_hex['color_hex'] . '"></div>
+                      </div>
+                    
+                    ';
+                  }
+                  
+                  echo '</div>
+                  <div class="product-info">
+                    <div class="brand">' . strtoupper($field['brand']) . '</div>
+                    <div class="product-name">' . strtoupper($field['prod_name']) . '</div>
+                    <div class="price">$' . $field['price'] . '</div>
+                  </div>
+              </a>
+            </div>
+            '; // END ECHO
+
+            // END foreach
+            }
+
+            // terminate DB connection
+            $db = null;
+          ?>
 
 
         </div>

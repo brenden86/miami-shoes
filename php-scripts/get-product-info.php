@@ -27,7 +27,7 @@
   }
 
 
-  
+
 
   function buildBreadcrumbs($product) {
     
