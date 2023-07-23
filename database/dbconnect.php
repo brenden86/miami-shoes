@@ -12,4 +12,12 @@ try {
   echo $e->getMessage();
 }
 
+// function for simple query
+function queryAndFetch($sql) {
+  global $db;
+  $query = $db->query($sql);
+  $data = $query->fetchAll(PDO::FETCH_ASSOC);
+  return $data;
+}
+
 ?>

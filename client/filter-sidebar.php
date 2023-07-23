@@ -1,5 +1,11 @@
-<div class="sidebar-container">
 
+<?php
+  // import DB connection and functions
+  include_once __DIR__ . '/../database/dbconnect.php';
+?>
+
+<div class="sidebar-container">
+  
   <form
     id="product-filters-form"
     action=""
@@ -71,8 +77,8 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(214, 21, 21)"
           >
-          <input id="color-blue" type="checkbox" name="color-blue" value=true>
-          <label for="color-blue" class="checkbox">
+          <input id="red" type="checkbox" name="red" value=true>
+          <label for="red" class="checkbox">
             <i class="bi-check"></i>
           </label>
           </div>
@@ -80,8 +86,8 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(107, 107, 116)"
           >
-          <input id="color-silver" type="checkbox" name="color-silver" value=true>
-          <label for="color-silver" class="checkbox">
+          <input id="grey" type="checkbox" name="grey" value=true>
+          <label for="grey" class="checkbox">
             <i class="bi-check"></i>
           </label>
           </div>
@@ -89,8 +95,8 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(56, 56, 56)"
           >
-          <input id="color-black" type="checkbox" name="color-black" value=true>
-          <label for="color-black" class="checkbox">
+          <input id="black" type="checkbox" name="black" value=true>
+          <label for="black" class="checkbox">
             <i class="bi-check"></i>
           </label>
           </div>
@@ -98,8 +104,8 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(17, 134, 33)"
           >
-          <input id="color-green" type="checkbox" name="color-green" value=true>
-          <label for="color-green" class="checkbox">
+          <input id="green" type="checkbox" name="green" value=true>
+          <label for="green" class="checkbox">
             <i class="bi-check"></i>
           </label>
           </div>
@@ -107,8 +113,8 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(221, 218, 23)"
           >
-          <input id="color-yellow" type="checkbox" name="color-yellow" value=true>
-          <label for="color-yellow" class="checkbox light-color">
+          <input id="yellow" type="checkbox" name="yellow" value=true>
+          <label for="yellow" class="checkbox light-color">
             <i class="bi-check"></i>
           </label>
           </div>
@@ -116,17 +122,17 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(137, 21, 214)"
           >
-          <input id="color-purple" type="checkbox" name="color-purple" value=true>
-          <label for="color-purple" class="checkbox">
+          <input id="purple" type="checkbox" name="purple" value=true>
+          <label for="purple" class="checkbox">
             <i class="bi-check"></i>
           </label>
           </div>
 
           <div class="filter-color checkbox-container"
-          style="background: rgb(17, 51, 102)"
+          style="background: rgb(19, 91, 207)"
           >
-          <input id="color-navy" type="checkbox" name="color-navy" value=true>
-          <label for="color-navy" class="checkbox">
+          <input id="blue" type="checkbox" name="blue" value=true>
+          <label for="blue" class="checkbox">
             <i class="bi-check"></i>
           </label>
           </div>
@@ -134,8 +140,8 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(82, 52, 25)"
           >
-          <input id="color-brown" type="checkbox" name="color-brown" value=true>
-          <label for="color-brown" class="checkbox">
+          <input id="brown" type="checkbox" name="brown" value=true>
+          <label for="brown" class="checkbox">
             <i class="bi-check"></i>
           </label>
           </div>
@@ -143,8 +149,8 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(190, 185, 135)"
           >
-          <input id="color-tan" type="checkbox" name="color-tan" value=true>
-          <label for="color-tan" class="checkbox light-color">
+          <input id="tan" type="checkbox" name="tan" value=true>
+          <label for="tan" class="checkbox light-color">
             <i class="bi-check"></i>
           </label>
           </div>
@@ -152,11 +158,13 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(255, 255, 255)"
           >
-          <input id="color-white" type="checkbox" name="color-white" value=true>
-          <label for="color-white" class="checkbox light-color">
+          <input id="white" type="checkbox" name="white" value=true>
+          <label for="white" class="checkbox light-color">
               <i class="bi-check"></i>
           </label>
           </div>
+
+          <div id="color-selected"></div>
 
         </div>
       </div>
@@ -175,6 +183,10 @@
         </div>
       </div>
     </div>
+
+    <?php /*
+
+    REMOVING SIZE for the time being. Probably not needed as a filter.
     
     <div class="filter-group">
       <div class="filter-group-name">Size</div>
@@ -198,6 +210,40 @@
       </div>
     </div>
 
+    */ ?>
+
+    <div class="filter-group">
+      <!-- type filter -->
+      <div class="filter-group-name">Shoe Type</div>
+      <div class="filters">
+        
+      <?php
+
+        // get distinct shoe types from products in stock
+        $types = queryAndFetch('SELECT DISTINCT shoe_type FROM stock LEFT JOIN products USING(prod_id) ORDER BY shoe_type DESC');
+
+        foreach($types as $type) {
+          echo '
+          <div class="input-wrapper inline shoe-type-input">
+            <label for="filter-type-' . $type['shoe_type'] . '" class="checkbox-container">
+              <input id="filter-type-' . $type['shoe_type'] . '" type="checkbox" name="type-filter-' . $type['shoe_type'] . '" value="'.$type['shoe_type'].'">
+              <div class="checkbox">
+                <i class="bi-check"></i>
+              </div>
+              ' . ucwords($type['shoe_type']) . '
+            </label>
+          </div>
+          ';
+        }
+
+
+      ?>
+      </div>
+
+      <div id="shoe-type-selected"></div>
+
+    </div>
+
     <div class="filter-group">
 
       <!-- brand filter -->
@@ -207,20 +253,16 @@
       <?php
         // populate filters for brands that are being stocked
 
-        include __DIR__ . '/../database/dbconnect.php';
-
         // get distinct brands from stock table
-        $sql = 'SELECT DISTINCT brand FROM stock LEFT JOIN products USING(prod_id)';
-        $brands_query = $db->query($sql);
-        $brands = $brands_query->fetchAll(PDO::FETCH_ASSOC);
+        $brands = queryAndFetch('SELECT DISTINCT brand FROM stock LEFT JOIN products USING(prod_id)');
 
         foreach($brands as $brand) {
           // remove spaces from brand names with multiple words (new balance)
           $no_space = preg_replace("/\s+/", "", $brand['brand']);
           echo '
-          <div class="input-wrapper inline">
+          <div class="input-wrapper inline brand-input">
             <label for="filter-brand-' . $no_space . '" class="checkbox-container">
-              <input id="filter-brand-' . $no_space . '" type="checkbox" name="brand-' . $no_space . '" value=true>
+              <input id="filter-brand-' . $no_space . '" type="checkbox" name="brand-filter-' . $no_space . '" value="'.$brand['brand'].'">
               <div class="checkbox">
                 <i class="bi-check"></i>
               </div>
@@ -230,11 +272,11 @@
           ';
         }
 
-        // terminate DB connection
-        $db = null;
+
       ?>
 
       </div>
+      <div id="brand-selected"></div>
 
     </div>
     

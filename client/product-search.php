@@ -16,8 +16,6 @@
 <body>
   <div id="root">
     
-
-
 <!----------- 
     HEADER    
 ------------->
@@ -31,7 +29,7 @@
   <div class="main-content-wrapper">
 
     <!-- Filter sidebar -->
-    <?php include './filter-sidebar.php'?>
+    <?php include_once './filter-sidebar.php'?>
     
     <!-- main content column -->
     <div class="main-content">
@@ -43,29 +41,49 @@
         <div class="product-cards">
 
         <?php
-            // connect to database
-            require __DIR__ . '/../database/dbconnect.php';
 
-            // get products
-            
-            $products_query = $db->query('SELECT * FROM products');
-            $products = $products_query->fetchAll(PDO::FETCH_ASSOC);
+          // build product query functions
+          include_once __DIR__ . '/../php-scripts/get-sql-params.php';
 
-            // loop through products
-            foreach($products as $product => $field) {
+          // handle IN STOCK param
+          if(isset($_REQUEST['inStock'])) {
+            $in_stock = 'HAVING COUNT(inventory.sku) > 0';
+          } else {
+            $in_stock = '';
+          }
 
-            // output html
+          // get products
+          $products = queryAndFetch('
+            SELECT
+              prod_id,
+              prod_name,
+              thumb_url,
+              brand,
+              price,
+              COUNT(inventory.sku) AS qty
+            FROM products
+            LEFT JOIN stock USING(prod_id)
+            LEFT JOIN inventory USING(sku)
+            ' . getProductSqlParams() . '
+            GROUP BY prod_id
+            ' . $in_stock . '
+            ORDER BY prod_id ASC');
+          // loop through products
+          foreach($products as $product => $field) {
+
+            // extract variables from array
+            extract($field);
+
             echo '
             <div class="product-card-wrapper">
-              <a href="/client/product-page.php?id=' . $field['prod_id'] . '" class="product-card">
-                  <div class="badge">' . $field['prod_id'] . '</div>
+              <a href="/client/product-page.php?id=' . $prod_id . '" class="product-card">
+                  <div class="badge">' . $prod_id . '</div>
                   <div class="product-card-image">
-                    <img src="' . $field['thumb_url'] . '" alt="' . $field['brand'] . ' ' . $field['prod_name'] . '">
+                    <img src="' . $thumb_url . '" alt="' . $brand . ' ' . $prod_name . '">
                   </div>
                   <div class="product-colors-wrapper">';
 
                   // get color variants for current product
-                  $prod_name = $field['prod_name'];
                   $color_variants_query = $db->prepare('SELECT prim_color, sec_color FROM products WHERE prod_name = :prodname');
                   $color_variants_query->execute(['prodname' => $prod_name]);
                   $color_variants = $color_variants_query->fetchAll(PDO::FETCH_ASSOC);
@@ -109,12 +127,9 @@
             </div>
             '; // END ECHO
 
-            // END foreach
-            }
-
-            // terminate DB connection
-            $db = null;
-          ?>
+          // END foreach
+          }
+        ?>
 
 
         </div>

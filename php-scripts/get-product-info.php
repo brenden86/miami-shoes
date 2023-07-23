@@ -61,7 +61,7 @@
   function buildColorBlocks($product) {
     
     // use DB connection
-    include __DIR__ . '/../database/dbconnect.php';
+    include_once __DIR__ . '/../database/dbconnect.php';
     
     // extract properties from product
     extract($product);
@@ -101,8 +101,6 @@
       ';
     }
     
-    // terminate DB connection
-    $db = null;
   }
   
 
@@ -116,7 +114,6 @@
 
     // extract properties from product
     extract($product);
-    
     
     $sql = 'SELECT sku, prod_id, size, count(inventory.sku) AS qty FROM stock LEFT JOIN inventory USING(sku) WHERE prod_id = :id GROUP BY sku';
     $sizes_query = $db->prepare($sql);
@@ -155,13 +152,11 @@
   
 
 
-
-
   
   function getDetails($product) {
     
     // use DB
-    include __DIR__ . '/../database/dbconnect.php';
+    include_once __DIR__ . '/../database/dbconnect.php';
 
     // extract properties from product
     extract($product);
