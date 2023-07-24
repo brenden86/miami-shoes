@@ -1297,8 +1297,13 @@ footer h3 {
   padding: 3px 5px;
   border-radius: 4px;
 }
-.badge.alt {
-  background-color: #40b5e6;
+.badge.low-stock {
+  background-color: #eba947;
+  color: #fff9f0;
+}
+.badge.no-stock {
+  background-color: #eb4747;
+  color: #ffe2e2;
 }
 
 .product-card-image img {

@@ -176,5 +176,28 @@
     $db = null;
 
   }
+
+
+  // adds badge to product card if necessary
+  function getProductCardBadge($product) {
+
+    extract($product);
+
+    if($product['qty'] < 1) {
+      // OUT OF STOCK
+      return '<div class="badge no-stock">out of stock</div>';
+
+    } elseif ($product['qty'] <= 20) {
+      // LOW STOCK 
+      return '<div class="badge low-stock">low stock</div>';
+
+    } elseif(
+      $avail_date > date('Y-m-d', strtotime('today - 30 days')) &&
+      $avail_date <= date('Y-m-d')
+      ) {
+      // NEW - displayed if available date is within last 30 days
+      return '<div class="badge">new</div>';
+    }
+  }
   
   ?>

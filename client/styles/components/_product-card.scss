@@ -55,8 +55,13 @@
   padding: 3px 5px;
   border-radius: $border-radius-small;
 
-  &.alt {
-    background-color: $secondary-color;
+  &.low-stock {
+    background-color: $warning-color;
+    color: $warning-color-text;
+  }
+  &.no-stock {
+    background-color: $failure-color;
+    color: $failure-color-text;
   }
 }
 

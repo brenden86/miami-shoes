@@ -15,6 +15,16 @@
 </head>
 <body>
   <div id="root">
+
+  <?php
+    // IMPORT PHP FUNCTIONS
+
+    // build product query functions
+    include __DIR__ . '/../php-scripts/get-sql-params.php';
+
+    // get product info for cards functions
+    include __DIR__ . '/../php-scripts/get-product-info.php';
+  ?>
     
 <!----------- 
     HEADER    
@@ -42,9 +52,6 @@
 
         <?php
 
-          // build product query functions
-          include_once __DIR__ . '/../php-scripts/get-sql-params.php';
-
           // handle IN STOCK param
           if(isset($_REQUEST['inStock'])) {
             $in_stock = 'HAVING COUNT(inventory.sku) > 0';
@@ -60,7 +67,8 @@
               thumb_url,
               brand,
               price,
-              COUNT(inventory.sku) AS qty
+              COUNT(inventory.sku) AS qty,
+              avail_date
             FROM products
             LEFT JOIN stock USING(prod_id)
             LEFT JOIN inventory USING(sku)
@@ -76,8 +84,8 @@
 
             echo '
             <div class="product-card-wrapper">
-              <a href="/client/product-page.php?id=' . $prod_id . '" class="product-card">
-                  <div class="badge">' . $prod_id . '</div>
+              <a href="/client/product-page.php?id=' . $prod_id . '" class="product-card">'
+                  . getProductCardBadge($field) . '
                   <div class="product-card-image">
                     <img src="' . $thumb_url . '" alt="' . $brand . ' ' . $prod_name . '">
                   </div>

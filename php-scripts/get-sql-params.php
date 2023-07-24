@@ -5,7 +5,6 @@
   Script for handling query parameters for product search
 */
 
-// include __DIR__ . '/get-product-info.php';
 include_once __DIR__ . '/../database/dbconnect.php';
 
 function getProductSqlParams() {
