@@ -11,12 +11,10 @@ function checkSubmitClass() {
   if(selectedInputs.length < 1) {
     if(updateButton.classList.contains('show')) {
       updateButton.classList.remove('show');
-      console.log('removed class');
     }
   } else {
     if(!updateButton.classList.contains('show')) {
       updateButton.classList.add('show');
-      console.log('added class');
     }
   }
 }
@@ -27,13 +25,11 @@ function handleCheckboxInput(e) {
     // add to selected inputs array if not already in array
     if(!selectedInputs.includes(e.target.id)) {
       selectedInputs.push(e.target.id);
-      console.log(selectedInputs)
     }
   } else {
     if(selectedInputs.includes(e.target.id)) {
       let index = selectedInputs.indexOf(e.target.id);
       selectedInputs.splice(index, 1); // remove from array
-      console.log(selectedInputs)
     }
   }
   
@@ -46,13 +42,11 @@ function handleTextInput(e) {
   if(e.target.value.length > 0) {
     if(!selectedInputs.includes(e.target.id)) {
       selectedInputs.push(e.target.id);
-      console.log(selectedInputs)
     }
   } else {
     if(selectedInputs.includes(e.target.id)) {
       let index = selectedInputs.indexOf(e.target.id);
       selectedInputs.splice(index, 1); // remove from array
-      console.log(selectedInputs)
     }
   }
 
