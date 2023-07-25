@@ -5,7 +5,18 @@
 }
 
 .filter-submit-button {
-  
+  display: block;
+  position: relative;
+  visibility: hidden;
+  opacity: 0;
+  top: 10px; // for subtle 'fade in' effect
+  transition: visibility 0s, opacity 100ms ease-out, top 100ms ease-out;
+
+  &.show {
+    visibility: visible;
+    top: 0px;
+    opacity: 1;
+  }
 }
 
 .filter-group {

@@ -101,7 +101,7 @@
       top: 0;
       left: 0;
       clip-path: polygon(0 100%, 100% 100%, 100% 0);
-      scale: .9; // fixes uneven alignment at small scale 
+      transform: scale(.9); // fixes uneven alignment at small scale 
     }
 
   }

@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="styles/main.css">
   <script src="./js/modules/image-fallback.js" defer></script>
   <script src="./js/modules/validate-filters.js" async></script>
+  <script src="./js/modules/show-hide-update-filters.js" async></script>
   
 </head>
 <body>
