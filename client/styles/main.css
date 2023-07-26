@@ -1249,6 +1249,15 @@ footer h3 {
   font-size: clamp(1rem, 1.1vw, 1.5rem);
 }
 
+.no-products-message {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
 .product-card-container {
   overflow: hidden;
   position: relative;

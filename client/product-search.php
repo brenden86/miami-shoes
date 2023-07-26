@@ -47,51 +47,63 @@
       
       <!-- Product search results -->
       <div class="content-block">
+
+      <?php
+
+        // handle IN STOCK param
+        if(isset($_REQUEST['inStock'])) {
+          $in_stock = 'HAVING COUNT(inventory.sku) > 0';
+        } else {
+          $in_stock = '';
+        }
+
+        // get products
+        $products = queryAndFetch('
+        SELECT
+          prod_id,
+          prod_name,
+          thumb_url,
+          brand,
+          price,
+          COUNT(inventory.sku) AS qty,
+          avail_date
+        FROM products
+        LEFT JOIN stock USING(prod_id)
+        LEFT JOIN inventory USING(sku)
+        ' . getProductSqlParams() . '
+        GROUP BY prod_id
+        ' . $in_stock . '
+        ORDER BY prod_id ASC');
         
-      <div class="product-card-container card">
-        <div class="product-cards">
-
-        <?php
-
-          // handle IN STOCK param
-          if(isset($_REQUEST['inStock'])) {
-            $in_stock = 'HAVING COUNT(inventory.sku) > 0';
-          } else {
-            $in_stock = '';
-          }
-
-          // get products
-          $products = queryAndFetch('
-            SELECT
-              prod_id,
-              prod_name,
-              thumb_url,
-              brand,
-              price,
-              COUNT(inventory.sku) AS qty,
-              avail_date
-            FROM products
-            LEFT JOIN stock USING(prod_id)
-            LEFT JOIN inventory USING(sku)
-            ' . getProductSqlParams() . '
-            GROUP BY prod_id
-            ' . $in_stock . '
-            ORDER BY prod_id ASC');
+        // if no products are found, display message
+        if(count($products) < 1) {
+          echo '
+          <div class="no-products-message">
+            <h1>No products found</h1>
+            <p>Sorry, we didn\'t find any products matching your search.</p>
+          </div>
+          ';
+        } else {
+          echo '
+           <div class="product-card-container card">
+            <div class="product-cards">
+          ';
+          
           // loop through products
           foreach($products as $product => $field) {
-
+            
             // extract variables from array
             extract($field);
-
+            
             echo '
             <div class="product-card-wrapper">
-              <a href="/client/product-page.php?id=' . $prod_id . '" class="product-card">'
+            <a href="/client/product-page.php?id=' . $prod_id . '" class="product-card">'
                   . getProductCardBadge($field) . '
                   <div class="product-card-image">
-                    <img src="' . $thumb_url . '" alt="' . $brand . ' ' . $prod_name . '">
+                  <img src="' . $thumb_url . '" alt="' . $brand . ' ' . $prod_name . '">
                   </div>
                   <div class="product-colors-wrapper">';
-
+                  
                   // get color variants for current product
                   $color_variants_query = $db->prepare('SELECT prim_color, sec_color FROM products WHERE prod_name = :prodname');
                   $color_variants_query->execute(['prodname' => $prod_name]);
@@ -99,9 +111,9 @@
                   
                   // loop through variants
                   foreach($color_variants as $color) {
-
+                    
                     // GET HEX VALUES FOR COLOR BLOCKS
-
+                    
                     // prepare statements
                     $prim_hex_query = $db->prepare('SELECT color_hex FROM prod_colors WHERE color_name = :primcolor');
                     $sec_hex_query = $db->prepare('SELECT color_hex FROM prod_colors WHERE color_name = :seccolor');
@@ -111,17 +123,17 @@
                     // fetch results
                     $prim_hex = $prim_hex_query->fetch(PDO::FETCH_ASSOC);
                     $sec_hex = $sec_hex_query->fetch(PDO::FETCH_ASSOC);
-
+                    
                     // set secondary hex equal to primary if there is no secondary color
                     if (!$sec_hex) {
                       $sec_hex = $prim_hex;
                     }
-
+                    
                     echo '
-                      <div class="product-color">
-                        <div class="color-swatch primary" style="background: #' . $prim_hex['color_hex'] . '"></div>
-                        <div class="color-swatch secondary" style="background: #' . $sec_hex['color_hex'] . '"></div>
-                      </div>
+                    <div class="product-color">
+                    <div class="color-swatch primary" style="background: #' . $prim_hex['color_hex'] . '"></div>
+                    <div class="color-swatch secondary" style="background: #' . $sec_hex['color_hex'] . '"></div>
+                    </div>
                     
                     ';
                   }
@@ -131,26 +143,32 @@
                     <div class="brand">' . strtoupper($field['brand']) . '</div>
                     <div class="product-name">' . strtoupper($field['prod_name']) . '</div>
                     <div class="price">$' . $field['price'] . '</div>
-                  </div>
-              </a>
-            </div>
-            '; // END ECHO
+                    </div>
+                    </a>
+                    </div>
+                    '; // END ECHO
+                    
+                    // END foreach
+                  }
 
-          // END foreach
-          }
-        ?>
+                  // END product card container divs
+                  echo '
+                    </div>
+                    </div>
+                  ';
+                }
+          ?>
 
 
-        </div>
-      </div>
 
-    </div>
 
-    <!-- Pagination -->
+</div>
 
-    <div class="content-block">
-      <div class="pagination-container">
-        <div class="pagination-wrapper">
+<!-- Pagination -->
+
+<div class="content-block">
+  <div class="pagination-container">
+    <div class="pagination-wrapper">
 
           <div class="page-buttons">
             <button class="prev"><i class="bi-caret-left-fill"></i>prev</button>

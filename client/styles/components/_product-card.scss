@@ -1,4 +1,11 @@
 
+// message if no products are found
+
+.no-products-message {
+  margin-top: 2rem;
+  @include flex(column, center, center);
+}
+
 .product-card-container {
   overflow: hidden;
   position: relative;
