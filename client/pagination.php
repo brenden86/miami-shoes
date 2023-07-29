@@ -25,11 +25,16 @@
 // get dynamic page URLs while maintaining other query params
 
 function getPaginatedUrl($page_num) {
+  // if page parameter already exists, replace page number
   if(preg_match('/page=\d+/', $_SERVER['REQUEST_URI'])) {
     return preg_replace('/page=\d+/', 'page='.$page_num, $_SERVER['REQUEST_URI']);
-  } else {
+  // if other parameters have been passed, don't include question mark
+  } elseif (preg_match('/.*[?].*/', $_SERVER['REQUEST_URI'])) {
     return $_SERVER['REQUEST_URI'] . '&page='.$page_num;
-  }
+  } else {
+    // no query params have been passed, include "?"
+    return $_SERVER['REQUEST_URI'] . '?page='.$page_num;
+  } 
 }
 
 function getDisplayedPages() {
