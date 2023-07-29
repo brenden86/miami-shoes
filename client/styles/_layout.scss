@@ -124,8 +124,7 @@ i {
 }
 
 .button {
-  outline: none;
-  border: none;
+  display: inline-block;
   background: $primary-color;
   color: white;
   font-family: $heading-font;

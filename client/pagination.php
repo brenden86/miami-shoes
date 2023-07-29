@@ -1,17 +1,6 @@
 
 <?php
 
-
-
-  // check if products array is greater than items/page
-
-    // if no, return nothing.
-
-  // if yes, find number of pages needed - ceil()
-
-    // if total pages less than or equal to 5, echo all pages
-
-
 // <div class="content-block">
 //   <div class="pagination-container">
 //     <div class="pagination-wrapper">
@@ -32,6 +21,16 @@
 //     </div>
 //   </div>
 // </div>
+
+// get dynamic page URLs while maintaining other query params
+
+function getPaginatedUrl($page_num) {
+  if(preg_match('/page=\d+/', $_SERVER['REQUEST_URI'])) {
+    return preg_replace('/page=\d+/', 'page='.$page_num, $_SERVER['REQUEST_URI']);
+  } else {
+    return $_SERVER['REQUEST_URI'] . '&page='.$page_num;
+  }
+}
 
 function getDisplayedPages() {
   global $num_pages;
@@ -83,7 +82,7 @@ function getDisplayedPages() {
     if($page === $current_page) {
       echo '<a class="selected">'.$page.'</a>';
     } else {
-      echo '<a href="#">'.$page.'</a>';
+      echo '<a href="'.getPaginatedUrl($page).'">'.$page.'</a>';
     }
   }
 
@@ -94,13 +93,16 @@ function getDisplayedPages() {
 }
 
 
-
 // get current page from request
 
-// $num_pages = ceil(count($products) / 20);
-$num_pages = 10;
-if(isset($_REQUEST['page']) && intval($_REQUEST['page'] <= $num_pages)) {
-  $current_page = $_REQUEST['page'];
+$num_pages = ceil(count($products) / 20);
+if(intval($_REQUEST['page'] > 0)) {
+  if(intval($_REQUEST['page'] > $num_pages)) {
+    // if page provided is greater than total pages, go to last page
+    $current_page = $num_pages;
+  } else {
+    $current_page = $_REQUEST['page'];
+  }
 } else {
   $current_page = 1;
 }
@@ -109,22 +111,41 @@ if(isset($_REQUEST['page']) && intval($_REQUEST['page'] <= $num_pages)) {
 if($num_pages > 1) {
   echo '
   <div class="content-block">
-  <div class="pagination-container debug">
-  <div class="pagination-wrapper">
-  
-  <div class="page-buttons">
-  <a class="button prev"><i class="bi-caret-left-fill"></i>prev</button>
-  <a class="button next">next<i class="bi-caret-right-fill"></i></button>
-  </div>
-  
+    <div class="pagination-container">
+      <div class="pagination-wrapper">
+
+        <div class="page-buttons">';
+          // show prev button if not at beginning
+          if($current_page != 1) {
+            echo '
+              <a
+                href="' . getPaginatedUrl($current_page - 1) . '"
+                class="button prev"
+              ><i class="bi-caret-left-fill"></i>prev</a>
+            ';
+          }
+          // show next button if not at end
+          if($current_page < $num_pages) {
+            echo '
+              <a
+                href="' . getPaginatedUrl($current_page + 1) . '"
+                class="button next"
+              >next<i class="bi-caret-right-fill"></i></a>
+            ';
+          }
+
+        echo '
+        </div>
+
         <div class="page-numbers">';
-  echo getDisplayedPages();
-  echo '</div>
+        getDisplayedPages();
+        echo '
+        </div>
 
       </div>
     </div>
-  </div>';
-  
+  </div>
+  ';
 }
 
   
