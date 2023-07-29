@@ -93,20 +93,6 @@ function getDisplayedPages() {
 }
 
 
-// get current page from request
-
-$num_pages = ceil(count($products) / 20);
-if(intval($_REQUEST['page'] > 0)) {
-  if(intval($_REQUEST['page'] > $num_pages)) {
-    // if page provided is greater than total pages, go to last page
-    $current_page = $num_pages;
-  } else {
-    $current_page = $_REQUEST['page'];
-  }
-} else {
-  $current_page = 1;
-}
-
 // Show pagination if more than 1 page of results
 if($num_pages > 1) {
   echo '
