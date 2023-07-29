@@ -89,16 +89,34 @@
             <div class="product-cards">
           ';
           
-          // loop through products
-          foreach($products as $product => $field) {
+          $prod_per_page = 20;
+          $num_pages = ceil(count($products) / $prod_per_page);
+
+          // get current page from request
+          if(intval($_REQUEST['page'] > 0)) {
+            if(intval($_REQUEST['page'] > $num_pages)) {
+              // if page provided is greater than total pages, go to last page
+              $current_page = $num_pages;
+            } else {
+              $current_page = $_REQUEST['page'];
+            }
+          } else {
+            $current_page = 1;
+          }
+          
+          $start_prod_index = $prod_per_page * ($current_page - 1);
+          $end_prod_index = $start_prod_index + $prod_per_page;
+          // loop through products on page
+          for($i=$start_prod_index; $i<$end_prod_index; $i++) {
             
             // extract variables from array
-            extract($field);
+
+            extract($products[$i]);
             
             echo '
             <div class="product-card-wrapper">
             <a href="/client/product-page.php?id=' . $prod_id . '" class="product-card">'
-                  . getProductCardBadge($field) . '
+                  . getProductCardBadge($products[$i]) . '
                   <div class="product-card-image">
                   <img src="' . $thumb_url . '" alt="' . $brand . ' ' . $prod_name . '">
                   </div>
@@ -140,15 +158,20 @@
                   
                   echo '</div>
                   <div class="product-info">
-                    <div class="brand">' . strtoupper($field['brand']) . '</div>
-                    <div class="product-name">' . strtoupper($field['prod_name']) . '</div>
-                    <div class="price">$' . $field['price'] . '</div>
+                    <div class="brand">' . strtoupper($brand) . '</div>
+                    <div class="product-name">' . strtoupper($prod_name) . '</div>
+                    <div class="price">$' . $price . '</div>
                     </div>
                     </a>
                     </div>
                     '; // END ECHO
+
+                  // break out of loop if on last product but products per page limit not reached.
+                  if($i === count($products) - 1) {
+                    break;
+                  }
                     
-                    // END foreach
+                    // END for loop
                   }
 
                   // END product card container divs
@@ -163,33 +186,18 @@
 
 
 </div>
-
-<!-- Pagination -->
-
-<div class="content-block">
-  <div class="pagination-container">
-    <div class="pagination-wrapper">
-
-          <div class="page-buttons">
-            <button class="prev"><i class="bi-caret-left-fill"></i>prev</button>
-            <button class="next">next<i class="bi-caret-right-fill"></i></button>
-          </div>
-
-          <div class="page-numbers">
-            <a href="#" class="selected">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <span>...</span>
-            <a href="#">4</a>
-          </div>
-
-        </div>
-      </div>
-    </div>
+<!-- pagination start -->
+<?php
+  // pagination
+  include_once __DIR__ . '/pagination.php';
+?>
+<!-- pagination end -->
 
     
     </div>
   </div>
+
+
 </main>
 
 <!----------- 
