@@ -4,6 +4,12 @@ const formFilters = document.querySelector('#product-filters-form');
 const checkboxInputs = formFilters.querySelectorAll('input[type="checkbox"]');
 const textInputs = formFilters.querySelectorAll('input[type="text"]');
 
+/*
+
+-- SAVE --
+this shows update button if any inputs are active but does not
+work with persisting inputs.
+
 let selectedInputs = [];
 
 // add/remove 'show' class from submit button
@@ -67,3 +73,23 @@ textInputs.forEach(input => {
   })
 })
 
+*/
+function showUpdateButton() {
+  
+  if(!updateButton.classList.contains('show')) {
+    updateButton.classList.add('show');
+  }
+
+}
+
+checkboxInputs.forEach(input => {
+  input.addEventListener('change', () => {
+    showUpdateButton();
+  }) 
+})
+
+textInputs.forEach(input => {
+  input.addEventListener('keyup', () => {
+    showUpdateButton();
+  })
+})

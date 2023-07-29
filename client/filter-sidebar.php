@@ -29,7 +29,13 @@
 
         <div class="input-wrapper inline">
           <label for="filter-availability" class="checkbox-container">
-            <input id="filter-availability" type="checkbox" name="inStock" value=true>
+            <input id="filter-availability" type="checkbox" name="inStock" value=true
+            <?php
+              if($_REQUEST['inStock']==='true') {
+                echo 'checked';
+              }
+            ?>
+            >
             <div class="checkbox">
               <i class="bi-check"></i>
             </div>
@@ -47,7 +53,13 @@
 
         <div class="input-wrapper inline">
           <label for="filter-gender-mens" class="checkbox-container">
-            <input id="filter-gender-mens" type="checkbox" name="mens" value=true>
+            <input id="filter-gender-mens" type="checkbox" name="mens" value=true
+            <?php
+              if($_REQUEST['mens']==='true') {
+                echo 'checked';
+              }
+            ?>
+            >
             <div class="checkbox">
               <i class="bi-check"></i>
             </div>
@@ -57,7 +69,13 @@
 
         <div class="input-wrapper inline">
           <label for="filter-gender-womens" class="checkbox-container">
-            <input id="filter-gender-womens" type="checkbox" name="womens" value=true>
+            <input id="filter-gender-womens" type="checkbox" name="womens" value=true
+            <?php
+              if($_REQUEST['womens']==='true') {
+                echo 'checked';
+              }
+            ?>
+            >
             <div class="checkbox">
               <i class="bi-check"></i>
             </div>
@@ -77,7 +95,13 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(214, 21, 21)"
           >
-          <input id="red" type="checkbox" name="red" value=true>
+          <input id="red" type="checkbox" name="red" value=true
+          <?php
+            if($_REQUEST['red']==='true') {
+              echo 'checked';
+            }
+          ?>
+          >
           <label for="red" class="checkbox">
             <i class="bi-check"></i>
           </label>
@@ -86,7 +110,13 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(107, 107, 116)"
           >
-          <input id="grey" type="checkbox" name="grey" value=true>
+          <input id="grey" type="checkbox" name="grey" value=true
+          <?php
+            if($_REQUEST['grey']==='true') {
+              echo 'checked';
+            }
+          ?>
+          >
           <label for="grey" class="checkbox">
             <i class="bi-check"></i>
           </label>
@@ -95,7 +125,13 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(56, 56, 56)"
           >
-          <input id="black" type="checkbox" name="black" value=true>
+          <input id="black" type="checkbox" name="black" value=true
+          <?php
+            if($_REQUEST['black']==='true') {
+              echo 'checked';
+            }
+          ?>
+          >
           <label for="black" class="checkbox">
             <i class="bi-check"></i>
           </label>
@@ -104,7 +140,13 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(17, 134, 33)"
           >
-          <input id="green" type="checkbox" name="green" value=true>
+          <input id="green" type="checkbox" name="green" value=true
+          <?php
+            if($_REQUEST['green']==='true') {
+              echo 'checked';
+            }
+          ?>
+          >
           <label for="green" class="checkbox">
             <i class="bi-check"></i>
           </label>
@@ -113,7 +155,13 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(221, 218, 23)"
           >
-          <input id="yellow" type="checkbox" name="yellow" value=true>
+          <input id="yellow" type="checkbox" name="yellow" value=true
+          <?php
+            if($_REQUEST['yellow']==='true') {
+              echo 'checked';
+            }
+          ?>
+          >
           <label for="yellow" class="checkbox light-color">
             <i class="bi-check"></i>
           </label>
@@ -122,7 +170,13 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(137, 21, 214)"
           >
-          <input id="purple" type="checkbox" name="purple" value=true>
+          <input id="purple" type="checkbox" name="purple" value=true
+          <?php
+            if($_REQUEST['purple']==='true') {
+              echo 'checked';
+            }
+          ?>
+          >
           <label for="purple" class="checkbox">
             <i class="bi-check"></i>
           </label>
@@ -131,7 +185,13 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(19, 91, 207)"
           >
-          <input id="blue" type="checkbox" name="blue" value=true>
+          <input id="blue" type="checkbox" name="blue" value=true
+          <?php
+            if($_REQUEST['blue']==='true') {
+              echo 'checked';
+            }
+          ?>
+          >
           <label for="blue" class="checkbox">
             <i class="bi-check"></i>
           </label>
@@ -140,7 +200,12 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(82, 52, 25)"
           >
-          <input id="brown" type="checkbox" name="brown" value=true>
+          <input id="brown" type="checkbox" name="brown" value=true
+          <?php
+            if($_REQUEST['brown']==='true') {
+              echo 'checked';
+            }
+          ?>>
           <label for="brown" class="checkbox">
             <i class="bi-check"></i>
           </label>
@@ -149,7 +214,13 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(190, 185, 135)"
           >
-          <input id="tan" type="checkbox" name="tan" value=true>
+          <input id="tan" type="checkbox" name="tan" value=true
+          <?php
+            if($_REQUEST['tan']==='true') {
+              echo 'checked';
+            }
+          ?>
+          >
           <label for="tan" class="checkbox light-color">
             <i class="bi-check"></i>
           </label>
@@ -158,7 +229,13 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(255, 255, 255)"
           >
-          <input id="white" type="checkbox" name="white" value=true>
+          <input id="white" type="checkbox" name="white" value=true
+          <?php
+            if($_REQUEST['white']==='true') {
+              echo 'checked';
+            }
+          ?>
+          >
           <label for="white" class="checkbox light-color">
               <i class="bi-check"></i>
           </label>
@@ -177,9 +254,13 @@
       <div class="filters">
         <div class="input-wrapper inline small">
           <span>$</span>
-          <input id="filter-price-min" type="text" name="priceMin" placeholder="min." maxlength="8">
+          <input id="filter-price-min" type="text" name="priceMin" placeholder="min." maxlength="8"
+          value=<?=$_REQUEST['priceMin']?>
+          >
           <span>to</span>
-          <input id="filter-price-max" type="text" name="priceMax" placeholder="max." maxlength="8">
+          <input id="filter-price-max" type="text" name="priceMax" placeholder="max." maxlength="8"
+          value=<?=$_REQUEST['priceMax']?>
+          >
         </div>
       </div>
     </div>
@@ -226,7 +307,14 @@
           echo '
           <div class="input-wrapper inline shoe-type-input">
             <label for="filter-type-' . $type['shoe_type'] . '" class="checkbox-container">
-              <input id="filter-type-' . $type['shoe_type'] . '" type="checkbox" name="type-filter-' . $type['shoe_type'] . '" value="'.$type['shoe_type'].'">
+              <input id="filter-type-' . $type['shoe_type'] . '" type="checkbox" name="type-filter-' . $type['shoe_type'] . '" value="'.$type['shoe_type'].'"
+              ';
+              // persist selection
+              if($_REQUEST['type-filter-'.$type['shoe_type']]===$type['shoe_type']) {
+                echo 'checked';
+              }
+              echo '
+              >
               <div class="checkbox">
                 <i class="bi-check"></i>
               </div>
@@ -262,7 +350,12 @@
           echo '
           <div class="input-wrapper inline brand-input">
             <label for="filter-brand-' . $no_space . '" class="checkbox-container">
-              <input id="filter-brand-' . $no_space . '" type="checkbox" name="brand-filter-' . $no_space . '" value="'.$brand['brand'].'">
+              <input id="filter-brand-' . $no_space . '" type="checkbox" name="brand-filter-' . $no_space . '" value="'.$brand['brand'].'"';
+              if($_REQUEST['brand-filter-'.$brand['brand']]===$brand['brand']) {
+                echo 'checked';
+              }
+              echo '
+              >
               <div class="checkbox">
                 <i class="bi-check"></i>
               </div>
