@@ -60,20 +60,19 @@
 
   function buildColorBlocks($product) {
     
-    // use DB connection
-    include_once __DIR__ . '/../database/dbconnect.php';
+    // use DB connection defined in parent file
+    global $db;
     
     // extract properties from product
     extract($product);
-    
+
     // get color variants for current product
     $color_variants_query = $db->prepare('SELECT prod_id, prim_color, sec_color FROM products WHERE prod_name = :name');
     $color_variants_query->execute(['name' => $prod_name]);
     $color_variants = $color_variants_query->fetchAll(PDO::FETCH_ASSOC);
     
     // get hex values from DB
-    $color_hex_query = $db->query('SELECT color_name, color_hex FROM prod_colors');
-    $color_hex_array = $color_hex_query->fetchAll(PDO::FETCH_ASSOC);
+    $color_hex_array = queryAndFetch('SELECT color_name, color_hex FROM prod_colors');
     
     // create array of color hex values
     foreach($color_hex_array as $color) {
@@ -109,8 +108,8 @@
 
   function getSizes($product) {
     
-    // use DB connection
-    include __DIR__ . '/../database/dbconnect.php';
+    // use DB connection from parent file
+    global $db;
 
     // extract properties from product
     extract($product);
@@ -145,8 +144,6 @@
       
     }
     
-    // terminate connection
-    $db = null;
   }
   
   
@@ -155,8 +152,8 @@
   
   function getDetails($product) {
     
-    // use DB
-    include_once __DIR__ . '/../database/dbconnect.php';
+    // use DB from parent file
+    global $db;
 
     // extract properties from product
     extract($product);
@@ -172,8 +169,6 @@
       echo '<li>' . $detail['prod_detail'] . '</li>';
     }
 
-    // terminate DB connection
-    $db = null;
 
   }
 

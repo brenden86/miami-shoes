@@ -10,12 +10,16 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles/main.css">
   <script src="./js/modules/product-image-gallery.js" defer></script>
-  <!-- functions for populating product info -->
-  <?php include __DIR__ . '/../php-scripts/get-product-info.php';?> 
 </head>
 <body>
   <div id="root">
-    
+
+
+<?php
+  // INCLUDES
+  include_once __DIR__ . '../../database/dbconnect.php';
+  include_once __DIR__ . '/../php-scripts/get-product-info.php';
+?>
 
 <!----------- 
     HEADER    
@@ -35,9 +39,6 @@
     <div class="main-content">
 <?php
 
-  // connect to DB
-  include __DIR__ . '../../database/dbconnect.php';
-
   if (isset($_GET['id'])) {
     $id = $_GET['id'];
   }
@@ -46,6 +47,9 @@
   $product_query = $db->prepare('SELECT * FROM products WHERE prod_id = :id');
   $product_query->execute(['id' => $id]);
   $product = $product_query->fetch(PDO::FETCH_ASSOC);
+
+  // Extract fields into variables
+  extract($product);
 
   // Get product image URLs
   $product_image_query = $db->prepare('SELECT * FROM prod_images WHERE prod_id = :id');
@@ -62,8 +66,8 @@
 
           <div class="selected-image">
             <img
-              src="<?=$product['thumb_url']?>"
-              alt="<?=$product['prod_name']?>"
+              src="<?=$thumb_url?>"
+              alt="<?=$prod_name?>"
             >
           </div>
 
@@ -99,7 +103,7 @@
               <h1 class="product-title">
                 <?=buildProductTitle($product)?>
               </h1>
-              <div class="price">$<?=$product['price']?></div>
+              <div class="price">$<?=$price?></div>
             </div>
 
             <!-- product colors -->
@@ -112,10 +116,7 @@
                 }
               ?></span>
               <div class="product-colors-wrapper">
-
                 <?=buildColorBlocks($product)?>
-                
-                
               </div>
             </div>
 
