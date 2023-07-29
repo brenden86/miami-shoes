@@ -163,33 +163,18 @@
 
 
 </div>
-
-<!-- Pagination -->
-
-<div class="content-block">
-  <div class="pagination-container">
-    <div class="pagination-wrapper">
-
-          <div class="page-buttons">
-            <button class="prev"><i class="bi-caret-left-fill"></i>prev</button>
-            <button class="next">next<i class="bi-caret-right-fill"></i></button>
-          </div>
-
-          <div class="page-numbers">
-            <a href="#" class="selected">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <span>...</span>
-            <a href="#">4</a>
-          </div>
-
-        </div>
-      </div>
-    </div>
+<!-- pagination start -->
+<?php
+  // pagination
+  include_once __DIR__ . '/pagination.php';
+?>
+<!-- pagination end -->
 
     
     </div>
   </div>
+
+
 </main>
 
 <!----------- 

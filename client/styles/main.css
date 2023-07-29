@@ -534,7 +534,7 @@ i {
   color: #b8b8b8;
 }
 
-button {
+.button {
   outline: none;
   border: none;
   background: #eb4791;
@@ -546,26 +546,26 @@ button {
   text-transform: uppercase;
   transition: background 100ms;
 }
-button:hover {
+.button:hover {
   background: #f35ea1;
   cursor: pointer;
 }
-button.secondary {
+.button.secondary {
   background: #40b5e6;
   color: #f3fcff;
 }
-button.secondary:hover {
+.button.secondary:hover {
   background: #58c2f0;
 }
-button:disabled {
-  background: #b8b8b8;
-  cursor: initial;
-}
-button.next:hover i {
+.button.next:hover i {
   transform: translateX(5px);
 }
-button.prev:hover i {
+.button.prev:hover i {
   transform: translateX(-5px);
+}
+.button:disabled {
+  background: #b8b8b8;
+  cursor: initial;
 }
 
 .checkbox-container {
