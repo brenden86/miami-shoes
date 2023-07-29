@@ -26,6 +26,8 @@
     MAIN CONTENT    
 -------------------->
 
+<?php include_once __DIR__ . '/../php-scripts/get-product-info.php' ?>
+
 <main>
   <div class="main-content-wrapper">
     
@@ -68,12 +70,24 @@
           
           <?php
             // connect to database
-            require __DIR__ . '/../database/dbconnect.php';
+            require_once __DIR__ . '/../database/dbconnect.php';
 
             // get products
             
-            $products_query = $db->query('SELECT * FROM products LIMIT 8');
-            $products = $products_query->fetchAll(PDO::FETCH_ASSOC);
+            $products = queryAndFetch('
+            SELECT
+              prod_id,
+              prod_name,
+              thumb_url,
+              brand,
+              price,
+              COUNT(inventory.sku) AS qty,
+              avail_date
+            FROM products
+            LEFT JOIN stock USING(prod_id)
+            LEFT JOIN inventory USING(sku)
+            GROUP BY prod_id
+            ORDER BY prod_id ASC');
 
             // loop through products
             foreach($products as $product => $field) {
@@ -81,8 +95,8 @@
             // output html
             echo '
             <div class="product-card-wrapper">
-              <a href="/client/product-page.php?id=' . $field['prod_id'] . '" class="product-card">
-                  <div class="badge">' . $field['prod_id'] . '</div>
+              <a href="/client/product-page.php?id=' . $field['prod_id'] . '" class="product-card">'
+                  . getProductCardBadge($field) . '
                   <div class="product-card-image">
                     <img src="' . $field['thumb_url'] . '" alt="' . $field['brand'] . ' ' . $field['prod_name'] . '">
                   </div>
@@ -152,7 +166,7 @@
       <div class="category-cards-container">
         <div class="category-cards-wrapper drag-scroll">
 
-          <a href="/client/product-search.php?type=running" class="category-card">
+          <a href="/client/product-search.php?type-filter-running=running&shoe-type-selected=true" class="category-card">
 
             <div class="card-image">
               <svg class="stroke-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296.48 267.37">
@@ -167,7 +181,7 @@
             <div class="card-title">Running</div>
 
           </a>
-          <a href="/client/product-search.php?type=sneakers" class="category-card">
+          <a href="/client/product-search.php?type-filter-sneaker=sneaker&shoe-type-selected=true" class="category-card">
 
             <div class="card-image">
               <svg class="stroke-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296.48 267.37">
@@ -182,7 +196,7 @@
             <div class="card-title">Sneakers</div>
 
           </a>
-          <a href="/client/product-search.php?type=casual" class="category-card">
+          <a href="/client/product-search.php?type-filter-casual=casual&shoe-type-selected=true" class="category-card">
 
             <div class="card-image">
               <svg class="stroke-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296.48 267.37">
@@ -197,7 +211,7 @@
             <div class="card-title">Casual</div>
 
           </a>
-          <a href="/client/product-search.php?type=boot" class="category-card">
+          <a href="/client/product-search.php?type-filter-boot=boot&shoe-type-selected=true" class="category-card">
 
             <div class="card-image">
               <svg class="stroke-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296.48 267.37">
@@ -212,7 +226,7 @@
             <div class="card-title">Boots</div>
 
           </a>
-          <a href="/client/product-search.php?type=formal" class="category-card">
+          <a href="/client/product-search.php?type-filter-formal=formal&shoe-type-selected=true" class="category-card">
 
             <div class="card-image">
               <svg class="stroke-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296.48 267.37">
