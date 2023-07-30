@@ -31,7 +31,7 @@ function getProductSqlParams() {
   
   // handle COLOR
   
-  if($_REQUEST['color-filter-selected']) {
+  if(preg_match('/filter-color-/', $_SERVER['REQUEST_URI'])) {
     
     // get filter colors from DB to compare
     $filter_colors = queryAndFetch('SELECT DISTINCT filter_color, filter_hex FROM prod_colors');
@@ -41,7 +41,7 @@ function getProductSqlParams() {
     
     // check filter colors in DB against selected colors
     foreach($filter_colors as $color) {
-      if(isset($_REQUEST[$color['filter_color']])) {
+      if(isset($_REQUEST['filter-color-'.$color['filter_color']])) {
         // push colors with quotes to format for SQL clause
         array_push($selected_colors, '"'.$color['filter_color'].'"');
       }
@@ -73,7 +73,7 @@ function getProductSqlParams() {
 
   // handle SHOE TYPE
 
-  if($_REQUEST['shoe-type-selected']) {
+  if(preg_match('/type-filter-/', $_SERVER['REQUEST_URI'])) {
     $selected_shoe_types = [];
     // get types from request
     foreach($_REQUEST as $key => $val) {
@@ -105,7 +105,7 @@ function getProductSqlParams() {
     
   // handle BRANDS
   
-  if($_REQUEST['brand-selected']) {
+  if(preg_match('/brand-filter-/', $_SERVER['REQUEST_URI'])) {
 
     $selected_brands = [];
     // get brands from request

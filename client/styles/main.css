@@ -175,6 +175,7 @@
   width: 100%;
   max-width: 500px;
   font-size: 1.2rem;
+  text-align: center;
 }
 
 .checkout-progress {
@@ -574,9 +575,9 @@ i {
   align-items: center;
   flex-wrap: nowrap;
   gap: 5px;
-  user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
+  user-select: none;
 }
 .checkbox-container:hover {
   cursor: pointer;
@@ -615,9 +616,9 @@ i {
   align-items: center;
   flex-wrap: nowrap;
   gap: 0.5rem;
-  user-select: none;
   -webkit-user-select: none;
   -moz-user-select: none;
+  user-select: none;
 }
 .radio-container .radio {
   width: 22px;

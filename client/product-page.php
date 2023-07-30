@@ -126,9 +126,13 @@
               <div class="sizes-wrapper">
                 <?=getSizes($product)?>
               </div>
-            </div>
+            </div> 
 
-            <button id="add-to-cart">add to cart</button>
+            <a
+              href="/client/my-cart.php"
+              id="add-to-cart"
+              class="button"
+            >add to cart</a>
 
             <!-- item details -->
             <div class="info-group">

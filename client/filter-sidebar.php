@@ -95,9 +95,9 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(214, 21, 21)"
           >
-          <input id="red" type="checkbox" name="red" value=true
+          <input id="red" type="checkbox" name="filter-color-red" value=true
           <?php
-            if($_REQUEST['red']==='true') {
+            if($_REQUEST['filter-color-red']==='true') {
               echo 'checked';
             }
           ?>
@@ -110,9 +110,9 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(107, 107, 116)"
           >
-          <input id="grey" type="checkbox" name="grey" value=true
+          <input id="grey" type="checkbox" name="filter-color-grey" value=true
           <?php
-            if($_REQUEST['grey']==='true') {
+            if($_REQUEST['filter-color-grey']==='true') {
               echo 'checked';
             }
           ?>
@@ -125,9 +125,9 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(56, 56, 56)"
           >
-          <input id="black" type="checkbox" name="black" value=true
+          <input id="black" type="checkbox" name="filter-color-black" value=true
           <?php
-            if($_REQUEST['black']==='true') {
+            if($_REQUEST['filter-color-black']==='true') {
               echo 'checked';
             }
           ?>
@@ -140,9 +140,9 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(17, 134, 33)"
           >
-          <input id="green" type="checkbox" name="green" value=true
+          <input id="green" type="checkbox" name="filter-color-green" value=true
           <?php
-            if($_REQUEST['green']==='true') {
+            if($_REQUEST['filter-color-green']==='true') {
               echo 'checked';
             }
           ?>
@@ -155,9 +155,9 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(221, 218, 23)"
           >
-          <input id="yellow" type="checkbox" name="yellow" value=true
+          <input id="yellow" type="checkbox" name="filter-color-yellow" value=true
           <?php
-            if($_REQUEST['yellow']==='true') {
+            if($_REQUEST['filter-color-yellow']==='true') {
               echo 'checked';
             }
           ?>
@@ -170,9 +170,9 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(137, 21, 214)"
           >
-          <input id="purple" type="checkbox" name="purple" value=true
+          <input id="purple" type="checkbox" name="filter-color-purple" value=true
           <?php
-            if($_REQUEST['purple']==='true') {
+            if($_REQUEST['filter-color-purple']==='true') {
               echo 'checked';
             }
           ?>
@@ -185,9 +185,9 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(19, 91, 207)"
           >
-          <input id="blue" type="checkbox" name="blue" value=true
+          <input id="blue" type="checkbox" name="filter-color-blue" value=true
           <?php
-            if($_REQUEST['blue']==='true') {
+            if($_REQUEST['filter-color-blue']==='true') {
               echo 'checked';
             }
           ?>
@@ -200,9 +200,9 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(82, 52, 25)"
           >
-          <input id="brown" type="checkbox" name="brown" value=true
+          <input id="brown" type="checkbox" name="filter-color-brown" value=true
           <?php
-            if($_REQUEST['brown']==='true') {
+            if($_REQUEST['filter-color-brown']==='true') {
               echo 'checked';
             }
           ?>>
@@ -214,9 +214,9 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(190, 185, 135)"
           >
-          <input id="tan" type="checkbox" name="tan" value=true
+          <input id="tan" type="checkbox" name="filter-color-tan" value=true
           <?php
-            if($_REQUEST['tan']==='true') {
+            if($_REQUEST['filter-color-tan']==='true') {
               echo 'checked';
             }
           ?>
@@ -229,9 +229,9 @@
           <div class="filter-color checkbox-container"
           style="background: rgb(255, 255, 255)"
           >
-          <input id="white" type="checkbox" name="white" value=true
+          <input id="white" type="checkbox" name="filter-color-white" value=true
           <?php
-            if($_REQUEST['white']==='true') {
+            if($_REQUEST['filter-color-white']==='true') {
               echo 'checked';
             }
           ?>
