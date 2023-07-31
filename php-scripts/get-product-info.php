@@ -46,11 +46,12 @@
       return
         '<a href="/client/product-search.php?gender='.$gender.'" class="text-button">'.$gender_text.'</a>
         <i class="bi-chevron-right"></i>
-        <a href="/client/product-search.php?gender='.$gender.'&type-filter-'.$shoe_type.'='.$shoe_type.'&" class="text-button">'.$prod_name.'</a>
+        <a href="/client/product-search.php?gender='.$gender.'&type-filter-'.$shoe_type.'='.$shoe_type.'" class="text-button">'.$shoe_type.'</a>
         ';
-      } else {
-        return '<a href="/client/product-search.php?gender='.$gender.'&q='.preg_replace('/\s/', '+', $prod_name).'" class="text-button">'.$prod_name.'</a>';
+    } else {
+      return '<a href="/client/product-search.php?type-filter'.$shoe_type.'='.$shoe_type.'" class="text-button">'.$shoe_type.'</a>';
     }
+
 
   }
 

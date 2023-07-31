@@ -87,7 +87,7 @@ function getProductSqlParams() {
     SELECT DISTINCT shoe_type
     FROM stock
     LEFT JOIN products USING(prod_id)
-    ');
+    '); 
     $shoe_types = [];
     
     // validate types input against stocked items
