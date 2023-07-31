@@ -40,13 +40,19 @@
 
             <!-- cart heading -->
             <div class="cart-header">
-              <h1>Your Cart <span>(3)</span></h1>
+              <h1>Your Cart 
+                <?php
+                  if(isset($_SESSION['cart-items']) && count($_SESSION['cart-items']) > 0) {
+                    echo '<span>('.count($_SESSION['cart-items']).')</span>';
+                  }
+                ?>
+              </h1>
               <div class="form-navigation-buttons">
                 <a href="#" class="text-button">Continue Shopping</a>
-                <button class="next">
+                <a href="/client/checkout.php" class="button next">
                   Checkout
                   <i class="bi-caret-right-fill"></i>
-                </button>
+                </a>
               </div>
             </div>
 

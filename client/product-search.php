@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,10 +25,10 @@
     // IMPORT PHP FUNCTIONS
 
     // build product query functions
-    include __DIR__ . '/../php-scripts/get-sql-params.php';
+    include_once __DIR__ . '/../php-scripts/get-sql-params.php';
 
     // get product info for cards functions
-    include __DIR__ . '/../php-scripts/get-product-info.php';
+    include_once __DIR__ . '/../php-scripts/get-product-info.php';
   ?>
     
 <!----------- 

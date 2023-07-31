@@ -124,6 +124,30 @@
       @include flex(row, flex-start, center, wrap);
       gap: .25rem;
 
+      .size-button {
+        width: 60px;
+        padding: .5rem 0;
+        text-align: center;
+        border: $border-light;
+        background: white;
+        border-radius: $border-radius-main;
+        color: inherit;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        transition: background 50ms;
+        
+        &:hover {
+          cursor: pointer;
+          background: $hover-light;
+        }
+
+        &.selected {
+          background: $primary-color;
+          color: white;
+        }
+      }
+
       .size-container {
         @include flex(row, center, center);
         font-size: 1.2rem;

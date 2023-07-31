@@ -24,7 +24,16 @@
     <div class="header-section-wrapper">
       <a href="/client/my-cart.php" class="icon-link">
         <i class="bi-cart"></i>
-        <span>Cart (2)</span>
+        Cart 
+        <?php
+          // get cart items
+          if(
+            isset($_SESSION['cart-items']) &&
+            count($_SESSION['cart-items']) > 0 
+            ) {
+            echo '('.count($_SESSION['cart-items']).')';
+          }
+        ?>
       </a>
     </div>
   </div>

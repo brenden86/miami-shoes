@@ -61,6 +61,8 @@
       </div>
     </div>
 
+    <?=$_SESSION['name'];?>
+
     <!-- featured products -->
     <div class="content-block">
       <h1><span>Hot</span> Right Now</h1>

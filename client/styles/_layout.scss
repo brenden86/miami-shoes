@@ -73,10 +73,12 @@ i {
   line-height: 0; // fixes icon height being greater than width
   @include flex(row, center, center);
   padding: $icon-size;
+  gap: .5rem; // space between icon and text
   border-radius: 20rem;
   color: $primary-color;
   background: transparent;
   transition: background 100ms;
+  font-weight: bold;
   
   &:hover {
     background: $primary-color-light;
@@ -87,11 +89,11 @@ i {
     font-size: 1.5rem;
   }
 
-  span {
-    color: inherit;
-    font-weight: bold;
-    margin: 0 .3rem;
-  }
+  // span {
+  //   color: inherit;
+  //   font-weight: bold;
+  //   margin: 0 .3rem;
+  // }
 
   &.light {
     color: $primary-color-text;

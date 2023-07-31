@@ -115,8 +115,18 @@
     // extract properties from product
     extract($product);
     
-    $sql = 'SELECT sku, prod_id, size, count(inventory.sku) AS qty FROM stock LEFT JOIN inventory USING(sku) WHERE prod_id = :id GROUP BY sku';
-    $sizes_query = $db->prepare($sql);
+    ;
+    $sizes_query = $db->prepare('
+      SELECT
+        sku,
+        prod_id,
+        size,
+        count(inventory.sku) AS qty
+      FROM stock
+      LEFT JOIN inventory USING(sku)
+      WHERE prod_id = :id
+      GROUP BY sku
+    ');
     $sizes_query->execute(['id' => $prod_id]);
     $sizes = $sizes_query->fetchAll(PDO::FETCH_ASSOC);
     
@@ -137,12 +147,7 @@
       }
       
       echo '
-      <div class="size-container">
-      <input id="size-'.$item['size'].'" type="radio" name="size" ' . $disabled . '>
-      <label for="size-'.$item['size'].'" class="radio">'.$size_text.'</label>
-      </div>
-      ';
-      
+      <div class="size-button" dava-value="'.$item['size'].'">'.$size_text.'</div>';
     }
     
   }
