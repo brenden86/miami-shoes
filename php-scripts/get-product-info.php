@@ -147,7 +147,7 @@
       }
       
       echo '
-      <div class="size-button" dava-value="'.$item['size'].'">'.$size_text.'</div>';
+      <div class="size-button" dava-size="'.$item['size'].'" data-sku="'.$item['sku'].'">'.$size_text.'</div>';
     }
     
   }

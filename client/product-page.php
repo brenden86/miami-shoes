@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles/main.css">
   <script src="./js/modules/product-image-gallery.js" defer></script>
-  <script src="./js/modules/add-to-cart.js"></script>
+  <script src="./js/modules/add-to-cart.js" defer></script>
 </head>
 <body>
   <div id="root">
@@ -127,7 +127,7 @@ $product_image_query = $db->prepare('SELECT * FROM prod_images WHERE prod_id = :
               </div>
             </div> 
             
-            <div id="add-to-cart" class="button" onclick="addToCart()">add to cart</div>
+            <div id="add-to-cart" class="button">add to cart</div>
             
             <!-- item details -->
             <div class="info-group">

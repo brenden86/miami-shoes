@@ -1,9 +1,11 @@
 const sizeButtons = document.querySelectorAll('.size-button');
 
 let selectedSize;
+let selectedItem;
 
 function selectSize(button) {
-  let size = button.getAttribute('data-value');
+  let size = button.getAttribute('data-size');
+  let sku = button.getAttribute('data-sku');
   if(size != selectSize) {
     selectedSize = size;
     // clear selected class from all other sizes
@@ -17,6 +19,8 @@ function selectSize(button) {
       button.classList.add('selected');
     }
   }
+  // set selected SKU for addToCart()
+  selectedItem = sku;
 }
 
 sizeButtons.forEach(button => {

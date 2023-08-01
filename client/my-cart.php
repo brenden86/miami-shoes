@@ -42,9 +42,7 @@
             <div class="cart-header">
               <h1>Your Cart 
                 <?php
-                  if(isset($_SESSION['cart-items']) && count($_SESSION['cart-items']) > 0) {
-                    echo '<span>('.count($_SESSION['cart-items']).')</span>';
-                  }
+                  
                 ?>
               </h1>
               <div class="form-navigation-buttons">
