@@ -13,7 +13,7 @@ function getCookie(cookieName) {
   if(cookieValue) {
     return cookieValue;
   } else {
-    console.error(`cookie ${cookieName} not found.`);
+    return '';
   }
 }
 

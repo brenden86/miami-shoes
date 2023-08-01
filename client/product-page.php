@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="styles/main.css">
   <script src="./js/modules/product-image-gallery.js" defer></script>
   <script src="./js/modules/add-to-cart.js" defer></script>
+  <script src="./js/modules/cookie-functions.js" defer></script>
 </head>
 <body>
   <div id="root">

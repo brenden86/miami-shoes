@@ -22,18 +22,18 @@
   <!--header right section-->
   <div class="header-section right">
     <div class="header-section-wrapper">
-      <a href="/client/my-cart.php" class="icon-link">
+      <a href="/client/my-cart.php" id="header-cart-link" class="icon-link">
         <i class="bi-cart"></i>
-        Cart 
+        Cart<span id="header-cart-count">
         <?php
-          // get cart items
-          if(
-            isset($_SESSION['cart-items']) &&
-            count($_SESSION['cart-items']) > 0 
-            ) {
-            echo '('.count($_SESSION['cart-items']).')';
+          // show number of cart items
+          if(isset($_COOKIE['cart-items'])) {
+            $cart_cookie = json_decode($_COOKIE['cart-items']);
+            if($cart_cookie && count($cart_cookie) > 0) {
+              echo '(' . count($cart_cookie) . ')';
+            }
           }
-        ?>
+        ?></span>
       </a>
     </div>
   </div>
