@@ -9,11 +9,14 @@
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles/main.css">
+  <script src="/client/js/modules/cookie-functions.js" defer></script>
+  <script src="/client/js/modules/cart-functions.js" defer></script>
 </head>
 <body>
   <div id="root">
     
-
+<?php include_once __DIR__ . '/../database/dbconnect.php' ?>
+<?php include_once __DIR__ . '/../php-scripts/get-product-info.php' ?>
 <!----------- 
     HEADER    
 ------------->
@@ -40,10 +43,16 @@
 
             <!-- cart heading -->
             <div class="cart-header">
-              <h1>Your Cart 
+              <h1>Your Cart <span id="cart-count">
                 <?php
-                  
+                if(isset($_COOKIE['cart-items'])) {
+                  $cart_cookie = json_decode($_COOKIE['cart-items']);
+                  if($cart_cookie && count($cart_cookie) > 0) {
+                    echo '(' . count($cart_cookie) . ')';
+                  }
+                }
                 ?>
+              </span>
               </h1>
               <div class="form-navigation-buttons">
                 <a href="#" class="text-button">Continue Shopping</a>
@@ -57,6 +66,9 @@
             <!-- cart contents -->
             <div class="cart-contents">
 
+            <?php include_once __DIR__ . '/../php-scripts/get-cart-contents.php'?>
+
+            <!--
               <div class="cart-item">
 
                 <div class="item-image">
@@ -85,94 +97,10 @@
                 </div>
 
               </div>
-              <div class="cart-item">
-
-                <div class="item-image">
-                  <img src="./images/product-photos/adidas-running/40560_left_feed1000.jpg" alt="">
-                </div>
-
-                <div class="item-details-wrapper">
-
-                  <div class="item-details">
-                    <div class="item-name">Men's AirMax 2.0 Running Shoe</div>
-                    <div class="item-property">
-                      Color: <span>Slate/Deep Blue</span>
-                    </div>
-                    <div class="item-property">
-                      Size: <span>10.5</span>
-                    </div>
-                  </div>
-
-                  <div class="item-details right">
-                    <div class="price">$59.99</div>
-                    <div class="remove-item icon-link">
-                      <i class="bi-trash"></i>
-                    </div>
-                  </div>
-                  
-                </div>
-
-              </div>
-              <div class="cart-item">
-
-                <div class="item-image">
-                  <img src="./images/product-photos/adidas-running/40560_left_feed1000.jpg" alt="">
-                </div>
-
-                <div class="item-details-wrapper">
-
-                  <div class="item-details">
-                    <div class="item-name">Men's AirMax 2.0 Running Shoe</div>
-                    <div class="item-property">
-                      Color: <span>Slate/Deep Blue</span>
-                    </div>
-                    <div class="item-property">
-                      Size: <span>10.5</span>
-                    </div>
-                  </div>
-
-                  <div class="item-details right">
-                    <div class="price">$59.99</div>
-                    <div class="remove-item icon-link">
-                      <i class="bi-trash"></i>
-                    </div>
-                  </div>
-                  
-                </div>
-
-              </div>
-              <div class="cart-item">
-
-                <div class="item-image">
-                  <img src="./images/product-photos/adidas-running/40560_left_feed1000.jpg" alt="">
-                </div>
-
-                <div class="item-details-wrapper">
-
-                  <div class="item-details">
-                    <div class="item-name">Men's AirMax 2.0 Running Shoe</div>
-                    <div class="item-property">
-                      Color: <span>Slate/Deep Blue</span>
-                    </div>
-                    <div class="item-property">
-                      Size: <span>10.5</span>
-                    </div>
-                  </div>
-
-                  <div class="item-details right">
-                    <div class="price">$59.99</div>
-                    <div class="remove-item icon-link">
-                      <i class="bi-trash"></i>
-                    </div>
-                  </div>
-                  
-                </div>
-
-              </div>
-
+            -->
             </div>
 
-            <div class="clear-cart-button text-button">
+            <div id="clear-cart-button" class="text-button">
               <i class="bi-cart-x"></i>Clear cart
             </div>
 

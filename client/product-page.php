@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles/main.css">
   <script src="./js/modules/product-image-gallery.js" defer></script>
-  <script src="./js/modules/add-to-cart.js" defer></script>
+  <script src="./js/modules/cart-functions.js" defer></script>
   <script src="./js/modules/cookie-functions.js" defer></script>
 </head>
 <body>
@@ -109,12 +109,7 @@ $product_image_query = $db->prepare('SELECT * FROM prod_images WHERE prod_id = :
             <!-- product colors -->
             <div class="info-group">
               <h2>Colors:</h2>
-              <span><?php
-                echo $product['prim_color'];
-                if ($product['sec_color'] != '') {
-                  echo '/' . $product['sec_color'];
-                }
-                ?></span>
+              <span><?=getProductColorNames($product)?></span>
               <div class="product-colors-wrapper">
                 <?=buildColorBlocks($product)?>
               </div>

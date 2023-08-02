@@ -56,7 +56,13 @@
   }
 
 
-
+  function getProductColorNames($product) {
+    $color_name = $product['prim_color'];
+    if ($product['sec_color'] != '') {
+      $color_name .= '/' . $product['sec_color'];
+    }
+    return strtoupper($color_name);
+  }
 
 
   function buildColorBlocks($product) {

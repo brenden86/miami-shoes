@@ -1554,6 +1554,17 @@ CART HEADER
   flex-wrap: nowrap;
 }
 
+.cart-empty-message {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 3rem 0;
+  color: #b8b8b8;
+  display: none;
+}
+.cart-empty-message.show {
+  display: block;
+}
+
 /****************************
 CART ITEMS
 ****************************/
@@ -1618,7 +1629,7 @@ CART ITEMS
   align-self: flex-end;
 }
 
-.clear-cart-button {
+#clear-cart-button {
   align-self: flex-end;
   font-size: 1.2rem;
 }
