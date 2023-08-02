@@ -55,7 +55,7 @@
               </span>
               </h1>
               <div class="form-navigation-buttons">
-                <a href="#" class="text-button">Continue Shopping</a>
+                <a href="/client/product-search.php" class="text-button">Continue Shopping</a>
                 <a href="/client/checkout.php" class="button next">
                   Checkout
                   <i class="bi-caret-right-fill"></i>
