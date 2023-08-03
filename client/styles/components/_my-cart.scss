@@ -27,6 +27,18 @@ CART HEADER
   }
 }
 
+.cart-subtotal {
+  font-size: 1.5rem;
+  text-align: right;
+  margin: .5rem;
+  .heading {
+    font-size: inherit;
+  }
+  .price {
+    font-weight: $semibold;
+  }
+}
+
 /****************************
 CART ITEMS
 ****************************/

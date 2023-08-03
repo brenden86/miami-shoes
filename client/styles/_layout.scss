@@ -35,10 +35,20 @@ h1, h2, h3, h4 {
   font-weight: $semibold;
   text-transform: uppercase;
   margin-top: 0; // remove default top margin
-
+  
   span {
     color: $primary-color;
     font-family: inherit; 
+  }
+}
+
+.heading {
+  font-family: $heading-font;
+  font-weight: $semibold;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  &.inline {
+    display: inline;
   }
 }
 

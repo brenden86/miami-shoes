@@ -17,6 +17,7 @@
     
 <?php include_once __DIR__ . '/../database/dbconnect.php' ?>
 <?php include_once __DIR__ . '/../php-scripts/get-product-info.php' ?>
+<?php include_once __DIR__ . '/../php-scripts/get-cart-subtotal.php' ?>
 <!----------- 
     HEADER    
 ------------->
@@ -33,7 +34,7 @@
 
 
     <!-- main content column -->
-    <div class="main-content narrow">
+    <div class="main-content">
 
       <!-- cart items -->
       <div class="content-block">
@@ -65,39 +66,24 @@
 
             <!-- cart contents -->
             <div class="cart-contents">
-
-            <?php include_once __DIR__ . '/../php-scripts/get-cart-contents.php'?>
-
-            <!--
-              <div class="cart-item">
-
-                <div class="item-image">
-                  <img src="./images/product-photos/adidas-running/40560_left_feed1000.jpg" alt="">
-                </div>
-
-                <div class="item-details-wrapper">
-
-                  <div class="item-details">
-                    <div class="item-name">Men's AirMax 2.0 Running Shoe</div>
-                    <div class="item-property">
-                      Color: <span>Slate/Deep Blue</span>
-                    </div>
-                    <div class="item-property">
-                      Size: <span>10.5</span>
-                    </div>
-                  </div>
-
-                  <div class="item-details right">
-                    <div class="price">$59.99</div>
-                    <div class="remove-item icon-link">
-                      <i class="bi-trash"></i>
-                    </div>
-                  </div>
-                  
-                </div>
-
+            
+            <!-- subtotal -->
+            <?php
+            if(
+              isset($_COOKIE['cart-items']) &&
+              count(json_decode($_COOKIE['cart-items'])) > 0
+            ) {
+              echo '
+              <div class="cart-subtotal">
+                <div class="heading inline">Subtotal: </div>
+                <span class="price">'.getCartSubtotal().'</span>
               </div>
-            -->
+              ';
+            }
+            ?>
+
+            <?php include_once __DIR__ . '/cart-contents.php'?>
+
             </div>
 
             <div id="clear-cart-button" class="text-button">
@@ -113,7 +99,7 @@
     </div>
 
     <!-- order summary sidebar -->
-    <div class="order-summary-container">
+    <!-- <div class="order-summary-container">
 
       <div class="order-summary-wrapper">
         <h1>Order Summary</h1>
@@ -140,7 +126,7 @@
 
       </div>
 
-    </div>
+    </div> -->
 
   </div>
 </main>

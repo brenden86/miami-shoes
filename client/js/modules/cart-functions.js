@@ -63,11 +63,8 @@ function removeFromCart(item) {
   let skuIndex = cartCookie.indexOf(sku)
   cartCookie.splice(skuIndex, skuIndex + 1);
   setCookie('cart-items', JSON.stringify(cartCookie));
-  // remove element from DOM
-  item.remove();
-  // update cart count on page & in header
-  updateCartCount(cartCookie.length);
-  updateHeaderCartCount(cartCookie.length);
+  location.reload();
+
 }
 
 // REMOVE ITEM FROM CART click handler
@@ -88,17 +85,19 @@ function clearCart() {
   if(cartCookie.length < 1) {
     alert('cart is already empty.');
   } else {
-    alert('are you sure?');
-    cartItems.forEach(item => {
-      removeFromCart(item);
-    })
+    cartCookie = [];
+    setCookie('cart-items', JSON.stringify(cartCookie));
+    location.reload();
   }
 }
 
 const clearCartButton = document.querySelector('#clear-cart-button')
-clearCartButton.addEventListener('click', () => {
-  clearCart();
-})
+if(clearCartButton) {
+  clearCartButton.addEventListener('click', () => {
+    clearCart();
+  })
+}
+  
 
 
 
