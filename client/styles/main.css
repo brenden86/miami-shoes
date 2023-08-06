@@ -545,6 +545,11 @@ i {
   background: #f35ea1;
 }
 
+button {
+  border: none;
+  font-size: inherit;
+}
+
 .text-button {
   display: inline;
   color: #eb4791;

@@ -113,6 +113,11 @@ i {
   }
 }
 
+button {
+  border: none;
+  font-size: inherit;
+}
+
 // for buttons that are text only (includes icons)
 .text-button {
   display: inline;
