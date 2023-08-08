@@ -1,8 +1,12 @@
 <form
   id="checkout-form-basic-info"
-  action="/php-scripts/test.php"
+  action="/client/checkout-submit.php"
   method="post"
 >
+<?php
+  // extract billing info from session
+  extract($_SESSION['checkout-info']['billing'])
+?>
   <div id="basic-info-fields" class="checkout-fields">
   
     <fieldset>
@@ -11,10 +15,22 @@
       <label>Billing Address</label>
       <div class="input-wrapper inline">
         <label for="billing-first-name" class="sr-only">first name</label>
-        <input type="text" id="billing-first-name" name="billing-first-name" placeholder="First name">
+        <input
+          type="text"
+          id="billing-first-name"
+          name="billing_first_name"
+          value="<?=$billing_first_name?>"
+          placeholder="First name"
+        >
   
         <label for="billing-last-name" class="sr-only">last name</label>
-        <input type="text" id="billing-last-name" name="billing-last-name" placeholder="Last name">
+        <input
+          type="text"
+          id="billing-last-name"
+          name="billing_last_name"
+          value=<?=$billing_last_name?>
+          placeholder="Last name"
+        >
       </div>
       <div class="input-wrapper">
         <!-- SHOW COMPANY BUTTON -->
@@ -24,20 +40,43 @@
         </div>
   
         <label for="billing-company" class="sr-only">company</label>
-        <input type="text" name="billing-company" id="billing-company" placeholder="Company">
+        <input type="text"
+          id="billing-company"
+          name="billing_company"
+          value=<?=$billing_company?>
+          placeholder="Company"
+        >
   
   
         <label for="billing-street1" class="sr-only">Address Line 1</label>
-        <input type="text" name="billing-street1" id="billing-street1" placeholder="Street">
+        <input
+          id="billing-street1"
+          type="text"
+          name="billing_street1"
+          value=<?=$billing_street1?>
+          placeholder="Street"
+        >
   
         <label for="billing-street2" class="sr-only">Address Line 2</label>
-        <input type="text" name="billing-street2" id="billing-street2" placeholder="Apartment, suite, unit, etc.">
+        <input
+          id="billing-street2"
+          type="text"
+          name="billing_street2"
+          value=<?=$billing_street2?>
+          placeholder="Apartment, suite, unit, etc."
+        >
   
       </div>
   
       <div class="input-wrapper inline">
         <label for="billing-city" class="sr-only">city</label>
-        <input type="text" id="billing-city" name="billing-city" placeholder="City">
+        <input
+          id="billing-city"
+          type="text"
+          name="billing_city"
+          value=<?=$billing_city;?>
+          placeholder="City"
+        >
   
         <!-- USE JAVASCRIPT TO STYLE STATE PLACEHOLDER COLOR -->
         <label for="billing-state" class="sr-only">state</label>
@@ -47,7 +86,7 @@
           <option value="AK">Alaska</option>
           <option value="AZ">Arizona</option>
           <option value="AR">Arkansas</option>
-          <option value="CA">California</option>
+          <option value="CA" selected>California</option>
           <option value="CO">Colorado</option>
           <option value="CT">Connecticut</option>
           <option value="DE">Delaware</option>
