@@ -734,6 +734,16 @@ textarea:focus,
 select:focus {
   outline-color: #eb4791;
 }
+input[type=text].hide,
+input[type=tel].hide,
+input[type=email].hide,
+input[type=password].hide,
+input[type=number].hide,
+input[type=search].hide,
+textarea.hide,
+select.hide {
+  display: none;
+}
 
 select {
   padding-top: 0.42rem;
@@ -766,6 +776,7 @@ fieldset legend {
   align-items: flex-start;
   flex-wrap: nowrap;
   gap: 0.3rem;
+  margin-top: 0.3rem;
 }
 .input-wrapper.inline {
   display: flex;
@@ -774,7 +785,6 @@ fieldset legend {
   align-items: flex-end;
   flex-wrap: nowrap;
   align-self: stretch;
-  margin-top: 0.3rem;
 }
 .input-wrapper.inline input {
   flex-grow: 1;

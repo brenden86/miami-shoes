@@ -13,6 +13,7 @@
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles/main.css">
+  <script src="/client/js/modules/show-additional-fields.js" defer ></script>
 </head>
 <body>
   <div id="root">
@@ -118,7 +119,11 @@
         <div>Shipping
           <span><?= ucwords($_SESSION['checkout_info']['shipping_type']) ?? '';?></span>
         </div>
-        <div class="summary-item-value">FREE</div>
+        <div class="summary-item-value">
+          <?php
+            if($_SESSION['checkout_info'])
+          ?>
+        </div>
       </div>
       
       <div class="order-summary-item-wrapper">

@@ -77,13 +77,20 @@
     <div class="input-wrapper">
   
       <!-- SHOW COMPANY BUTTON -->
-      <div id="add-shipping-company-field" class="add-field-button">
-        <i class="bi-plus-circle-fill"></i>
-        Add Company
-      </div>
+      <?php
+        if(!$shipping_company) {
+          echo '
+            <div id="add-shipping-company-field" class="add-field-button">
+              <i class="bi-plus-circle-fill"></i>
+              Add Company
+            </div>
+          ';
+        }
+      ?>
   
       <label for="shipping-company" class="sr-only">company</label>
       <input
+        class="<?=(!$shipping_company) ? 'hide' : '';?>"
         type="text"
         name="shipping_company"
         value="<?=$shipping_company ?? '';?>"
@@ -191,20 +198,31 @@
       </div>
   
       <!-- SHOW DELIVERY INSTRUCTIONS FIELD -->
-      <div id="add-delivery-instructions-field" class="add-field-button">
-        <i class="bi-plus-circle-fill"></i>
-        Add Delivery Instructions
-      </div>
+      
+      <?php
+        if(!$delivery_instructions) {
+          echo '
+          <div id="add-delivery-instructions-field" class="add-field-button">
+            <i class="bi-plus-circle-fill"></i>
+            Add Delivery Instructions
+          </div>
+          ';
+        }
+      ?>
     </div>
-  
-    <label for="delivery-instructions" class="sr-only">delivery instructions</label>
-    <textarea
-      id="delivery-instructions"
-      cols="30"
-      rows="4"
-      placeholder="Type delivery instructions here"
-      name="delivery_instructions"
-    ><?=$delivery_instructions ?? '';?></textarea>
+    
+    <div class="input-wrapper">
+      <label for="delivery-instructions" class="sr-only">delivery instructions</label>
+      <textarea
+        id="delivery-instructions"
+        class="<?=(!$delivery_instructions) ? 'hide' : '';?>"
+        cols="30"
+        rows="4"
+        placeholder="Type delivery instructions here"
+        name="delivery_instructions"
+      ><?=$delivery_instructions ?? '';?></textarea>
+    </div>
+    
   </fieldset>
   
   

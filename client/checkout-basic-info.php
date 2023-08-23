@@ -31,14 +31,21 @@
       </div>
       <div class="input-wrapper">
         <!-- SHOW COMPANY BUTTON -->
-        <div id="add-billing-company-field" class="add-field-button">
-          <i class="bi-plus-circle-fill"></i>
-          Add Company
-        </div>
+        <?php
+        if(!$billing_company) {
+          echo '
+            <div id="add-billing-company-field" class="add-field-button">
+              <i class="bi-plus-circle-fill"></i>
+              Add Company
+            </div>
+          ';
+        }
+      ?>
   
         <label for="billing-company" class="sr-only">company</label>
         <input type="text"
           id="billing-company"
+          class="<?=(!$billing_company) ? 'hide' : '';?>"
           name="billing_company"
           value="<?=$billing_company ?? '';?>"
           placeholder="Company"

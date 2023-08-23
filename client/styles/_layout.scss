@@ -69,8 +69,6 @@ ul {
   margin: 0;
 }
 
-
-
 // icon size when using bootstrap icons
 i {
   font-size: 1rem;
@@ -336,6 +334,10 @@ select {
   &:focus {
     outline-color: $primary-color;
   }
+
+  &.hide {
+    display: none;
+  }
 }
 
 select {
@@ -371,11 +373,11 @@ fieldset {
 .input-wrapper {
   @include flex(column, flex-start, flex-start);
   gap: $input-gap;
+  margin-top: .3rem;
   
   &.inline {
     @include flex(row, flex-start, flex-end);
     align-self: stretch;
-    margin-top: .3rem;
     
     input {
       flex-grow: 1;
