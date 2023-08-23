@@ -1,3 +1,16 @@
+<?php
+  session_start();
+  
+  // go back to first checkout screen if cart is updated
+  if($_GET['update'] === '1') {
+    $_SESSION['checkout_info']['current_step'] = 1;
+    // remove query params from URL
+    header('location: /client/my-cart.php');
+    exit;
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +30,7 @@
     
 <?php include_once __DIR__ . '/../database/dbconnect.php' ?>
 <?php include_once __DIR__ . '/../php-scripts/get-product-info.php' ?>
-<?php include_once __DIR__ . '/../php-scripts/get-cart-subtotal.php' ?>
+<?php include_once __DIR__ . '/../php-scripts/get-cart-info.php' ?>
 <!----------- 
     HEADER    
 ------------->
@@ -55,13 +68,19 @@
                 ?>
               </span>
               </h1>
-              <div class="form-navigation-buttons">
-                <a href="/client/product-search.php" class="text-button">Continue Shopping</a>
-                <a href="/client/checkout.php" class="button next">
-                  Checkout
-                  <i class="bi-caret-right-fill"></i>
-                </a>
-              </div>
+              <?php
+              if($cart_cookie && count($cart_cookie) > 0) {
+                echo '
+                  <div class="form-navigation-buttons">
+                    <a href="/client/product-search.php" class="text-button">Continue Shopping</a>
+                    <a href="/client/checkout.php" class="button next">
+                      Checkout
+                      <i class="bi-caret-right-fill"></i>
+                    </a>
+                  </div>
+                ';
+              }
+              ?>
             </div>
 
             <!-- cart contents -->
@@ -82,13 +101,77 @@
             }
             ?>
 
-            <?php include_once __DIR__ . '/cart-contents.php'?>
+            <?php
+              if(isset($_COOKIE['cart-items']) && count(json_decode($_COOKIE['cart-items'])) > 0) {
+                $show_cart_empty_message = 'false';
+              } else {
+                $show_cart_empty_message = 'true';
+              }
+            ?>
+
+            <h2
+              class="cart-empty-message <?= ($show_cart_empty_message=='true') ? 'show' : '' ?>"
+              aria-hidden="<?=$show_cart_empty_message?>"
+            >Your cart is empty!</h2>
+
+            <?php
+              
+              $cart_items = getCartItems();
+
+              // loop through cart items & echo HTML
+              foreach($cart_items as $item) {
+                
+                extract($item);
+
+                echo '
+                
+                <div class="cart-item" data-sku='.$sku.'>
+    
+                  <div class="item-image">
+                    <img src="'.$thumb_url.'" alt="'.$prod_name.'">
+                  </div>
+    
+                  <div class="item-details-wrapper">
+    
+                    <div class="item-details">
+                      <div class="item-name">'.buildProductTitle($item).'</div>
+                      <div class="item-property">
+                        Color: <span>'.getProductColorNames($item).'</span>
+                      </div>
+                      <div class="item-property">
+                        Size: <span>'.$size.'</span>
+                      </div>
+                    </div>
+    
+                    <div class="item-details right">
+                      <div class="price">$'.$price.'</div>
+                      <div class="remove-item icon-link">
+                        <i class="bi-trash"></i>
+                      </div>
+                    </div>
+                    
+                  </div>
+
+                </div>
+
+                ';
+   
+              }
+              
+              ?>
+              </div>
 
             </div>
-
-            <div id="clear-cart-button" class="text-button">
-              <i class="bi-cart-x"></i>Clear cart
-            </div>
+            
+            <?php
+              if($cart_cookie && count($cart_cookie) > 0) {
+                echo '
+                  <div id="clear-cart-button" class="text-button">
+                    <i class="bi-cart-x"></i>Clear cart
+                  </div>
+                ';
+              }
+            ?>
 
           </div>
         </div>

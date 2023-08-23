@@ -6,8 +6,8 @@
   // gets correct class for displaying current & completed checkout steps
   function getCheckoutStepClass($step) {
     // get current checkout step, return if there is none (shouldn't happen)
-    if(isset($_SESSION['checkout-info']['current-step'])) {
-      $current_step = $_SESSION['checkout-info']['current-step'];
+    if(isset($_SESSION['checkout_info']['current_step'])) {
+      $current_step = $_SESSION['checkout_info']['current_step'];
     } else {
       return;
     }

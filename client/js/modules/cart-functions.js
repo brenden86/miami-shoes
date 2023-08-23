@@ -36,8 +36,6 @@ function addToCart(sku) {
     // update cart count in header
     updateHeaderCartCount(cartArray.length);
   }
-
-  console.log(`added sku ${sku} to cart.`);
 }
 
 
@@ -64,7 +62,7 @@ function removeFromCart(item) {
   cartCookie.splice(skuIndex, skuIndex + 1);
   setCookie('cart-items', JSON.stringify(cartCookie));
   location.reload();
-
+  
 }
 
 // REMOVE ITEM FROM CART click handler

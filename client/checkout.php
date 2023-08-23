@@ -18,7 +18,8 @@
   <div id="root">
     
 <?php include_once __DIR__ . '/../database/dbconnect.php' ?>
-<?php include_once __DIR__ . '/../php-scripts/get-cart-subtotal.php' ?>
+<?php include_once __DIR__ . '/../php-scripts/get-product-info.php' ?>
+<?php include_once __DIR__ . '/../php-scripts/get-cart-info.php' ?>
 
 <!----------- 
     HEADER    
@@ -48,23 +49,47 @@
             <!-- checkout forms -->
             <?php
 
-            $_SESSION['checkout-info']['current-step'] = 1;
+            // ****** DEBUG - CLEAR SESSION DATA *******
+            // $_SESSION['checkout_info'] = array();
+            // $_SESSION['checkout_info']['current_step'] = 1;
+            
+            // initialize checkout info array and checkout step if not already present
+            if(!isset($_SESSION['checkout_info'])) {
+              $_SESSION['checkout_info'] = array();
+              $_SESSION['checkout_info']['current_step'] = 1;
+            }
+
+            // reset checkout step if coming from a different page
+            if(!preg_match('/checkout/', $_SERVER['HTTP_REFERER'])) {
+              $_SESSION['checkout_info']['current_step'] = 1;
+            }
+
+            // extract checkout info from session
+            if(isset($_SESSION['checkout_info'])) {
+              extract($_SESSION['checkout_info']);
+            }
+
+            // go to previous checkout page if requested
+            if($_GET['prev_step'] === '1' && $_SESSION['checkout_info']['current_step'] > 1) {
+              $_SESSION['checkout_info']['current_step'] -= 1;
+              // this is to change the url so the query params are not included
+              // in the served file, to prevent going back on a refresh
+              header('location: /client/checkout.php');
+              exit;
+            }
+
             include_once __DIR__ . '/checkout-progress.php';
 
-            
-            if($_SESSION['checkout-info']['current-step'] === 1) {
+            if($_SESSION['checkout_info']['current_step'] === 1) {
               include_once __DIR__ . '/checkout-basic-info.php';
-            } elseif ($_SESSION['checkout-info']['current-step'] === 2) {
+            } elseif ($_SESSION['checkout_info']['current_step'] === 2) {
               include_once __DIR__ . '/checkout-shipping-payment.php';
-            } elseif ($_SESSION['checkout-info']['current-step'] === 3) {
+            } elseif ($_SESSION['checkout_info']['current_step'] === 3) {
               include_once __DIR__ . '/checkout-review.php';
+            } else {
+              include_once __DIR__ . '/checkout-basic-info.php';
             }
             ?>
-
-
-
-
-
 
 
           </form>
@@ -91,7 +116,7 @@
       
       <div class="order-summary-item-wrapper">
         <div>Shipping
-          <span>Standard</span>
+          <span><?= ucwords($_SESSION['checkout_info']['shipping_type']) ?? '';?></span>
         </div>
         <div class="summary-item-value">FREE</div>
       </div>
