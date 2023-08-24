@@ -516,6 +516,10 @@ i {
   transition: all 100ms ease-in;
 }
 
+.hide {
+  display: none !important;
+}
+
 .icon-link {
   line-height: 0;
   display: flex;
@@ -733,16 +737,6 @@ input[type=search]:focus,
 textarea:focus,
 select:focus {
   outline-color: #eb4791;
-}
-input[type=text].hide,
-input[type=tel].hide,
-input[type=email].hide,
-input[type=password].hide,
-input[type=number].hide,
-input[type=search].hide,
-textarea.hide,
-select.hide {
-  display: none;
 }
 
 select {

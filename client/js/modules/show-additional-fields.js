@@ -4,14 +4,16 @@
 const showBillingCompanyButton = document.querySelector('#add-billing-company-field');
 const showShippingCompanyButton = document.querySelector('#add-shipping-company-field');
 const showDeliveryInstructionsButton = document.querySelector('#add-delivery-instructions-field')
+const sameAsBillingCheckbox = document.querySelector('#same-as-billing');
 
 // Extra inputs
 const billingCompanyInput = document.querySelector('input[name="billing_company"]');
 const shippingCompanyInput = document.querySelector('input[name="shipping_company"]');
 const deliveryInstructionsInput = document.querySelector('#delivery-instructions');
+const shippingAddressFields = document.querySelector('#shipping-address-fields');
 
-// click handlers
 
+// show billing company
 if(showBillingCompanyButton) {
   showBillingCompanyButton.addEventListener('click', () => {
     if (billingCompanyInput.classList.contains('hide')) {
@@ -21,6 +23,7 @@ if(showBillingCompanyButton) {
   })
 }
 
+// show shipping company
 if(showShippingCompanyButton) {
   showShippingCompanyButton.addEventListener('click', () => {
     if (shippingCompanyInput.classList.contains('hide')) {
@@ -30,11 +33,28 @@ if(showShippingCompanyButton) {
   })
 }
 
+// show delivery instructions
 if(showDeliveryInstructionsButton) {
   showDeliveryInstructionsButton.addEventListener('click', () => {
     if (deliveryInstructionsInput.classList.contains('hide')) {
       deliveryInstructionsInput.classList.remove('hide');
     }
     showDeliveryInstructionsButton.remove();
+  })
+}
+
+
+
+// hide shipping address & clear values
+if(sameAsBillingCheckbox) {
+  
+  // hide fields initially if checked
+  if(sameAsBillingCheckbox.checked && !shippingAddressFields.classList.contains('hide')) {
+    shippingAddressFields.classList.add('hide');
+  }
+
+  // toggle when checkbox clicked
+  sameAsBillingCheckbox.addEventListener('change', () => {
+    shippingAddressFields.classList.toggle('hide');
   })
 }

@@ -77,6 +77,10 @@ i {
   transition: all 100ms ease-in;
 }
 
+.hide {
+  display: none !important;
+}
+
 .icon-link {
   line-height: 0; // fixes icon height being greater than width
   @include flex(row, center, center);
@@ -335,9 +339,9 @@ select {
     outline-color: $primary-color;
   }
 
-  &.hide {
-    display: none;
-  }
+  // &.hide {
+  //   display: none;
+  // }
 }
 
 select {

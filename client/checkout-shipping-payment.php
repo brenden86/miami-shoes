@@ -74,7 +74,7 @@
       >
     </div>
   
-    <div class="input-wrapper">
+    <div id="shipping-address-fields" class="input-wrapper">
   
       <!-- SHOW COMPANY BUTTON -->
       <?php
@@ -197,6 +197,11 @@
         >
       </div>
   
+      
+    </div>
+    
+    <div class="input-wrapper">
+
       <!-- SHOW DELIVERY INSTRUCTIONS FIELD -->
       
       <?php
@@ -209,9 +214,7 @@
           ';
         }
       ?>
-    </div>
-    
-    <div class="input-wrapper">
+
       <label for="delivery-instructions" class="sr-only">delivery instructions</label>
       <textarea
         id="delivery-instructions"
