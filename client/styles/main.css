@@ -1703,6 +1703,27 @@ CART ITEMS
   font-weight: 600;
 }
 
+.alert {
+  margin: 2rem;
+  border-radius: 6px;
+}
+.alert .alert-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 1rem;
+  gap: 1rem;
+}
+.alert .alert-wrapper i {
+  transform: scale(1.5);
+}
+.alert.error {
+  background: #eb4747;
+  color: #ffe2e2;
+}
+
 .debug {
   border: 1px dashed orange !important;
 }

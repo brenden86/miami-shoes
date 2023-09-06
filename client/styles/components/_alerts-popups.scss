@@ -1,0 +1,21 @@
+
+
+.alert {
+  margin: 2rem;
+  border-radius: $border-radius-main;
+
+  .alert-wrapper {
+    @include flex(row, flex-start, center);
+    padding: 1rem;
+    gap: 1rem;
+
+    i {
+      transform: scale(1.5);
+    }
+  }
+
+  &.error {
+    background: $failure-color;
+    color: $failure-color-text;
+  }
+}
