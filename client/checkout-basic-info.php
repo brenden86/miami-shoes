@@ -18,6 +18,7 @@
           name="billing_first_name"
           value="<?=$billing_first_name ?? '';?>"
           placeholder="First name"
+          required
         >
   
         <label for="billing-last-name" class="sr-only">last name</label>
@@ -27,6 +28,7 @@
           name="billing_last_name"
           value="<?=$billing_last_name ?? '';?>"
           placeholder="Last name"
+          required
         >
       </div>
       <div class="input-wrapper">
@@ -59,6 +61,7 @@
           name="billing_street1"
           value="<?=$billing_street1 ?? '';?>"
           placeholder="Street"
+          required
         >
   
         <label for="billing-street2" class="sr-only">Address Line 2</label>
@@ -80,16 +83,13 @@
           name="billing_city"
           value="<?=$billing_city ?? '';?>"
           placeholder="City"
+          required
         >
   
         <!-- USE JAVASCRIPT TO STYLE STATE PLACEHOLDER COLOR -->
         <label for="billing-state" class="sr-only">state</label>
-        <select name="billing_state" id="billing-state">
-          <option
-            value=""
-            disabled
-            <?=(!$billing_state) ? 'selected' : ''?>
-          >State</option>
+        <select name="billing_state" id="billing-state" required>
+          <option value="" disabled <?=(!$billing_state) ? 'selected' : ''?>>State</option>
           <option value="AL" <?=($billing_state === "AL") ? 'selected' : ''?>>Alabama</option>
           <option value="AK" <?=($billing_state === "AK") ? 'selected' : ''?>>Alaska</option>
           <option value="AZ" <?=($billing_state === "AZ") ? 'selected' : ''?>>Arizona</option>
@@ -150,6 +150,10 @@
           name="billing_zip"
           value="<?=$billing_zip ?? '';?>"
           placeholder="ZIP"
+          pattern="\d{5}"
+          maxlength="5"
+          inputmode="numeric"
+          required
         >
       </div>
   
@@ -162,6 +166,7 @@
         id="email"
         name="email"
         value="<?=$email ?? '';?>"
+        required
       >
     </div>
   
@@ -174,7 +179,11 @@
         id="phone"
         name="phone"
         value="<?=$phone ?? '';?>"
-        placeholder="(555) 555-5555">
+        placeholder="555-555-5555"
+        inputmode="numeric"
+        maxlength="12"
+        pattern="(\d{3})-(\d{3})-(\d{4})"
+      >
     </div>
 
     <!-- checkout navigation buttons -->

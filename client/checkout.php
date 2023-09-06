@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles/main.css">
   <script src="/client/js/modules/show-additional-fields.js" defer ></script>
+  <script src="/client/js/modules/checkout-validation.js" defer ></script>
 </head>
 <body>
   <div id="root">
@@ -80,6 +81,15 @@
             }
 
             include_once __DIR__ . '/checkout-progress.php';
+
+            // display checkout validation error message
+            if(isset($_SESSION['checkout_error'])) {
+              echo '
+              <h1>' . $_SESSION['checkout_error'] . '</h1>
+              ';
+              // clear checkout error message after displaying
+              unset($_SESSION['checkout_error']);
+            }
 
             if($_SESSION['checkout_info']['current_step'] === 1) {
               include_once __DIR__ . '/checkout-basic-info.php';

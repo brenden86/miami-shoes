@@ -43,18 +43,34 @@ if(showDeliveryInstructionsButton) {
   })
 }
 
-
-
 // hide shipping address & clear values
 if(sameAsBillingCheckbox) {
   
   // hide fields initially if checked
   if(sameAsBillingCheckbox.checked && !shippingAddressFields.classList.contains('hide')) {
     shippingAddressFields.classList.add('hide');
+    // remove required attribute from fields, will be populated server-side
+    
   }
 
-  // toggle when checkbox clicked
+  let requiredShippingInputs = shippingAddressFields.querySelectorAll('[required]');
+
   sameAsBillingCheckbox.addEventListener('change', () => {
+
+    // hide/unhide fields
     shippingAddressFields.classList.toggle('hide');
+
+    // remove required attributes if hidden
+    requiredShippingInputs.forEach(input => {
+      if(sameAsBillingCheckbox.checked) {
+        console.log('checked')
+        input.required = false;
+      } else {
+        console.log('unchecked')
+        input.required = true;
+      }
+    })
   })
+
+
 }
