@@ -192,7 +192,7 @@ function validateCheckout($step) {
     }
     
     // cvv
-    if(preg_match('/\d{3,4}/', $_POST['cvv'])) {
+    if(preg_match('/\d{3,4}/', $_POST['cvv']) && strlen($_POST['cvv']) <= 4) {
       $_SESSION['checkout_info']['cvv'] = $_POST['cvv'];
     } else {
       checkoutValidationError('Please enter a valid CVV.');

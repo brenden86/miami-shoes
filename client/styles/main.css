@@ -1349,7 +1349,7 @@ footer h3 {
 }
 .badge.no-stock {
   background-color: #eb4747;
-  color: #ffe2e2;
+  color: #fff5f5;
 }
 
 .product-card-image img {
@@ -1721,7 +1721,7 @@ CART ITEMS
 }
 .alert.error {
   background: #eb4747;
-  color: #ffe2e2;
+  color: #fff5f5;
 }
 
 .debug {

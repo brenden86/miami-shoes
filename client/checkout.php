@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles/main.css">
   <script src="/client/js/modules/show-additional-fields.js" defer ></script>
-  <!-- <script src="/client/js/modules/checkout-validation.js" defer ></script> -->
+  <script src="/client/js/modules/checkout-validation.js" defer ></script>
 </head>
 <body>
   <div id="root">
