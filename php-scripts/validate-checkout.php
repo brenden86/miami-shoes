@@ -1,5 +1,7 @@
 <?php
 
+include_once __DIR__ . '/../php-scripts/get-cart-info.php';
+
 // set error message and return to checkout page
 function checkoutValidationError($message) {
   $_SESSION['checkout_error'] = $message;
@@ -53,14 +55,14 @@ function validateCheckout($step) {
     }
     
     // billing state
-    if(preg_match('/[A-Za-z]{2}/', $_POST['billing_state'])) {
+    if(preg_match('/^[A-Za-z]{2}$/', $_POST['billing_state'])) {
       $_SESSION['checkout_info']['billing_state'] = $_POST['billing_state'];
     } else {
       checkoutValidationError('Please enter a valid billing state.');
     }
     
     // billing zip
-    if(preg_match('/\d{5}/', $_POST['billing_zip'])) {
+    if(preg_match('/^\d{5}$/', $_POST['billing_zip'])) {
       $_SESSION['checkout_info']['billing_zip'] = $_POST['billing_zip'];
     } else {
       checkoutValidationError('Please enter a valid billing ZIP code.');
@@ -89,6 +91,7 @@ function validateCheckout($step) {
       checkoutValidationError('Please select a shipping type.');
     } else {
       $_SESSION['checkout_info']['shipping_type'] = filter_var($_POST['shipping_type'], FILTER_SANITIZE_SPECIAL_CHARS);
+      $_SESSION['checkout_info']['shipping_cost'] = getShippingCost($_SESSION['checkout_info']['shipping_type']);
     }
 
     // same address
@@ -139,14 +142,14 @@ function validateCheckout($step) {
       }
   
       // shipping state
-      if(preg_match('/[A-Za-z]{2}/', $_POST['shipping_state'])) {
+      if(preg_match('/^[A-Za-z]{2}$/', $_POST['shipping_state'])) {
         $_SESSION['checkout_info']['shipping_state'] = $_POST['shipping_state'];
       } else {
         checkoutValidationError('Please enter a valid shipping state.');
       }
   
       // shipping zip
-      if(preg_match('/\d{5}/', $_POST['shipping_zip'])) {
+      if(preg_match('/^\d{5}$/', $_POST['shipping_zip'])) {
         $_SESSION['checkout_info']['shipping_zip'] = $_POST['shipping_zip'];
       } else {
         checkoutValidationError('Please enter a valid shipping ZIP code.');
@@ -154,6 +157,11 @@ function validateCheckout($step) {
 
     }
 
+    // sales tax rate & amount
+    if(!empty($_SESSION['checkout_info']['shipping_state'])) {
+      $_SESSION['checkout_info']['sales_tax_rate'] = getTaxRate($_SESSION['checkout_info']['shipping_state']);
+      $_SESSION['checkout_info']['sales_tax'] = round($_SESSION['checkout_info']['sales_tax_rate'] * $_SESSION['checkout_info']['cart_subtotal'], 2);
+    }
 
     // delivery instructions
     if(!empty($_POST['delivery_instructions'])) {
@@ -175,7 +183,7 @@ function validateCheckout($step) {
     }
 
     // credit card zip
-    if(preg_match('/\d{5}/', $_POST['credit_card_zip'])) {
+    if(preg_match('/^\d{5}$/', $_POST['credit_card_zip'])) {
       $_SESSION['checkout_info']['credit_card_zip'] = $_POST['credit_card_zip'];
     } else {
       checkoutValidationError('Please enter a valid ZIP code.');
@@ -192,7 +200,7 @@ function validateCheckout($step) {
     }
     
     // cvv
-    if(preg_match('/\d{3,4}/', $_POST['cvv']) && strlen($_POST['cvv']) <= 4) {
+    if(preg_match('/^\d{3,4}$/', $_POST['cvv'])) {
       $_SESSION['checkout_info']['cvv'] = $_POST['cvv'];
     } else {
       checkoutValidationError('Please enter a valid CVV.');

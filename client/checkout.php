@@ -61,6 +61,9 @@
               $_SESSION['checkout_info']['current_step'] = 1;
             }
 
+            // set cart subtotal
+            $_SESSION['checkout_info']['cart_subtotal'] = getCartSubtotal();
+
             // reset checkout step if coming from a different page
             if(!preg_match('/checkout/', $_SERVER['HTTP_REFERER'])) {
               $_SESSION['checkout_info']['current_step'] = 1;
@@ -129,7 +132,9 @@
       
       <div class="order-summary-item-wrapper">
         <div>Subtotal</div>
-        <div class="summary-item-value"><?=getCartSubtotal()?></div>
+        <div class="summary-item-value">
+          <?=isset($_SESSION['checkout_info']['cart_subtotal']) ? '$'.$_SESSION['checkout_info']['cart_subtotal'] : '';?>
+        </div>
       </div>
       
       <div class="order-summary-item-wrapper">
@@ -137,20 +142,33 @@
           <span><?= ucwords($_SESSION['checkout_info']['shipping_type']) ?? '';?></span>
         </div>
         <div class="summary-item-value">
-          <?php
-            if($_SESSION['checkout_info'])
-          ?>
+          <?=isset($_SESSION['checkout_info']['shipping_cost']) ? '$'.$_SESSION['checkout_info']['shipping_cost'] : '—';?>
         </div>
       </div>
       
       <div class="order-summary-item-wrapper">
         <div>Estimated Tax</div>
-        <div class="summary-item-value">—</div>
+        <div class="summary-item-value">
+          <?=isset($_SESSION['checkout_info']['sales_tax']) ? '$'.$_SESSION['checkout_info']['sales_tax'] : '—';?>
+        </div>
       </div>
       
       <div class="order-summary-item-wrapper total">
         <div>Total</div>
-        <div class="summary-item-value">—</div>
+        <div class="summary-item-value">
+          <?=
+            isset(
+              $_SESSION['checkout_info']['cart_subtotal'],
+              $_SESSION['checkout_info']['shipping_cost'],
+              $_SESSION['checkout_info']['sales_tax']
+              ) ? '$' . array_sum([
+                $_SESSION['checkout_info']['cart_subtotal'],
+                $_SESSION['checkout_info']['shipping_cost'],
+                $_SESSION['checkout_info']['sales_tax']
+              ]) : '—';
+
+          ?>
+        </div>
         </div>
         
       </div>
