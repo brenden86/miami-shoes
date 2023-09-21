@@ -1,3 +1,8 @@
+<?php
+  session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,39 +33,6 @@
 
     <!-- main content column -->
     <div class="main-content narrow">
-
-
-      <!-- checkout progress bar -->
-      <div class="content-block">
-        <div class="checkout-progress">
-          <!-- progress bar -->
-          <div class="checkout-progress-bar">
-            <div class="progress-segment complete"></div>
-            <div class="progress-segment complete"></div>
-          </div>
-          <!-- checkout step icons -->
-          <div class="progress-steps-wrapper">
-            <div id="progress-basic-info" class="checkout-step complete">
-              <div class="checkout-step-icon">
-                <i class="bi-check"></i>
-              </div>
-              <h1>Basic Info</h1>
-            </div>
-            <div id="progress-shipping-payment" class="checkout-step complete">
-              <div class="checkout-step-icon">
-                <i class="bi-check"></i>
-              </div>
-              <h1>Shipping & Payment</h1>
-            </div>
-            <div id="progress-review" class="checkout-step complete">
-              <div class="checkout-step-icon">
-                <i class="bi-check"></i>
-              </div>
-              <h1>Review</h1>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <div class="content-block">
 
@@ -93,8 +65,21 @@
                 </div>
                 <div class="detail-text">
                   <div class="detail before">Shipping to</div>
-                  <div class="detail value">Brenden Koenigsman</div>
-                  <div class="detail after">123 S Main St.<br>Salina, KS 67401</div>
+                  <div class="detail value"><?= strtoupper($_SESSION['checkout_info']['shipping_first_name']) . ' ' . strtoupper($_SESSION['checkout_info']['shipping_last_name']);?></div>
+                  <div class="detail after">
+                    <?= $_SESSION['checkout_info']['shipping_street1'] ?>
+                    <br>
+                    <?= isset($_SESSION['checkout_info']['shipping_street2'])
+                      ? strtoupper($_SESSION['checkout_info']['shipping_street2']) . '<br>'
+                      : '';
+                    ?>
+                    <?= strtoupper($_SESSION['checkout_info']['shipping_city'])
+                      . ', '
+                      . strtoupper($_SESSION['checkout_info']['shipping_state'])
+                      . ' '
+                      . $_SESSION['checkout_info']['shipping_zip'];
+                    ?>
+                  </div>
                 </div>
               </div>
 

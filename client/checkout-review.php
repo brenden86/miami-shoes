@@ -1,9 +1,5 @@
 <!-- checkout form fields - REVIEW -->
-<form
-  id="checkout-form-review"
-  action="/client/order-confirmation.php"
-  method="post"
->
+<div id="checkout-form-review">
 
   <div id="checkout-review" class="checkout-fields">
   
@@ -19,10 +15,8 @@
   <div class="cart-contents">
 
     <?php
-    
-    $cart_items = getCartItems();
 
-    foreach($cart_items as $item) {
+    foreach($_SESSION['cart_items'] as $item) {
 
       extract($item);    
     
@@ -65,10 +59,10 @@
 
   <div class="form-navigation-buttons">
     <a href="/client/checkout.php?prev_step=1" class="text-button">Back</a>
-    <button class="button next" type="submit">
+    <a href="/client/order-submit.php" class="button next">
       Place Order
       <i class="bi-send"></i>
-    </button>
+    </a>
   </div>
   
-</form>
+  </div>

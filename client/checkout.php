@@ -1,5 +1,41 @@
 <?php
   session_start();
+  
+  include_once __DIR__ . '/../database/dbconnect.php';
+  include_once __DIR__ . '/../php-scripts/get-product-info.php';
+  include_once __DIR__ . '/../php-scripts/get-cart-info.php';
+  
+  // ****** DEBUG - CLEAR SESSION DATA *******
+  // $_SESSION['checkout_info'] = array();
+  // $_SESSION['checkout_info']['current_step'] = 1;
+  
+  // initialize checkout info array and checkout step if not already present
+  if(!isset($_SESSION['checkout_info'])) {
+    $_SESSION['checkout_info'] = array();
+    $_SESSION['checkout_info']['current_step'] = 1;
+  }
+
+  // store cart contents to session from cookie
+  $_SESSION['cart_items'] = getCartItems();
+
+  // reset checkout step if coming from a different page
+  if(!preg_match('/checkout/', $_SERVER['HTTP_REFERER'])) {
+    $_SESSION['checkout_info']['current_step'] = 1;
+  }
+
+  // extract checkout info from session
+  if(isset($_SESSION['checkout_info'])) {
+    extract($_SESSION['checkout_info']);
+  }
+
+  // go to previous checkout page if requested
+  if($_GET['prev_step'] === '1' && $_SESSION['checkout_info']['current_step'] > 1) {
+    $_SESSION['checkout_info']['current_step'] -= 1;
+    // this is to change the url so the query params are not included
+    // in the served file, to prevent going back on a refresh
+    header('location: /client/checkout.php');
+    exit;
+  }
 ?>
 
 <!DOCTYPE html>
@@ -19,9 +55,6 @@
 <body>
   <div id="root">
     
-<?php include_once __DIR__ . '/../database/dbconnect.php' ?>
-<?php include_once __DIR__ . '/../php-scripts/get-product-info.php' ?>
-<?php include_once __DIR__ . '/../php-scripts/get-cart-info.php' ?>
 
 <!----------- 
     HEADER    
@@ -51,38 +84,6 @@
             <!-- checkout forms -->
             <?php
 
-            // ****** DEBUG - CLEAR SESSION DATA *******
-            // $_SESSION['checkout_info'] = array();
-            // $_SESSION['checkout_info']['current_step'] = 1;
-            
-            // initialize checkout info array and checkout step if not already present
-            if(!isset($_SESSION['checkout_info'])) {
-              $_SESSION['checkout_info'] = array();
-              $_SESSION['checkout_info']['current_step'] = 1;
-            }
-
-            // set cart subtotal
-            $_SESSION['checkout_info']['cart_subtotal'] = getCartSubtotal();
-
-            // reset checkout step if coming from a different page
-            if(!preg_match('/checkout/', $_SERVER['HTTP_REFERER'])) {
-              $_SESSION['checkout_info']['current_step'] = 1;
-            }
-
-            // extract checkout info from session
-            if(isset($_SESSION['checkout_info'])) {
-              extract($_SESSION['checkout_info']);
-            }
-
-            // go to previous checkout page if requested
-            if($_GET['prev_step'] === '1' && $_SESSION['checkout_info']['current_step'] > 1) {
-              $_SESSION['checkout_info']['current_step'] -= 1;
-              // this is to change the url so the query params are not included
-              // in the served file, to prevent going back on a refresh
-              header('location: /client/checkout.php');
-              exit;
-            }
-
             include_once __DIR__ . '/checkout-progress.php';
 
             // display checkout validation error message
@@ -101,11 +102,27 @@
               unset($_SESSION['checkout_error']);
             }
 
-            if($_SESSION['checkout_info']['current_step'] === 1) {
+            // display order error message (review page only)
+            if(isset($_SESSION['order_error'])) {
+              echo '
+              <div class="alert error">
+                <div class="alert-wrapper">
+                  <div class="alert-icon">
+                    <i class="bi-exclamation-circle"></i>
+                  </div>
+                  <div class="alert-message">'.$_SESSION['order_error'].'</div>
+                </div>
+              </div>
+              ';
+              // clear order error message after diaplaying
+              unset($_SESSION['order_error']);
+            }
+
+            if($current_step === 1) {
               include_once __DIR__ . '/checkout-basic-info.php';
-            } elseif ($_SESSION['checkout_info']['current_step'] === 2) {
+            } elseif ($current_step === 2) {
               include_once __DIR__ . '/checkout-shipping-payment.php';
-            } elseif ($_SESSION['checkout_info']['current_step'] === 3) {
+            } elseif ($current_step === 3) {
               include_once __DIR__ . '/checkout-review.php';
             } else {
               include_once __DIR__ . '/checkout-basic-info.php';
@@ -125,6 +142,24 @@
   </div>
   
   <!-- order summary sidebar -->
+
+  <?php
+
+    // calculate subtotal, shipping cost, and taxes
+
+    $_SESSION['checkout_info']['cart_subtotal'] = getCartSubtotal();
+
+    if(isset($_SESSION['checkout_info']['shipping_type'])) {
+      $_SESSION['checkout_info']['shipping_cost'] = getShippingCost($_SESSION['checkout_info']['shipping_type']);
+    }
+
+    // sales tax rate & amount
+    if(!empty($_SESSION['checkout_info']['shipping_state'])) {
+      $_SESSION['checkout_info']['sales_tax_rate'] = getTaxRate($_SESSION['checkout_info']['shipping_state']);
+      $_SESSION['checkout_info']['sales_tax'] = round($_SESSION['checkout_info']['sales_tax_rate'] * $_SESSION['checkout_info']['cart_subtotal'], 2);
+    }
+
+  ?>
   <div class="order-summary-container">
     
     <div class="order-summary-wrapper">

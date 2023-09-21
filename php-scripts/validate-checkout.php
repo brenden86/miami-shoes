@@ -91,7 +91,6 @@ function validateCheckout($step) {
       checkoutValidationError('Please select a shipping type.');
     } else {
       $_SESSION['checkout_info']['shipping_type'] = filter_var($_POST['shipping_type'], FILTER_SANITIZE_SPECIAL_CHARS);
-      $_SESSION['checkout_info']['shipping_cost'] = getShippingCost($_SESSION['checkout_info']['shipping_type']);
     }
 
     // same address
@@ -155,12 +154,6 @@ function validateCheckout($step) {
         checkoutValidationError('Please enter a valid shipping ZIP code.');
       }
 
-    }
-
-    // sales tax rate & amount
-    if(!empty($_SESSION['checkout_info']['shipping_state'])) {
-      $_SESSION['checkout_info']['sales_tax_rate'] = getTaxRate($_SESSION['checkout_info']['shipping_state']);
-      $_SESSION['checkout_info']['sales_tax'] = round($_SESSION['checkout_info']['sales_tax_rate'] * $_SESSION['checkout_info']['cart_subtotal'], 2);
     }
 
     // delivery instructions
