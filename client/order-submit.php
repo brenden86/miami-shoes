@@ -24,8 +24,9 @@
 
   // insert order into DB
   try {
-    $order_id = generateOrderId();
-    $sql = '
+    $_SESSION['checkout_info']['order_id'] = generateOrderId();
+    $_SESSION['checkout_info']['dlvr_date'] = getDeliveryDate($_SESSION['checkout_info']['shipping_type']);
+    $order_sql = '
       INSERT INTO orders (
         order_id,
         order_date,
@@ -82,11 +83,11 @@
         :ordr_taxes
       )
     ';
-    $order_query = $db->prepare($sql);
+    $order_query = $db->prepare($order_sql);
     $order_query->execute([
-      'order_id' => $order_id,
+      'order_id' => $_SESSION['checkout_info']['order_id'],
       'order_date' => date("Y-m-d H:i:s"),
-      'dlvr_date' => getDeliveryDate($_SESSION['checkout_info']['shipping_type']),
+      'dlvr_date' => $_SESSION['checkout_info']['dlvr_date'],
       'email' => $_SESSION['checkout_info']['email'],
       'phone' => $_SESSION['checkout_info']['phone'],
       'bill_fist_name' => $_SESSION['checkout_info']['billing_first_name'],
@@ -111,13 +112,21 @@
       'ship_cost' => $_SESSION['checkout_info']['shipping_cost'],
       'ordr_taxes' => $_SESSION['checkout_info']['sales_tax']
     ]);
+    
+    // insert order items into DB
+    foreach($_SESSION['cart_items'] as $item) {
+      $order_items_sql = 'INSERT INTO order_items(order_id, sku) VALUES(:id, :sku)';
+      $order_items_query = $db->prepare($order_items_sql);
+      $order_items_query->execute(['id' => $order_id, 'sku' => $item['sku']]);
+    }
+
+    $_SESSION['order_submitted'] = true;    
+
 
   } catch(Exception $e) {
     orderError('Sorry, we were unable to complete your order. Please double check your information and try again.<br>' . $e->getMessage());
   }
 
-  // insert order items into DB
-  
 
   header('location: /client/order-confirmation.php');
   exit;

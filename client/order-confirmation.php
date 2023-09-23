@@ -1,5 +1,13 @@
 <?php
   session_start();
+
+  // if trying to access this page before submitting an order, go back to checkout page
+  if(!$_SESSION['order_submitted']) {
+    header('location: /client/checkout.php');
+    exit;
+  }
+
+  include_once __DIR__ . '/../php-scripts/get-product-info.php';
 ?>
 
 
@@ -50,12 +58,17 @@
 
       </div>
 
+      <?php
+        // extract checkout_info from session
+        extract($_SESSION['checkout_info']);
+      ?>
+
       <div class="content-block">
 
         <div class="order-information-container card">
           <div class="order-information-wrapper">
 
-            <div id="order-number">Order #: <span>059-064985</span></div>
+            <div id="order-number">Order #: <span><?=$order_id;?></span></div>
 
             <div class="order-details-wrapper">
 
@@ -65,19 +78,19 @@
                 </div>
                 <div class="detail-text">
                   <div class="detail before">Shipping to</div>
-                  <div class="detail value"><?= strtoupper($_SESSION['checkout_info']['shipping_first_name']) . ' ' . strtoupper($_SESSION['checkout_info']['shipping_last_name']);?></div>
+                  <div class="detail value"><?= strtoupper($shipping_first_name) . ' ' . strtoupper($shipping_last_name);?></div>
                   <div class="detail after">
-                    <?= $_SESSION['checkout_info']['shipping_street1'] ?>
+                    <?= $shipping_street1; ?>
                     <br>
-                    <?= isset($_SESSION['checkout_info']['shipping_street2'])
-                      ? strtoupper($_SESSION['checkout_info']['shipping_street2']) . '<br>'
+                    <?= isset($shipping_street2)
+                      ? strtoupper($shipping_street2) . '<br>'
                       : '';
                     ?>
-                    <?= strtoupper($_SESSION['checkout_info']['shipping_city'])
+                    <?= strtoupper($shipping_city)
                       . ', '
-                      . strtoupper($_SESSION['checkout_info']['shipping_state'])
+                      . strtoupper($shipping_state)
                       . ' '
-                      . $_SESSION['checkout_info']['shipping_zip'];
+                      . $shipping_zip;
                     ?>
                   </div>
                 </div>
@@ -89,7 +102,8 @@
                 </div>
                 <div class="detail-text">
                   <div class="detail before">Arriving by</div>
-                  <div class="detail value">Thursday, Feb. 30</div>
+                  <?php $dlvr_timestamp = strtotime($dlvr_date); ?>
+                  <div class="detail value"><?= date('l, M. j', $dlvr_timestamp) ?></div>
                 </div>
               </div>
 
@@ -99,119 +113,62 @@
                 </div>
                 <div class="detail-text">
                   <div class="detail before">Order total</div>
-                  <div class="detail value">315.34</div>
+                  <div class="detail value"><?= array_sum([$cart_subtotal, $shipping_cost, $sales_tax]); ?></div>
                 </div>
               </div>
 
             </div>
 
-            <!-- cart contents -->
+            
+            <!-- ORDER ITEMS -->
+
             <div class="cart-contents">
 
               <div class="cart-header">
                 <h1>Items in this order</h1>
               </div>
+            
+              <?php
 
-              <div class="cart-item">
+                // DISPLAY ORDER ITEMS
 
-                <div class="item-image">
-                  <img src="./images/product-photos/adidas-running/40560_left_feed1000.jpg" alt="">
-                </div>
+                foreach($_SESSION['cart_items'] as $item) {
 
-                <div class="item-details-wrapper">
+                  extract($item);
 
-                  <div class="item-details">
-                    <div class="item-name">Men's AirMax 2.0 Running Shoe</div>
-                    <div class="item-property">
-                      Color: <span>Slate/Deep Blue</span>
+                  echo '
+                  <div class="cart-item">
+
+                    <div class="item-image">
+                      <img src="' . $thumb_url . '" alt="' . $prod_name . '">
                     </div>
-                    <div class="item-property">
-                      Size: <span>10.5</span>
+
+                    <div class="item-details-wrapper">
+
+                      <div class="item-details">
+                        <div class="item-name">' . buildProductTitle($item) . '</div>
+                        <div class="item-property">
+                          Color: <span>' . getProductColorNames($item) . '</span>
+                        </div>
+                        <div class="item-property">
+                          Size: <span>' . $size . '</span>
+                        </div>
+                      </div>
+
+                      <div class="item-details right">
+                        <div class="price">$' . $price . '</div>
+                      </div>
+                      
                     </div>
-                  </div>
 
-                  <div class="item-details right">
-                    <div class="price">$59.99</div>
-                  </div>
-                  
-                </div>
-
-              </div>
-              <div class="cart-item">
-
-                <div class="item-image">
-                  <img src="./images/product-photos/adidas-running/40560_left_feed1000.jpg" alt="">
-                </div>
-
-                <div class="item-details-wrapper">
-
-                  <div class="item-details">
-                    <div class="item-name">Men's AirMax 2.0 Running Shoe</div>
-                    <div class="item-property">
-                      Color: <span>Slate/Deep Blue</span>
-                    </div>
-                    <div class="item-property">
-                      Size: <span>10.5</span>
-                    </div>
-                  </div>
-
-                  <div class="item-details right">
-                    <div class="price">$59.99</div>
                   </div>
                   
-                </div>
+                  ';
+                }
+              ?>
 
-              </div>
-              <div class="cart-item">
-
-                <div class="item-image">
-                  <img src="./images/product-photos/adidas-running/40560_left_feed1000.jpg" alt="">
-                </div>
-
-                <div class="item-details-wrapper">
-
-                  <div class="item-details">
-                    <div class="item-name">Men's AirMax 2.0 Running Shoe</div>
-                    <div class="item-property">
-                      Color: <span>Slate/Deep Blue</span>
-                    </div>
-                    <div class="item-property">
-                      Size: <span>10.5</span>
-                    </div>
-                  </div>
-
-                  <div class="item-details right">
-                    <div class="price">$59.99</div>
-                  </div>
-                  
-                </div>
-
-              </div>
-              <div class="cart-item">
-
-                <div class="item-image">
-                  <img src="./images/product-photos/adidas-running/40560_left_feed1000.jpg" alt="">
-                </div>
-
-                <div class="item-details-wrapper">
-
-                  <div class="item-details">
-                    <div class="item-name">Men's AirMax 2.0 Running Shoe</div>
-                    <div class="item-property">
-                      Color: <span>Slate/Deep Blue</span>
-                    </div>
-                    <div class="item-property">
-                      Size: <span>10.5</span>
-                    </div>
-                  </div>
-
-                  <div class="item-details right">
-                    <div class="price">$59.99</div>
-                  </div>
-                  
-                </div>
-
-              </div>
+              
+              
 
             </div>
 
@@ -226,6 +183,13 @@
  
   </div>
 </main>
+
+<?php
+  // clear cart info from session and cart items cookie
+  unset($_SESSION['checkout_info']);
+  unset($_SESSION['order_submitted']);
+  setcookie('cart-items', '');
+?>
 
 <!----------- 
   FOOTER    

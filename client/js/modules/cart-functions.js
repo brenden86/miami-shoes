@@ -55,11 +55,10 @@ if(addToCartButton) {
 
 
 function removeFromCart(item) {
-  // remove SKU from cart cookie
+  // remove item from cart cookie
   let cartCookie = JSON.parse(getCookie('cart-items'));
-  let sku = item.getAttribute('data-sku');
-  let skuIndex = cartCookie.indexOf(sku)
-  cartCookie.splice(skuIndex, skuIndex + 1);
+  let itemIndex = parseInt(item.getAttribute('data-index'));
+  cartCookie.splice(itemIndex, 1);
   setCookie('cart-items', JSON.stringify(cartCookie));
   location.reload();
   

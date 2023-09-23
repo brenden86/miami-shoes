@@ -119,13 +119,13 @@
               $cart_items = getCartItems();
 
               // loop through cart items & echo HTML
-              foreach($cart_items as $item) {
+              foreach($cart_items as $key => $item) {
                 
                 extract($item);
 
                 echo '
                 
-                <div class="cart-item" data-sku='.$sku.'>
+                <div class="cart-item" data-sku='.$sku.' data-index=' . $key . '>
     
                   <div class="item-image">
                     <img src="'.$thumb_url.'" alt="'.$prod_name.'">
