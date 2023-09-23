@@ -185,10 +185,9 @@
 </main>
 
 <?php
-  // clear cart info from session and cart items cookie
+  // clear previous order info from session
   unset($_SESSION['checkout_info']);
   unset($_SESSION['order_submitted']);
-  setcookie('cart-items', '');
 ?>
 
 <!----------- 

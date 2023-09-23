@@ -120,7 +120,10 @@
       $order_items_query->execute(['id' => $order_id, 'sku' => $item['sku']]);
     }
 
-    $_SESSION['order_submitted'] = true;    
+    $_SESSION['order_submitted'] = true;
+    
+    // clear cart items cookie
+    setcookie('cart-items', '', time() - 3600);
 
 
   } catch(Exception $e) {
