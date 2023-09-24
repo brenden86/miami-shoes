@@ -44,10 +44,13 @@ function addToCart(sku) {
 const addToCartButton = document.querySelector('#add-to-cart');
 if(addToCartButton) {
   addToCartButton.addEventListener('click', () => {
-    if(selectedItem) {
-      addToCart(selectedItem);
-    } else {
-      alert(`please select a size.`);
+    // wrap - disabled
+    if(addToCartButton.disabled == false) {
+      if(selectedItem) {
+        addToCart(selectedItem);
+      } else {
+        alert(`please select a size.`);
+      }
     }
   })
 }

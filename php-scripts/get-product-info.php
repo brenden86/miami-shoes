@@ -121,7 +121,6 @@
     // extract properties from product
     extract($product);
     
-    ;
     $sizes_query = $db->prepare('
       SELECT
         sku,
@@ -202,7 +201,7 @@
       $avail_date > date('Y-m-d', strtotime('today - 30 days')) &&
       $avail_date <= date('Y-m-d')
       ) {
-      // NEW - displayed if available date is within last 30 days
+      // NEW - displayed if first available date is within last 30 days
       return '<div class="badge">new</div>';
     }
   }

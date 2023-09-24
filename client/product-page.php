@@ -45,7 +45,24 @@ if (isset($_GET['id'])) {
 }
 
 // Get product info from DB
-$product_query = $db->prepare('SELECT * FROM products WHERE prod_id = :id');
+$product_query = $db->prepare('
+  SELECT
+    prod_id,
+    prod_name,
+    thumb_url,
+    price,
+    brand,
+    gender,
+    shoe_type,
+    prim_color,
+    sec_color,
+    COUNT(inventory.sku) AS qty
+  FROM products
+  LEFT JOIN stock USING(prod_id)
+  LEFT JOIN inventory USING(sku)
+  WHERE prod_id = :id
+  GROUP BY prod_id
+');
 $product_query->execute(['id' => $id]);
 $product = $product_query->fetch(PDO::FETCH_ASSOC);
 
@@ -54,10 +71,10 @@ extract($product);
 
 // Get product image URLs
 $product_image_query = $db->prepare('SELECT * FROM prod_images WHERE prod_id = :id');
-  $product_image_query->execute(['id' => $id]);
-  $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
-  
-  ?>
+$product_image_query->execute(['id' => $id]);
+$product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
+
+?>
 
 <div class="content-block">
   <div class="product-wrapper">
@@ -74,18 +91,18 @@ $product_image_query = $db->prepare('SELECT * FROM prod_images WHERE prod_id = :
       
       <div class="thumbnail-wrapper">
         <?php
-              // populate product images
-              foreach($product_images as $image => $path) {
-                echo '
-                <div class="thumbnail">
-                <img src="' . $path['img_path'] . '" alt="' . $product['prod_name'] . '">
-                </div>
-                ';
-              }
-              ?>
+          // populate product images
+          foreach($product_images as $image => $path) {
+            echo '
+            <div class="thumbnail">
+            <img src="' . $path['img_path'] . '" alt="' . $product['prod_name'] . '">
+            </div>
+            ';
+          }
+        ?>
             
             
-          </div>
+        </div>
           
         </div>
         
@@ -103,6 +120,7 @@ $product_image_query = $db->prepare('SELECT * FROM prod_images WHERE prod_id = :
               <h1 class="product-title">
                 <?=buildProductTitle($product)?>
               </h1>
+              <?=($qty < 1) ? '<div class="out-of-stock">Out of Stock</div>' : '' ?>
               <div class="price">$<?=$price?></div>
             </div>
             
@@ -123,7 +141,7 @@ $product_image_query = $db->prepare('SELECT * FROM prod_images WHERE prod_id = :
               </div>
             </div> 
             
-            <div id="add-to-cart" class="button">add to cart</div>
+            <div id="add-to-cart" class="button <?=($qty < 1) ? 'disabled' : ''?>">add to cart</div>
             
             <!-- item details -->
             <div class="info-group">

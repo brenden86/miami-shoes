@@ -118,6 +118,7 @@ i {
 button {
   border: none;
   font-size: inherit;
+
 }
 
 // for buttons that are text only (includes icons)
@@ -164,6 +165,14 @@ button {
 
     &:hover {
       background: $secondary-color-hover;
+    }
+  }
+
+  &.disabled {
+    background: rgba(0, 0, 0, 0.2);
+    color: $bg-dark;
+    &:hover {
+      cursor: initial;
     }
   }
 

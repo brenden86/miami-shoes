@@ -81,6 +81,13 @@
   font-weight: 600;
   font-size: 1.5rem;
 }
+.product-column .info-group .out-of-stock {
+  color: #eb4791;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 0.5rem 0;
+  font-size: 1.2rem;
+}
 .product-column .info-group span {
   font-weight: 600;
   margin: 0 0.5rem;
@@ -593,6 +600,13 @@ button {
 }
 .button.secondary:hover {
   background: #58c2f0;
+}
+.button.disabled {
+  background: rgba(0, 0, 0, 0.2);
+  color: #f1f3f4;
+}
+.button.disabled:hover {
+  cursor: initial;
 }
 .button.next:hover i {
   transform: translateX(5px);
