@@ -12,10 +12,10 @@
   <script src="./js/modules/product-image-gallery.js" defer></script>
   <script src="./js/modules/cart-functions.js" defer></script>
   <script src="./js/modules/cookie-functions.js" defer></script>
+  <script src="./js/modules/popups.js" defer></script>
 </head>
 <body>
   <div id="root">
-    
     
     <?php
   // INCLUDES

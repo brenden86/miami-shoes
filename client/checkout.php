@@ -133,7 +133,7 @@
             // sales tax rate & amount
             if(!empty($_SESSION['checkout_info']['shipping_state'])) {
               $_SESSION['checkout_info']['sales_tax_rate'] = getTaxRate($_SESSION['checkout_info']['shipping_state']);
-              $_SESSION['checkout_info']['sales_tax'] = round($_SESSION['checkout_info']['sales_tax_rate'] * $_SESSION['checkout_info']['cart_subtotal'], 2);
+              $_SESSION['checkout_info']['sales_tax'] = number_format(round($_SESSION['checkout_info']['sales_tax_rate'] * $_SESSION['checkout_info']['cart_subtotal'], 2), 2, '.');
             }
 
 

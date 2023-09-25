@@ -36,6 +36,7 @@ function addToCart(sku) {
     // update cart count in header
     updateHeaderCartCount(cartArray.length);
   }
+
 }
 
 
@@ -43,15 +44,15 @@ function addToCart(sku) {
 
 const addToCartButton = document.querySelector('#add-to-cart');
 if(addToCartButton) {
-  addToCartButton.addEventListener('click', () => {
-    // wrap - disabled
-    if(addToCartButton.disabled == false) {
+  addToCartButton.addEventListener('click', (e) => {
+    if(!addToCartButton.classList.contains('disabled')) {
       if(selectedItem) {
         addToCart(selectedItem);
+        showCartPopup();
       } else {
         alert(`please select a size.`);
       }
-    }
+    } 
   })
 }
 
