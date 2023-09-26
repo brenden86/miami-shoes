@@ -129,7 +129,36 @@ $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
               <h2>Colors:</h2>
               <span><?=getProductColorNames($product)?></span>
               <div class="product-colors-wrapper">
-                <?=buildColorBlocks($product)?>
+                <?php 
+                  $color_variants = $db->getColorVariants($prod_name);
+                  $color_hex_array = $db->queryAndFetch('SELECT color_name, color_hex FROM prod_colors');
+
+                  // create array of color hex values
+                  foreach($color_hex_array as $color) {
+                    $color_hex_values[$color['color_name']] = $color['color_hex'];
+                  }
+                  
+                  // loop through variants, return color block HTML
+                  foreach($color_variants as $variant) {
+                    
+                    // set selected class
+                    if ($variant['prim_color'] === $product['prim_color'] && $variant['sec_color'] === $product['sec_color']) {
+                      $selected = 'selected';
+                    } else {
+                      $selected = '';
+                    }
+                    
+                    echo '
+                    <a
+                    href="/client/product-page.php?id=' . $variant['prod_id'] . '"
+                    class="product-color '.$selected.'"
+                    >
+                    <div class="color-swatch primary" style="background: #'.$color_hex_values[$variant['prim_color']].'"></div>
+                    <div class="color-swatch secondary" style="background: #'.$color_hex_values[$variant['sec_color']].'"></div>
+                    </a>
+                    ';
+                  }
+                ?>
               </div>
             </div>
             
@@ -137,7 +166,30 @@ $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
             <div class="info-group">
               <h2>Size:</h2>
               <div class="sizes-wrapper">
-                <?=getSizes($product)?>
+                <?php 
+                  $shoe_sizes = $db->getSizesInStock($prod_id);
+                  
+                  // loop through sizes array and display
+                  foreach($shoe_sizes as $item) {
+
+                    // set disabled if no qty in inventory
+                    if ($item['qty'] < 1) {
+                      $disabled = 'disabled';
+                    } else {
+                      $disabled = '';
+                    }
+                    
+                    // format size text to remove decimal for whole numbers
+                    if ($item['size'] - floor($item['size']) > 0) {
+                      $size_text = $item['size'];
+                    } else {
+                      $size_text = round($item['size'], 0);
+                    }
+                    
+                    echo '
+                    <div class="size-button" dava-size="'.$item['size'].'" data-sku="'.$item['sku'].'">'.$size_text.'</div>';
+                  }
+                ?>
               </div>
             </div> 
             
@@ -147,7 +199,13 @@ $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
             <div class="info-group">
               <h2>Item details:</h2>
               <ul>
-                <?=getDetails($product)?>
+                <?php
+                  $product_details = $db->getProductDetails($prod_id);
+                  // iterate & echo details
+                  foreach($product_details as $detail) {
+                    echo '<li>' . $detail['prod_detail'] . '</li>';
+                  }
+                ?>
               </ul>
             </div>
             
@@ -172,7 +230,7 @@ FOOTER
 <?php
   // terminate DB connection
   $db = null;
-  ?>
+?>
 
 </div>
 </body>

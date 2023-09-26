@@ -76,7 +76,7 @@
 
             // get products
             
-            $products = queryAndFetch('
+            $products = $db->queryAndFetch('
             SELECT
               prod_id,
               prod_name,
@@ -105,10 +105,7 @@
                   <div class="product-colors-wrapper">';
 
                   // get color variants for current product
-                  $prod_name = $field['prod_name'];
-                  $color_variants_query = $db->prepare('SELECT prim_color, sec_color FROM products WHERE prod_name = :prodname');
-                  $color_variants_query->execute(['prodname' => $prod_name]);
-                  $color_variants = $color_variants_query->fetchAll(PDO::FETCH_ASSOC);
+                  $color_variants = $db->getColorVariants($field['prod_name']);
                   
                   // loop through variants
                   foreach($color_variants as $color) {
@@ -152,8 +149,6 @@
             // END foreach
             }
 
-            // terminate DB connection
-            $db = null;
           ?>
 
         </div>
@@ -311,6 +306,10 @@
     </div>
   </div>
 </main>
+
+<?php
+  $db = null;
+?>
 
 <!----------- 
     FOOTER    

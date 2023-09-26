@@ -9,9 +9,10 @@ include_once __DIR__ . '/../database/dbconnect.php';
 
 function getProductSqlParams() {
   
+  global $db;
+
   // create array of parameters to be joined into SQL WHERE clause
   $params_array = [];
-
   
   // handle GENDER
 
@@ -34,7 +35,7 @@ function getProductSqlParams() {
   if(preg_match('/filter-color-/', $_SERVER['REQUEST_URI'])) {
     
     // get filter colors from DB to compare
-    $filter_colors = queryAndFetch('SELECT DISTINCT filter_color, filter_hex FROM prod_colors');
+    $filter_colors = $db->queryAndFetch('SELECT DISTINCT filter_color, filter_hex FROM prod_colors');
     
     // initialize array for selected colors
     $selected_colors = [];
@@ -83,10 +84,10 @@ function getProductSqlParams() {
     }
     
     // get stocked shoe types
-    $stocked_shoe_types = queryAndFetch('
-    SELECT DISTINCT shoe_type
-    FROM stock
-    LEFT JOIN products USING(prod_id)
+    $stocked_shoe_types = $db->queryAndFetch('
+      SELECT DISTINCT shoe_type
+      FROM stock
+      LEFT JOIN products USING(prod_id)
     '); 
     $shoe_types = [];
     
@@ -116,10 +117,10 @@ function getProductSqlParams() {
     }
     
     //
-    $stocked_brands = queryAndFetch('
-    SELECT DISTINCT brand
-    FROM stock
-    LEFT JOIN products USING(prod_id)
+    $stocked_brands = $db->queryAndFetch('
+      SELECT DISTINCT brand
+      FROM stock
+      LEFT JOIN products USING(prod_id)
     ');
     
     $brands = [];
