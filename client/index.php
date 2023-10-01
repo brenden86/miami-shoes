@@ -97,7 +97,7 @@
             // output html
             echo '
             <div class="product-card-wrapper">
-              <a href="/client/product-page.php?id=' . $field['prod_id'] . '" class="product-card">'
+              <a href="/product-page.php?id=' . $field['prod_id'] . '" class="product-card">'
                   . getProductCardBadge($field) . '
                   <div class="product-card-image">
                     <img src="' . $field['thumb_url'] . '" alt="' . $field['brand'] . ' ' . $field['prod_name'] . '">
@@ -163,7 +163,7 @@
       <div class="category-cards-container">
         <div class="category-cards-wrapper drag-scroll">
 
-          <a href="/client/product-search.php?type-filter-running=running&shoe-type-selected=true" class="category-card">
+          <a href="/product-search.php?type-filter-running=running&shoe-type-selected=true" class="category-card">
 
             <div class="card-image">
               <svg class="stroke-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296.48 267.37">
@@ -178,7 +178,7 @@
             <div class="card-title">Running</div>
 
           </a>
-          <a href="/client/product-search.php?type-filter-sneaker=sneaker&shoe-type-selected=true" class="category-card">
+          <a href="/product-search.php?type-filter-sneaker=sneaker&shoe-type-selected=true" class="category-card">
 
             <div class="card-image">
               <svg class="stroke-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296.48 267.37">
@@ -193,7 +193,7 @@
             <div class="card-title">Sneakers</div>
 
           </a>
-          <a href="/client/product-search.php?type-filter-casual=casual&shoe-type-selected=true" class="category-card">
+          <a href="product-search.php?type-filter-casual=casual&shoe-type-selected=true" class="category-card">
 
             <div class="card-image">
               <svg class="stroke-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296.48 267.37">
@@ -208,7 +208,7 @@
             <div class="card-title">Casual</div>
 
           </a>
-          <a href="/client/product-search.php?type-filter-boot=boot&shoe-type-selected=true" class="category-card">
+          <a href="/product-search.php?type-filter-boot=boot&shoe-type-selected=true" class="category-card">
 
             <div class="card-image">
               <svg class="stroke-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296.48 267.37">
@@ -223,7 +223,7 @@
             <div class="card-title">Boots</div>
 
           </a>
-          <a href="/client/product-search.php?type-filter-formal=formal&shoe-type-selected=true" class="category-card">
+          <a href="/product-search.php?type-filter-formal=formal&shoe-type-selected=true" class="category-card">
 
             <div class="card-image">
               <svg class="stroke-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296.48 267.37">
@@ -252,25 +252,25 @@
       <div class="brands-container">
         <div class="brands-wrapper drag-scroll">
           
-          <a class="brand-card" href="/client/product-search.php?brands=adidas">
+          <a class="brand-card" href="/product-search.php?brands=adidas">
             <img src="./images/logos/Adidas_Logo.png" alt="adidas">
           </a>
-          <a class="brand-card" href="/client/product-search.php?brands=nike">
+          <a class="brand-card" href="/product-search.php?brands=nike">
             <img src="./images/logos/Nike-Logo.png" alt="nike">
           </a>
-          <a class="brand-card" href="/client/product-search.php?brands=vans">
+          <a class="brand-card" href="/product-search.php?brands=vans">
             <img src="./images/logos/vans logo.png" alt="vans">
           </a>
-          <a class="brand-card" href="/client/product-search.php?brands=converse">
+          <a class="brand-card" href="/product-search.php?brands=converse">
             <img src="./images/logos/converse-logo.png" alt="converse">
           </a>
-          <a class="brand-card" href="/client/product-search.php?brands=dockers">
+          <a class="brand-card" href="/product-search.php?brands=dockers">
             <img src="./images/logos/dockers.png" alt="dockers">
           </a>
-          <a class="brand-card" href="/client/product-search.php?brands=heydude">
+          <a class="brand-card" href="/product-search.php?brands=heydude">
             <img src="./images/logos/heydude.png" alt="heydude">
           </a>
-          <a class="brand-card" href="/client/product-search.php?brands=new+balance">
+          <a class="brand-card" href="/product-search.php?brands=new+balance">
             <img src="./images/logos/new-balance.png" alt="new balance">
           </a>
           

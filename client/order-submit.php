@@ -9,7 +9,7 @@
   // on error, send back to checkout page with error message.
   function orderError($message) {
     $_SESSION['order_error'] = $message;
-    header('location: /client/checkout.php');
+    header('location: /checkout.php');
     exit;
   }
 
@@ -131,7 +131,7 @@
   }
 
 
-  header('location: /client/order-confirmation.php');
+  header('location: /order-confirmation.php');
   exit;
 
 ?>

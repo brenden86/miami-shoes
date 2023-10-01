@@ -118,7 +118,7 @@
             
             echo '
             <div class="product-card-wrapper">
-            <a href="/client/product-page.php?id=' . $prod_id . '" class="product-card">'
+            <a href="/product-page.php?id=' . $prod_id . '" class="product-card">'
               . getProductCardBadge($products[$i]) . '
               <div class="product-card-image">
                 <img src="' . $thumb_url . '" alt="' . $brand . ' ' . $prod_name . '">

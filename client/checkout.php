@@ -33,7 +33,7 @@
     $_SESSION['checkout_info']['current_step'] -= 1;
     // this is to change the url so the query params are not included
     // in the served file, to prevent going back on a refresh
-    header('location: /client/checkout.php');
+    header('location: /checkout.php');
     exit;
   }
 ?>
@@ -49,8 +49,8 @@
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles/main.css">
-  <script src="/client/js/modules/show-additional-fields.js" defer ></script>
-  <script src="/client/js/modules/checkout-validation.js" defer ></script>
+  <script src="/js/modules/show-additional-fields.js" defer ></script>
+  <script src="/js/modules/checkout-validation.js" defer ></script>
 </head>
 <body>
   <div id="root">

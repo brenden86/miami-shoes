@@ -68,7 +68,7 @@
 
     <div class="footer-wrapper">
 
-      <a href="/client/" class="footer-logo">
+      <a href="/" class="footer-logo">
         <img src="images/logo-placeholder.jpg" class="logo-image" alt="logo" />
       </a>
 

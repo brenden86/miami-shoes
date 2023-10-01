@@ -3,7 +3,7 @@
 
   // if trying to access this page before submitting an order, go back to checkout page
   if(!$_SESSION['order_submitted']) {
-    header('location: /client/checkout.php');
+    header('location: /checkout.php');
     exit;
   }
 

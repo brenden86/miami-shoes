@@ -150,7 +150,7 @@ $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
                     
                     echo '
                     <a
-                    href="/client/product-page.php?id=' . $variant['prod_id'] . '"
+                    href="/product-page.php?id=' . $variant['prod_id'] . '"
                     class="product-color '.$selected.'"
                     >
                     <div class="color-swatch primary" style="background: #'.$color_hex_values[$variant['prim_color']].'"></div>

@@ -1,7 +1,7 @@
 <!-- checkout form fields - SHIPPING & PAYMENT -->
 <form
   id="checkout-form-shipping-payment"
-  action="/client/checkout-submit.php"
+  action="/checkout-submit.php"
   method="post"
 >
   <div id="shipping-payment-fields" class="checkout-fields">
@@ -363,7 +363,7 @@
   
   </div>
   <div class="form-navigation-buttons">
-    <a href="/client/checkout.php?prev_step=1" class="text-button">Back</a>
+    <a href="/checkout.php?prev_step=1" class="text-button">Back</a>
     <button class="button next" type="submit">
       Continue to Review
       <i class="bi-caret-right-fill"></i>

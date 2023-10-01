@@ -5,7 +5,7 @@
   if($_GET['update'] === '1') {
     $_SESSION['checkout_info']['current_step'] = 1;
     // remove query params from URL
-    header('location: /client/my-cart.php');
+    header('location: /my-cart.php');
     exit;
   }
 
@@ -22,8 +22,8 @@
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles/main.css">
-  <script src="/client/js/modules/cookie-functions.js" defer></script>
-  <script src="/client/js/modules/cart-functions.js" defer></script>
+  <script src="/js/modules/cookie-functions.js" defer></script>
+  <script src="/js/modules/cart-functions.js" defer></script>
 </head>
 <body>
   <div id="root">
@@ -72,8 +72,8 @@
               if($cart_cookie && count($cart_cookie) > 0) {
                 echo '
                   <div class="form-navigation-buttons">
-                    <a href="/client/product-search.php" class="text-button">Continue Shopping</a>
-                    <a href="/client/checkout.php" class="button next">
+                    <a href="/product-search.php" class="text-button">Continue Shopping</a>
+                    <a href="/checkout.php" class="button next">
                       Checkout
                       <i class="bi-caret-right-fill"></i>
                     </a>

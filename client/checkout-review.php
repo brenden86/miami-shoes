@@ -7,7 +7,7 @@
   <div class="cart-header">
     <h1>Items in this order</h1>
     <div class="form-navigation-buttons">
-      <a href="/client/my-cart.php" class="text-button">Back to cart</a>
+      <a href="/my-cart.php" class="text-button">Back to cart</a>
     </div>
   </div>
   
@@ -58,8 +58,8 @@
   </div>
 
   <div class="form-navigation-buttons">
-    <a href="/client/checkout.php?prev_step=1" class="text-button">Back</a>
-    <a href="/client/order-submit.php" class="button next">
+    <a href="/checkout.php?prev_step=1" class="text-button">Back</a>
+    <a href="/order-submit.php" class="button next">
       Place Order
       <i class="bi-send"></i>
     </a>
