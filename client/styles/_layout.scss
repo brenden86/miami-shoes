@@ -168,6 +168,10 @@ button {
     }
   }
 
+  &.small {
+    padding: $input-padding-small;
+  }
+
   &.disabled {
     background: rgba(0, 0, 0, 0.2);
     color: $bg-dark;

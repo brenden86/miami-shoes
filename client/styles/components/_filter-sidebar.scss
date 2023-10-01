@@ -1,13 +1,19 @@
 
 .sidebar-container {
   width: clamp(200px, 15%, 300px);
-
+  position: relative;
+  top: 1rem;
 }
 
+
 .filter-submit-button {
-  display: block;
-  position: relative;
+  position: fixed;
   visibility: hidden;
+  background: $bg-color;
+  padding-top: 8.5rem;
+  padding-bottom: .25rem;
+  width: 200px;
+  box-shadow: 0 .5rem .5rem $bg-color;
   opacity: 0;
   top: 10px; // for subtle 'fade in' effect
   transition: visibility 0s, opacity 100ms ease-out, top 100ms ease-out;

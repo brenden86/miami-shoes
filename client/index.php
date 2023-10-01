@@ -39,22 +39,22 @@
 
         <div class="slider-images">
           <div class="image-wrapper">
-            <div class="slider-image" style="background-image: url(./images/slider/lebron.jpg)"></div>
-            <div class="slider-image" style="background-image: url(./images/slider/boots.jpg)"></div>
-            <div class="slider-image" style="background-image: url(./images/slider/converse.jpg)"></div>
-            <div class="slider-image" style="background-image: url(./images/slider/running.jpg)"></div>
-            <div class="slider-image" style="background-image: url(./images/slider/skateboard.webp)"></div>
+            <div class="slider-image" style="background-image: url(/images/slider/lebron.jpg)"></div>
+            <div class="slider-image" style="background-image: url(/images/slider/boots.jpg)"></div>
+            <div class="slider-image" style="background-image: url(/images/slider/converse.jpg)"></div>
+            <div class="slider-image" style="background-image: url(/images/slider/running.jpg)"></div>
+            <div class="slider-image" style="background-image: url(/images/slider/skateboard.webp)"></div>
           </div>
         </div>
 
         <div class="slider-controls">
           <div class="input-wrapper inline small">
-            <button id="slider-prev" class="small">
+            <div id="slider-prev" class="button small">
               <i class="bi-caret-left-fill"></i>
-            </button>
-            <button id="slider-next" class="small">
+            </div>
+            <div id="slider-next" class="button small">
               <i class="bi-caret-right-fill"></i>
-            </button>
+            </div>
           </div>
         </div>
 
@@ -252,25 +252,25 @@
       <div class="brands-container">
         <div class="brands-wrapper drag-scroll">
           
-          <a class="brand-card" href="/product-search.php?brands=adidas">
+          <a class="brand-card" href="/product-search.php?brand-filter-adidas=adidas">
             <img src="./images/logos/Adidas_Logo.png" alt="adidas">
           </a>
-          <a class="brand-card" href="/product-search.php?brands=nike">
+          <a class="brand-card" href="/product-search.php?brand-filter-nike=nike">
             <img src="./images/logos/Nike-Logo.png" alt="nike">
           </a>
-          <a class="brand-card" href="/product-search.php?brands=vans">
+          <a class="brand-card" href="/product-search.php?brand-filter-vans=vans">
             <img src="./images/logos/vans logo.png" alt="vans">
           </a>
-          <a class="brand-card" href="/product-search.php?brands=converse">
+          <a class="brand-card" href="/product-search.php?brand-filter-converse=converse">
             <img src="./images/logos/converse-logo.png" alt="converse">
           </a>
-          <a class="brand-card" href="/product-search.php?brands=dockers">
+          <a class="brand-card" href="/product-search.php?brand-filter-dockers=dockers">
             <img src="./images/logos/dockers.png" alt="dockers">
           </a>
-          <a class="brand-card" href="/product-search.php?brands=heydude">
+          <a class="brand-card" href="/product-search.php?brand-filter-heydude=heydude">
             <img src="./images/logos/heydude.png" alt="heydude">
           </a>
-          <a class="brand-card" href="/product-search.php?brands=new+balance">
+          <a class="brand-card" href="/product-search.php?brand-filter-newbalance=new+balance">
             <img src="./images/logos/new-balance.png" alt="new balance">
           </a>
           
