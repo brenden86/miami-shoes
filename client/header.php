@@ -14,7 +14,6 @@
       <a href="/product-search.php?gender=1">Mens</a>
       <a href="/product-search.php?gender=2">Womens</a>
       <a href="/product-search.php">Brands</a>
-      <a href="/product-search.php">Sale</a>
     </nav>
     
   </div>
