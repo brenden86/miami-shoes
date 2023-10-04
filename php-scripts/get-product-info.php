@@ -6,9 +6,9 @@
     extract($product);
 
     // handle gender
-    if ($gender = 1) {
+    if ($gender === 1) {
       $gender_text = "mens ";
-    } else if ($gender = 2) {
+    } else if ($gender === 2) {
       $gender_text = "womens ";
     } else {
       $gender_text = "";
@@ -44,12 +44,12 @@
     // build breadcrumbs
     if ($gender != 0) {
       return
-        '<a href="/client/product-search.php?gender='.$gender.'" class="text-button">'.$gender_text.'</a>
+        '<a href="/product-search.php?'. $gender_text .'=1" class="text-button">'.$gender_text.'</a>
         <i class="bi-chevron-right"></i>
-        <a href="/client/product-search.php?gender='.$gender.'&type-filter-'.$shoe_type.'='.$shoe_type.'" class="text-button">'.$shoe_type.'</a>
+        <a href="/product-search.php?'. $gender_text . '=1&type-filter-'.$shoe_type.'='.$shoe_type.'" class="text-button">'.$shoe_type.'</a>
         ';
     } else {
-      return '<a href="/client/product-search.php?type-filter'.$shoe_type.'='.$shoe_type.'" class="text-button">'.$shoe_type.'</a>';
+      return '<a href="/product-search.php?type-filter'.$shoe_type.'='.$shoe_type.'" class="text-button">'.$shoe_type.'</a>';
     }
 
 

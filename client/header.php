@@ -11,8 +11,8 @@
   <div class="header-section center">
     <!--nav links-->
     <nav class="header-navigation">
-      <a href="/product-search.php?gender=1">Mens</a>
-      <a href="/product-search.php?gender=2">Womens</a>
+      <a href="/product-search.php?mens=1">Mens</a>
+      <a href="/product-search.php?womens=1">Womens</a>
       <a href="/product-search.php">Brands</a>
     </nav>
     

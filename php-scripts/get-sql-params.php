@@ -2,6 +2,13 @@
 <?php
 
 /*
+
+ NEED TO FIX:
+
+ 1. BUILD PRODUCT NAME
+
+
+/*
   Script for handling query parameters for product search
 */
 
