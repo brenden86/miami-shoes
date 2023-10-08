@@ -125,6 +125,7 @@
   gap: 0.25rem;
 }
 .product-column .info-group .sizes-wrapper .size-button {
+  position: relative;
   width: 60px;
   padding: 0.5rem 0;
   text-align: center;
@@ -144,6 +145,24 @@
 .product-column .info-group .sizes-wrapper .size-button.selected {
   background: #eb4791;
   color: white;
+}
+.product-column .info-group .sizes-wrapper .size-button.disabled {
+  background: #f1f3f4;
+  color: #b8b8b8;
+}
+.product-column .info-group .sizes-wrapper .size-button.disabled::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  clip-path: polygon(98% 0, 100% 0, 100% 2%, 2% 100%, 0% 100%, 0% 98%);
+  background: #b8b8b8;
+}
+.product-column .info-group .sizes-wrapper .size-button.disabled:hover {
+  cursor: initial;
 }
 .product-column .info-group .sizes-wrapper .size-container {
   display: flex;
@@ -179,21 +198,6 @@
 .product-column .info-group .sizes-wrapper .size-container input:checked ~ .radio {
   background: #eb4791;
   color: white;
-}
-.product-column .info-group .sizes-wrapper .size-container input:disabled ~ .radio {
-  background: #f1f3f4;
-  color: #b8b8b8;
-}
-.product-column .info-group .sizes-wrapper .size-container input:disabled ~ .radio::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 100%;
-  width: 100%;
-  clip-path: polygon(98% 0, 100% 0, 100% 2%, 2% 100%, 0% 100%, 0% 98%);
-  background: #b8b8b8;
 }
 .product-column ul {
   font-size: 1.2rem;
@@ -1811,20 +1815,22 @@ CART ITEMS
 .popup-container .popup-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: stretch;
   flex-wrap: nowrap;
+  gap: 2rem;
+}
+.popup-container .popup-wrapper .popup-close {
+  align-self: flex-end;
 }
 .popup-container .popup-wrapper .popup-content {
-  align-self: stretch;
-  margin: 5rem 2rem;
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
-  gap: 1rem;
+  gap: 3rem;
 }
 .popup-container .popup-wrapper .popup-content .popup-icon i {
   color: #eb4791;
@@ -1832,6 +1838,7 @@ CART ITEMS
   font-size: 4rem;
 }
 .popup-container .popup-wrapper .popup-buttons {
+  align-self: flex-end;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

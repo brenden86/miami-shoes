@@ -187,7 +187,7 @@ $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
                     }
                     
                     echo '
-                    <div class="size-button" dava-size="'.$item['size'].'" data-sku="'.$item['sku'].'">'.$size_text.'</div>';
+                    <div class="size-button ' . $disabled . '" data-size="'.$item['size'].'" data-sku="'.$item['sku'].'">'.$size_text.'</div>';
                   }
                 ?>
               </div>

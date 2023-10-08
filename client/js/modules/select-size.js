@@ -1,5 +1,4 @@
 const sizeButtons = document.querySelectorAll('.size-button');
-
 let selectedSize;
 let selectedItem;
 
@@ -23,8 +22,11 @@ function selectSize(button) {
   selectedItem = sku;
 }
 
-sizeButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    selectSize(button);
-  })
+document.addEventListener('click', e => {
+  if(
+    !e.target.classList.contains('disabled') &&
+    e.target.classList.contains('size-button')
+  ) {
+    selectSize(e.target);
+  }
 })

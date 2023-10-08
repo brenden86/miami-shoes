@@ -1,4 +1,5 @@
 
+const addToCartButton = document.querySelector('#add-to-cart');
 
 // DOM elements for the size buttons are already declared in 'select-size.js'
 
@@ -20,7 +21,8 @@ function updateCartCount(count) {
   }
 }
 
-function addToCart(sku) {
+function updateCartCookie(sku) {
+
   let cartCookie = getCookie('cart-items');
   // create cart cookie if it does not exist.
   if(!cartCookie) {
@@ -39,20 +41,36 @@ function addToCart(sku) {
 
 }
 
+async function getQtyInStock(sku) {
+  const res = await fetch(`http://localhost:3000/get-stock.php?sku=${sku}`);
+  const result = await res.json();
+  return result.data.qty;
+}
+
+async function addToCart(sku) {
+  if(!addToCartButton.classList.contains('disabled')) {
+    // selectedItem value defined in select-size.js
+    if(selectedItem) {
+      let qty = await getQtyInStock(sku);
+      if(qty > 1) {
+        updateCartCookie(selectedItem);
+        showPopup("addToCart");
+      } else {
+        showPopup("outOfStock");
+      }
+    } else {
+      alert('Please select a size.');
+    }
+    // do nothing if disabled
+  } 
+}
+
 
 // ADD TO CART button click handler
 
-const addToCartButton = document.querySelector('#add-to-cart');
 if(addToCartButton) {
   addToCartButton.addEventListener('click', (e) => {
-    if(!addToCartButton.classList.contains('disabled')) {
-      if(selectedItem) {
-        addToCart(selectedItem);
-        showCartPopup();
-      } else {
-        alert(`please select a size.`);
-      }
-    } 
+    addToCart(selectedItem);
   })
 }
 

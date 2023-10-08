@@ -51,15 +51,17 @@
   }
 
   .popup-wrapper {
-    @include flex(column, flex-start, flex-end);
-    // gap: 1rem;
+    @include flex(column, center, stretch);
+    gap: 2rem;
+
+    .popup-close {
+      align-self: flex-end;
+    }
 
     .popup-content {
-      align-self: stretch;
-      margin: 5rem 2rem;
       text-align: center;
-      @include flex(column, flex-start, center);
-      gap: 1rem;
+      @include flex(column, center, center);
+      gap: 3rem;
 
       .popup-icon {
         i {
@@ -71,6 +73,7 @@
     }
 
     .popup-buttons {
+      align-self: flex-end;
       @include flex(row, flex-end, center);
       gap: 1rem;
     }
