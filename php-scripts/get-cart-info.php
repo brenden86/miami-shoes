@@ -16,19 +16,22 @@ function getCartItems() {
       // query each cart item's info and push to new array
 
       $cart_item_query = $db->prepare('
-      SELECT
-        sku,
-        thumb_url,
-        prod_name,
-        prod_id,
-        price,
-        prim_color,
-        sec_color,
-        size,
-        gender
-      FROM stock
-      LEFT JOIN products USING(prod_id)
-      WHERE sku = :sku
+        SELECT
+          sku,
+          thumb_url,
+          prod_name,
+          prod_id,
+          price,
+          prim_color,
+          sec_color,
+          size,
+          gender,
+          count(inventory.sku) AS qty
+        FROM stock
+        LEFT JOIN inventory USING(sku)
+        LEFT JOIN products USING(prod_id)
+        WHERE sku = :sku
+        GROUP BY sku;
       ');
       $cart_item_query->execute(['sku' => $item]);
       $cart_item = $cart_item_query->fetch(PDO::FETCH_ASSOC);

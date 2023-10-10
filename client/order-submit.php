@@ -18,6 +18,28 @@
     orderError('Something went wrong, please check your information and try again.');
   }
 
+  // prevent order submit if any items are out of stock
+
+  // get SKUs from cart items
+  $skus = array();
+  foreach($_SESSION['cart_items'] as $item) {
+    array_push($skus, $item['sku']);
+  }
+
+  // get quantity of each sku in cart (most likely one, but
+  // just in case someone orders multiple products of same size)
+
+  $sku_counts = array_count_values($skus);
+  foreach($sku_counts as $sku => $count) {
+    // check qty of sku in stock
+    $qty_in_stock = $db->getQtyInStock($sku);
+    if($qty_in_stock < $count) {
+      // get product name for order error message
+      $product = $db->queryAndFetch('SELECT prod_name, brand FROM products LEFT JOIN stock USING(prod_id) WHERE sku = ' . $sku);
+      orderError('Sorry, the quantity of ' . strtoupper($product[0]['brand'] . ' ' . $product[0]['prod_name']) . ' in stock is not sufficient to fulfill this order.');
+    }
+  }
+
   ////////////////////////
   //    SUBMIT ORDER    //
   ////////////////////////
@@ -119,6 +141,9 @@
       $order_items_query = $db->prepare($order_items_sql);
       $order_items_query->execute(['id' => $order_id, 'sku' => $item['sku']]);
     }
+
+    // remove items from inventory
+
 
     $_SESSION['order_submitted'] = true;
     

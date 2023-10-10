@@ -15,8 +15,20 @@
     $_SESSION['checkout_info']['current_step'] = 1;
   }
 
+  if(!isset($_SESSION['cart_items'])) {
+    $_SESSION['cart_items'] = array();
+  }
   // store cart contents to session from cookie
-  $_SESSION['cart_items'] = getCartItems();
+
+  $cart_items = getCartItems();
+  // remove item if out of stock
+  foreach($cart_items as $item_index => $item) {
+    if($item['qty'] < 1) {
+      unset($cart_items[$item_index]);
+    }
+  }
+
+  $_SESSION['cart_items'] = $cart_items;
 
   // reset checkout step if coming from a different page
   if(!preg_match('/checkout/', $_SERVER['HTTP_REFERER'])) {
