@@ -21,6 +21,12 @@
   // store cart contents to session from cookie
 
   $cart_items = getCartItems();
+
+  // redirect to cart page if no items in cart
+  if(!$cart_items) {
+    header('location: /my-cart.php');
+    exit;
+  }
   // remove item if out of stock
   foreach($cart_items as $item_index => $item) {
     if($item['qty'] < 1) {

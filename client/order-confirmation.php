@@ -188,6 +188,7 @@
   // clear previous order info from session
   unset($_SESSION['checkout_info']);
   unset($_SESSION['order_submitted']);
+  unset($_SESSION['cart_items']);
 ?>
 
 <!----------- 

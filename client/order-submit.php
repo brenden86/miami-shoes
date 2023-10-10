@@ -139,11 +139,14 @@
     foreach($_SESSION['cart_items'] as $item) {
       $order_items_sql = 'INSERT INTO order_items(order_id, sku) VALUES(:id, :sku)';
       $order_items_query = $db->prepare($order_items_sql);
-      $order_items_query->execute(['id' => $order_id, 'sku' => $item['sku']]);
+      $order_items_query->execute(['id' => $_SESSION['checkout_info']['order_id'], 'sku' => $item['sku']]);
     }
 
     // remove items from inventory
-
+    foreach($skus as $sku) {
+      $query = $db->prepare('DELETE FROM inventory WHERE sku = :sku LIMIT 1');
+      $query->execute(['sku' => $sku]);
+    }
 
     $_SESSION['order_submitted'] = true;
     
