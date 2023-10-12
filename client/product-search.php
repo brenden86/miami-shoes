@@ -67,11 +67,11 @@
             thumb_url,
             brand,
             price,
-            COUNT(inventory.sku) AS qty,
+            count(order_items.sku) AS qty_ordered,
             avail_date
-          FROM products
-          LEFT JOIN stock USING(prod_id)
-          LEFT JOIN inventory USING(sku)
+          FROM order_items
+            LEFT JOIN stock USING(sku)
+          LEFT JOIN products USING(prod_id)
           ' . getProductSqlParams() . '
           GROUP BY prod_id
           ' . $in_stock . '

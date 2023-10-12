@@ -66,20 +66,18 @@
 
   // adds badge to product card if necessary
   function getProductCardBadge($product) {
-
-    extract($product);
-
-    if($product['qty'] < 1) {
+    
+    if($product['qty_in_stock'] < 1) {
       // OUT OF STOCK
       return '<div class="badge no-stock">out of stock</div>';
 
-    } elseif ($product['qty'] <= 20) {
+    } elseif ($product['qty_in_stock'] <= 20) {
       // LOW STOCK 
       return '<div class="badge low-stock">low stock</div>';
 
     } elseif(
-      $avail_date > date('Y-m-d', strtotime('today - 30 days')) &&
-      $avail_date <= date('Y-m-d')
+      $product['avail_date'] > date('Y-m-d', strtotime('today - 30 days')) &&
+      $product['avail_date'] <= date('Y-m-d')
       ) {
       // NEW - displayed if first available date is within last 30 days
       return '<div class="badge">new</div>';

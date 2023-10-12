@@ -12,7 +12,10 @@
     <script src="./js/modules/slider.js" defer></script>
     <script src="./js/modules/drag-scroll.js" defer></script>
     <!-- functions for populating product info -->
-    <?php include __DIR__ . '/../php-scripts/get-product-info.php';?>
+    <?php
+      include_once __DIR__ . '/../php-scripts/get-product-info.php';
+      include_once __DIR__ . '/../database/dbconnect.php';
+    ?>
   </head> 
   <body>
     <div id="root">
@@ -25,8 +28,6 @@
 <!------------------
     MAIN CONTENT    
 -------------------->
-
-<?php include_once __DIR__ . '/../php-scripts/get-product-info.php' ?>
 
 <main>
   <div class="main-content-wrapper">
@@ -71,29 +72,37 @@
         <div class="product-cards inline drag-scroll">
           
           <?php
-            // connect to database
-            require_once __DIR__ . '/../database/dbconnect.php';
 
-            // get products
-            
+            // get top 12 products by popularity (order qty)
             $products = $db->queryAndFetch('
             SELECT
-              prod_id,
+              products.prod_id AS id,
               prod_name,
               thumb_url,
               brand,
               price,
-              COUNT(inventory.sku) AS qty,
-              avail_date
+              inventory.qty_in_stock AS qty_in_stock,
+              order_items.qty_ordered AS qty_ordered
             FROM products
-            LEFT JOIN stock USING(prod_id)
-            LEFT JOIN inventory USING(sku)
-            GROUP BY prod_id
-            ORDER BY prod_id ASC');
+            LEFT JOIN (
+              SELECT prod_id, count(prod_id) AS qty_in_stock
+              FROM inventory
+              LEFT JOIN stock USING(sku)
+              GROUP BY prod_id
+            ) AS inventory ON products.prod_id = inventory.prod_id
+            LEFT JOIN (
+              SELECT prod_id, count(prod_id) AS qty_ordered
+              FROM order_items
+              LEFT JOIN stock USING(sku)
+              GROUP BY prod_id
+            ) AS order_items ON products.prod_id = order_items.prod_id
+            ORDER BY qty_ordered DESC
+            LIMIT 12
+            ');
 
             // loop through products
             foreach($products as $product => $field) {
-
+            
             // output html
             echo '
             <div class="product-card-wrapper">
@@ -247,7 +256,7 @@
     </div>
 
     <div class="content-block">
-      <h1><span>Top</span> Brands</h1>
+      <h1><span>Our</span> Brands</h1>
 
       <div class="brands-container">
         <div class="brands-wrapper drag-scroll">
