@@ -81,6 +81,7 @@
               thumb_url,
               brand,
               price,
+              gender,
               inventory.qty_in_stock AS qty_in_stock,
               order_items.qty_ordered AS qty_ordered,
               avail_date
@@ -115,7 +116,7 @@
                   <div class="product-colors-wrapper">';
 
                   // get color variants for current product
-                  $color_variants = $db->getColorVariants($field['prod_name']);
+                  $color_variants = $db->getColorVariants($field['prod_name'], $field['gender']);
                   
                   // loop through variants
                   foreach($color_variants as $color) {

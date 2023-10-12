@@ -67,6 +67,7 @@
             thumb_url,
             brand,
             price,
+            gender,
             inventory.qty_in_stock AS qty_in_stock,
             order_items.qty_ordered AS qty_ordered,
             avail_date
@@ -135,7 +136,7 @@
 
               <div class="product-colors-wrapper">';
               // get color variants for current product
-              $color_variants = $db->getColorVariants($prod_name);
+              $color_variants = $db->getColorVariants($prod_name, $gender);
               
               // loop through variants
               foreach($color_variants as $color) {
@@ -143,24 +144,35 @@
                 // GET HEX VALUES FOR COLOR BLOCKS
                 
                 // prepare statements
-                $prim_hex_query = $db->prepare('SELECT color_hex FROM prod_colors WHERE color_name = :primcolor');
-                $sec_hex_query = $db->prepare('SELECT color_hex FROM prod_colors WHERE color_name = :seccolor');
-                // execute queries
-                $prim_hex_query->execute(['primcolor' => $color['prim_color']]);
-                $sec_hex_query->execute(['seccolor' => $color['sec_color']]);
-                // fetch results
-                $prim_hex = $prim_hex_query->fetch(PDO::FETCH_ASSOC);
-                $sec_hex = $sec_hex_query->fetch(PDO::FETCH_ASSOC);
+                $hex_query = $db->prepare('
+                  SELECT
+                    (
+                      SELECT color_hex
+                      FROM prod_colors
+                      WHERE color_name = :prim_color
+                    ) AS prim_color_hex,
+                    (
+                      SELECT color_hex
+                      FROM prod_colors
+                      WHERE color_name = :sec_color
+                    ) AS sec_color_hex
+                  FROM prod_colors
+                  LIMIT 1
+                ');
+                $hex_query->execute(['prim_color' => $color['prim_color'], 'sec_color' => $color['sec_color']]);
+                $color_hexes = $hex_query->fetch(PDO::FETCH_ASSOC);
                 
                 // set secondary hex equal to primary if there is no secondary color
-                if (!$sec_hex) {
-                  $sec_hex = $prim_hex;
+                if ($color_hexes['sec_color_hex']) {
+                  $sec_hex = $color_hexes['sec_color_hex'];
+                } else {
+                  $sec_hex = $color_hexes['prim_color_hex'];
                 }
                 
                 echo '
                 <div class="product-color">
-                <div class="color-swatch primary" style="background: #' . $prim_hex['color_hex'] . '"></div>
-                <div class="color-swatch secondary" style="background: #' . $sec_hex['color_hex'] . '"></div>
+                <div class="color-swatch primary" style="background: #' . $color_hexes['prim_color_hex'] . '"></div>
+                <div class="color-swatch secondary" style="background: #' . $sec_hex . '"></div>
                 </div>
                 
                 ';

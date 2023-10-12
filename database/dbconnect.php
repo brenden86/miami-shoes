@@ -21,10 +21,10 @@ class DB extends PDO {
   }
 
   // get color variants for product by name
-  function getColorVariants($prod_name) {
+  function getColorVariants($prod_name, $gender) {
     try {
-      $query = $this->prepare('SELECT prod_id, prim_color, sec_color FROM products WHERE prod_name = :name');
-      $query->execute(['name' => $prod_name]);
+      $query = $this->prepare('SELECT prod_id, prim_color, sec_color FROM products WHERE prod_name = :name AND gender = :gender');
+      $query->execute(['name' => $prod_name, 'gender' => $gender]);
       return $query->fetchAll(PDO::FETCH_ASSOC);
     } catch (Exception $e) {
       echo $e->getMessage();

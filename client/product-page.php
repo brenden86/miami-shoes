@@ -130,7 +130,7 @@ $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
               <span><?=getProductColorNames($product)?></span>
               <div class="product-colors-wrapper">
                 <?php 
-                  $color_variants = $db->getColorVariants($prod_name);
+                  $color_variants = $db->getColorVariants($prod_name, $gender);
                   $color_hex_array = $db->queryAndFetch('SELECT color_name, color_hex FROM prod_colors');
 
                   // create array of color hex values
