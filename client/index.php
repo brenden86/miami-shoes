@@ -76,13 +76,14 @@
             // get top 12 products by popularity (order qty)
             $products = $db->queryAndFetch('
             SELECT
-              products.prod_id AS id,
+              products.prod_id AS prod_id,
               prod_name,
               thumb_url,
               brand,
               price,
               inventory.qty_in_stock AS qty_in_stock,
-              order_items.qty_ordered AS qty_ordered
+              order_items.qty_ordered AS qty_ordered,
+              avail_date
             FROM products
             LEFT JOIN (
               SELECT prod_id, count(prod_id) AS qty_in_stock

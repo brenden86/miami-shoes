@@ -53,30 +53,39 @@
       <?php
 
         // handle IN STOCK filter
-        if(isset($_REQUEST['inStock'])) {
-          $in_stock = 'HAVING COUNT(inventory.sku) > 0';
-        } else {
-          $in_stock = '';
-        }
+        // if(isset($_REQUEST['inStock'])) {
+        //   $in_stock = 'HAVING COUNT(inventory.sku) > 0';
+        // } else {
+        //   $in_stock = '';
+        // }
 
         // get products
         $products = $db->queryAndFetch('
           SELECT
-            prod_id,
+            products.prod_id AS prod_id,
             prod_name,
             thumb_url,
             brand,
             price,
-            count(order_items.sku) AS qty_ordered,
+            inventory.qty_in_stock AS qty_in_stock,
+            order_items.qty_ordered AS qty_ordered,
             avail_date
-          FROM order_items
+          FROM products
+          LEFT JOIN (
+            SELECT prod_id, count(prod_id) AS qty_in_stock
+            FROM inventory
             LEFT JOIN stock USING(sku)
-          LEFT JOIN products USING(prod_id)
+            GROUP BY prod_id
+          ) AS inventory ON products.prod_id = inventory.prod_id
+          LEFT JOIN (
+            SELECT prod_id, count(prod_id) AS qty_ordered
+            FROM order_items
+            LEFT JOIN stock USING(sku)
+            GROUP BY prod_id
+          ) AS order_items ON products.prod_id = order_items.prod_id
           ' . getProductSqlParams() . '
-          GROUP BY prod_id
-          ' . $in_stock . '
-          ORDER BY prod_id ASC'
-        );
+          ORDER BY qty_ordered DESC
+        ');
         
         // if no products are found, display message
         if(count($products) < 1) {

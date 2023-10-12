@@ -20,6 +20,12 @@ function getProductSqlParams() {
 
   // create array of parameters to be joined into SQL WHERE clause
   $params_array = [];
+
+  // handle IN STOCK
+  if(isset($_REQUEST['inStock'])) {
+    $condition = 'qty_in_stock > 0';
+    array_push($params_array, $condition);
+  }
   
   // handle GENDER
 
