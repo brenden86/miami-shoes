@@ -7,6 +7,15 @@
 .feature-block {
   width: clamp(250px,31%, 400px);
   text-align: center;
+  position: relative;
+  top: -20px;
+  opacity: 0;
+  transition: top 500ms, opacity 500ms;
+
+  &.show {
+    opacity: 1;
+    top: 0px;
+  }
 
   i {
     display: block;

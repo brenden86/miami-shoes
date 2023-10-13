@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./styles/main.css">
     <script src="./js/modules/slider.js" defer></script>
     <script src="./js/modules/drag-scroll.js" defer></script>
+    <script src="./js/modules/feature-blocks.js" defer></script>
     <!-- functions for populating product info -->
     <?php
       include_once __DIR__ . '/../php-scripts/get-product-info.php';

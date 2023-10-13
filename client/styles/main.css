@@ -1312,6 +1312,14 @@ footer h3 {
 .feature-block {
   width: clamp(250px, 31%, 400px);
   text-align: center;
+  position: relative;
+  top: -20px;
+  opacity: 0;
+  transition: top 500ms, opacity 500ms;
+}
+.feature-block.show {
+  opacity: 1;
+  top: 0px;
 }
 .feature-block i {
   display: block;
