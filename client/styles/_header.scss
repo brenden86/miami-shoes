@@ -52,9 +52,21 @@ header {
 // navigation
 
 .header-navigation {
-  @include flex(row, center, stretch);
+  
+  .nav-items {
+    @include flex(row, center, stretch);
+    list-style-type: none;
+    padding: 0;
 
-  a {
+    li:hover {
+      .header-hover-menu {
+        @include flex(column, center, center);
+      }
+    }
+
+  }
+
+  .nav-link {
     @include flex(row, center, flex-end);
     position: relative;
     font-family: $heading-font;
@@ -80,11 +92,24 @@ header {
   }
 }
 
-#header-search {
-  @include flex(row, flex-end, flex-end);
-  flex-grow: 1;
-  padding-bottom: $header-padding-bottom;
-  input {
-    max-width: 300px;
+.header-hover-menu {
+  display: none;
+  position: absolute;
+  background: white;
+  left: 0;
+  width: 100%;
+  box-shadow: $box-shadow-main;
+
+  .header-hover-menu-wrapper {
+    min-width: 900px;
+    max-width: 1200px;
+    // match main-content-wrapper
   }
+}
+
+.header-brands-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-gap: 1rem;
+  margin: 1rem;
 }
