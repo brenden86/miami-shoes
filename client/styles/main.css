@@ -1871,6 +1871,36 @@ CART ITEMS
   gap: 1rem;
 }
 
+.sort-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  align-self: flex-start;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 600;
+  margin: 0.5rem;
+}
+.sort-wrapper .sort-options-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+}
+.sort-wrapper .sort-options-wrapper .text-button {
+  border-radius: 20rem;
+  padding: 0.5rem 0.75rem;
+}
+.sort-wrapper .sort-options-wrapper .text-button.selected {
+  background: #ffbcd8;
+}
+
 .debug {
   border: 1px dashed orange !important;
 }

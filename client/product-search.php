@@ -16,6 +16,7 @@
   <script src="./js/modules/image-fallback.js" defer></script>
   <script src="./js/modules/validate-filters.js" async></script>
   <script src="./js/modules/show-hide-update-filters.js" async></script>
+  <script src="./js/modules/select-sort.js" async></script>
   
 </head>
 <body>
@@ -50,14 +51,36 @@
       <!-- Product search results -->
       <div class="content-block">
 
-      <?php
+      <div class="sort-wrapper">
+        <div>Sort by: </div>
+        <?php
+          // get sort order from request
+          // default to sort by popular
+          if($_REQUEST['sort'] === 'price-asc') {
+            $sort = 'price-asc';
+          } elseif($_REQUEST['sort'] === 'price-desc') {
+            $sort = 'price-desc';
+          } else {
+            $sort = 'popular';
+          }
+        ?>
+        <div class="sort-options-wrapper">
+          <span
+            class="sort-option text-button <?=($sort === 'popular') ? 'selected' : ''?>"
+            data-sort="popular"
+          >popular</span>
+          <span
+            class="sort-option text-button <?=($sort === 'price-asc') ? 'selected' : ''?>"
+            data-sort="price-asc"
+          >price: low to high</span>
+          <span
+            class="sort-option text-button <?=($sort === 'price-desc') ? 'selected' : ''?>"
+            data-sort="price-desc"
+          >price: high to low</span>
+        </div>
+      </div>
 
-        // handle IN STOCK filter
-        // if(isset($_REQUEST['inStock'])) {
-        //   $in_stock = 'HAVING COUNT(inventory.sku) > 0';
-        // } else {
-        //   $in_stock = '';
-        // }
+      <?php
 
         // get products
         $products = $db->queryAndFetch('
@@ -84,9 +107,8 @@
             LEFT JOIN stock USING(sku)
             GROUP BY prod_id
           ) AS order_items ON products.prod_id = order_items.prod_id
-          ' . getProductSqlParams() . '
-          ORDER BY qty_ordered DESC
-        ');
+          ' . getProductSqlParams()
+        );
         
         // if no products are found, display message
         if(count($products) < 1) {

@@ -1,0 +1,24 @@
+.sort-wrapper {
+  @include flex(row, flex-start, center);
+  gap: 1rem;
+  align-self: flex-start;
+  text-transform: uppercase;
+  font-size: .9rem;
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: $semibold;
+  margin: .5rem;
+
+  .sort-options-wrapper {
+    @include flex(row, space-between, center);
+    gap: .25rem;
+
+    .text-button {
+      border-radius: 20rem;
+      padding: .5rem .75rem;      
+
+      &.selected {
+        background: $primary-color-light;
+      }
+    }
+  }
+}

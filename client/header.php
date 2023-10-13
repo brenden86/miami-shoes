@@ -13,11 +13,11 @@
     <nav class="header-navigation">
       <ul class="nav-items">
         <li>
-          <a href="/product-search.php?mens=1" class="nav-link">Mens</a>
+          <a href="/product-search.php?mens=true" class="nav-link">Mens</a>
         </li>
 
         <li>
-          <a href="/product-search.php?womens=1" class="nav-link">Womens</a>
+          <a href="/product-search.php?womens=true" class="nav-link">Womens</a>
         </li>
 
         <li>
