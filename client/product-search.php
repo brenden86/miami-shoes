@@ -86,11 +86,12 @@
         $products = $db->queryAndFetch('
           SELECT
             products.prod_id AS prod_id,
-            prod_name,
+            products.prod_name,
             thumb_url,
             brand,
             price,
             gender,
+            colors.num_colors,
             inventory.qty_in_stock AS qty_in_stock,
             order_items.qty_ordered AS qty_ordered,
             avail_date
@@ -107,6 +108,11 @@
             LEFT JOIN stock USING(sku)
             GROUP BY prod_id
           ) AS order_items ON products.prod_id = order_items.prod_id
+          LEFT JOIN (
+            SELECT prod_name, count(prod_name) AS num_colors
+            FROM products
+            GROUP BY prod_name
+          ) AS colors ON products.prod_name = colors.prod_name
           ' . getProductSqlParams()
         );
         
@@ -156,59 +162,16 @@
                 <img src="' . $thumb_url . '" alt="' . $brand . ' ' . $prod_name . '">
               </div>
 
-              <div class="product-colors-wrapper">';
-              // get color variants for current product
-              $color_variants = $db->getColorVariants($prod_name, $gender);
-              
-              // loop through variants
-              foreach($color_variants as $color) {
-                
-                // GET HEX VALUES FOR COLOR BLOCKS
-                
-                // prepare statements
-                $hex_query = $db->prepare('
-                  SELECT
-                    (
-                      SELECT color_hex
-                      FROM prod_colors
-                      WHERE color_name = :prim_color
-                    ) AS prim_color_hex,
-                    (
-                      SELECT color_hex
-                      FROM prod_colors
-                      WHERE color_name = :sec_color
-                    ) AS sec_color_hex
-                  FROM prod_colors
-                  LIMIT 1
-                ');
-                $hex_query->execute(['prim_color' => $color['prim_color'], 'sec_color' => $color['sec_color']]);
-                $color_hexes = $hex_query->fetch(PDO::FETCH_ASSOC);
-                
-                // set secondary hex equal to primary if there is no secondary color
-                if ($color_hexes['sec_color_hex']) {
-                  $sec_hex = $color_hexes['sec_color_hex'];
-                } else {
-                  $sec_hex = $color_hexes['prim_color_hex'];
-                }
-                
-                echo '
-                <div class="product-color">
-                <div class="color-swatch primary" style="background: #' . $color_hexes['prim_color_hex'] . '"></div>
-                <div class="color-swatch secondary" style="background: #' . $sec_hex . '"></div>
-                </div>
-                
-                ';
-              }
-                  
-              echo '</div>
               <div class="product-info">
                 <div class="brand">' . strtoupper($brand) . '</div>
                 <div class="product-name">' . strtoupper($prod_name) . '</div>
+                ' . getProductColorsCount($products[$i]) . '
                 <div class="price">$' . $price . '</div>
-                </div>
-                </a>
-                </div>
-                '; // END ECHO
+              </div>
+
+            </a>
+            </div>
+            '; // END ECHO
 
               // break out of loop if on last product but products per page limit not reached.
               if($i === count($products) - 1) {

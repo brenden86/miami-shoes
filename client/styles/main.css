@@ -1467,6 +1467,11 @@ footer h3 {
   font-size: 1.5rem;
 }
 
+.colors-text {
+  color: #b8b8b8;
+  text-transform: capitalize;
+}
+
 .price {
   color: #eb4791;
 }

@@ -83,5 +83,14 @@
       return '<div class="badge">new</div>';
     }
   }
+
+
+  function getProductColorsCount($field) {
+    if($field['num_colors'] > 1) {
+      return '<div class="colors-text">' . $field['num_colors'] . ' colors</div>';
+    } else {
+      return '';
+    }
+  }
   
   ?>

@@ -147,6 +147,11 @@
   font-size: 1.5rem;
 }
 
+.colors-text {
+  color: $font-light;
+  text-transform: capitalize;
+}
+
 .price {
   color: $primary-color;
 }
