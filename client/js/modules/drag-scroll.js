@@ -1,7 +1,7 @@
 let dragContentWrappers = document.querySelectorAll('.drag-scroll')
-let dragging = false
-let pointerXStart
-let offsetRight
+let dragging = false,
+pointerXStart,
+offsetRight
 
 
 dragContentWrappers.forEach(elem => {

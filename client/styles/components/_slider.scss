@@ -1,7 +1,7 @@
 
 .slider-container {
   @include flex(column, flex-start, flex-end);
-  gap: .5rem;
+  position: relative;
 }
 
 .slider-images {
@@ -29,5 +29,19 @@
   width: 100%;
   background-position: center;
   background-size: cover;
+}
+
+.slider-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &.prev {
+    left: -3.5rem;
+  }
+
+  &.next {
+    right: -3.5rem;
+  }
 }
 

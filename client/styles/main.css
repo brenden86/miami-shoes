@@ -1156,7 +1156,7 @@ footer h3 {
   justify-content: flex-start;
   align-items: flex-end;
   flex-wrap: nowrap;
-  gap: 0.5rem;
+  position: relative;
 }
 
 .slider-images {
@@ -1183,6 +1183,18 @@ footer h3 {
   width: 100%;
   background-position: center;
   background-size: cover;
+}
+
+.slider-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.slider-control.prev {
+  left: -3.5rem;
+}
+.slider-control.next {
+  right: -3.5rem;
 }
 
 .category-cards-wrapper {
@@ -1341,14 +1353,23 @@ footer h3 {
 }
 
 .product-card-container {
-  overflow: hidden;
   position: relative;
 }
-.product-card-container img, .product-card-container a {
-  -webkit-user-drag: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  user-select: none;
+
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.carousel-control.left {
+  left: -3.5rem;
+}
+.carousel-control.right {
+  right: -3.5rem;
+}
+
+.product-cards-wrapper {
+  overflow: hidden;
 }
 
 .product-cards {
@@ -1356,6 +1377,8 @@ footer h3 {
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   justify-items: center;
   position: relative;
+  left: 0;
+  transition: left 0.5s;
 }
 .product-cards.card .product-card:hover {
   background: #fafafa;

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./styles/main.css">
     <script src="./js/modules/slider.js" defer></script>
-    <script src="./js/modules/drag-scroll.js" defer></script>
+    <script src="./js/modules/carousel-scroll.js" defer></script>
     <script src="./js/modules/feature-blocks.js" defer></script>
     <!-- functions for populating product info -->
     <?php
@@ -39,6 +39,8 @@
     <div class="content-block">
       <div class="slider-container">
 
+
+
         <div class="slider-images">
           <div class="image-wrapper">
             <div class="slider-image" style="background-image: url(/images/slider/lebron.jpg)"></div>
@@ -49,123 +51,136 @@
           </div>
         </div>
 
-        <div class="slider-controls">
-          <div class="input-wrapper inline small">
-            <div id="slider-prev" class="button small">
-              <i class="bi-caret-left-fill"></i>
-            </div>
-            <div id="slider-next" class="button small">
-              <i class="bi-caret-right-fill"></i>
-            </div>
-          </div>
+        <div id="slider-prev" class="slider-control prev icon-link">
+          <i class="bi-caret-left-fill"></i>
+        </div>
+
+        <div id="slider-next" class="slider-control next icon-link">
+          <i class="bi-caret-right-fill"></i>
         </div>
 
       </div>
     </div>
 
-    <?=$_SESSION['name'];?>
-
     <!-- featured products -->
     <div class="content-block">
+
       <h1><span>Hot</span> Right Now</h1>
+
       <div class="product-card-container">
 
-        <div class="product-cards inline drag-scroll">
-          
-          <?php
+        <div class="carousel-control left icon-link">
+          <i class="bi-caret-left-fill"></i>
+        </div>
 
-            // get top 12 products by popularity (order qty)
-            $products = $db->queryAndFetch('
-            SELECT
-              products.prod_id AS prod_id,
-              prod_name,
-              thumb_url,
-              brand,
-              price,
-              gender,
-              inventory.qty_in_stock AS qty_in_stock,
-              order_items.qty_ordered AS qty_ordered,
-              avail_date
-            FROM products
-            LEFT JOIN (
-              SELECT prod_id, count(prod_id) AS qty_in_stock
-              FROM inventory
-              LEFT JOIN stock USING(sku)
-              GROUP BY prod_id
-            ) AS inventory ON products.prod_id = inventory.prod_id
-            LEFT JOIN (
-              SELECT prod_id, count(prod_id) AS qty_ordered
-              FROM order_items
-              LEFT JOIN stock USING(sku)
-              GROUP BY prod_id
-            ) AS order_items ON products.prod_id = order_items.prod_id
-            ORDER BY qty_ordered DESC
-            LIMIT 12
-            ');
+        <div class="carousel-control right icon-link">
+          <i class="bi-caret-right-fill"></i>
+        </div>
 
-            // loop through products
-            foreach($products as $product => $field) {
+        <div class="product-cards-wrapper">
+
+          <div class="product-cards inline">
             
-            // output html
-            echo '
-            <div class="product-card-wrapper">
-              <a href="/product-page.php?id=' . $field['prod_id'] . '" class="product-card">'
-                  . getProductCardBadge($field) . '
-                  <div class="product-card-image">
-                    <img src="' . $field['thumb_url'] . '" alt="' . $field['brand'] . ' ' . $field['prod_name'] . '">
-                  </div>
-                  <div class="product-colors-wrapper">';
+            <?php
 
-                  // get color variants for current product
-                  $color_variants = $db->getColorVariants($field['prod_name'], $field['gender']);
-                  
-                  // loop through variants
-                  foreach($color_variants as $color) {
+              // get top 12 products by popularity (order qty)
+              $products = $db->queryAndFetch('
+              SELECT
+                products.prod_id AS prod_id,
+                prod_name,
+                thumb_url,
+                brand,
+                price,
+                gender,
+                inventory.qty_in_stock AS qty_in_stock,
+                order_items.qty_ordered AS qty_ordered,
+                avail_date
+              FROM products
+              LEFT JOIN (
+                SELECT prod_id, count(prod_id) AS qty_in_stock
+                FROM inventory
+                LEFT JOIN stock USING(sku)
+                GROUP BY prod_id
+              ) AS inventory ON products.prod_id = inventory.prod_id
+              LEFT JOIN (
+                SELECT prod_id, count(prod_id) AS qty_ordered
+                FROM order_items
+                LEFT JOIN stock USING(sku)
+                GROUP BY prod_id
+              ) AS order_items ON products.prod_id = order_items.prod_id
+              ORDER BY qty_ordered DESC
+              LIMIT 12
+              ');
 
-                    // GET HEX VALUES FOR COLOR BLOCKS
+              // loop through products
+              foreach($products as $product => $field) {
+              
+              // output html
+              echo '
+              <div class="product-card-wrapper">
+                <a href="/product-page.php?id=' . $field['prod_id'] . '" class="product-card">'
+                    . getProductCardBadge($field) . '
+                    <div class="product-card-image">
+                      <img src="' . $field['thumb_url'] . '" alt="' . $field['brand'] . ' ' . $field['prod_name'] . '">
+                    </div>
+                    <div class="product-colors-wrapper">';
 
-                    // prepare statements
-                    $prim_hex_query = $db->prepare('SELECT color_hex FROM prod_colors WHERE color_name = :primcolor');
-                    $sec_hex_query = $db->prepare('SELECT color_hex FROM prod_colors WHERE color_name = :seccolor');
-                    // execute queries
-                    $prim_hex_query->execute(['primcolor' => $color['prim_color']]);
-                    $sec_hex_query->execute(['seccolor' => $color['sec_color']]);
-                    // fetch results
-                    $prim_hex = $prim_hex_query->fetch(PDO::FETCH_ASSOC);
-                    $sec_hex = $sec_hex_query->fetch(PDO::FETCH_ASSOC);
-
-                    // set secondary hex equal to primary if there is no secondary color
-                    if (!$sec_hex) {
-                      $sec_hex = $prim_hex;
-                    }
-
-                    echo '
-                      <div class="product-color">
-                        <div class="color-swatch primary" style="background: #' . $prim_hex['color_hex'] . '"></div>
-                        <div class="color-swatch secondary" style="background: #' . $sec_hex['color_hex'] . '"></div>
-                      </div>
+                    // get color variants for current product
+                    $color_variants = $db->getColorVariants($field['prod_name'], $field['gender']);
                     
-                    ';
-                  }
-                  
-                  echo '</div>
-                  <div class="product-info">
-                    <div class="brand">' . strtoupper($field['brand']) . '</div>
-                    <div class="product-name">' . strtoupper($field['prod_name']) . '</div>
-                    <div class="price">$' . $field['price'] . '</div>
-                  </div>
-              </a>
-            </div>
-            '; // END ECHO
+                    // loop through variants
+                    foreach($color_variants as $color) {
 
-            // END foreach
-            }
+                      // GET HEX VALUES FOR COLOR BLOCKS
 
-          ?>
+                      // prepare statements
+                      $prim_hex_query = $db->prepare('SELECT color_hex FROM prod_colors WHERE color_name = :primcolor');
+                      $sec_hex_query = $db->prepare('SELECT color_hex FROM prod_colors WHERE color_name = :seccolor');
+                      // execute queries
+                      $prim_hex_query->execute(['primcolor' => $color['prim_color']]);
+                      $sec_hex_query->execute(['seccolor' => $color['sec_color']]);
+                      // fetch results
+                      $prim_hex = $prim_hex_query->fetch(PDO::FETCH_ASSOC);
+                      $sec_hex = $sec_hex_query->fetch(PDO::FETCH_ASSOC);
+
+                      // set secondary hex equal to primary if there is no secondary color
+                      if (!$sec_hex) {
+                        $sec_hex = $prim_hex;
+                      }
+
+                      echo '
+                        <div class="product-color">
+                          <div class="color-swatch primary" style="background: #' . $prim_hex['color_hex'] . '"></div>
+                          <div class="color-swatch secondary" style="background: #' . $sec_hex['color_hex'] . '"></div>
+                        </div>
+                      
+                      ';
+                    }
+                    
+                    echo '</div>
+                    <div class="product-info">
+                      <div class="brand">' . strtoupper($field['brand']) . '</div>
+                      <div class="product-name">' . strtoupper($field['prod_name']) . '</div>
+                      <div class="price">$' . $field['price'] . '</div>
+                    </div>
+                </a>
+              </div>
+              '; // END ECHO
+
+              // END foreach
+              }
+
+            ?>
+
+          </div>
 
         </div>
 
+        
+
       </div>
+      
+      
 
     </div>
 

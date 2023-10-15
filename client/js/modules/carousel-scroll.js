@@ -1,0 +1,68 @@
+// shift carousel
+
+const productCardsWrapper = document.querySelectorAll('.product-card-wrapper');
+const productCards = document.querySelector('.product-cards');
+const productCardsContainer = document.querySelector('.product-card-container');
+const carouselButtonLeft = document.querySelector('.carousel-control.left')
+const carouselButtonRight = document.querySelector('.carousel-control.right')
+
+// scroll distance is half of container
+const scrollDistance = (productCardsContainer.getBoundingClientRect().width / 2)
+let leftOffset = productCardsWrapper[0].offsetLeft;
+let atLastCarouselItem = false;
+
+// observer that checks if the last product card is visible
+const carouselObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      atLastCarouselItem = true;
+      console.log('at last item')
+    } else {
+      atLastCarouselItem = false;
+    }
+  })
+}, {
+  threshold: 1.0
+})
+
+carouselObserver.observe(productCardsWrapper[productCardsWrapper.length-1]);
+
+
+const scrollCarouselLeft = () => {
+  if((productCards.offsetLeft + scrollDistance) > 0) {
+    leftOffset = 0;
+    productCards.style.left = `${leftOffset}px`;
+  } else {
+    leftOffset += scrollDistance;
+    productCards.style.left = `${leftOffset}px`;
+  }
+}
+
+const scrollCarouselRight = () => {
+  let lastCardBound = productCardsWrapper[productCardsWrapper.length - 1].getBoundingClientRect().right;
+  let containerBound = productCardsContainer.getBoundingClientRect().right;
+
+  if((lastCardBound - containerBound) < scrollDistance) {
+    leftOffset -= (lastCardBound - containerBound);
+    productCards.style.left = `${leftOffset}px`;
+  } else {
+    leftOffset -= scrollDistance;
+    productCards.style.left = `${leftOffset}px`;
+  }
+  
+}
+
+
+
+
+carouselButtonLeft.addEventListener('click', e => {
+  scrollCarouselLeft()
+})
+
+carouselButtonRight.addEventListener('click', e => {
+  if(!atLastCarouselItem) {
+    scrollCarouselRight()
+  }
+})
+
+
