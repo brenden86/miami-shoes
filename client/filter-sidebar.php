@@ -29,6 +29,7 @@
               type="checkbox" name="inStock"
               value=true
               <?=($_REQUEST['inStock']==='true') ? 'checked' : '';?>
+
             >
             <div class="checkbox">
               <i class="bi-check"></i>

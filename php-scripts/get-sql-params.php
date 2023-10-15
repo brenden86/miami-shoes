@@ -1,12 +1,6 @@
 
 <?php
 
-/*
-
- NEED TO FIX:
-
- 1. BUILD PRODUCT NAME
-
 
 /*
   Script for handling query parameters for product search
@@ -22,24 +16,20 @@ function getProductSqlParams() {
   $params_array = [];
 
   // handle IN STOCK
-  if(isset($_REQUEST['inStock'])) {
+  if($_REQUEST['inStock'] === "true") {
     $condition = 'qty_in_stock > 0';
     array_push($params_array, $condition);
   }
   
   // handle GENDER
 
-  if(isset($_REQUEST['mens']) && isset($_REQUEST['womens'])) {
-    // unisex
-    $condition = 'gender = 0';
-    array_push($params_array, $condition);
-  } elseif(isset($_REQUEST['mens'])) {
-    // only mens
-    $condition = 'gender = 1';
+  if(isset($_REQUEST['mens'])) {
+    // only mens (and unisex)
+    $condition = '(gender = 1 OR gender = 0)';
     array_push($params_array, $condition);
   } elseif(isset($_REQUEST['womens'])) {
-    // only womens
-    $condition = 'gender = 2';
+    // only womens (and unisex)
+    $condition = '(gender = 2 OR gender = 0)';
     array_push($params_array, $condition);
   }
   
@@ -151,51 +141,23 @@ function getProductSqlParams() {
     
   }
 
+  // handle sort order
+  if($_REQUEST['sort'] === 'price-asc') {
+    $order_clause = 'ORDER BY price ASC';
+  } elseif($_REQUEST['sort'] === 'price-desc') {
+    $order_clause = 'ORDER BY price DESC';
+  } else {
+    $order_clause = 'ORDER BY qty_ordered DESC';
+  }
+
   // assemble SQL WHERE clause
   if(count($params_array) > 0) {
-    return 'WHERE ' . implode(' AND ', $params_array);
+    $where_clause = 'WHERE ' . implode(' AND ', $params_array);
+    return implode(' ', [$where_clause, $order_clause]);
   } else {
-    return;
+    return $order_clause;
   }
     
   }
-  
-  
-  
-  /*
-    - REMOVING SIZE -
-    probably not needed as a filter. saving code in case I change my mind.
 
-  
-  // handle SIZE
-  
-  // get sizes from request
-  $req_sizes = [];
-  foreach($_REQUEST as $key => $val) {
-    if(preg_match('/^size-/', $key)) {
-      // only keep number & decimal
-      array_push(
-        $req_sizes, 
-        preg_replace(
-          '/_/',
-          ".",
-          preg_replace('/size-/', "", $key)
-          )
-        );
-      }
-    }
-    
-    $stock_sizes = getAllSizes();
-    $sizes = [];
-    
-    // validate sizes against DB
-    foreach($req_sizes as $size) {
-      if(in_array($size, $stock_sizes)) {
-        array_push($sizes, $size);
-      }
-    }
-    
-    $condition = 'size IN (' . implode(', ', $selected_colors) . ")";
-
-  */
   ?>

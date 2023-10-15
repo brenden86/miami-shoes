@@ -1,7 +1,6 @@
 
 const filtersForm = document.getElementById('product-filters-form');
 
-// 
 const priceMinInput = document.getElementById('filter-price-min');
 const priceMaxInput = document.getElementById('filter-price-max');
 
@@ -30,6 +29,15 @@ function validateProductFilters() {
   if (parseInt(priceMinInput.value) > parseInt(priceMaxInput.value)) {
     alert(`Minimum price must be less than maximum price.`);
     return false;
+  }
+
+  // remove price inputs if empty; to prevent them from still
+  // appearing in the query string
+  if(!priceMinInput.value) {
+    priceMinInput.remove();
+  }
+  if(!priceMaxInput.value) {
+    priceMaxInput.remove();
   }
 
   // passed all checks, submit form
