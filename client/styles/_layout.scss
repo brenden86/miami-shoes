@@ -40,6 +40,10 @@ h1, h2, h3, h4 {
     color: $primary-color;
     font-family: inherit; 
   }
+
+  i {
+    font-size: inherit;
+  }
 }
 
 .heading {
@@ -115,9 +119,68 @@ i {
   }
 }
 
-button {
+button, .button {
   border: none;
   font-size: inherit;
+  display: inline-block;
+  background: $primary-color;
+  color: white;
+  font-family: $heading-font;
+  font-weight: $semibold;
+  padding: $input-padding;
+  border-radius: $border-radius-main;
+  text-transform: uppercase;
+  transition: background 100ms;
+
+  &:hover {
+    background: $primary-color-hover;
+    cursor: pointer;
+  }
+
+  &.secondary {
+    background: $secondary-color;
+    color: $secondary-color-text;
+  
+    &:hover {
+      background: $secondary-color-hover;
+    }
+  }
+
+  &.small {
+    padding: $input-padding-small;
+  }
+
+  &.disabled {
+    background: rgba(0, 0, 0, 0.2);
+    color: $bg-dark;
+    &:hover {
+      cursor: initial;
+    }
+  }
+  
+  &.next {
+    &:hover {
+      i {
+        transform: translateX(5px);
+      }
+    }
+  }
+  
+  &.prev {
+    &:hover {
+      i {
+        transform: translateX(-5px);
+      }
+    }
+  }
+  
+  &:disabled {
+    background: rgba(0, 0, 0, 0.2);
+    color: $bg-dark;
+    &:hover {
+      cursor: initial;
+    }
+  }
 
 }
 
@@ -143,67 +206,10 @@ button {
   color: $font-light;
 }
 
-.button {
-  display: inline-block;
-  background: $primary-color;
-  color: white;
-  font-family: $heading-font;
-  font-weight: $semibold;
-  padding: $input-padding;
-  border-radius: $border-radius-main;
-  text-transform: uppercase;
-  transition: background 100ms;
 
-  &:hover {
-    background: $primary-color-hover;
-    cursor: pointer;
-  }
-
-  &.secondary {
-    background: $secondary-color;
-    color: $secondary-color-text;
-
-    &:hover {
-      background: $secondary-color-hover;
-    }
-  }
-
-  &.small {
-    padding: $input-padding-small;
-  }
-
-  &.disabled {
-    background: rgba(0, 0, 0, 0.2);
-    color: $bg-dark;
-    &:hover {
-      cursor: initial;
-    }
-  }
-
-  // anchor buttons
-  &.next {
-    &:hover {
-      i {
-        transform: translateX(5px);
-      }
-    }
-  }
-
-  &.prev {
-    &:hover {
-      i {
-        transform: translateX(-5px);
-      }
-    }
-  }
-
-  &:disabled {
-    background: $font-light;
-    cursor: initial;
-  }
 
   
-}
+
 
 
 
@@ -439,31 +445,6 @@ fieldset {
   width: auto;
 }
 
-// CUSTOM SCROLLBAR
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-// Track
-::-webkit-scrollbar-track {
-  background: $hover-dark;
-  border-radius: 10px;
-  
-}
-
-// handle
-::-webkit-scrollbar-thumb {
-  background: $primary-color;
-  border-radius: 10px;
-  border: 3px solid $hover-dark;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: $primary-color-hover;
-}
-
 // hides visually but still accessible to screen readers
 .sr-only {
   clip: rect(0 0 0 0); 
@@ -495,11 +476,13 @@ fieldset {
 .main-content {
   @include flex(column, flex-start, center);
   width: clamp(900px, 50%, 1200px);
-  gap: 1rem;
+  gap: 3rem;
   
   &.narrow {
     width: clamp(600px, 50%, 1000px);
   }
+
+  margin-bottom: 3rem;
   
 }
 

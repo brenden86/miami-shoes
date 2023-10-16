@@ -12,6 +12,7 @@
     <script src="./js/modules/slider.js" defer></script>
     <script src="./js/modules/carousel-scroll.js" defer></script>
     <script src="./js/modules/feature-blocks.js" defer></script>
+    <script src="./js/modules/adaptive-font-size.js" defer></script>
     <!-- functions for populating product info -->
     <?php
       include_once __DIR__ . '/../php-scripts/get-product-info.php';
@@ -65,7 +66,7 @@
     <!-- featured products -->
     <div class="content-block">
 
-      <h1><span>Hot</span> Right Now</h1>
+      <h1><span><i class="bi-fire"></i>Hot</span> Right Now</h1>
 
       <div class="product-card-container">
 
@@ -246,35 +247,51 @@
 
     </div>
 
+    <!---------BRANDS--------->
+
     <div class="content-block">
       <h1><span>Our</span> Brands</h1>
 
       <div class="brands-container">
-        <div class="brands-wrapper drag-scroll">
+
+        <div class="brands-wrapper">
           
           <a class="brand-card" href="/product-search.php?brand-filter-adidas=adidas">
             <img src="./images/logos/Adidas_Logo.png" alt="adidas">
           </a>
+
           <a class="brand-card" href="/product-search.php?brand-filter-nike=nike">
             <img src="./images/logos/Nike-Logo.png" alt="nike">
           </a>
+
           <a class="brand-card" href="/product-search.php?brand-filter-vans=vans">
             <img src="./images/logos/vans logo.png" alt="vans">
           </a>
+
           <a class="brand-card" href="/product-search.php?brand-filter-converse=converse">
             <img src="./images/logos/converse-logo.png" alt="converse">
           </a>
+
+          
+
+        </div>
+        
+        <div class="brands-wrapper">
+
           <a class="brand-card" href="/product-search.php?brand-filter-dockers=dockers">
             <img src="./images/logos/dockers.png" alt="dockers">
           </a>
+
           <a class="brand-card" href="/product-search.php?brand-filter-heydude=heydude">
             <img src="./images/logos/heydude.png" alt="heydude">
           </a>
+
           <a class="brand-card" href="/product-search.php?brand-filter-newbalance=new+balance">
             <img src="./images/logos/new-balance.png" alt="new balance">
           </a>
-          
+
         </div>
+          
 
       </div>
     </div>

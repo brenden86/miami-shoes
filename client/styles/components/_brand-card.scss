@@ -1,17 +1,16 @@
 
 .brands-container {
+  @include flex(row, center, center, wrap);
   width: 100%;
   position: relative;
-  overflow: hidden;
+  gap: 1.5rem; // match wrapper gap below
   
 }
 
 .brands-wrapper {
-  @include flex(row, flex-start, center);
+  @include flex(row, center, center);
   gap: 1.5rem;
-  &:hover {
-    cursor: grab;
-  }
+
 }
 
 .brand-card {

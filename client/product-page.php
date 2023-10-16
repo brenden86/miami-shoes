@@ -151,7 +151,13 @@ $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
                     echo '
                     <a
                     href="/product-page.php?id=' . $variant['prod_id'] . '"
-                    class="product-color '.$selected.'"
+                    class="product-color '.$selected.'"';
+                    $color2 = '';
+                    if($variant['sec_color']) {
+                      $color2 = '/' . $variant['sec_color'];
+                    }
+                    echo '
+                    title="' . $variant['prim_color'] . $color2 . '"
                     >
                     <div class="color-swatch primary" style="background: #'.$color_hex_values[$variant['prim_color']].'"></div>
                     <div class="color-swatch secondary" style="background: #'.$color_hex_values[$variant['sec_color']].'"></div>
@@ -193,7 +199,7 @@ $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
               </div>
             </div> 
             
-            <div id="add-to-cart" class="button <?=($qty < 1) ? 'disabled' : ''?>">add to cart</div>
+            <button id="add-to-cart" class="<?=($qty < 1) ? 'disabled' : ''?>">add to cart</button>
             
             <!-- item details -->
             <div class="info-group">

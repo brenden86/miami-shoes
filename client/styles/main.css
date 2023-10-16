@@ -493,6 +493,9 @@ h1 span, h2 span, h3 span, h4 span {
   color: #eb4791;
   font-family: inherit;
 }
+h1 i, h2 i, h3 i, h4 i {
+  font-size: inherit;
+}
 
 .heading {
   font-family: "Oswald", "Segoe UI", Verdana, sans-serif;
@@ -560,9 +563,52 @@ i {
   background: #f35ea1;
 }
 
-button {
+button, .button {
   border: none;
   font-size: inherit;
+  display: inline-block;
+  background: #eb4791;
+  color: white;
+  font-family: "Oswald", "Segoe UI", Verdana, sans-serif;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-transform: uppercase;
+  transition: background 100ms;
+}
+button:hover, .button:hover {
+  background: #f35ea1;
+  cursor: pointer;
+}
+button.secondary, .button.secondary {
+  background: #40b5e6;
+  color: #f3fcff;
+}
+button.secondary:hover, .button.secondary:hover {
+  background: #58c2f0;
+}
+button.small, .button.small {
+  padding: 0.25rem 0.5rem;
+}
+button.disabled, .button.disabled {
+  background: rgba(0, 0, 0, 0.2);
+  color: #f1f3f4;
+}
+button.disabled:hover, .button.disabled:hover {
+  cursor: initial;
+}
+button.next:hover i, .button.next:hover i {
+  transform: translateX(5px);
+}
+button.prev:hover i, .button.prev:hover i {
+  transform: translateX(-5px);
+}
+button:disabled, .button:disabled {
+  background: rgba(0, 0, 0, 0.2);
+  color: #f1f3f4;
+}
+button:disabled:hover, .button:disabled:hover {
+  cursor: initial;
 }
 
 .text-button {
@@ -581,49 +627,6 @@ button {
 
 ::placeholder {
   color: #b8b8b8;
-}
-
-.button {
-  display: inline-block;
-  background: #eb4791;
-  color: white;
-  font-family: "Oswald", "Segoe UI", Verdana, sans-serif;
-  font-weight: 600;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  text-transform: uppercase;
-  transition: background 100ms;
-}
-.button:hover {
-  background: #f35ea1;
-  cursor: pointer;
-}
-.button.secondary {
-  background: #40b5e6;
-  color: #f3fcff;
-}
-.button.secondary:hover {
-  background: #58c2f0;
-}
-.button.small {
-  padding: 0.25rem 0.5rem;
-}
-.button.disabled {
-  background: rgba(0, 0, 0, 0.2);
-  color: #f1f3f4;
-}
-.button.disabled:hover {
-  cursor: initial;
-}
-.button.next:hover i {
-  transform: translateX(5px);
-}
-.button.prev:hover i {
-  transform: translateX(-5px);
-}
-.button:disabled {
-  background: #b8b8b8;
-  cursor: initial;
 }
 
 .checkbox-container {
@@ -836,26 +839,6 @@ fieldset legend {
   width: auto;
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #e2e6e7;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #eb4791;
-  border-radius: 10px;
-  border: 3px solid #e2e6e7;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #f35ea1;
-}
-
 .sr-only {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -895,7 +878,8 @@ fieldset legend {
   align-items: center;
   flex-wrap: nowrap;
   width: clamp(900px, 50%, 1200px);
-  gap: 1rem;
+  gap: 3rem;
+  margin-bottom: 3rem;
 }
 .main-content.narrow {
   width: clamp(600px, 50%, 1000px);
@@ -1273,21 +1257,23 @@ footer h3 {
 }
 
 .brands-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   width: 100%;
   position: relative;
-  overflow: hidden;
+  gap: 1.5rem;
 }
 
 .brands-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
   gap: 1.5rem;
-}
-.brands-wrapper:hover {
-  cursor: grab;
 }
 
 .brand-card {
@@ -1465,6 +1451,7 @@ footer h3 {
 .product-name {
   font-family: "Oswald", "Segoe UI", Verdana, sans-serif;
   font-size: 1.5rem;
+  line-height: 1.2;
 }
 
 .colors-text {

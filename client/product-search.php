@@ -17,6 +17,7 @@
   <script src="./js/modules/validate-filters.js" async></script>
   <script src="./js/modules/show-hide-update-filters.js" async></script>
   <script src="./js/modules/select-sort.js" async></script>
+  <script src="./js/modules/adaptive-font-size.js" defer></script>
   
 </head>
 <body>
