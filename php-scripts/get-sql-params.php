@@ -38,20 +38,33 @@ function getProductSqlParams() {
   if(preg_match('/filter-color-/', $_SERVER['REQUEST_URI'])) {
     
     // get filter colors from DB to compare
-    $filter_colors = $db->queryAndFetch('SELECT DISTINCT filter_color, filter_hex FROM prod_colors');
+    $filter_colors = $db->queryAndFetch('SELECT DISTINCT filter_color FROM prod_colors');
     
     // initialize array for selected colors
-    $selected_colors = [];
+    $selected_filter_colors = [];
     
     // check filter colors in DB against selected colors
     foreach($filter_colors as $color) {
       if(isset($_REQUEST['filter-color-'.$color['filter_color']])) {
         // push colors with quotes to format for SQL clause
-        array_push($selected_colors, '"'.$color['filter_color'].'"');
+        array_push($selected_filter_colors, '"'.$color['filter_color'].'"');
       }
     }
+    $selected_filter_colors_str = implode(', ', $selected_filter_colors);
+    // get array of product colors that match the selected filter colors
+
+    $selected_colors = $db->queryAndFetch('SELECT color_name FROM prod_colors WHERE filter_color IN('. $selected_filter_colors_str .')');
     
-    $condition = 'filter_color IN (' . implode(', ', $selected_colors) . ")";
+    // push selected colors to array
+    $selected_colors_arr = array();
+    foreach($selected_colors as $color) {
+      array_push($selected_colors_arr, '"'.$color['color_name'].'"');
+    }
+
+    // create filter colors condition string
+    $selected_colors_str = implode(', ', $selected_colors_arr);
+
+    $condition = '(prim_color IN (' . $selected_colors_str . ') OR sec_color IN (' . $selected_colors_str . '))';
     array_push($params_array, $condition);
     
   }

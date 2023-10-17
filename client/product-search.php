@@ -90,6 +90,8 @@
             products.prod_name,
             thumb_url,
             brand,
+            prim_color,
+            sec_color,
             price,
             gender,
             colors.num_colors,
