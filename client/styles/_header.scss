@@ -4,12 +4,22 @@
 header {
   @include flex(row, center, stretch);
   // gap: $column-gap-main; 
-  height: $header-height;
+  // height determined by logo image
   position: fixed;
   z-index: 10;
   width: 100%;
   background: white;
   box-shadow: $box-shadow-main;
+}
+
+.header-wrapper-main {
+  @include flex(row, center, flex-end);
+  width: 100%;
+  
+}
+
+.header-wrapper-mobile {
+  display: none;
 }
 
 .header-section {
@@ -20,7 +30,7 @@ header {
     flex-basis: 25%;
 
     a {
-      height: 100%;
+      height: $header-height;
     }
     
     .logo-image {

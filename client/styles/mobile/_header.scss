@@ -1,0 +1,12 @@
+@media screen and (max-width: $mobile-breakpoint) {
+  
+  // hide main header on mobile
+  .header-wrapper-main {
+    display: none;
+  }
+  
+  header {
+    // height: $header-height-mobile;
+  }
+
+}

@@ -913,12 +913,24 @@ header {
   justify-content: center;
   align-items: stretch;
   flex-wrap: nowrap;
-  height: 7rem;
   position: fixed;
   z-index: 10;
   width: 100%;
   background: white;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.header-wrapper-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.header-wrapper-mobile {
+  display: none;
 }
 
 .header-section {
@@ -933,7 +945,7 @@ header {
   flex-basis: 25%;
 }
 .header-section.left a {
-  height: 100%;
+  height: 7rem;
 }
 .header-section.left .logo-image {
   padding: 1rem;
@@ -1916,6 +1928,11 @@ CART ITEMS
   background: #ffbcd8;
 }
 
+@media screen and (max-width: 768px) {
+  .header-wrapper-main {
+    display: none;
+  }
+}
 .debug {
   border: 1px dashed orange !important;
 }
