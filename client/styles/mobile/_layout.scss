@@ -1,0 +1,21 @@
+
+// mobile layout
+
+main {
+  margin-top: $header-height-mobile;
+
+}
+
+.main-content-wrapper {
+  justify-content: stretch;
+
+}
+
+.main-content {
+  gap: 0;
+  width: 100%;
+
+  &.narrow {
+    width: inherit;
+  }
+}

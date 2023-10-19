@@ -1,2 +1,9 @@
-@import './mobile/home-page';
-@import './mobile/header';
+
+@media screen and (max-width: $mobile-breakpoint) {
+
+  @import './mobile/layout';
+  @import './mobile/header';
+  @import './mobile/home-page';
+  @import './mobile/slider';
+
+}

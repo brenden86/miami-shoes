@@ -23,7 +23,8 @@ header {
 }
 
 .header-section {
-  @include flex(row, stretch, flex-end);
+  @include flex(row, space-between, stretch);
+  flex-grow: 1;
 
   &.left {
     justify-content: flex-end;    
@@ -61,48 +62,45 @@ header {
 
 // navigation
 
-.header-navigation {
-  
-  .nav-items {
-    @include flex(row, center, stretch);
-    list-style-type: none;
-    padding: 0;
 
-    li:hover {
-      .header-hover-menu {
-        @include flex(column, center, center);
-      }
+.nav-items {
+  @include flex(row, center, stretch);
+
+  li:hover {
+    .header-hover-menu {
+      @include flex(column, center, center);
     }
-
   }
 
-  .nav-link {
-    @include flex(row, center, flex-end);
-    position: relative;
-    font-family: $heading-font;
-    font-weight: $semibold;
-    text-transform: uppercase;
-    font-size: 1.1rem;
-    color: $font-color;
-    padding: $header-padding-bottom 2rem;
-
-    &:hover {
-      color: $primary-color;
-      text-decoration: none;
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        height: 5px;
-        width: 100%;
-        background: $primary-color;
-      }
-    }
-
-  }
 }
 
-.header-hover-menu {
+.nav-link {
+  @include flex(row, center, flex-end);
+  position: relative;
+  font-family: $heading-font;
+  font-weight: $semibold;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  color: $font-color;
+  padding: $header-padding-bottom 2rem;
+
+  &:hover {
+    color: $primary-color;
+    text-decoration: none;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      height: 5px;
+      width: 100%;
+      background: $primary-color;
+    }
+
+  }
+
+}
+
+.header-mega-menu {
   display: none;
   position: absolute;
   background: white;
@@ -110,7 +108,7 @@ header {
   width: 100%;
   box-shadow: $box-shadow-main;
 
-  .header-hover-menu-wrapper {
+  .header-mega-menu-wrapper {
     min-width: 900px;
     max-width: 1200px;
     // match main-content-wrapper

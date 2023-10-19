@@ -1,6 +1,6 @@
-<header>
+<header class="">
   
-  <div class="header-wrapper-main debug">
+  <div class="header-wrapper-main">
   <!-- header left section -->
 
     <div class="header-section left">
@@ -13,7 +13,7 @@
     <div class="header-section center">
       <!--nav links-->
       <nav class="header-navigation">
-        <ul class="nav-items">
+        <ul class="nav-items nolist">
           <li>
             <a href="/product-search.php?mens=true" class="nav-link">Mens</a>
           </li>
@@ -22,8 +22,8 @@
           </li>
           <li>
             <a href="/product-search.php" id="brands-header" class="nav-link">Brands</a>
-            <div class="header-hover-menu">
-              <div class="header-hover-menu-wrapper">
+            <div class="header-mega-menu">
+              <div class="header-mega-menu-wrapper">
                 <div class="header-brands-wrapper">
                   <a class="brand-card" href="/product-search.php?brand-filter-adidas=adidas">
                     <img src="./images/logos/Adidas_Logo.png" alt="adidas">
@@ -76,7 +76,42 @@
   </div>
 
   <div class="header-wrapper-mobile">
-    
-  </div>
+
+		<div class="header-section left"></div>
+
+		<div class="header-section center">
+			
+			<a href="/">
+				<img src="images/logo-placeholder.jpg" class="logo-image" alt="logo" />
+			</a>
+		
+		</div>
+
+		<div class="header-section right">
+
+			<div class="mobile-nav-toggle">
+				<div class="icon-link">
+					<div class="nav-toggle-icon">
+						<div class="icon-line"></div>
+						<div class="icon-line"></div>
+						<div class="icon-line"></div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div id="mobile-nav-container" class="header-mega-menu">
+			<nav class="mobile-nav debug">
+				<ul class="nolist nav-items">
+					<li><a href="/product-search.php?mens=true" class="nav-link">Mens</a></li>
+					<li><a href="/product-search.php?womens=true" class="nav-link">Womens</a></li>
+					<li><a href="/product-search.php" class="nav-link">Brands</a></li>
+				</ul>
+			</nav>
+		</div>
+		
+
+	</div>
   
 </header>

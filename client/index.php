@@ -13,6 +13,7 @@
     <script src="./js/modules/carousel-scroll.js" defer></script>
     <script src="./js/modules/feature-blocks.js" defer></script>
     <script src="./js/modules/adaptive-font-size.js" defer></script>
+    <script src="./js/modules/header-nav-toggle.js" defer></script>
     <!-- functions for populating product info -->
     <?php
       include_once __DIR__ . '/../php-scripts/get-product-info.php';
@@ -34,7 +35,7 @@
 <main>
   <div class="main-content-wrapper">
     
-    <div class="main-content">
+    <div class="main-content debug">
 
     <!-- Slider -->
     <div class="content-block">
@@ -321,6 +322,7 @@
     </div>
     
     </div>
+
   </div>
 </main>
 
