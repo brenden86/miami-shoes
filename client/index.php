@@ -290,7 +290,7 @@
     </div>
 
     <div class="content-block">
-      <div class="feature-block-container">
+      <div class="feature-block-container debug">
         <div class="feature-block-wrapper">
 
           <div class="feature-block">
