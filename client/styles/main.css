@@ -2019,36 +2019,35 @@ CART ITEMS
   .nav-link:hover:after {
     visibility: hidden;
   }
-  .nav-toggle-icon {
+  .mobile-nav-toggle .nav-toggle-icon {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
     flex-wrap: nowrap;
-    gap: 0.3rem;
-    width: 2rem;
-    height: 2rem;
+    gap: 0.5rem;
+    width: 3rem;
+    height: 3rem;
   }
-  .nav-toggle-icon .icon-line {
+  .mobile-nav-toggle .nav-toggle-icon .icon-line {
     background: #eb4791;
     border: 3px solid #eb4791;
-    box-sizing: border-box;
     transition: all 0.2s ease-out;
     opacity: 1;
   }
-  .nav-toggle-icon .icon-line:nth-child(2) {
+  .mobile-nav-toggle .nav-toggle-icon .icon-line:nth-child(2) {
     width: 100%;
   }
-  .nav-toggle-icon.active {
+  .mobile-nav-toggle.active .nav-toggle-icon {
     gap: 0;
   }
-  .nav-toggle-icon.active .icon-line:first-child {
-    transform: rotate(45deg) translate(4px, 3px);
+  .mobile-nav-toggle.active .icon-line:first-child {
+    transform: translateY(calc(0.5rem - 1.5px)) rotate(45deg);
   }
-  .nav-toggle-icon.active .icon-line:last-child {
-    transform: rotate(-45deg) translate(3px, -3px);
+  .mobile-nav-toggle.active .icon-line:last-child {
+    transform: translateY(calc(-0.5rem + 1.5px)) rotate(-45deg);
   }
-  .nav-toggle-icon.active .icon-line:nth-child(2) {
+  .mobile-nav-toggle.active .icon-line:nth-child(2) {
     opacity: 0;
   }
 }

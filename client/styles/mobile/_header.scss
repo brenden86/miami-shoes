@@ -75,40 +75,48 @@
   }
 }
 
-.nav-toggle-icon {
-  @include flex(column, center, stretch);
-  gap: .3rem;
-  width: 2rem;
-  height: 2rem;
-  
-  // gap: .3rem;
-  .icon-line {
-    background: $primary-color;
-    border: 3px solid $primary-color;
-    box-sizing: border-box;
-    transition: all .2s ease-out;
-    opacity: 1;
-  
-  }
+.mobile-nav-toggle {
 
-  .icon-line:nth-child(2) {
-    width: 100%;
+  .nav-toggle-icon {
+    @include flex(column, center, stretch);
+    gap: .5rem;
+    width: 3rem;
+    height: 3rem;
+    
+    // gap: .3rem;
+    .icon-line {
+      background: $primary-color;
+      border: 3px solid $primary-color;
+      transition: all .2s ease-out;
+      opacity: 1;
+    
+    }
+  
+    .icon-line:nth-child(2) {
+      width: 100%;
+    }
+  
   }
 
   &.active {
-
-    gap: 0;
-    .icon-line:first-child {
-      transform: rotate(45deg) translate(4px, 3px);
+    .nav-toggle-icon {
+      gap: 0;
     }
 
+    // px value accounts for border thickness to properly align X
+    .icon-line:first-child {
+      transform: translateY(calc(.5rem - 1.5px)) rotate(45deg);
+    }
+    
     .icon-line:last-child {
-      transform:  rotate(-45deg) translate(3px, -3px);
+      transform: translateY(calc(-.5rem + 1.5px)) rotate(-45deg);
     }
 
     .icon-line:nth-child(2) {
       opacity: 0;
     }
   }
+
 }
+
 
