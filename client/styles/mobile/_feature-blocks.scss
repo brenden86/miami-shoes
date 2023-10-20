@@ -1,0 +1,12 @@
+
+// mobile feature blocks
+
+.feature-block-wrapper {
+  @include flex(column, space-between, center);
+  gap: 1rem;
+}
+
+.feature-block {
+  width: 75%;
+  min-width: 250px;
+}

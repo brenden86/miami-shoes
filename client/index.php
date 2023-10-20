@@ -35,13 +35,11 @@
 <main>
   <div class="main-content-wrapper">
     
-    <div class="main-content debug">
+    <div class="main-content">
 
     <!-- Slider -->
-    <div class="content-block">
+    <div class="content-block mobile-full-width">
       <div class="slider-container">
-
-
 
         <div class="slider-images">
           <div class="image-wrapper">
@@ -71,11 +69,11 @@
 
       <div class="product-card-container">
 
-        <div class="carousel-control left icon-link">
+        <div class="carousel-control prev icon-link">
           <i class="bi-caret-left-fill"></i>
         </div>
 
-        <div class="carousel-control right icon-link">
+        <div class="carousel-control next icon-link">
           <i class="bi-caret-right-fill"></i>
         </div>
 
@@ -163,7 +161,7 @@
     <div class="content-block">
 
       <div class="category-cards-container">
-        <div class="category-cards-wrapper drag-scroll">
+        <div class="category-cards-wrapper">
 
           <a href="/product-search.php?type-filter-running=running&shoe-type-selected=true" class="category-card">
 
@@ -272,12 +270,6 @@
           <a class="brand-card" href="/product-search.php?brand-filter-converse=converse">
             <img src="./images/logos/converse-logo.png" alt="converse">
           </a>
-
-          
-
-        </div>
-        
-        <div class="brands-wrapper">
 
           <a class="brand-card" href="/product-search.php?brand-filter-dockers=dockers">
             <img src="./images/logos/dockers.png" alt="dockers">

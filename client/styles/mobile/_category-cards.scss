@@ -1,0 +1,18 @@
+
+// mobile category cards
+
+.category-cards-wrapper {
+  @include flex(row, space-evenly, flex-start, wrap);
+  gap: 0;
+}
+
+.category-card {
+  width: 45%;
+  min-width: 250px;
+}
+
+.card-image {
+  width: clamp(150px, 10vw, 200px);
+  height: clamp(150px, 10vw, 200px);
+}
+

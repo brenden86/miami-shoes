@@ -3,8 +3,8 @@
 const productCardsWrapper = document.querySelectorAll('.product-card-wrapper');
 const productCards = document.querySelector('.product-cards');
 const productCardsContainer = document.querySelector('.product-card-container');
-const carouselButtonLeft = document.querySelector('.carousel-control.left')
-const carouselButtonRight = document.querySelector('.carousel-control.right')
+const carouselButtonPrev = document.querySelector('.carousel-control.prev')
+const carouselButtonNext = document.querySelector('.carousel-control.next')
 
 // scroll distance is half of container
 const scrollDistance = (productCardsContainer.getBoundingClientRect().width / 2)
@@ -55,11 +55,11 @@ const scrollCarouselRight = () => {
 
 
 
-carouselButtonLeft.addEventListener('click', e => {
+carouselButtonPrev.addEventListener('click', e => {
   scrollCarouselLeft()
 })
 
-carouselButtonRight.addEventListener('click', e => {
+carouselButtonNext.addEventListener('click', e => {
   if(!atLastCarouselItem) {
     scrollCarouselRight()
   }

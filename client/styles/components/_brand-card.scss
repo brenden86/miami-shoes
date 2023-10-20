@@ -8,8 +8,9 @@
 }
 
 .brands-wrapper {
-  @include flex(row, center, center);
+  @include flex(row, center, center, wrap);
   gap: 1.5rem;
+  width: 80%; // not full-width to force offset 2nd row
 
 }
 

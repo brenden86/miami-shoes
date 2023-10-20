@@ -12,10 +12,19 @@ main {
 }
 
 .main-content {
-  gap: 0;
   width: 100%;
 
   &.narrow {
     width: inherit;
+  }
+}
+
+.content-block {
+  padding: $mobile-content-padding;
+
+  &.mobile-full-width {
+    // don't add padding on mobile
+    padding: 0;
+    
   }
 }

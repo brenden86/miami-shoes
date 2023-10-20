@@ -1288,8 +1288,9 @@ footer h3 {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 1.5rem;
+  width: 80%;
 }
 
 .brand-card {
@@ -1363,10 +1364,10 @@ footer h3 {
   top: 50%;
   transform: translateY(-50%);
 }
-.carousel-control.left {
+.carousel-control.prev {
   left: -3.5rem;
 }
-.carousel-control.right {
+.carousel-control.next {
   right: -3.5rem;
 }
 
@@ -1940,11 +1941,16 @@ CART ITEMS
     justify-content: stretch;
   }
   .main-content {
-    gap: 0;
     width: 100%;
   }
   .main-content.narrow {
     width: inherit;
+  }
+  .content-block {
+    padding: 1rem;
+  }
+  .content-block.mobile-full-width {
+    padding: 0;
   }
   .header-wrapper-main {
     display: none;
@@ -2049,6 +2055,52 @@ CART ITEMS
   }
   .mobile-nav-toggle.active .icon-line:nth-child(2) {
     opacity: 0;
+  }
+  #slider-prev {
+    left: 0.5rem;
+  }
+  #slider-next {
+    right: 0.5rem;
+  }
+  .carousel-control {
+    z-index: 1;
+  }
+  .carousel-control.prev {
+    left: 0.5rem;
+  }
+  .carousel-control.next {
+    right: 0.5rem;
+  }
+  .category-cards-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  .category-card {
+    width: 45%;
+    min-width: 250px;
+  }
+  .card-image {
+    width: clamp(150px, 10vw, 200px);
+    height: clamp(150px, 10vw, 200px);
+  }
+  .brands-wrapper {
+    width: 100%;
+  }
+  .feature-block-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 1rem;
+  }
+  .feature-block {
+    width: 75%;
+    min-width: 250px;
   }
 }
 .debug {

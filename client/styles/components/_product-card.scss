@@ -24,11 +24,11 @@
   top: 50%;
   transform: translateY(-50%);
 
-  &.left {
+  &.prev {
     left: -3.5rem;
   }
 
-  &.right {
+  &.next {
     right: -3.5rem;
   }
 }
