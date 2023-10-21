@@ -1,7 +1,10 @@
 
 // mobile slider
 
-
+.slider-images {
+  // 16:9 aspect
+  height: calc(100vw * .5625);
+}
 
 #slider-prev {
   left: .5rem;

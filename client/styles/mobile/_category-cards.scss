@@ -3,7 +3,7 @@
 
 .category-cards-wrapper {
   @include flex(row, space-evenly, flex-start, wrap);
-  gap: 0;
+  gap: 2rem;
 }
 
 .category-card {

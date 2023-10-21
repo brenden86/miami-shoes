@@ -6,7 +6,9 @@
 
 .slider-images {
   width: 100%;
-  height: clamp(400px, 30vw, 600px);
+  // 16:9 aspect
+  height: calc($column-width-main * .5625);
+  max-height: calc($max-column-width-main * .5625);
   display: flex;
   position: relative;
   box-shadow: $box-shadow-main;

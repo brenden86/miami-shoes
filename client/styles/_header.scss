@@ -24,11 +24,12 @@ header {
 
 .header-section {
   @include flex(row, space-between, stretch);
-  flex-grow: 1;
+  width: calc( (100vw - $column-width-main) / 2);
+
 
   &.left {
     justify-content: flex-end;    
-    flex-basis: 25%;
+
 
     a {
       height: $header-height;
@@ -41,16 +42,14 @@ header {
   
   &.center {
     @include flex(row, flex-start, flex-end);
-    flex-grow: 1;
-    min-width: 900px;
-    max-width: 1200px;
+    width: $column-width-main;
+    max-width: $max-column-width-main;
     // match main-content-wrapper
-    gap: 4rem;
     
   }
   
   &.right {
-    flex-basis: 25%;
+
     .header-section-wrapper {
       margin-bottom: $header-padding-bottom;
       

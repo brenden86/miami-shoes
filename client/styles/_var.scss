@@ -54,6 +54,10 @@ $box-shadow-small: 0px 0px 2px $gray-md;
 $box-shadow-color: 0px 0px 5px $primary-color;
 
 // size variables
+$column-width-main: 66vw;
+$column-width-narrow: 50vw;
+$max-column-width-main: 1200px;
+$max-column-width-narrow: 1000px;
 $column-gap-main: 1rem;
 $header-height: 7rem;
 $header-padding-bottom: 1rem;

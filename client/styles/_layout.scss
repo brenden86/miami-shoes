@@ -479,11 +479,13 @@ fieldset {
 
 .main-content {
   @include flex(column, flex-start, center);
-  width: clamp(900px, 50%, 1200px);
+  width: $column-width-main;
+  max-width: $max-column-width-main;
   gap: 3rem;
   
   &.narrow {
-    width: clamp(600px, 50%, 1000px);
+    width: $column-width-narrow;
+    max-width: $max-column-width-narrow;
   }
 
   margin-bottom: 3rem;
