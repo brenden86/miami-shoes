@@ -4,25 +4,7 @@
 
     <div class="footer-wrapper">
       <!-- social bar -->
-      <div class="social-bar">
-
-        <h3>Connect with us!</h3>
-        <div class="social-icons">
-          <a href="https://www.instagram.com" class="icon-link light">
-            <i class="bi-instagram"></i>
-          </a>
-          <a href="https://www.facebook.com" class="icon-link light">
-            <i class="bi-facebook"></i>
-          </a>
-          <a href="https://www.twitter.com" class="icon-link light">
-            <i class="bi-twitter"></i>
-          </a>
-          <a href="https://www.pinterest.com" class="icon-link light">
-            <i class="bi-pinterest"></i>
-          </a>
-        </div>
-
-      </div>
+      
 
       <!-- footer links -->
       <div class="footer-links">
@@ -51,12 +33,27 @@
 
         <!-- footer column 3 -->
         <div class="footer-column">
-          <h3>Be the first to know</h3>
-          <p>Sign up to get notified of new products, deals, and special offers!</p>
-          <div class="input-wrapper inline">
-            <input id="footer-email-input" type="text" placeholder="enter email">
-            <button class="btn secondary">Sign up</button>
+        
+        <div class="social-bar">
+
+          <h3>Connect with us!</h3>
+          <div class="social-icons">
+            <a href="https://www.instagram.com" class="icon-link light">
+              <i class="bi-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com" class="icon-link light">
+              <i class="bi-facebook"></i>
+            </a>
+            <a href="https://www.twitter.com" class="icon-link light">
+              <i class="bi-twitter"></i>
+            </a>
+            <a href="https://www.pinterest.com" class="icon-link light">
+              <i class="bi-pinterest"></i>
+            </a>
           </div>
+
+        </div>
+
         </div>
 
       </div>
