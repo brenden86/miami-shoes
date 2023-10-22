@@ -5,3 +5,9 @@
   @include flex(column-reverse, flex-start, stretch);
 }
 
+.footer-secondary {
+  .footer-wrapper {
+    margin: 3rem 1rem;
+  }
+}
+

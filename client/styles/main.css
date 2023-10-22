@@ -1314,13 +1314,15 @@ footer h3 {
 .feature-block-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: stretch;
   align-items: flex-start;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  gap: 1rem;
 }
 
 .feature-block {
-  width: clamp(250px, 31%, 400px);
+  flex-basis: 0;
+  flex-grow: 1;
   text-align: center;
   position: relative;
   top: -20px;
@@ -2105,6 +2107,9 @@ CART ITEMS
     justify-content: flex-start;
     align-items: stretch;
     flex-wrap: nowrap;
+  }
+  .footer-secondary .footer-wrapper {
+    margin: 3rem 1rem;
   }
 }
 .debug {

@@ -1,11 +1,15 @@
 
 
 .feature-block-wrapper {
-  @include flex(row, space-around, flex-start, wrap);
+  @include flex(row, stretch, flex-start);
+  gap: 1rem;
 }
 
 .feature-block {
-  width: clamp(250px,31%, 400px);
+  // width: clamp(250px,31%, 400px);
+  // width: 11%;
+  flex-basis: 0;
+  flex-grow: 1;
   text-align: center;
   position: relative;
   top: -20px;
