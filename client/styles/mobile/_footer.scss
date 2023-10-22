@@ -1,0 +1,7 @@
+
+// mobile footer
+
+.footer-links {
+  @include flex(column-reverse, flex-start, stretch);
+}
+
