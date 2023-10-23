@@ -23,6 +23,10 @@ main {
   &.narrow {
     width: inherit;
   }
+
+  &.filter-bar-clear {
+    margin-top: 3rem;
+  }
 }
 
 .content-block {

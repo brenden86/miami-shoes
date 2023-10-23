@@ -3,6 +3,11 @@
   display: none;
 }
 
+// hide mobile filter elements
+.filter-sort-left {
+  display: none;
+}
+
 .sidebar-container {
   width: clamp(200px, 15%, 300px);
   position: relative;

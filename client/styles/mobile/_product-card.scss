@@ -9,3 +9,27 @@
     right: .5rem;
   }
 }
+
+.product-cards {
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  justify-items: center;
+}
+
+.product-card-image {
+  img {
+    width: 130px;
+    height: 130px;
+  }
+}
+
+.brand {
+  font-size: .8rem;
+}
+
+.product-name {
+  font-size: 1.1rem;
+}
+
+.colors-text {
+  font-size: .8rem;
+}

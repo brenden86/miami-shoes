@@ -56,11 +56,11 @@
     ?>
 
     <!-- Filter sidebar -->
-    
+
     <?php include_once './filter-sidebar.php'?>
     
     <!-- main content column -->
-    <div class="main-content">
+    <div class="main-content filter-bar-clear">
       
       <!-- Product search results -->
       <div class="content-block">

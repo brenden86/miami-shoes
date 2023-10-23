@@ -44,29 +44,6 @@
     
   </div>
 
-  <!--
-
-  <div class="sort-wrapper">
-    <div>Sort by: </div>
-    
-    <div class="sort-options-wrapper">
-      <span
-        class="sort-option text-button <?=($sort === 'popular') ? 'selected' : ''?>"
-        data-sort="popular"
-      >popular</span>
-      <span
-        class="sort-option text-button <?=($sort === 'price-asc') ? 'selected' : ''?>"
-        data-sort="price-asc"
-      >price: low to high</span>
-      <span
-        class="sort-option text-button <?=($sort === 'price-desc') ? 'selected' : ''?>"
-        data-sort="price-desc"
-      >price: high to low</span>
-    </div>
-  </div>
-
--->
-
   <form
     id="product-filters-form"
     action=""
