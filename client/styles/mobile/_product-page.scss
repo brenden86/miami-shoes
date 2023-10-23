@@ -1,0 +1,36 @@
+
+// product page mobile styles
+
+.product-wrapper {
+  @include flex(column, stretch, flex-start);
+}
+
+.product-column {
+  width: 100%;
+
+
+}
+
+
+
+.product-info-wrapper {
+  &.mobile {
+    display: block;
+  }
+}
+
+.product-info-wrapper {
+  &:not(.mobile) {
+
+    .breadcrumbs {
+      display: none;
+    }
+
+    .info-group {
+      &.product-text {
+        display: none;
+      }
+    }
+
+  }
+}

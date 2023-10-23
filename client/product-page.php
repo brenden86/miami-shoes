@@ -13,6 +13,7 @@
   <script src="./js/modules/cart-functions.js" defer></script>
   <script src="./js/modules/cookie-functions.js" defer></script>
   <script src="./js/modules/popups.js" defer></script>
+  <script src="./js/modules/header-nav-toggle.js" defer></script>
 </head>
 <body>
   <div id="root">
@@ -81,6 +82,22 @@ $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
     
     <!-- left column -->
     <div class="product-column">
+
+    <div class="product-info-wrapper mobile">
+      <!-- breadcrumbs -->
+      <div class="breadcrumbs">
+        <?=buildBreadcrumbs($product)?>
+      </div>
+      <!-- product text -->
+      <div class="info-group product-text">
+        <div class="brand"><?=$product['brand']?></div>
+        <h1 class="product-title">
+          <?=buildProductTitle($product)?>
+        </h1>
+        <?=($qty < 1) ? '<div class="out-of-stock">Out of Stock</div>' : '' ?>
+        <div class="price">$<?=$price?></div>
+      </div>
+    </div>
       
       <div class="selected-image">
         <img

@@ -102,7 +102,7 @@
 		</div>
 		
 		<div id="mobile-nav-container" class="header-mega-menu">
-			<nav class="mobile-nav debug">
+			<nav class="mobile-nav">
 				<ul class="nolist nav-items">
 					<li><a href="/product-search.php?mens=true" class="nav-link">Mens</a></li>
 					<li><a href="/product-search.php?womens=true" class="nav-link">Womens</a></li>

@@ -1,4 +1,10 @@
 
+.product-info-wrapper {
+  &.mobile {
+    display: none;
+  }
+}
+
 .product-wrapper {
   @include flex(row, center, flex-start);
   gap: 1rem;
@@ -99,7 +105,7 @@
     }
 
     .product-colors-wrapper {
-      @include flex(row, flex-start, center);
+      @include flex(row, flex-start, center, wrap);
       gap: .5rem;
 
       .product-color {

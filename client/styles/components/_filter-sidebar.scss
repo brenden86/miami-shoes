@@ -120,6 +120,12 @@
     font-weight: $semibold;
   }
 
-
   
+  
+  
+}
+
+#filter-price-min, #filter-price-max {
+  min-width: 0;
+  max-width: 80px;
 }

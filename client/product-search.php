@@ -18,6 +18,8 @@
   <script src="./js/modules/show-hide-filters.js" async></script>
   <script src="./js/modules/select-sort.js" async></script>
   <script src="./js/modules/adaptive-font-size.js" defer></script>
+  <script src="./js/modules/header-nav-toggle.js" defer></script>
+
   
 </head>
 <body>
