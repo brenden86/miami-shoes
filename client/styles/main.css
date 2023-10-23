@@ -2050,7 +2050,7 @@ CART ITEMS
     visibility: hidden;
   }
   .mobile-nav-toggle {
-    margin-right: 1rem;
+    margin-left: 1rem;
   }
   .mobile-nav-toggle .nav-toggle-icon {
     display: flex;
@@ -2082,6 +2082,12 @@ CART ITEMS
   }
   .mobile-nav-toggle.active .icon-line:nth-child(2) {
     opacity: 0;
+  }
+  #header-cart-link {
+    margin-right: 1rem;
+  }
+  #header-cart-link i {
+    font-size: 2rem;
   }
   .slider-images {
     height: 56.25vw;

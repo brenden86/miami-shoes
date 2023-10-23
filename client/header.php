@@ -77,7 +77,19 @@
 
   <div class="header-wrapper-mobile">
 
-		<div class="header-section left"></div>
+		<div class="header-section left">
+
+      <div class="mobile-nav-toggle">
+        <div class="icon-link">
+          <div class="nav-toggle-icon">
+            <div class="icon-line"></div>
+            <div class="icon-line"></div>
+            <div class="icon-line"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
 
 		<div class="header-section center">
 			
@@ -89,15 +101,19 @@
 
 		<div class="header-section right">
 
-			<div class="mobile-nav-toggle">
-				<div class="icon-link">
-					<div class="nav-toggle-icon">
-						<div class="icon-line"></div>
-						<div class="icon-line"></div>
-						<div class="icon-line"></div>
-					</div>
-				</div>
-			</div>
+			<a href="/my-cart.php" id="header-cart-link" class="icon-link">
+        <i class="bi-cart"></i>
+        <span id="header-cart-count">
+        <?php
+        // show number of cart items
+          if(isset($_COOKIE['cart-items'])) {
+            $cart_cookie = json_decode($_COOKIE['cart-items']);
+            if($cart_cookie && count($cart_cookie) > 0) {
+              echo '(' . count($cart_cookie) . ')';
+            }
+          }
+        ?></span>
+      </a>
 			
 		</div>
 		

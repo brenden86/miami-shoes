@@ -80,7 +80,7 @@
 
 .mobile-nav-toggle {
 
-  margin-right: 1rem;
+  margin-left: 1rem;
 
   .nav-toggle-icon {
     @include flex(column, center, stretch);
@@ -121,6 +121,13 @@
     }
   }
 
+}
+
+#header-cart-link {
+  margin-right: 1rem;
+  i {
+    font-size: 2rem;
+  }
 }
 
 
