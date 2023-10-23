@@ -2227,6 +2227,12 @@ CART ITEMS
     min-width: 0;
     max-width: inherit;
   }
+  .pagination-wrapper {
+    gap: 2rem;
+  }
+  .page-numbers a {
+    padding: 0.6rem 1rem;
+  }
 }
 .debug {
   border: 1px dashed orange !important;
