@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="styles/main.css">
   <script src="./js/modules/image-fallback.js" defer></script>
   <script src="./js/modules/validate-filters.js" async></script>
-  <script src="./js/modules/show-hide-update-filters.js" async></script>
+  <script src="./js/modules/show-hide-filters.js" async></script>
   <script src="./js/modules/select-sort.js" async></script>
   <script src="./js/modules/adaptive-font-size.js" defer></script>
   
@@ -41,9 +41,22 @@
 -------------------->
 
 <main>
-  <div class="main-content-wrapper">
+  <div class="main-content-wrapper column">
+
+    <?php
+      // get sort order from request
+      // default to sort by popular
+      if($_REQUEST['sort'] === 'price-asc') {
+        $sort = 'price-asc';
+      } elseif($_REQUEST['sort'] === 'price-desc') {
+        $sort = 'price-desc';
+      } else {
+        $sort = 'popular';
+      }
+    ?>
 
     <!-- Filter sidebar -->
+    
     <?php include_once './filter-sidebar.php'?>
     
     <!-- main content column -->
@@ -54,17 +67,7 @@
 
       <div class="sort-wrapper">
         <div>Sort by: </div>
-        <?php
-          // get sort order from request
-          // default to sort by popular
-          if($_REQUEST['sort'] === 'price-asc') {
-            $sort = 'price-asc';
-          } elseif($_REQUEST['sort'] === 'price-desc') {
-            $sort = 'price-desc';
-          } else {
-            $sort = 'popular';
-          }
-        ?>
+        
         <div class="sort-options-wrapper">
           <span
             class="sort-option text-button <?=($sort === 'popular') ? 'selected' : ''?>"

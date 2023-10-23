@@ -1,0 +1,112 @@
+
+// mobile sidebar
+
+.filter-sort-container {
+  align-self: stretch;
+  @include flex(row, space-between, stretch);
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid $hover-dark;
+  margin-top: -1px; // covers a weird gap between the header
+
+}
+
+.filter-sort-left {
+  display: flex;
+}
+
+.filter-sort-right {
+  @include flex(row, flex-end, center);
+}
+
+.filter-sort-wrapper {
+  @include flex(row, flex-start, center);
+  gap: .5rem;
+}
+
+.sort-wrapper {
+  // hide desktop sort
+  display: none;
+}
+
+.sidebar-container {
+  width: 100%;
+  top: 0;
+  background: white;
+
+  #product-filters-form {
+    display: none;
+    margin-top: 1rem; // to clear the filter bar
+    position: fixed;
+    overflow-y: scroll;
+    height: calc(100vh - $header-height-mobile); // subtract header height
+    z-index: 1;
+    width: 100%;
+    padding: 2rem;
+    background: white;
+
+    &.show {
+      @include flex(column, stretch, stretch);
+    }
+  }
+
+  // sort buttons
+  .sort-wrapper {
+    display: flex;
+    align-self: stretch;
+    // position: relative;
+    margin: 0;
+    font-size: .8rem;
+    
+    .sort-options-wrapper {
+      display: none;
+      position: absolute;
+      gap: 0;
+      top: 100%;
+      // left: 0;
+      background: white;
+      border: 1px solid $hover-dark;
+      font-size: 1rem;
+      font-weight: $regular;
+
+      span {
+        padding: 1rem;
+        border: 1px solid $hover-dark;
+      }
+
+      &.show {
+        @include flex(column, center, stretch);
+      }
+    }
+  }
+}
+
+.filter-submit-button {
+  position: relative;
+  @include flex(row, flex-start, center);
+  margin-right: 1rem;
+  padding: 0;
+  width: auto;
+  background: inherit;
+  box-shadow: none;
+}
+
+.filter-colors-wrapper {
+  max-width: none;
+  gap: .5rem;
+
+  .filter-color {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+#filter-price-min, #filter-price-max {
+  min-width: 0;
+  max-width: inherit;
+}
+
+
+

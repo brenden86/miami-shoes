@@ -1,6 +1,72 @@
 
 <div class="sidebar-container">
-  
+
+  <div class="filter-sort-container">
+
+    <div class="filter-sort-left">
+
+      <div class="filter-sort-wrapper">
+        <div class="filter-icon icon-link">
+          <i class="bi-funnel"></i>
+        </div>
+        <div class="sort-icon icon-link">
+          <i class="bi-arrow-down-up"></i>
+        </div>
+      </div>
+
+      <div class="sort-wrapper">
+        <div class="sort-selected-mobile">
+          <?=
+            ($sort === 'price-asc') ? 'Price: low to high' : 
+            ($sort === 'price-desc' ? 'Price: high to low' : 'Popular');
+          ?>
+        </div>
+        <div class="sort-options-wrapper">
+          <span class="sort-option" data-sort="popular">popular</span>
+          <span class="sort-option" data-sort="price-asc">price: low to high</span>
+          <span class="sort-option" data-sort="price-desc">price: high to low</span>
+        </div>
+      </div>
+
+    </div>
+    
+    <div class="filter-sort-right">
+
+      <div
+        class="filter-submit-button text-button"
+        onclick="validateProductFilters()"
+      >
+        <i class="bi-arrow-clockwise"></i>
+        update search
+      </div>
+
+    </div>
+    
+  </div>
+
+  <!--
+
+  <div class="sort-wrapper">
+    <div>Sort by: </div>
+    
+    <div class="sort-options-wrapper">
+      <span
+        class="sort-option text-button <?=($sort === 'popular') ? 'selected' : ''?>"
+        data-sort="popular"
+      >popular</span>
+      <span
+        class="sort-option text-button <?=($sort === 'price-asc') ? 'selected' : ''?>"
+        data-sort="price-asc"
+      >price: low to high</span>
+      <span
+        class="sort-option text-button <?=($sort === 'price-desc') ? 'selected' : ''?>"
+        data-sort="price-desc"
+      >price: high to low</span>
+    </div>
+  </div>
+
+-->
+
   <form
     id="product-filters-form"
     action=""
@@ -8,14 +74,9 @@
     class="filters-wrapper"
   >
     
+    
     <!-- update search button; executes query based on filters selected -->
-    <div
-      class="filter-submit-button text-button"
-      onclick="validateProductFilters()"
-    >
-      <i class="bi-arrow-clockwise"></i>
-      update search
-    </div>
+    
     
     <div class="filter-group">
 

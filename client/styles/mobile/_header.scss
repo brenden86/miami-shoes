@@ -18,13 +18,13 @@
 .header-section {
   
   @include flex(row, center, center);
-  margin: 1rem;
-  
-  .logo-image {
-    height: $header-height-mobile;
-    padding: 0;
-  }
+  flex-basis: 0;
+  flex-grow: 1;
 
+  .logo-image {
+    padding: .5rem;
+  }
+  
   &.left {
     @include flex(row, flex-start, center);
   }
@@ -33,13 +33,16 @@
     @include flex(row, center, center);
     min-width: inherit;
     max-width: inherit;
+
+    a {
+      height: $header-height-mobile;
+    }
     
     
   }
   
   &.right {
     @include flex(row, flex-end, center);
-    
   }
   
 }
@@ -77,15 +80,17 @@
 
 .mobile-nav-toggle {
 
+  margin-right: 1rem;
+
   .nav-toggle-icon {
     @include flex(column, center, stretch);
     gap: .4rem;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.2rem;
+    height: 2.2rem;
     
     .icon-line {
       background: $primary-color;
-      border: 3px solid $primary-color;
+      border: 2px solid $primary-color;
       transition: all .2s ease-out;
       opacity: 1;
     
@@ -104,11 +109,11 @@
 
     // px value accounts for border thickness to properly align X
     .icon-line:first-child {
-      transform: translateY(calc(.5rem - 1.5px)) rotate(45deg);
+      transform: translateY(.25rem) rotate(45deg);
     }
     
     .icon-line:last-child {
-      transform: translateY(calc(-.5rem + 1.5px)) rotate(-45deg);
+      transform: translateY(-.25rem) rotate(-45deg);
     }
 
     .icon-line:nth-child(2) {
