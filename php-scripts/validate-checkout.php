@@ -41,9 +41,7 @@ function validateCheckout($step) {
     }
     
     // billing street 2
-    if(empty($_POST['billing_street2'])) {
-      checkoutValidationError('Please enter a valid street name.');
-    } else {
+    if(trim($_POST['billing_street2'])) {
       $_SESSION['checkout_info']['billing_street2'] = filter_var($_POST['billing_street2'], FILTER_SANITIZE_SPECIAL_CHARS);
     }
 
@@ -134,9 +132,7 @@ function validateCheckout($step) {
       }
   
       // shipping street 2
-      if(empty($_POST['shipping_street2'])) {
-        checkoutValidationError('Please enter a valid street name.');
-      } else {
+      if(trim($_POST['shipping_street2'])) {
         $_SESSION['checkout_info']['shipping_street2'] = filter_var($_POST['shipping_street2'], FILTER_SANITIZE_SPECIAL_CHARS);
       }
   

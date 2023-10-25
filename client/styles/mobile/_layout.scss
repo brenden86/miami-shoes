@@ -3,7 +3,7 @@
 
 main {
   margin-top: $header-height-mobile;
-  padding-top: 0;
+  padding: 0;
 
 }
 
@@ -19,6 +19,8 @@ main {
 
 .main-content {
   width: 100%;
+  gap: 1rem;
+  margin-bottom: 0;
   &.narrow {
     width: inherit;
   }
@@ -36,4 +38,111 @@ main {
     padding: 0;
     
   }
+<<<<<<< Updated upstream
+=======
+}
+
+.card {
+  box-shadow: none;
+  border-radius: none;
+  padding: none;
+}
+
+.icon-link {
+  &:hover {
+    background: inherit;
+  }
+  &:active {
+    background: $primary-color-light;
+  }
+
+  &.light {
+    &:hover {
+      background: none;
+    }
+    &:active {
+      background: $primary-color-hover;
+    }
+  }
+}
+
+.product-card-container {
+  &.card {
+    padding: 0;
+  }
+}
+
+button, .button {
+  &:hover {
+    background: none;
+  }
+  &:active {
+    background: $primary-color-hover;
+  }
+
+  &.secondary {
+    &:hover {
+      background: none;
+    }
+    &:active {
+      background: $secondary-color-hover;
+    }
+  }
+
+  &.next {
+    &:hover {
+      i {
+        transform: none;
+      }
+    }
+    &:active {
+      i {
+        transform: translateX(5px);
+      }
+    }
+  }
+  &.prev {
+    &:hover {
+      i {
+        transform: none;
+      }
+    }
+    &:active {
+      i {
+        transform: translateX(5px);
+      }
+    }
+  }
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+textarea,
+select {
+  padding: $input-padding;
+  border-radius: $border-radius-main;
+  border: $border-light;
+  font-size: 1rem;
+  width: 100%;
+  resize: none;
+  height: 3rem;
+}
+
+.input-wrapper {
+  gap: $input-gap-mobile;
+  margin-top: $input-gap-mobile;
+
+  &.inline {
+    @include flex(row, stretch, stretch, wrap);
+
+
+    &.mobile-inline {
+      @include flex(row, flex-start, flex-end);
+    }
+  }
+>>>>>>> Stashed changes
 }

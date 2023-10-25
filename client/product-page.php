@@ -216,7 +216,7 @@ $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
               </div>
             </div> 
             
-            <button id="add-to-cart" class="<?=($qty < 1) ? 'disabled' : ''?>">add to cart</button>
+            <button id="add-to-cart" class="large <?=($qty < 1) ? 'disabled' : ''?>">add to cart</button>
             
             <!-- item details -->
             <div class="info-group">

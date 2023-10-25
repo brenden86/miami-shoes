@@ -43,7 +43,7 @@
 -------------------->
 
 <main>
-  <div class="main-content-wrapper column">
+  <div class="main-content-wrapper mobile-column">
 
     <?php
       // get sort order from request
@@ -65,7 +65,7 @@
     <div class="main-content filter-bar-clear">
       
       <!-- Product search results -->
-      <div class="content-block">
+      <div class="content-block mobile-full-width">
 
       <div class="sort-wrapper">
         <div>Sort by: </div>
