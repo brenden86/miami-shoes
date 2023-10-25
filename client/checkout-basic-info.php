@@ -8,30 +8,6 @@
   
     <fieldset>
       <legend class="section">Billing Information</legend>
-<<<<<<< Updated upstream
-  
-      <label>Billing Address</label>
-      <div class="input-wrapper inline">
-        <label for="billing-first-name" class="sr-only">first name</label>
-        <input
-          type="text"
-          id="billing-first-name"
-          name="billing_first_name"
-          value="<?=$billing_first_name ?? '';?>"
-          placeholder="First name"
-          required
-        >
-  
-        <label for="billing-last-name" class="sr-only">last name</label>
-        <input
-          type="text"
-          id="billing-last-name"
-          name="billing_last_name"
-          value="<?=$billing_last_name ?? '';?>"
-          placeholder="Last name"
-          required
-        >
-=======
 
       <div class="input-wrapper">
 
@@ -58,7 +34,6 @@
             required
           >
         </div>
->>>>>>> Stashed changes
       </div>
       <div class="input-wrapper">
         <!-- SHOW COMPANY BUTTON -->
