@@ -1,0 +1,14 @@
+
+// order confirmation page mobile
+
+.order-information-wrapper {
+
+  .order-details-wrapper {
+    @include flex(column, flex-start, stretch);
+    gap: 1.5rem;
+  }
+
+  .cart-contents {
+    margin-top: 0;
+  }
+}

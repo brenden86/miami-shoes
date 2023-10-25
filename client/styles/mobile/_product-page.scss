@@ -8,6 +8,16 @@
 .product-column {
   width: 100%;
 
+  .thumbnail-wrapper {
+    .thumbnail {
+      &:hover {
+        opacity: inherit;
+      }
+      &:active {
+        opacity: 0.8;
+      }
+    }
+  }
 
 }
 

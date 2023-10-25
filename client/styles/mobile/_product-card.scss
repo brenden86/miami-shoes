@@ -15,6 +15,15 @@
   justify-items: center;
 }
 
+.product-card {
+  &:hover {
+    background: $hover;
+  }
+  &:active {
+    background: $hover;
+  }
+}
+
 .product-card-image {
   img {
     width: 130px;

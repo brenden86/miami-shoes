@@ -8,28 +8,32 @@
   
     <fieldset>
       <legend class="section">Billing Information</legend>
-  
-      <label>Billing Address</label>
-      <div class="input-wrapper inline">
-        <label for="billing-first-name" class="sr-only">first name</label>
-        <input
-          type="text"
-          id="billing-first-name"
-          name="billing_first_name"
-          value="<?=$billing_first_name ?? '';?>"
-          placeholder="First name"
-          required
-        >
-  
-        <label for="billing-last-name" class="sr-only">last name</label>
-        <input
-          type="text"
-          id="billing-last-name"
-          name="billing_last_name"
-          value="<?=$billing_last_name ?? '';?>"
-          placeholder="Last name"
-          required
-        >
+
+      <div class="input-wrapper">
+
+        <div class="label">Billing Address</div class="label">
+
+        <div class="input-wrapper inline">
+          <label for="billing-first-name" class="sr-only">first name</label>
+          <input
+            type="text"
+            id="billing-first-name"
+            name="billing_first_name"
+            value="<?=$billing_first_name ?? '';?>"
+            placeholder="First name"
+            required
+          >
+    
+          <label for="billing-last-name" class="sr-only">last name</label>
+          <input
+            type="text"
+            id="billing-last-name"
+            name="billing_last_name"
+            value="<?=$billing_last_name ?? '';?>"
+            placeholder="Last name"
+            required
+          >
+        </div>
       </div>
       <div class="input-wrapper">
         <!-- SHOW COMPANY BUTTON -->
@@ -188,6 +192,7 @@
 
     <!-- checkout navigation buttons -->
     <div class="form-navigation-buttons">
+      <a href="#" class="empty-link"></a>
       <button class="button next" type="submit">
         Continue to Shipping
         <i class="bi-caret-right-fill"></i>
