@@ -2005,7 +2005,7 @@ CART ITEMS
   .main-content-wrapper {
     justify-content: stretch;
   }
-  .main-content-wrapper.column {
+  .main-content-wrapper.mobile-column {
     display: flex;
     flex-direction: column;
     justify-content: stretch;
@@ -2373,6 +2373,22 @@ CART ITEMS
   }
   .product-info-wrapper:not(.mobile) .info-group.product-text {
     display: none;
+  }
+  .popup-container .popup-wrapper .popup-content .popup-icon h1 {
+    font-size: 1.5rem;
+  }
+  .popup-container .popup-wrapper .popup-buttons {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 2rem;
+    margin-bottom: 1rem;
+  }
+  .popup-container .popup-wrapper .popup-buttons .text-button {
+    order: 2;
   }
   .order-information-wrapper .order-details-wrapper {
     display: flex;
