@@ -1,0 +1,52 @@
+
+// mobile cart page styles
+
+.cart-container {
+  margin-bottom: 2rem;
+}
+
+.cart-header {
+  h1 {
+    font-size: 1.5rem;
+  }
+  .form-navigation-buttons {
+    .text-button {
+      // hide the continue shopping button
+      display: none;
+    }
+  }
+}
+
+.cart-subtotal {
+  font-size: 1.2rem;
+}
+
+
+.cart-item {
+ 
+  .item-image {
+    width: clamp(80px, 20%, 150px);
+    min-width: 80px; // clamp min doesn't work for some reason
+  }
+
+  .item-details-wrapper {
+    .item-details {
+
+      &.right {
+        margin-left: .25rem;
+      }
+      .item-name {
+        font-size: 1rem;
+      }
+
+      .item-property {
+        font-size: .9rem;
+      }
+
+      .price {
+        font-size: 1rem;
+      }
+    }
+  }
+
+}

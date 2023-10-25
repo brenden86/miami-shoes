@@ -36,6 +36,9 @@ main {
   &.mobile-full-width {
     // don't add padding on mobile
     padding: 0;
+    .card {
+      border-radius: 0;
+    }
     
   }
 }

@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="styles/main.css">
   <script src="/js/modules/cookie-functions.js" defer></script>
   <script src="/js/modules/cart-functions.js" defer></script>
+  <script src="/js/modules/header-nav-toggle.js" defer></script>
 </head>
 <body>
   <div id="root">
@@ -50,7 +51,7 @@
     <div class="main-content">
 
       <!-- cart items -->
-      <div class="content-block">
+      <div class="content-block mobile-full-width">
         
         <div class="cart-container card">
           <div class="cart-wrapper">
@@ -95,7 +96,7 @@
               echo '
               <div class="cart-subtotal">
                 <div class="heading inline">Subtotal: </div>
-                <span class="price">'.getCartSubtotal().'</span>
+                <span class="price">$'.getCartSubtotal().'</span>
               </div>
               ';
             }
@@ -180,36 +181,6 @@
       
     
     </div>
-
-    <!-- order summary sidebar -->
-    <!-- <div class="order-summary-container">
-
-      <div class="order-summary-wrapper">
-        <h1>Order Summary</h1>
-
-        <div class="order-summary-item-wrapper">
-          <div>Subtotal</div>
-          <div class="summary-item-value">$289.97</div>
-        </div>
-
-        <div class="order-summary-item-wrapper">
-          <div>Shipping</div>
-          <div class="summary-item-value">—</div>
-        </div>
-
-        <div class="order-summary-item-wrapper">
-          <div>Estimated Tax</div>
-          <div class="summary-item-value">—</div>
-        </div>
-
-        <div class="order-summary-item-wrapper total">
-          <div>Total</div>
-          <div class="summary-item-value">—</div>
-        </div>
-
-      </div>
-
-    </div> -->
 
   </div>
 </main>
