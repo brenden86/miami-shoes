@@ -54,6 +54,7 @@
     header('location: /checkout.php');
     exit;
   }
+
 ?>
 
 <!DOCTYPE html>
@@ -94,7 +95,7 @@
     <div class="main-content narrow">
 
       <!-- cart items -->
-      <div class="content-block">
+      <div class="content-block mobile-full-width">
         
         <div class="checkout-container card">
           <div class="checkout-wrapper">
@@ -140,20 +141,8 @@
             }
 
 
-            // calculate subtotal, shipping cost, and taxes
-
-            $_SESSION['checkout_info']['cart_subtotal'] = getCartSubtotal();
-
-            if(isset($_SESSION['checkout_info']['shipping_type'])) {
-              $_SESSION['checkout_info']['shipping_cost'] = getShippingCost($_SESSION['checkout_info']['shipping_type']);
-            }
-
-            // sales tax rate & amount
-            if(!empty($_SESSION['checkout_info']['shipping_state'])) {
-              $_SESSION['checkout_info']['sales_tax_rate'] = getTaxRate($_SESSION['checkout_info']['shipping_state']);
-              $_SESSION['checkout_info']['sales_tax'] = number_format(round($_SESSION['checkout_info']['sales_tax_rate'] * $_SESSION['checkout_info']['cart_subtotal'], 2), 2, '.');
-            }
-
+            // DEBUGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
+            // $current_step = 3;
 
             // show correct form fields
             if($current_step === 1) {
@@ -180,6 +169,22 @@
   </div>
   
   <!-- order summary sidebar -->
+
+  <?php
+    // calculate subtotal, shipping cost, and taxes
+
+    $_SESSION['checkout_info']['cart_subtotal'] = getCartSubtotal();
+
+    if(isset($_SESSION['checkout_info']['shipping_type'])) {
+      $_SESSION['checkout_info']['shipping_cost'] = getShippingCost($_SESSION['checkout_info']['shipping_type']);
+    }
+
+    // sales tax rate & amount
+    if(!empty($_SESSION['checkout_info']['shipping_state'])) {
+      $_SESSION['checkout_info']['sales_tax_rate'] = getTaxRate($_SESSION['checkout_info']['shipping_state']);
+      $_SESSION['checkout_info']['sales_tax'] = number_format(round($_SESSION['checkout_info']['sales_tax_rate'] * $_SESSION['checkout_info']['cart_subtotal'], 2), 2, '.');
+    }
+  ?>
 
   <div class="order-summary-container">
     
@@ -212,16 +217,13 @@
       <div class="order-summary-item-wrapper total">
         <div>Total</div>
         <div class="summary-item-value">
-          <?=
-            isset(
-              $_SESSION['checkout_info']['cart_subtotal'],
-              $_SESSION['checkout_info']['shipping_cost'],
-              $_SESSION['checkout_info']['sales_tax']
-              ) ? '$' . array_sum([
+
+          <?='$' . 
+            array_sum([
                 $_SESSION['checkout_info']['cart_subtotal'],
                 $_SESSION['checkout_info']['shipping_cost'],
                 $_SESSION['checkout_info']['sales_tax']
-              ]) : '—';
+              ]);
 
           ?>
         </div>

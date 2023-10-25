@@ -63,7 +63,7 @@
         extract($_SESSION['checkout_info']);
       ?>
 
-      <div class="content-block">
+      <div class="content-block mobile-full-width">
 
         <div class="order-information-container card">
           <div class="order-information-wrapper">
@@ -82,10 +82,8 @@
                   <div class="detail after">
                     <?= $shipping_street1; ?>
                     <br>
-                    <?= isset($shipping_street2)
-                      ? strtoupper($shipping_street2) . '<br>'
-                      : '';
-                    ?>
+                    <?= $shipping_street2 ?? '';?>
+
                     <?= strtoupper($shipping_city)
                       . ', '
                       . strtoupper($shipping_state)
@@ -186,9 +184,9 @@
 
 <?php
   // clear previous order info from session
-  unset($_SESSION['checkout_info']);
-  unset($_SESSION['order_submitted']);
-  unset($_SESSION['cart_items']);
+  // unset($_SESSION['checkout_info']);
+  // unset($_SESSION['order_submitted']);
+  // unset($_SESSION['cart_items']);
 ?>
 
 <!----------- 

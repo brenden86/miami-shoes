@@ -8,5 +8,12 @@
 .page-numbers {
   a {
     padding: .6rem 1rem;
+
+    &:hover {
+      background: inherit;
+    }
+    &:active {
+      background: $primary-color-light;
+    }
   }
 }

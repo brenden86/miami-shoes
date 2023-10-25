@@ -1,4 +1,62 @@
 
+<<<<<<< Updated upstream
+=======
+/****************************
+    ORDER SUMMARY SIDEBAR
+****************************/
+
+.order-summary-container {
+
+  width: clamp(230px, 20%, 380px);
+
+  h1 {
+    padding: 0 1rem;
+  }
+}
+
+.order-summary-wrapper {
+  position: relative;
+  .order-summary-toggle {
+    display: none;
+  }
+}
+
+
+.order-summary-item-wrapper {
+  @include flex(row, space-between, flex-start);
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+  font-size: 1rem;
+
+  span {
+    color: $font-light;
+    font-weight: $semibold;
+    font-size: .8rem;
+    display: block;
+  }
+
+  &.total {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: $semibold;
+    border-top: 2px solid $font-light;
+    padding-top: .5rem;
+  }
+}
+
+.summary-item-value {
+  font-weight: $semibold;
+}
+
+.checkout-wrapper {
+
+  .form-navigation-buttons {
+    margin-top: 2rem;
+  }
+  
+}
+
+>>>>>>> Stashed changes
 .checkout-progress {
   position: relative;
   margin: 2rem;
@@ -15,48 +73,49 @@
   margin-left: 1rem;
   
   .progress-segment {
-      height: 1rem;
-      flex-grow: 1;
-      &.complete {
-        background: $primary-color;
-      }
-  
-    }
-  
-  }
-  
-  .progress-steps-wrapper {
-    @include flex(row, space-between, center);
-    position: relative;
-    z-index: 1;
-    
-  }
-  
-  .checkout-step {
-    color: $font-light;
-    @include flex(column, center, center);
-    h1 {
-      font-size: 1.2rem;
-      margin: 0;
-    }
-    
-    &.active {
-      color: $primary-color;
-      .checkout-step-icon {
-        border-color: $primary-color;
-      }
-    }
+    height: 1rem;
+    flex-grow: 1;
     
     &.complete {
-      color: $primary-color;
-      .checkout-step-icon {
-        border-color: $primary-color;
       background: $primary-color;
-      color: white;
-      
     }
 
   }
+  
+}
+  
+.progress-steps-wrapper {
+  @include flex(row, space-between, flex-start);
+  position: relative;
+  z-index: 1;
+  
+}
+  
+.checkout-step {
+  color: $font-light;
+  @include flex(column, center, center);
+  h1 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+  
+  &.active {
+    color: $primary-color;
+    .checkout-step-icon {
+      border-color: $primary-color;
+    }
+  }
+  
+  &.complete {
+    color: $primary-color;
+    .checkout-step-icon {
+      border-color: $primary-color;
+    background: $primary-color;
+    color: white;
+    
+  }
+
+}
   
 }
 
@@ -125,7 +184,13 @@
         font-family: $monospace;
         border-radius: 0;
         border: none;
+
       }
+      // card number input
+      input[name="card_number"] {
+        width: 220px;
+      }
+
     }
   }
   

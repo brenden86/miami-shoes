@@ -315,7 +315,6 @@
             id="card-number"
             inputmode="numeric"
             placeholder="XXXX XXXX XXXX XXXX"
-            style="width: 250px"
             required
           >
         </div>

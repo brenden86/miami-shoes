@@ -64,6 +64,10 @@ a {
   color: $primary-color;
   text-decoration: none;
 
+  &.empty-link {
+    visibility: hidden;
+  }
+
   &:hover {
     cursor: pointer;
   }
@@ -152,6 +156,13 @@ button, .button {
 
   &.small {
     padding: $input-padding-small;
+  }
+
+  &.large {
+    width: 100%;
+    max-width: 500px;
+    font-size: 1.2rem;
+    text-align: center;
   }
 
   &.disabled {
