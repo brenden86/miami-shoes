@@ -49,7 +49,7 @@ main {
     background: none;
   }
   &:active {
-    background: $primary-color-hover;
+    background: $primary-color-light;
   }
 }
 
@@ -78,6 +78,19 @@ select {
   
   &.inline {
     flex-wrap: wrap;
+    &.mobile-inline {
+      gap: .5rem;
+      flex-wrap: nowrap;
+      align-items: center;
+
+      &.small {
+        input {
+          padding: $input-padding-mobile;
+          font-size: 1rem;
+        }
+      }
+    }
+
   }
 
   input, select {

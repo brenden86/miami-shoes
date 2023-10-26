@@ -2037,7 +2037,7 @@ CART ITEMS
     background: none;
   }
   .icon-link:active {
-    background: #f35ea1;
+    background: #ffbcd8;
   }
   input[type=text],
   input[type=tel],
@@ -2059,6 +2059,15 @@ CART ITEMS
   }
   .input-wrapper.inline {
     flex-wrap: wrap;
+  }
+  .input-wrapper.inline.mobile-inline {
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+  .input-wrapper.inline.mobile-inline.small input {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
   }
   .input-wrapper input, .input-wrapper select {
     font-size: 1.2rem;
@@ -2425,7 +2434,7 @@ CART ITEMS
     order: 2;
   }
   .cart-container {
-    margin-bottom: 2rem;
+    margin-bottom: 0rem;
   }
   .cart-header h1 {
     font-size: 1.5rem;

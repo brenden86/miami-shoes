@@ -48,13 +48,23 @@
     <?php
       // get sort order from request
       // default to sort by popular
-      if($_REQUEST['sort'] === 'price-asc') {
+
+      if(isset($_REQUEST['sort'])) {
+        $_SESSION['sort_order'] = $_REQUEST['sort'];
+      }
+
+      if($_SESSION['sort_order'] === 'price-asc') {
         $sort = 'price-asc';
-      } elseif($_REQUEST['sort'] === 'price-desc') {
+      } elseif($_SESSION['sort_order'] === 'price-desc') {
         $sort = 'price-desc';
       } else {
+        // default to popular
         $sort = 'popular';
       }
+
+      // save sort order to session
+      // $_SESSSION['sort_order'] = $sort;
+
     ?>
 
     <!-- Filter sidebar -->

@@ -162,117 +162,7 @@
               ';
             }
           
-          /*
-            <div class="filter-color checkbox-container"
-            style="background: rgb(214, 21, 21)"
-            >
-            <input id="red" type="checkbox" name="filter-color-red" value=true
-            <?=($_REQUEST['filter-color-red']==='true') ? 'checked' : '';?>
-            >
-            <label for="red" class="checkbox">
-              <i class="bi-check"></i>
-            </label>
-            </div>
-            
-            
-            <div class="filter-color checkbox-container"
-            style="background: rgb(107, 107, 116)"
-            >
-            <input id="grey" type="checkbox" name="filter-color-grey" value=true
-            <?=($_REQUEST['filter-color-grey']==='true') ? 'checked' : '';?>
-            >
-            <label for="grey" class="checkbox">
-              <i class="bi-check"></i>
-            </label>
-            </div>
-            
-            <div class="filter-color checkbox-container"
-            style="background: rgb(56, 56, 56)"
-            >
-            <input id="black" type="checkbox" name="filter-color-black" value=true
-            <?=($_REQUEST['filter-color-black']==='true') ? 'checked' : '';?>
-            >
-            <label for="black" class="checkbox">
-              <i class="bi-check"></i>
-            </label>
-            </div>
-            
-            <div class="filter-color checkbox-container"
-            style="background: rgb(17, 134, 33)"
-            >
-            <input id="green" type="checkbox" name="filter-color-green" value=true
-            <?=($_REQUEST['filter-color-green']==='true') ? 'checked' : '';?>
-            >
-            <label for="green" class="checkbox">
-              <i class="bi-check"></i>
-            </label>
-            </div>
-            
-            <div class="filter-color checkbox-container"
-            style="background: rgb(221, 218, 23)"
-            >
-            <input id="yellow" type="checkbox" name="filter-color-yellow" value=true
-            <?=($_REQUEST['filter-color-yellow']==='true') ? 'checked' : '';?>
-            >
-            <label for="yellow" class="checkbox light-color">
-              <i class="bi-check"></i>
-            </label>
-            </div>
-            
-            <div class="filter-color checkbox-container"
-            style="background: rgb(137, 21, 214)"
-            >
-            <input id="purple" type="checkbox" name="filter-color-purple" value=true
-            <?=($_REQUEST['filter-color-purple']==='true') ? 'checked' : '';?>
-            >
-            <label for="purple" class="checkbox">
-              <i class="bi-check"></i>
-            </label>
-            </div>
-            
-            <div class="filter-color checkbox-container"
-            style="background: rgb(19, 91, 207)"
-            >
-            <input id="blue" type="checkbox" name="filter-color-blue" value=true
-            <?=($_REQUEST['filter-color-blue']==='true') ? 'checked' : '';?>
-            >
-            <label for="blue" class="checkbox">
-              <i class="bi-check"></i>
-            </label>
-            </div>
-            
-            <div class="filter-color checkbox-container"
-            style="background: rgb(82, 52, 25)"
-            >
-            <input id="brown" type="checkbox" name="filter-color-brown" value=true
-            <?=($_REQUEST['filter-color-brown']==='true') ? 'checked' : '';?>>
-            <label for="brown" class="checkbox">
-              <i class="bi-check"></i>
-            </label>
-            </div>
-            
-            <div class="filter-color checkbox-container"
-            style="background: rgb(190, 185, 135)"
-            >
-            <input id="tan" type="checkbox" name="filter-color-tan" value=true
-            <?=($_REQUEST['filter-color-tan']==='true') ? 'checked' : '';?>
-            >
-            <label for="tan" class="checkbox light-color">
-              <i class="bi-check"></i>
-            </label>
-            </div>
-            
-            <div class="filter-color checkbox-container"
-            style="background: rgb(255, 255, 255)"
-            >
-            <input id="white" type="checkbox" name="filter-color-white" value=true
-            <?=($_REQUEST['filter-color-white']==='true') ? 'checked' : '';?>
-            >
-            <label for="white" class="checkbox light-color">
-                <i class="bi-check"></i>
-            </label>
-            </div>
-            */
+          
           ?>
 
           <!--  -->
@@ -288,7 +178,7 @@
     <div class="filter-group">
       <div class="filter-group-name">Price</div>
       <div class="filters">
-        <div class="input-wrapper inline small">
+        <div class="input-wrapper inline mobile-inline small">
           <span>$</span>
           <input id="filter-price-min" type="text" name="priceMin" placeholder="min." maxlength="8"
           value=<?=$_REQUEST['priceMin'] ?? '';?>
@@ -390,6 +280,7 @@
 
       </div>
       <div id="brand-selected"></div>
+      <input type="hidden" id="sort-input" name="sort" value="<?=$_SESSION['sort_order'] ?? 'popular'?>">
 
     </div>
     
