@@ -1,0 +1,6 @@
+
+.page-not-found-container {
+  margin: 5rem 1rem;
+  font-size: 1.2rem;
+  @include flex(column, center, center);
+}

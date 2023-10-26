@@ -1997,6 +1997,16 @@ CART ITEMS
   background: #ffbcd8;
 }
 
+.page-not-found-container {
+  margin: 5rem 1rem;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
 @media screen and (max-width: 768px) {
   main {
     margin-top: 5rem;
