@@ -1,45 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Miami Shoes | Home</title>
 
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="styles/main.css">
-  <script src="./js/modules/product-image-gallery.js" defer></script>
-  <script src="./js/modules/cart-functions.js" defer></script>
-  <script src="./js/modules/cookie-functions.js" defer></script>
-  <script src="./js/modules/popups.js" defer></script>
-  <script src="./js/modules/header-nav-toggle.js" defer></script>
-</head>
-<body>
-  <div id="root">
-    
-    <?php
-  // INCLUDES
-  include_once __DIR__ . '../../database/dbconnect.php';
-  include_once __DIR__ . '/../php-scripts/get-product-info.php';
-  ?>
+<?php
 
-<!----------- 
-HEADER    
-------------->
-<?php include('./header.php');?>
+session_start();
 
-<!------------------
-MAIN CONTENT    
--------------------->
-
-<main>
-  <div class="main-content-wrapper">
-    
-    
-    <!-- main content column -->
-    <div class="main-content">
-      <?php
+// INCLUDES
+include_once __DIR__ . '../../database/dbconnect.php';
+include_once __DIR__ . '/../php-scripts/get-product-info.php';
 
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
@@ -69,6 +35,48 @@ $product = $product_query->fetch(PDO::FETCH_ASSOC);
 
 // Extract fields into variables
 extract($product);
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><?=ucwords($brand) . ' ' . ucwords($prod_name) . ' | Miami Shoes'?></title>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="./js/modules/product-image-gallery.js" defer></script>
+  <script src="./js/modules/cart-functions.js" defer></script>
+  <script src="./js/modules/cookie-functions.js" defer></script>
+  <script src="./js/modules/popups.js" defer></script>
+  <script src="./js/modules/header-nav-toggle.js" defer></script>
+</head>
+<body>
+  <div id="root">
+
+<!----------- 
+HEADER    
+------------->
+<?php include('./header.php');?>
+
+<!------------------
+MAIN CONTENT    
+-------------------->
+
+<main>
+  <div class="main-content-wrapper">
+    
+    
+    <!-- main content column -->
+    <div class="main-content">
+      <?php
+
+
 
 // Get product image URLs
 $product_image_query = $db->prepare('SELECT * FROM prod_images WHERE prod_id = :id');
