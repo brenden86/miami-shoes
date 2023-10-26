@@ -2033,6 +2033,37 @@ CART ITEMS
   .content-block.mobile-full-width .card {
     border-radius: 0;
   }
+  .icon-link:hover {
+    background: none;
+  }
+  .icon-link:active {
+    background: #f35ea1;
+  }
+  input[type=text],
+  input[type=tel],
+  input[type=email],
+  input[type=password],
+  input[type=number],
+  input[type=search],
+  textarea,
+  select {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #b8b8b8;
+    font-size: 1rem;
+    width: clamp(150px, 100%, 600px);
+  }
+  .input-wrapper {
+    gap: 1.2rem;
+    margin-bottom: 0.9rem;
+  }
+  .input-wrapper.inline {
+    flex-wrap: wrap;
+  }
+  .input-wrapper input, .input-wrapper select {
+    font-size: 1.2rem;
+    padding: 0.75rem 1rem;
+  }
   .header-wrapper-main {
     display: none;
   }
@@ -2420,6 +2451,81 @@ CART ITEMS
   }
   .cart-item .item-details-wrapper .item-details .price {
     font-size: 1rem;
+  }
+  .order-summary-container {
+    width: 100%;
+    background: white;
+    position: fixed;
+    bottom: 0;
+    padding-top: 0.5rem;
+    box-shadow: 2px -2px 2px rgba(0, 0, 0, 0.2);
+  }
+  .order-summary-container h1 {
+    font-size: 1.5rem;
+  }
+  .order-summary-wrapper .order-summary-toggle {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    transition: all 500ms;
+  }
+  .order-summary-wrapper .order-summary-toggle.show {
+    transform: rotate(180deg);
+  }
+  .order-summary-wrapper .order-summary-toggle.show ~ .order-summary-items {
+    max-height: 300px;
+  }
+  .order-summary-items {
+    max-height: 0;
+    transition: all 500ms;
+    overflow: hidden;
+  }
+  .order-summary-item-wrapper.total {
+    border-top: none;
+  }
+  .order-summary-item-wrapper.total .summary-item-value {
+    color: #eb4791;
+  }
+  .checkout-wrapper .form-navigation-buttons {
+    justify-content: space-between;
+  }
+  #checkout-form-review .form-navigation-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 2rem;
+  }
+  #checkout-form-review .form-navigation-buttons .text-button {
+    order: 2;
+  }
+  #checkout-form-review .form-navigation-buttons button, #checkout-form-review .form-navigation-buttons .button {
+    width: 100%;
+    max-width: 500px;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  .checkout-progress {
+    margin: 1rem;
+  }
+  .checkout-step h1 {
+    font-size: 1rem;
+    text-align: center;
+  }
+  .checkout-fields {
+    margin: 0;
+  }
+  .credit-card-container {
+    width: clamp(340px, 93vw, 480px);
+    height: clamp(214.2px, 55.335vw, 285.6px);
+  }
+  .credit-card-container .card-input-wrapper .card-input input[type=text] {
+    height: 2.5rem;
+  }
+  #checkout-review .cart-header {
+    margin-top: 2.5rem;
   }
   .order-information-wrapper .order-details-wrapper {
     display: flex;

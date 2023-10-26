@@ -70,6 +70,8 @@
   <link rel="stylesheet" href="styles/main.css">
   <script src="/js/modules/show-additional-fields.js" defer ></script>
   <script src="/js/modules/checkout-validation.js" defer ></script>
+  <script src="/js/modules/header-nav-toggle.js" defer ></script>
+  <script src="/js/modules/order-summary-toggle.js" defer ></script>
 </head>
 <body>
   <div id="root">
@@ -189,47 +191,55 @@
   <div class="order-summary-container">
     
     <div class="order-summary-wrapper">
+
       <h1>Order Summary</h1>
-      
-      <div class="order-summary-item-wrapper">
-        <div>Subtotal</div>
-        <div class="summary-item-value">
-          <?=isset($_SESSION['checkout_info']['cart_subtotal']) ? '$'.$_SESSION['checkout_info']['cart_subtotal'] : '';?>
-        </div>
+      <div class="order-summary-toggle icon-link">
+        <i class="bi-chevron-up"></i>
       </div>
       
-      <div class="order-summary-item-wrapper">
-        <div>Shipping
-          <span><?= ucwords($_SESSION['checkout_info']['shipping_type']) ?? '';?></span>
-        </div>
-        <div class="summary-item-value">
-          <?=isset($_SESSION['checkout_info']['shipping_cost']) ? '$'.$_SESSION['checkout_info']['shipping_cost'] : '—';?>
-        </div>
-      </div>
-      
-      <div class="order-summary-item-wrapper">
-        <div>Estimated Tax</div>
-        <div class="summary-item-value">
-          <?=isset($_SESSION['checkout_info']['sales_tax']) ? '$'.$_SESSION['checkout_info']['sales_tax'] : '—';?>
-        </div>
-      </div>
-      
-      <div class="order-summary-item-wrapper total">
-        <div>Total</div>
-        <div class="summary-item-value">
-
-          <?='$' . 
-            array_sum([
-                $_SESSION['checkout_info']['cart_subtotal'],
-                $_SESSION['checkout_info']['shipping_cost'],
-                $_SESSION['checkout_info']['sales_tax']
-              ]);
-
-          ?>
-        </div>
+      <div class="order-summary-items">
+        <div class="order-summary-item-wrapper">
+          <div>Subtotal</div>
+          <div class="summary-item-value">
+            <?=isset($_SESSION['checkout_info']['cart_subtotal']) ? '$'.$_SESSION['checkout_info']['cart_subtotal'] : '';?>
+          </div>
         </div>
         
+        <div class="order-summary-item-wrapper">
+          <div>Shipping
+            <span><?= ucwords($_SESSION['checkout_info']['shipping_type']) ?? '';?></span>
+          </div>
+          <div class="summary-item-value">
+            <?=isset($_SESSION['checkout_info']['shipping_cost']) ? '$'.$_SESSION['checkout_info']['shipping_cost'] : '—';?>
+          </div>
+        </div>
+        
+        <div class="order-summary-item-wrapper">
+          <div>Estimated Tax</div>
+          <div class="summary-item-value">
+            <?=isset($_SESSION['checkout_info']['sales_tax']) ? '$'.$_SESSION['checkout_info']['sales_tax'] : '—';?>
+          </div>
+        </div>
+
       </div>
+      
+        <div class="order-summary-item-wrapper total">
+          <div>Total</div>
+          <div class="summary-item-value">
+
+            <?='$' . 
+              array_sum([
+                  $_SESSION['checkout_info']['cart_subtotal'],
+                  $_SESSION['checkout_info']['shipping_cost'],
+                  $_SESSION['checkout_info']['sales_tax']
+                ]);
+
+            ?>
+          </div>
+          </div>
+          
+        </div>
+      
       
   </div>
     

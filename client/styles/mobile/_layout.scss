@@ -42,3 +42,48 @@ main {
     
   }
 }
+
+.icon-link {
+
+  &:hover {
+    background: none;
+  }
+  &:active {
+    background: $primary-color-hover;
+  }
+}
+
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+textarea,
+select {
+  padding: $input-padding;
+  border-radius: $border-radius-main;
+  border: $border-light;
+  font-size: 1rem;
+  width: clamp(150px, 100%, 600px);
+
+
+}
+
+.input-wrapper {
+  
+  gap: $input-gap-mobile;
+  margin-bottom: calc($input-gap-mobile - 0.3rem);
+  
+  &.inline {
+    flex-wrap: wrap;
+  }
+
+  input, select {
+    font-size: 1.2rem;
+    padding: $input-padding-mobile;
+  }
+
+  
+}
