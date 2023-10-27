@@ -6,3 +6,12 @@ toggleIcon.addEventListener('click', () => {
   toggleIcon.classList.toggle('active');
   navContainer.classList.toggle('show');
 })
+
+// brands toggle
+
+const brandsToggle = document.querySelector('#brands-header-mobile');
+
+brandsToggle.addEventListener('click', () => {
+  brandsToggle.classList.toggle('active');
+  console.log('toggled class')
+})

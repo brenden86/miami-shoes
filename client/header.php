@@ -117,12 +117,44 @@
 			
 		</div>
 		
-		<div id="mobile-nav-container" class="header-mega-menu">
+		<div id="mobile-nav-container" class="">
 			<nav class="mobile-nav">
 				<ul class="nolist nav-items">
 					<li><a href="/product-search.php?mens=true" class="nav-link">Mens</a></li>
 					<li><a href="/product-search.php?womens=true" class="nav-link">Womens</a></li>
-					<li><a href="/product-search.php" class="nav-link">Brands</a></li>
+					<li>
+            <span id="brands-header-mobile" class="nav-link">Brands<i class="bi-chevron-down"></i></span>
+            
+
+            <div class="header-mega-menu mobile">
+              <div class="header-mega-menu-wrapper">
+                <div class="header-brands-wrapper">
+                  <a class="brand-card" href="/product-search.php?brand-filter-adidas=adidas">
+                    <img src="./images/logos/Adidas_Logo.png" alt="adidas">
+                  </a>
+                  <a class="brand-card" href="/product-search.php?brand-filter-nike=nike">
+                    <img src="./images/logos/Nike-Logo.png" alt="nike">
+                  </a>
+                  <a class="brand-card" href="/product-search.php?brand-filter-vans=vans">
+                    <img src="./images/logos/vans logo.png" alt="vans">
+                  </a>
+                  <a class="brand-card" href="/product-search.php?brand-filter-converse=converse">
+                    <img src="./images/logos/converse-logo.png" alt="converse">
+                  </a>
+                  <a class="brand-card" href="/product-search.php?brand-filter-dockers=dockers">
+                    <img src="./images/logos/dockers.png" alt="dockers">
+                  </a>
+                  <a class="brand-card" href="/product-search.php?brand-filter-heydude=heydude">
+                    <img src="./images/logos/heydude.png" alt="heydude">
+                  </a>
+                  <a class="brand-card" href="/product-search.php?brand-filter-newbalance=new+balance">
+                    <img src="./images/logos/new-balance.png" alt="new balance">
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          </li>
 				</ul>
 			</nav>
 		</div>
