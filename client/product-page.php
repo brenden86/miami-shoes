@@ -50,6 +50,7 @@ extract($product);
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles/main.css">
+  <script src="./js/modules/image-fallback.js" defer></script>
   <script src="./js/modules/product-image-gallery.js" defer></script>
   <script src="./js/modules/cart-functions.js" defer></script>
   <script src="./js/modules/cookie-functions.js" defer></script>

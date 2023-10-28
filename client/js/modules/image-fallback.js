@@ -1,10 +1,11 @@
 // display fallback image if product photo is not found
 
-let productCardImages = document.querySelectorAll('.product-card-image');
+let images = document.querySelectorAll('img');
 
-productCardImages.forEach(el => {
-  let image = el.firstElementChild;
-  image.addEventListener('error', (e) => {
-    e.target.src = 'images/product-photos/product-fallback.jpg';
-  })
+images.forEach(img => {
+  if(img.src.match('/product-photos/')) {
+    img.addEventListener('error', (e) => {
+      e.target.src = 'images/product-photos/product-fallback.jpg';
+    })
+  }
 })
