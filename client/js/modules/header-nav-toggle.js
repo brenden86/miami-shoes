@@ -1,6 +1,6 @@
 
 
-export default function toggleNav() {
+export function toggleNav() {
   
   toggleIcon.classList.toggle('active');
   navContainer.classList.toggle('show');
