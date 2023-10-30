@@ -1,4 +1,6 @@
-const testDiv = document.querySelector('#test-div');
+
+import { setContent } from './test2.js';
+
 
 
 

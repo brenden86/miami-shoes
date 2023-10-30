@@ -14,7 +14,8 @@
     <script src="./js/modules/carousel-scroll.js" defer></script>
     <script src="./js/modules/feature-blocks.js" defer></script>
     <script src="./js/modules/adaptive-font-size.js" defer></script>
-    <script src="./js/modules/header-nav-toggle.js" defer></script>
+    <!-- <script src="./js/modules/header-nav-toggle.js" defer></script> -->
+    <script src="./js/app.js" type="module" defer></script>
     <?php
       include_once __DIR__ . '/../php-scripts/get-product-info.php';
       include_once __DIR__ . '/../database/dbconnect.php';
