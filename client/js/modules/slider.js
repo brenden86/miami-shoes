@@ -8,7 +8,7 @@ let sliderTimers = []
 const nextSlideButton = document.querySelector('#slider-next')
 const prevSlideButton = document.querySelector('#slider-prev')
 
-function nextSlide() {
+export function nextSlide() {
   slideIndex++
   if (slideIndex >= sliderImages.length) {
     // reset index on last image
@@ -17,8 +17,7 @@ function nextSlide() {
   sliderWrapper.style.left = `-${slideIndex * 100}%`
 }
 
-function prevSlide() {
-  console.log('going to prev slide')
+export function prevSlide() {
   slideIndex--
   if (slideIndex < 0) {
     // go to last slide
@@ -27,7 +26,7 @@ function prevSlide() {
   sliderWrapper.style.left = `-${slideIndex * 100}%`
 }
 
-function resetTimer() {
+export function resetTimer() {
   sliderTimers.forEach(t => {
     clearInterval(t)
   })

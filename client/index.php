@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./styles/main.css">
     <!-- <script src="./js/modules/image-fallback.js" defer></script> -->
-    <script src="./js/modules/slider.js" defer></script>
+    <!-- <script src="./js/modules/slider.js" defer></script> -->
     <script src="./js/modules/carousel-scroll.js" defer></script>
     <script src="./js/modules/feature-blocks.js" defer></script>
     <!-- <script src="./js/modules/adaptive-font-size.js" defer></script> -->
