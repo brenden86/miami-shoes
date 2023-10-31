@@ -6,3 +6,4 @@ import { featureBlockObserver } from './modules/feature-blocks.js';
 import { changeSortOrder } from './modules/select-sort.js';
 import { showUpdateButton } from './modules/show-hide-filters.js';
 import { validateProductFilters } from './modules/validate-filters.js';
+import { selectImage } from './modules/product-image-gallery.js';

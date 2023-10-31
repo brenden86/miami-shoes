@@ -2,8 +2,8 @@ import { filtersForm, validateProductFilters } from "./validate-filters.js";
 
 const updateButton = document.querySelector('.filter-submit-button');
 const formFilters = document.querySelector('#product-filters-form');
-const checkboxInputs = formFilters.querySelectorAll('input[type="checkbox"]');
-const textInputs = formFilters.querySelectorAll('input[type="text"]');
+const checkboxInputs = formFilters?.querySelectorAll('input[type="checkbox"]');
+const textInputs = formFilters?.querySelectorAll('input[type="text"]');
 const filterToggle = document.querySelector('.filter-icon')
 const sortToggle = document.querySelector('.sort-icon')
 const sortOptions = document.querySelector('.sort-options-wrapper')
