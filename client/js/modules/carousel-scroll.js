@@ -54,15 +54,18 @@ export const scrollCarouselRight = () => {
 
 
 
+if(carouselButtonPrev) {
+  carouselButtonPrev.addEventListener('click', e => {
+    scrollCarouselLeft()
+  })
+}
 
-carouselButtonPrev.addEventListener('click', e => {
-  scrollCarouselLeft()
-})
-
-carouselButtonNext.addEventListener('click', e => {
-  if(!atLastCarouselItem) {
-    scrollCarouselRight()
-  }
-})
+if(carouselButtonNext) {
+  carouselButtonNext.addEventListener('click', e => {
+    if(!atLastCarouselItem) {
+      scrollCarouselRight()
+    }
+  })
+}
 
 

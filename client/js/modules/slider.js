@@ -37,20 +37,25 @@ export function resetTimer() {
 }
 
 // EVENT HANDLERS
+if(nextSlideButton) {
+  nextSlideButton.addEventListener('click', () => {
+    nextSlide()
+    resetTimer()
+  })
+}
 
-nextSlideButton.addEventListener('click', () => {
-  nextSlide()
-  resetTimer()
-})
-
-prevSlideButton.addEventListener('click', () => {
-  prevSlide()
-  resetTimer()
-})
+if(prevSlideButton) {
+  prevSlideButton.addEventListener('click', () => {
+    prevSlide()
+    resetTimer()
+  })
+}
 
 
 // start slide rotation
-resetTimer()
+if(sliderWrapper) {
+  resetTimer()
+}
 
 
 

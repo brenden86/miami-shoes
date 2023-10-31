@@ -1,3 +1,4 @@
+import { filtersForm, validateProductFilters } from "./validate-filters.js";
 
 const updateButton = document.querySelector('.filter-submit-button');
 const formFilters = document.querySelector('#product-filters-form');
@@ -8,7 +9,7 @@ const sortToggle = document.querySelector('.sort-icon')
 const sortOptions = document.querySelector('.sort-options-wrapper')
 
 
-function showUpdateButton() {
+export function showUpdateButton() {
   
   if(!updateButton.classList.contains('show')) {
     updateButton.classList.add('show');
@@ -16,25 +17,37 @@ function showUpdateButton() {
 
 }
 
-checkboxInputs.forEach(input => {
-  input.addEventListener('change', () => {
-    showUpdateButton();
-  }) 
-})
+if(filtersForm) {
 
-textInputs.forEach(input => {
-  input.addEventListener('keyup', () => {
-    showUpdateButton();
+  checkboxInputs.forEach(input => {
+    input.addEventListener('change', () => {
+      showUpdateButton();
+    }) 
   })
-})
+  
+  textInputs.forEach(input => {
+    input.addEventListener('keyup', () => {
+      showUpdateButton();
+    })
+  })
+  
+  filterToggle.addEventListener('click', () => {
+    filtersForm.classList.toggle('show');
+  })
+  
+  
+}
 
+if(updateButton) {
+  updateButton.addEventListener('click', () => {
+    validateProductFilters();
+  })
+}
 
-filterToggle.addEventListener('click', () => {
-  filtersForm.classList.toggle('show');
-})
-
-sortToggle.addEventListener('click', () => {
-  sortOptions.classList.toggle('show');
-})
+if(sortToggle) {
+  sortToggle.addEventListener('click', () => {
+    sortOptions.classList.toggle('show');
+  })
+}
 
 

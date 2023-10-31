@@ -32,10 +32,7 @@
     
     <div class="filter-sort-right">
 
-      <div
-        class="filter-submit-button text-button"
-        onclick="validateProductFilters()"
-      >
+      <div class="filter-submit-button text-button">
         <i class="bi-arrow-clockwise"></i>
         update search
       </div>

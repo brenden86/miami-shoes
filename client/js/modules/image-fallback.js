@@ -9,7 +9,6 @@
 */
 
 export function checkImagesLoaded() {
-  console.log('checking images...')
   let images = document.querySelectorAll('img');
   images.forEach(img => {
     if(img.src.match('/product-photos/')) {

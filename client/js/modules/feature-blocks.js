@@ -2,7 +2,7 @@ const featureBlocksWrapper = document.querySelector('.feature-block-wrapper')
 const featureBlocks = document.querySelectorAll('.feature-block')
 const mobileBreakpoint = 768;
 
-export const observer = new IntersectionObserver(entries => {
+export const featureBlockObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     // add show class to each feature block
     if(window.innerWidth <= mobileBreakpoint) {
@@ -17,18 +17,20 @@ export const observer = new IntersectionObserver(entries => {
     }
     // only show blocks once
     if(entry.isIntersecting) {
-      observer.unobserve(entry.target);
+      featureBlockObserver.unobserve(entry.target);
     }
   })
 }, {
   threshold: 0.75
 })
 
-// observe individual blocks if on mobile layout
-if(window.innerWidth <= mobileBreakpoint) {
-  featureBlocks.forEach(block => {
-    observer.observe(block)
-  })
-} else {
-  observer.observe(featureBlocksWrapper)
+if(featureBlocksWrapper) {
+  // observe individual blocks if on mobile layout
+  if(window.innerWidth <= mobileBreakpoint) {
+    featureBlocks.forEach(block => {
+      featureBlockObserver.observe(block)
+    })
+  } else {
+    featureBlockObserver.observe(featureBlocksWrapper)
+  }
 }
