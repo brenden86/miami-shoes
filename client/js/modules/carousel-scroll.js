@@ -28,7 +28,7 @@ const carouselObserver = new IntersectionObserver(entries => {
 carouselObserver.observe(productCardsWrapper[productCardsWrapper.length-1]);
 
 
-const scrollCarouselLeft = () => {
+export const scrollCarouselLeft = () => {
   if((productCards.offsetLeft + scrollDistance) > 0) {
     leftOffset = 0;
     productCards.style.left = `${leftOffset}px`;
@@ -38,7 +38,7 @@ const scrollCarouselLeft = () => {
   }
 }
 
-const scrollCarouselRight = () => {
+export const scrollCarouselRight = () => {
   let lastCardBound = productCardsWrapper[productCardsWrapper.length - 1].getBoundingClientRect().right;
   let containerBound = productCardsContainer.getBoundingClientRect().right;
 

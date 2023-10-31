@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./styles/main.css">
     <!-- <script src="./js/modules/image-fallback.js" defer></script> -->
     <!-- <script src="./js/modules/slider.js" defer></script> -->
-    <script src="./js/modules/carousel-scroll.js" defer></script>
+    <!-- <script src="./js/modules/carousel-scroll.js" defer></script> -->
     <script src="./js/modules/feature-blocks.js" defer></script>
     <!-- <script src="./js/modules/adaptive-font-size.js" defer></script> -->
     <!-- <script src="./js/modules/header-nav-toggle.js" defer></script> -->
