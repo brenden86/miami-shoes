@@ -2,7 +2,7 @@ const featureBlocksWrapper = document.querySelector('.feature-block-wrapper')
 const featureBlocks = document.querySelectorAll('.feature-block')
 const mobileBreakpoint = 768;
 
-const observer = new IntersectionObserver(entries => {
+export const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     // add show class to each feature block
     if(window.innerWidth <= mobileBreakpoint) {

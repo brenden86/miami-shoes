@@ -1,3 +1,9 @@
+<?php
+  include_once __DIR__ . '/../php-scripts/get-product-info.php';
+  include_once __DIR__ . '/../database/dbconnect.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,17 +15,7 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link rel="stylesheet" href="./styles/main.css">
-    <!-- <script src="./js/modules/image-fallback.js" defer></script> -->
-    <!-- <script src="./js/modules/slider.js" defer></script> -->
-    <!-- <script src="./js/modules/carousel-scroll.js" defer></script> -->
-    <script src="./js/modules/feature-blocks.js" defer></script>
-    <!-- <script src="./js/modules/adaptive-font-size.js" defer></script> -->
-    <!-- <script src="./js/modules/header-nav-toggle.js" defer></script> -->
     <script type="module" src="./js/app.js" defer></script>
-    <?php
-      include_once __DIR__ . '/../php-scripts/get-product-info.php';
-      include_once __DIR__ . '/../database/dbconnect.php';
-    ?>
   </head> 
   <body>
     <div id="root">
