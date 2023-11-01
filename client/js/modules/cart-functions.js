@@ -1,9 +1,12 @@
 
+import { getCookie, setCookie } from "./cookie-functions.js";
+import { showPopup, closePopup } from "./popups.js";
+
 const addToCartButton = document.querySelector('#add-to-cart');
 
 // DOM elements for the size buttons are already declared in 'select-size.js'
 
-function updateHeaderCartCount(count) {
+export function updateHeaderCartCount(count) {
   let headerCartCount = document.querySelector('#header-cart-count');
   if(count > 0) {
     headerCartCount.textContent = `(${count})`;
@@ -12,7 +15,7 @@ function updateHeaderCartCount(count) {
   }
 }
 
-function updateCartCount(count) {
+export function updateCartCount(count) {
   let cartCount = document.querySelector('#cart-count');
   if(count > 0) {
     cartCount.textContent = `(${count})`;
@@ -21,8 +24,8 @@ function updateCartCount(count) {
   }
 }
 
-function updateCartCookie(sku) {
-
+export function updateCartCookie(sku) {
+  
   let cartCookie = getCookie('cart-items');
   // create cart cookie if it does not exist.
   if(!cartCookie) {
@@ -31,23 +34,23 @@ function updateCartCookie(sku) {
     updateHeaderCartCount(1);
   } else {
     // parse cart cookie to array and push next item
-    cartArray = JSON.parse(cartCookie);
+    let cartArray = JSON.parse(cartCookie);
     cartArray.push(sku);
     // update cart cookie
     setCookie('cart-items', JSON.stringify(cartArray), 30);
     // update cart count in header
     updateHeaderCartCount(cartArray.length);
   }
-
+  
 }
 
-async function getQtyInStock(sku) {
+export async function getQtyInStock(sku) {
   const res = await fetch(`http://localhost:3000/get-stock.php?sku=${sku}`);
   const result = await res.json();
   return result.data.qty;
 }
 
-async function addToCart(sku) {
+export async function addToCart(sku) {
   if(!addToCartButton.classList.contains('disabled')) {
     // selectedItem value defined in select-size.js
     if(selectedItem) {
@@ -76,7 +79,7 @@ if(addToCartButton) {
 
 
 
-function removeFromCart(item) {
+export function removeFromCart(item) {
   // remove item from cart cookie
   let cartCookie = JSON.parse(getCookie('cart-items'));
   let itemIndex = parseInt(item.getAttribute('data-index'));
@@ -98,7 +101,7 @@ cartItems.forEach(item => {
 
 // CLEAR CART
 
-function clearCart() {
+export function clearCart() {
   // check cart cookie
   let cartCookie = JSON.parse(getCookie('cart-items'));
   if(cartCookie.length < 1) {

@@ -1,9 +1,9 @@
-function getCookie(cookieName) {
-  decodedCookie = decodeURIComponent(document.cookie);
-  cookieArray = decodedCookie.split(';');
+export function getCookie(cookieName) {
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let cookieArray = decodedCookie.split(';');
   let regexp = new RegExp("^\\s?" + cookieName + "=");
   // loop through cookies array, look for match
-  cookieValue = '';
+  let cookieValue = '';
   cookieArray.forEach(cookie => {
     if(cookie.search(regexp) >= 0) {
       // return cookie value
@@ -17,7 +17,7 @@ function getCookie(cookieName) {
   }
 }
 
-function setCookie(name, value, expDays = 7) {
+export function setCookie(name, value, expDays = 7) {
   let date = new Date();
   date.setTime(date.getTime() + (expDays*24*60*60*1000))
   let expire = date.toUTCString();

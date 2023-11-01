@@ -31,7 +31,7 @@ const outOfStockHTML = `
 
 
 
-function showPopup(type) {
+export function showPopup(type) {
   const root = document.querySelector('#root');
   // set the popup content
   let popupContent;
@@ -49,7 +49,7 @@ function showPopup(type) {
     <div class="popup-wrapper">
 
       <div class="popup-close">
-        <div class="icon-link" onclick="closePopup()">
+        <div class="icon-link">
           <i class="bi-x-lg"></i>
         </div>
       </div>
@@ -60,15 +60,23 @@ function showPopup(type) {
   </div>
   `;
   root.append(popup);
+  let popupCloseButton = document.querySelector('.popup-close');
+  popupCloseButton.addEventListener('click', () => {
+    closePopup()
+  })
 }
 
-function closePopup() {
+
+export function closePopup() {
   let popup = document.querySelector('.popup-container');
   popup.remove();
 }
 
+// clicking outside popup closes it
 document.addEventListener('click', e => {
   if(e.target.classList.contains('popup-container')) {
-    e.target.remove();
+    closePopup();
   }
 })
+
+
