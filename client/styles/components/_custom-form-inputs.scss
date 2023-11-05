@@ -1,0 +1,144 @@
+// CUSTOM CHECKBOX
+
+// container is <label>
+.checkbox-container {
+  @include flex(row, flex-start, center);
+  gap: 5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  
+  &:hover {
+    cursor: pointer;
+  }
+  
+  // hide input element
+  input {
+    height: 0;
+    width: 0;
+    display: none;
+  }
+
+  .checkbox {
+    @include flex(row, center, center);
+    width: 20px;
+    height: 20px;
+    line-height: 0;
+    border: 2px solid #757575;
+    border-radius: $border-radius-small;
+    color: transparent; // hide checkmark
+    
+    i {
+      font-size: 1.5rem;
+    }
+  }
+  
+  input:checked ~ .checkbox {
+    background: $primary-color;
+    color: white;
+    border: 0;
+  }
+}
+
+// CUSTOM RADIO BUTTON
+
+.radio-container {
+  @include flex(row, flex-start, center);
+  gap: .5rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+
+  
+  .radio {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid $primary-color;
+    position: relative;
+    flex-shrink: 0;
+    
+  }
+  
+  &.large {
+    position: relative;
+    font-size: 1.2rem;
+    font-weight: $semibold;
+    margin: 1rem;
+
+  }
+  
+  // descriptive light text under radio label
+  .label-descriptor {
+    position: absolute;
+    top: 100%;
+    left: 2rem;
+    color: $font-light;
+    font-size: initial;
+    font-weight: initial;
+  }
+
+  input {
+    width: 0;
+    height: 0;
+    display: none;
+  }
+
+  input:checked ~ .radio {
+    &::after {
+      // radio marker
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      background: $primary-color;
+      border-radius: 50%;
+    }
+
+  }
+
+  input:disabled ~ .radio {
+    border-color: $font-light;
+
+    &::after {
+      // radio marker
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      background: transparent;
+      border-radius: 50%;
+    }
+
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+// button for adding hidden form field
+
+.add-field-button {
+  display: inline-block;
+  color: $font-light;
+  font-size: .8rem;
+  font-weight: $bold;
+  text-transform: uppercase;
+  padding: $input-padding;
+  i {
+    font-size: inherit;
+  }
+  
+  &:hover {
+    cursor: pointer;
+    opacity: 0.8;
+  }
+}
