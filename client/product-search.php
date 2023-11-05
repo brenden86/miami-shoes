@@ -207,13 +207,11 @@
 
 
 </div>
-<!-- pagination start -->
+
 <?php
   // pagination
   include_once __DIR__ . '/pagination.php';
 ?>
-<!-- pagination end -->
-
     
     </div>
   </div>
