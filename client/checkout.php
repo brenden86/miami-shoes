@@ -68,10 +68,7 @@
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles/main.css">
-  <script src="/js/modules/show-additional-fields.js" defer ></script>
-  <script src="/js/modules/checkout-validation.js" defer ></script>
-  <script src="/js/modules/header-nav-toggle.js" defer ></script>
-  <script src="/js/modules/order-summary-toggle.js" defer ></script>
+  <script src="/js/app.js" type="module" defer ></script>
 </head>
 <body>
   <div id="root">
@@ -144,7 +141,7 @@
 
 
             // DEBUGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
-            // $current_step = 3;
+            // $current_step = 2;
 
             // show correct form fields
             if($current_step === 1) {

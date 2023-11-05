@@ -17,21 +17,21 @@ let numbericInputs = [
 ]
 
 
-// only digits in number fields
+// listen to numeric inputs and only allow digits to be entered
 
 numbericInputs.forEach(input => {
-  if(input) {
-    input.addEventListener('keypress', (e) => {
-      if(!e.key.match(/\d+/)) {
-        e.preventDefault();
-      }
-    })
-  }
+  
+  input?.addEventListener('keypress', (e) => {
+    if(!e.key.match(/\d+/)) {
+      e.preventDefault();
+    }
+  })
+  
 })
 
 // functions for formatting input
 
-function formatPhoneNumber() {
+export function formatPhoneNumber() {
   let phoneDigits = phone.value.replaceAll(/\D/gi, "");
   if(phoneDigits.length >= 7) {
     phone.value = phoneDigits.substring(0,3)+"-"+phoneDigits.substring(3,6)+"-"+phoneDigits.substring(6,phoneDigits.length);
@@ -40,13 +40,13 @@ function formatPhoneNumber() {
   }
 }
 
-function formatCardNumber() {
+export function formatCardNumber() {
   let cardDigits = cardNumber.value.replaceAll(/\s/gi, "");
   let cardSegments = cardDigits.match(/.{1,4}/g);
   cardNumber.value = cardSegments.join(' ');
 }
 
-function formatCardExp() {
+export function formatCardExp() {
   let dateDigits = cardExp.value.replaceAll(/\D/gi, "");
   let dateSegments = dateDigits.match(/.{1,2}/g);
   cardExp.value = dateSegments.join('/');
@@ -59,28 +59,22 @@ function formatCardExp() {
 
 
 // format phone number
-if(phone) {
-  phone.addEventListener('keyup', () => {
-    formatPhoneNumber();
-  })
-}
+phone?.addEventListener('keyup', () => {
+  formatPhoneNumber();
+})
 
 // format credit card number
-if(cardNumber) {
-  cardNumber.addEventListener('keyup', () => {
-    formatCardNumber();
-  })
-}
+cardNumber?.addEventListener('keyup', () => {
+  formatCardNumber();
+})
 
 // format card exp date
-if(cardExp) {
-  cardExp.addEventListener('keyup', () => {
-    formatCardExp();
-  })
-}
+cardExp?.addEventListener('keyup', () => {
+  formatCardExp();
+})
 
 
-// format all input on initial load if data is 
+// format all inputs on initial load if data is present
 if(phone) {
   formatPhoneNumber();
 }

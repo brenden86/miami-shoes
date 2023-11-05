@@ -12,38 +12,29 @@ const shippingCompanyInput = document.querySelector('input[name="shipping_compan
 const deliveryInstructionsInput = document.querySelector('#delivery-instructions');
 const shippingAddressFields = document.querySelector('#shipping-address-fields');
 
+export function showCheckoutInput(input, button = null) {
+  if(input.classList.contains('hide')) {
+    input.classList.remove('hide')
+  }
+  if(button) button.remove();
+}
 
 // show billing company
-if(showBillingCompanyButton) {
-  showBillingCompanyButton.addEventListener('click', () => {
-    if (billingCompanyInput.classList.contains('hide')) {
-      billingCompanyInput.classList.remove('hide');
-    }
-    showBillingCompanyButton.remove();
-  })
-}
+showBillingCompanyButton?.addEventListener('click', () => {
+  showCheckoutInput(billingCompanyInput, showBillingCompanyButton);
+})
 
 // show shipping company
-if(showShippingCompanyButton) {
-  showShippingCompanyButton.addEventListener('click', () => {
-    if (shippingCompanyInput.classList.contains('hide')) {
-      shippingCompanyInput.classList.remove('hide');
-    }
-    showShippingCompanyButton.remove();
-  })
-}
+showShippingCompanyButton?.addEventListener('click', () => {
+  showCheckoutInput(shippingCompanyInput, showShippingCompanyButton)
+})
 
 // show delivery instructions
-if(showDeliveryInstructionsButton) {
-  showDeliveryInstructionsButton.addEventListener('click', () => {
-    if (deliveryInstructionsInput.classList.contains('hide')) {
-      deliveryInstructionsInput.classList.remove('hide');
-    }
-    showDeliveryInstructionsButton.remove();
-  })
-}
+showDeliveryInstructionsButton?.addEventListener('click', () => {
+  showCheckoutInput(deliveryInstructionsInput, showDeliveryInstructionsButton);
+})
 
-// hide shipping address & clear values
+// hide shipping address & clear values if addresses are the same
 if(sameAsBillingCheckbox) {
   
   // hide fields initially if checked
@@ -63,14 +54,11 @@ if(sameAsBillingCheckbox) {
     // remove required attributes if hidden
     requiredShippingInputs.forEach(input => {
       if(sameAsBillingCheckbox.checked) {
-        console.log('checked')
         input.required = false;
       } else {
-        console.log('unchecked')
         input.required = true;
       }
     })
   })
-
 
 }

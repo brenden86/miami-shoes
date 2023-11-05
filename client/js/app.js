@@ -18,3 +18,6 @@ import {
   removeFromCart,
   clearCart
 } from './modules/cart-functions.js';
+import { showCheckoutInput } from './modules/show-additional-fields.js';
+import { formatPhoneNumber, formatCardNumber, formatCardExp } from './modules/checkout-validation.js';
+import { toggleOrderSummary } from './modules/order-summary-toggle.js';

@@ -1,6 +1,10 @@
 
 const orderSummaryToggle = document.querySelector('.order-summary-toggle');
 
-orderSummaryToggle.addEventListener('click', () => {
-  orderSummaryToggle.classList.toggle('show')
+export function toggleOrderSummary() {
+  orderSummaryToggle.classList.toggle('show');
+}
+
+orderSummaryToggle?.addEventListener('click', () => {
+  toggleOrderSummary();
 })
