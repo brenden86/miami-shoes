@@ -71,11 +71,9 @@ export async function addToCart(sku) {
 
 // ADD TO CART button click handler
 
-if(addToCartButton) {
-  addToCartButton.addEventListener('click', (e) => {
-    addToCart(selectedItem);
-  })
-}
+addToCartButton?.addEventListener('click', (e) => {
+  addToCart(selectedItem);
+})
 
 
 
@@ -94,7 +92,7 @@ export function removeFromCart(item) {
 let cartItems = document.querySelectorAll('.cart-item')
 cartItems.forEach(item => {
   let removeFromCartButton = item.querySelector('.remove-item');
-  removeFromCartButton.addEventListener('click', () => {
+  removeFromCartButton?.addEventListener('click', () => {
     removeFromCart(item);
   })
 })
@@ -114,11 +112,11 @@ export function clearCart() {
 }
 
 const clearCartButton = document.querySelector('#clear-cart-button')
-if(clearCartButton) {
-  clearCartButton.addEventListener('click', () => {
-    clearCart();
-  })
-}
+
+clearCartButton?.addEventListener('click', () => {
+  clearCart();
+})
+
   
 
 

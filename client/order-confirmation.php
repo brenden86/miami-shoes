@@ -22,6 +22,7 @@
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="styles/main.css">
+  <script src="./js/app.js" type="module" defer></script>
 </head>
 <body>
   <div id="root">
@@ -40,7 +41,7 @@
   <div class="main-content-wrapper">
 
     <!-- main content column -->
-    <div class="main-content narrow">
+    <div class="main-content">
 
       <div class="content-block">
 

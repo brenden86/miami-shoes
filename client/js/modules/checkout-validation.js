@@ -42,13 +42,13 @@ export function formatPhoneNumber() {
 
 export function formatCardNumber() {
   let cardDigits = cardNumber.value.replaceAll(/\s/gi, "");
-  let cardSegments = cardDigits.match(/.{1,4}/g);
-  cardNumber.value = cardSegments.join(' ');
+  let cardSegments = cardDigits.match(/.{1,4}/g) ?? [];
+  cardNumber.value = cardSegments.join(' ') ?? '';
 }
 
 export function formatCardExp() {
   let dateDigits = cardExp.value.replaceAll(/\D/gi, "");
-  let dateSegments = dateDigits.match(/.{1,2}/g);
+  let dateSegments = dateDigits.match(/.{1,2}/g) ?? [];
   cardExp.value = dateSegments.join('/');
 }
 
