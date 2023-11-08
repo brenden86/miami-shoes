@@ -6,30 +6,31 @@ const productCardsContainer = document.querySelector('.product-card-container');
 const carouselButtonPrev = document.querySelector('.carousel-control.prev')
 const carouselButtonNext = document.querySelector('.carousel-control.next')
 
-if(productCardsContainer) {
 
-  // scroll distance is half of container
-  const scrollDistance = (productCardsContainer.getBoundingClientRect().width / 2)
-  let leftOffset = productCardsWrapper[0].offsetLeft;
-  let atLastCarouselItem = false;
-  
-  // observer that checks if the last product card is visible
-  const carouselObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        atLastCarouselItem = true;
-        console.log('at last item')
-      } else {
-        atLastCarouselItem = false;
-      }
-    })
-  }, {
-    threshold: 1.0
+
+
+// scroll distance is half of container
+const scrollDistance = (productCardsContainer?.getBoundingClientRect().width / 2)
+let leftOffset = productCardsWrapper[0].offsetLeft;
+let atLastCarouselItem = false;
+
+// observer that checks if the last product card is visible
+const carouselObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      atLastCarouselItem = true;
+      console.log('at last item')
+    } else {
+      atLastCarouselItem = false;
+    }
   })
+}, {
+  threshold: 1.0
+})
+
+carouselObserver.observe(productCardsWrapper[productCardsWrapper.length-1]);
   
-  carouselObserver.observe(productCardsWrapper[productCardsWrapper.length-1]);
-  
-}
+
 
 
 export const scrollCarouselLeft = () => {
@@ -45,6 +46,7 @@ export const scrollCarouselLeft = () => {
 export const scrollCarouselRight = () => {
   let lastCardBound = productCardsWrapper[productCardsWrapper.length - 1].getBoundingClientRect().right;
   let containerBound = productCardsContainer.getBoundingClientRect().right;
+  
 
   if((lastCardBound - containerBound) < scrollDistance) {
     leftOffset -= (lastCardBound - containerBound);
@@ -55,9 +57,6 @@ export const scrollCarouselRight = () => {
   }
   
 }
-
-
-
 
 carouselButtonPrev?.addEventListener('click', e => {
   scrollCarouselLeft()
