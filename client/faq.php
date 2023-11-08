@@ -18,7 +18,7 @@
   <div class="main-content-wrapper">
     <div class="main-content">
 
-    <div class="content-block card xtra-pad">
+    <div class="content-block card xtra-pad mobile-full-width">
 
       <div class="faq-wrapper">
       

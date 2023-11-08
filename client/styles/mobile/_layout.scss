@@ -100,3 +100,10 @@ select {
 
   
 }
+
+.card {
+
+  &.xtra-pad {
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,23 @@
+
+
+.contact-methods-container {
+  @include flex(row, flex-start, center);
+  font-size: 1.2rem;
+  color: $primary-color;
+  font-weight: $semibold;
+  margin-top: 1.5rem;
+}
+
+.contact-methods-wrapper {
+  @include flex(column, flex-start, space-between);
+  gap: 1rem;
+  
+}
+
+.contact-method {
+  @include flex(row, flex-start, center);
+  gap: 1rem;
+  i {
+    font-size: 2rem;
+  }
+}

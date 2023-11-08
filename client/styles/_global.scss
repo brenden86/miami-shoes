@@ -73,9 +73,19 @@ a {
 
 ul {
   margin: 0;
+  margin-bottom: 1rem;
   &.nolist {
     list-style-type: none;
     padding: 0;
+    margin: 0;
+
+    li {
+      margin: 0;
+    }
+  }
+
+  li {
+    margin-bottom: .5rem;
   }
 }
 
