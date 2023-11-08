@@ -1,0 +1,55 @@
+
+.faq-accordion {
+  margin: 3rem 0;
+}
+
+.accordion-wrapper {
+  @include flex(column, space-between, stretch);
+  gap: 2rem;
+}
+
+.accordion-item {
+  border-top: 1px solid $hover-dark;
+  border-bottom: 1px solid $hover-dark;
+  padding: .5rem 0;
+
+}
+
+.accordion-header {
+  @include flex(row, flex-start, flex-start);
+  gap: .5rem;
+  
+  h2 {
+    @include flex(row, flex-start, center);
+    margin: 0;
+    padding: .25rem 0;
+    padding-right: 3.5rem; // match left offset
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.accordion-toggle {
+  transition: transform 200ms;
+  &.active {
+    transform: rotate(90deg);
+  }
+}
+
+.accordion-body {
+  font-size: 1.2rem;
+  padding: 0 3.5rem;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 300ms;
+
+  &.show {
+    max-height: 500px;
+  }
+
+  p:first-child {
+    margin-top: 1rem; // add space between header and body
+  }
+}
