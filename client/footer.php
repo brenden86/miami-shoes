@@ -16,9 +16,9 @@
             <i class="bi-telephone"></i>
             1-800-555-5555
           </a>
-          <a href="mailto:support@domain.com">
+          <a href="mailto:support@nodomain.com">
             <i class="bi-envelope"></i>
-            support@domain.com
+            support@miamishoes.com
           </a>
         </div>
 
