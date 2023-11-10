@@ -13,7 +13,7 @@ export function checkImagesLoaded() {
   images.forEach(img => {
     if(img.src.match('/product-photos/')) {
       img.addEventListener('error', (e) => {
-        e.target.src = 'images/product-photos/product-fallback.jpg';
+        e.target.src = '/images/product-photos/product-fallback.jpg';
       })
     }
   })

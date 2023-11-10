@@ -4,8 +4,8 @@
 session_start();
 
 // INCLUDES
-include_once __DIR__ . '../../database/dbconnect.php';
-include_once __DIR__ . '/../php-scripts/get-product-info.php';
+include_once '../../../database/dbconnect.php';
+include_once '../../../php-scripts/get-product-info.php';
 
 if (isset($_GET['id'])) {
   $id = $_GET['id'];
@@ -49,8 +49,8 @@ extract($product);
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="styles/main.css">
-  <script src="./js/app.js" type="module" defer></script>
+  <link rel="stylesheet" href="/styles/main.css">
+  <script src="./app.js" type="module" defer></script>
 </head>
 <body>
   <div id="root">
@@ -58,7 +58,7 @@ extract($product);
 <!----------- 
 HEADER    
 ------------->
-<?php include('./header.php');?>
+<?php include '../../components/header.php';?>
 
 <!------------------
 MAIN CONTENT    
@@ -72,14 +72,12 @@ MAIN CONTENT
     <div class="main-content">
       <?php
 
+        // Get product image URLs
+        $product_image_query = $db->prepare('SELECT * FROM prod_images WHERE prod_id = :id');
+        $product_image_query->execute(['id' => $id]);
+        $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
 
-
-// Get product image URLs
-$product_image_query = $db->prepare('SELECT * FROM prod_images WHERE prod_id = :id');
-$product_image_query->execute(['id' => $id]);
-$product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
-
-?>
+      ?>
 
 <div class="content-block">
   <div class="product-wrapper">
@@ -150,7 +148,7 @@ $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
               <h2>Colors:</h2>
               <span><?=getProductColorNames($product)?></span>
               <div class="product-colors-wrapper">
-                <?php 
+                <?php
                   $color_variants = $db->getColorVariants($prod_name, $gender);
                   $color_hex_array = $db->queryAndFetch('SELECT color_name, color_hex FROM prod_colors');
 
@@ -171,7 +169,7 @@ $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
                     
                     echo '
                     <a
-                    href="/product-page.php?id=' . $variant['prod_id'] . '"
+                    href="/pages/product-page/product-page.php?id=' . $variant['prod_id'] . '"
                     class="product-color '.$selected.'"';
                     $color2 = '';
                     if($variant['sec_color']) {
@@ -248,11 +246,11 @@ $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
 </div>
 </main>
 
-<script src="./js/modules/select-size.js" defer></script>
+
 <!----------- 
 FOOTER    
 ------------->
-<?php include('./footer.php');?>
+<?php include '../../components/footer.php';?>
 
 <?php
   // terminate DB connection

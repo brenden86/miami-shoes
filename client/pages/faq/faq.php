@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FAQ | Miami Shoes</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="./styles/main.css">
-  <script type="module" src="./js/app.js" defer></script>
+  <link rel="stylesheet" href="/styles/main.css">
+  <script type="module" src="./app.js" defer></script>
 </head>
 <body>
 
 <div id="root">
 
-<?php include('header.php') ?>
+<?php include '../../components/header.php'; ?>
 
 <main>
   <div class="main-content-wrapper">
@@ -75,7 +75,7 @@
                   We inspect all shoes before shipping, but on the off chance your item arrives damaged or defective, we will replace your item promptly at no charge.
                 </p>
                 <p>
-                  See our <a href="/return-policy.php">return policy</a> to learn more and begin a return.
+                  See our <a href="/pages/return-policy/return-policy.php">return policy</a> to learn more and begin a return.
                 </p>
               </div>
 
@@ -93,7 +93,7 @@
   </div>
 </main>
 
-<?php include('footer.php');?>
+<?php include '../../components/footer.php';?>
 
 </div>
   

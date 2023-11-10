@@ -1,6 +1,7 @@
 
 import { getCookie, setCookie } from "./cookie-functions.js";
 import { showPopup, closePopup } from "./popups.js";
+import { selectedItem } from "./select-size.js";
 
 const addToCartButton = document.querySelector('#add-to-cart');
 
@@ -45,14 +46,17 @@ export function updateCartCookie(sku) {
 }
 
 export async function getQtyInStock(sku) {
-  const res = await fetch(`http://localhost:3000/get-stock.php?sku=${sku}`);
-  const result = await res.json();
-  return result.data.qty;
+  try {
+    const res = await fetch(`http://localhost:3000/ajax/get-stock.php?sku=${sku}`);
+    const result = await res.json();
+    return result.data.qty;
+  } catch(err) {
+    console.error(err)
+  }
 }
 
 export async function addToCart(sku) {
   if(!addToCartButton.classList.contains('disabled')) {
-    // selectedItem value defined in select-size.js
     if(selectedItem) {
       let qty = await getQtyInStock(sku);
       if(qty > 1) {

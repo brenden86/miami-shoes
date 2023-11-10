@@ -1,8 +1,8 @@
 const sizeButtons = document.querySelectorAll('.size-button');
 let selectedSize;
-let selectedItem;
+export let selectedItem;
 
-function selectSize(button) {
+export function selectSize(button) {
   let size = button.getAttribute('data-size');
   let sku = button.getAttribute('data-sku');
   if(size != selectSize) {
@@ -20,7 +20,9 @@ function selectSize(button) {
   }
   // set selected SKU for addToCart()
   selectedItem = sku;
+
 }
+
 
 document.addEventListener('click', e => {
   if(

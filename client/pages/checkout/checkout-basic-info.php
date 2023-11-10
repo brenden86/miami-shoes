@@ -1,6 +1,6 @@
 <form
   id="checkout-form-basic-info"
-  action="/checkout-submit.php"
+  action="/pages/checkout/checkout-submit.php"
   method="post"
 >
 

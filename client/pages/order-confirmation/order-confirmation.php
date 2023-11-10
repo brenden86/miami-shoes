@@ -3,11 +3,11 @@
 
   // if trying to access this page before submitting an order, go back to checkout page
   if(!$_SESSION['order_submitted']) {
-    header('location: /checkout.php');
+    header('location: /pages/checkout/checkout.php');
     exit;
   }
 
-  include_once __DIR__ . '/../php-scripts/get-product-info.php';
+  include_once '../../../php-scripts/get-product-info.php';
 ?>
 
 
@@ -21,8 +21,8 @@
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="styles/main.css">
-  <script src="./js/app.js" type="module" defer></script>
+  <link rel="stylesheet" href="/styles/main.css">
+  <script src="./app.js" type="module" defer></script>
 </head>
 <body>
   <div id="root">
@@ -31,7 +31,7 @@
 <!----------- 
     HEADER    
 ------------->
-<?php include('./header.php');?>
+<?php include '../../components/header.php';?>
 
 <!------------------
     MAIN CONTENT    
@@ -54,6 +54,13 @@
           <div class="confirmation-message">
             Your items are on the way!
           </div>
+
+          <?php
+          if(isset($_COOKIE['cart-items'])) {
+            print_r($_COOKIE['cart-items']);
+
+          }
+          ?>
 
         </div>
 
@@ -185,15 +192,15 @@
 
 <?php
   // clear previous order info from session
-  // unset($_SESSION['checkout_info']);
-  // unset($_SESSION['order_submitted']);
-  // unset($_SESSION['cart_items']);
+  unset($_SESSION['checkout_info']);
+  unset($_SESSION['order_submitted']);
+  unset($_SESSION['cart_items']);
 ?>
 
 <!----------- 
   FOOTER    
 ------------->
-<?php include('./footer.php');?>
+<?php include '../../components/footer.php';?>
 
 </div>
 </body>

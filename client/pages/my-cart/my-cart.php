@@ -21,20 +21,20 @@
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="styles/main.css">
-  <script src="/js/app.js" type="module" defer></script>
+  <link rel="stylesheet" href="/styles/main.css">
+  <script src="./app.js" type="module" defer></script>
 </head>
 <body>
   <div id="root">
     
-<?php include_once __DIR__ . '/../database/dbconnect.php' ?>
-<?php include_once __DIR__ . '/../php-scripts/get-product-info.php' ?>
-<?php include_once __DIR__ . '/../php-scripts/get-cart-info.php' ?>
+<?php include_once '../../../database/dbconnect.php' ?>
+<?php include_once '../../../php-scripts/get-product-info.php' ?>
+<?php include_once '../../../php-scripts/get-cart-info.php' ?>
 <!----------- 
     HEADER    
 ------------->
 
-<?php include('./header.php');?>
+<?php include '../../components/header.php';?>
 
 <!------------------
     MAIN CONTENT    
@@ -71,8 +71,8 @@
               if($cart_cookie && count($cart_cookie) > 0) {
                 echo '
                   <div class="form-navigation-buttons">
-                    <a href="/product-search.php" class="text-button">Continue Shopping</a>
-                    <a href="/checkout.php" class="button next">
+                    <a href="/pages/product-search/product-search.php" class="text-button">Continue Shopping</a>
+                    <a href="/pages/checkout/checkout.php" class="button next">
                       Checkout
                       <i class="bi-caret-right-fill"></i>
                     </a>
@@ -110,7 +110,6 @@
 
             <h2
               class="cart-empty-message <?= ($show_cart_empty_message=='true') ? 'show' : '' ?>"
-              aria-hidden="<?=$show_cart_empty_message?>"
             >Your cart is empty!</h2>
 
             <?php
@@ -186,7 +185,7 @@
 <!----------- 
     FOOTER    
 ------------->
-<?php include('./footer.php');?>
+<?php include '../../components/footer.php';?>
 
 </div>
 </body>

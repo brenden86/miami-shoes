@@ -1,7 +1,7 @@
 <!-- checkout form fields - SHIPPING & PAYMENT -->
 <form
   id="checkout-form-shipping-payment"
-  action="/checkout-submit.php"
+  action="/pages/checkout/checkout-submit.php"
   method="post"
 >
   <div id="shipping-payment-fields" class="checkout-fields">
@@ -355,7 +355,7 @@
   
     <div class="payment-processor">
       <span>Powered by</span>
-      <img src="./images/paypal.png" alt="paypal">
+      <img src="/images/paypal.png" alt="paypal">
     </div>
   
   </div>

@@ -1,9 +1,9 @@
 <?php
   session_start();
   
-  include_once __DIR__ . '/../database/dbconnect.php';
-  include_once __DIR__ . '/../php-scripts/get-product-info.php';
-  include_once __DIR__ . '/../php-scripts/get-cart-info.php';
+  include_once '../../../database/dbconnect.php';
+  include_once '../../../php-scripts/get-product-info.php';
+  include_once '../../../php-scripts/get-cart-info.php';
   
   // ****** DEBUG - CLEAR SESSION DATA *******
   // $_SESSION['checkout_info'] = array();
@@ -67,8 +67,8 @@
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="styles/main.css">
-  <script src="/js/app.js" type="module" defer ></script>
+  <link rel="stylesheet" href="/styles/main.css">
+  <script src="./app.js" type="module" defer ></script>
 </head>
 <body>
   <div id="root">
@@ -77,7 +77,7 @@
 <!----------- 
     HEADER    
 ------------->
-<?php include('./header.php');?>
+<?php include '../../components/header.php';?>
 
 <!------------------
     MAIN CONTENT    
@@ -104,7 +104,7 @@
             <!-- checkout forms -->
             <?php
 
-            include_once __DIR__ . '/checkout-progress.php';
+            include_once '../../components/checkout-progress.php';
 
 
             // display checkout validation error message
@@ -145,13 +145,13 @@
 
             // show correct form fields
             if($current_step === 1) {
-              include_once __DIR__ . '/checkout-basic-info.php';
+              include_once './checkout-basic-info.php';
             } elseif ($current_step === 2) {
-              include_once __DIR__ . '/checkout-shipping-payment.php';
+              include_once './checkout-shipping-payment.php';
             } elseif ($current_step === 3) {
-              include_once __DIR__ . '/checkout-review.php';
+              include_once './checkout-review.php';
             } else {
-              include_once __DIR__ . '/checkout-basic-info.php';
+              include_once './checkout-basic-info.php';
             }
             ?>
 
@@ -246,7 +246,7 @@
 <!----------- 
   FOOTER    
 ------------->
-<?php include('./footer.php');?>
+<?php include '../../components/footer.php';?>
 
 </div>
 </body>

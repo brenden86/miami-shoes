@@ -12,8 +12,8 @@
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="styles/main.css">
-  <script src="./js/app.js" type="module" defer></script>
+  <link rel="stylesheet" href="/styles/main.css">
+  <script src="./app.js" type="module" defer></script>
 
 
   
@@ -23,16 +23,16 @@
 
   <?php
     // IMPORT PHP FUNCTIONS
-    include_once __DIR__ . '/../database/dbconnect.php';
-    include_once __DIR__ . '/../php-scripts/get-sql-params.php';
-    include_once __DIR__ . '/../php-scripts/get-product-info.php';
+    include_once '../../../database/dbconnect.php';
+    include_once '../../../php-scripts/get-sql-params.php';
+    include_once '../../../php-scripts/get-product-info.php';
 
   ?>
     
 <!----------- 
     HEADER    
 ------------->
-<?php include('./header.php');?>
+<?php include '../../components/header.php';?>
 
 <!------------------
     MAIN CONTENT    
@@ -65,7 +65,7 @@
 
     <!-- Filter sidebar -->
 
-    <?php include_once './filter-sidebar.php'?>
+    <?php include_once '../../components/filter-sidebar.php'?>
     
     <!-- main content column -->
     <div class="main-content filter-bar-clear">
@@ -170,7 +170,7 @@
             
             echo '
             <div class="product-card-wrapper">
-            <a href="/product-page.php?id=' . $prod_id . '" class="product-card">'
+            <a href="/pages/product-page/product-page.php?id=' . $prod_id . '" class="product-card">'
               . getProductCardBadge($products[$i]) . '
               <div class="product-card-image">
                 <img src="' . $thumb_url . '" alt="' . $brand . ' ' . $prod_name . '">
@@ -210,7 +210,7 @@
 
 <?php
   // pagination
-  include_once __DIR__ . '/pagination.php';
+  include_once '../../components/pagination.php';
 ?>
     
     </div>
@@ -222,7 +222,7 @@
 <!----------- 
     FOOTER    
 ------------->
-<?php include('./footer.php');?>
+<?php include '../../components/footer.php';?>
 
 <?php
   $db = null;

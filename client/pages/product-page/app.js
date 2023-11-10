@@ -1,7 +1,7 @@
 import { toggleNav, toggleBrands } from '../../js/modules/header-nav-toggle.js';
 import { checkImagesLoaded } from '../../js/modules/image-fallback.js';
+import { selectSize } from '../../js/modules/select-size.js';
 import { nextSlide, prevSlide, resetTimer } from '../../js/modules/slider.js';
-import { scrollCarouselLeft, scrollCarouselRight } from '../../js/modules/carousel-scroll.js';
 import { featureBlockObserver } from '../../js/modules/feature-blocks.js';
 import { changeSortOrder } from '../../js/modules/select-sort.js';
 import { showUpdateButton } from '../../js/modules/show-hide-filters.js';

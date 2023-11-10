@@ -3,7 +3,7 @@ let lastPageUrl;
 if(document.referrer.match(/product-search/)) {
   lastPageUrl = document.referrer
 } else {
-  lastPageUrl = '/product-search.php';
+  lastPageUrl = '/pages/product-search/product-search.php';
 }
 
 const addToCartHTML = `
@@ -14,7 +14,7 @@ const addToCartHTML = `
 
 <div class="popup-buttons">
   <a href="${lastPageUrl}" class="text-button">Continue Shopping</a>
-  <a href="/my-cart.php" class="button next">
+  <a href="/pages/my-cart/my-cart.php" class="button next">
     Go To Cart
     <i class="bi-caret-right-fill"></i>
   </a>

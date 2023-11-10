@@ -8,13 +8,8 @@
     
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./styles/main.css">
-    <script src="./js/modules/slider.js" defer></script>
-    <script src="./js/modules/carousel-scroll.js" defer></script>
-    <script src="./js/modules/feature-blocks.js" defer></script>
-    <script src="./js/modules/adaptive-font-size.js" defer></script>
-    <script src="./js/modules/header-nav-toggle.js" defer></script>
-    <!-- functions for populating product info -->
+    <link rel="stylesheet" href="/styles/main.css">
+    <script src="./app.js" defer></script>
 
   </head> 
   <body>
@@ -23,7 +18,7 @@
 <!----------- 
     HEADER    
 ------------->
-<?php include('header.php');?>
+<?php include '../../components/header.php';?>
 
 <!------------------
     MAIN CONTENT    
@@ -39,8 +34,7 @@
       <p>We didn't find the page you were looking for.</p>
       <span>
         <?php
-          // FIX ME
-          if(preg_match('/localhost/', $_SERVER['HTTP_REFERER'])) {
+          if(preg_match('/'.$_SERVER['SERVER_NAME'].'/', $_SERVER['HTTP_REFERER'])) {
             echo '<a href="' . $_SERVER['HTTP_REFERER'] . '">Back</a> | ';
           }
         ?>
@@ -58,7 +52,7 @@
 <!----------- 
     FOOTER    
 ------------->
-<?php include('footer.php');?>
+<?php include '../../components/footer.php';?>
 
 </div>
 </body>

@@ -1,8 +1,8 @@
 <?php
   session_start();
 
-  include_once __DIR__ . '/../database/dbconnect.php';
-  include_once __DIR__ . '/../php-scripts/get-order-info.php';
+  include_once '../../../database/dbconnect.php';
+  include_once '../../../php-scripts/get-order-info.php';
 
   // set timezone to US
 
@@ -151,7 +151,7 @@
     $_SESSION['order_submitted'] = true;
     
     // clear cart items cookie
-    setcookie('cart-items', '', time() - 3600);
+    setcookie('cart-items', '', time() - 3600, '/');
 
 
   } catch(Exception $e) {
@@ -159,7 +159,7 @@
   }
 
 
-  header('location: /order-confirmation.php');
+  header('location: /pages/order-confirmation/order-confirmation.php');
   exit;
 
 ?>
