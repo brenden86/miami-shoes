@@ -1073,6 +1073,9 @@ footer h3 {
   color: #b8b8b8;
   background: white;
 }
+.footer-secondary .footer-wrapper {
+  gap: 1rem;
+}
 
 .footer-logo {
   height: 100px;
@@ -2433,6 +2436,9 @@ CART ITEMS
     justify-content: flex-start;
     align-items: stretch;
     flex-wrap: nowrap;
+  }
+  .footer-secondary {
+    padding-bottom: 6rem;
   }
   .footer-secondary .footer-wrapper {
     margin: 3rem 1rem;

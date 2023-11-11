@@ -68,11 +68,14 @@
       </a>
 
       <div class="copyright">&copy; 2023 Miami Shoes, LLC</div>
-
+      <?php
+      /* hiding for now
       <div class="site-links">
         <a href="/">Privacy Policy</a>
         <a href="/">Cookie Settings</a>
       </div>
+      */
+      ?>
 
     </div>
 

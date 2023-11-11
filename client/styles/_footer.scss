@@ -76,6 +76,10 @@ footer {
   @include flex(row, center, center);
   color: $font-light;
   background: white;
+
+  .footer-wrapper {
+    gap: 1rem;
+  }
 }
 
 .footer-logo {
