@@ -1,3 +1,4 @@
+import { checkUserDataConsent } from './modules/data-consent.js';
 import { toggleNav, toggleBrands } from '../../js/modules/header-nav-toggle.js';
 import { checkImagesLoaded } from '../../js/modules/image-fallback.js';
 import { nextSlide, prevSlide, resetTimer } from '../../js/modules/slider.js';

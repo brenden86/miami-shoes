@@ -2,20 +2,15 @@ export function getCookie(cookieName) {
   let decodedCookie = decodeURIComponent(document.cookie);
   let cookieArray = decodedCookie.split(';');
   let regexp = new RegExp("^\\s?" + cookieName + "=");
-  // loop through cookies array, look for match
-  let cookieValue = '';
-  cookieArray.forEach(cookie => {
-    if(cookie.search(regexp) >= 0) {
-      // return cookie value
-      cookieValue = cookie.substring(cookie.indexOf(cookieName) + cookieName.length + 1, cookie.length);
-    }
-  })
-  if(cookieValue) {
-    console.log('got cookie.')
-    return cookieValue;
+
+  const cookie = cookieArray.find(cookie => cookie.search(regexp) >= 0);
+
+  if(cookie) {
+    return cookie.substring(cookie.indexOf(cookieName) + cookieName.length + 1, cookie.length);
   } else {
-    return '';
+    return null;
   }
+
 }
 
 export function setCookie(name, value, expDays = 7, path = '/') {
@@ -23,4 +18,13 @@ export function setCookie(name, value, expDays = 7, path = '/') {
   date.setTime(date.getTime() + (expDays*24*60*60*1000))
   let expire = date.toUTCString();
   document.cookie = `${name}=${value};expires=${expire};path=${path}`;
+}
+
+export function removeCookie(name) {
+  const cookie = getCookie(name);
+  // return error if cookie not found
+  if(!cookie) return console.error(`ERROR: Cannot remove cookie, no cookie found with the name of: ${name}`);
+  // remove cookie if found by setting exp date in the past
+  setCookie(name, '', -1);
+  console.log(`removed cookie ${name}`)
 }
