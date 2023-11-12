@@ -1502,6 +1502,10 @@ footer h3 {
   height: 180px;
 }
 
+.product-image-container.loading {
+  animation: loadingPulse 500ms infinite alternate;
+}
+
 .product-card .product-colors-wrapper {
   display: flex;
   flex-direction: row;
@@ -1902,6 +1906,14 @@ CART ITEMS
   to {
     opacity: 1;
     margin-top: 0px;
+  }
+}
+@keyframes loadingPulse {
+  from {
+    background: #f1f3f4;
+  }
+  to {
+    background: #fafafa;
   }
 }
 /**************

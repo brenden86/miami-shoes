@@ -92,6 +92,13 @@
     width: 180px;
     height: 180px;
   }
+
+}
+
+.product-image-container {
+  &.loading {
+    animation: loadingPulse 500ms infinite alternate;
+  }
 }
 
 .product-card {

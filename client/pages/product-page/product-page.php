@@ -101,7 +101,7 @@ MAIN CONTENT
       </div>
     </div>
       
-      <div class="selected-image">
+      <div class="selected-image product-image-container loading">
         <img
         src="<?=$thumb_url?>"
         alt="<?=$prod_name?>"
@@ -113,7 +113,7 @@ MAIN CONTENT
           // populate product images
           foreach($product_images as $image => $path) {
             echo '
-            <div class="thumbnail">
+            <div class="thumbnail product-image-container loading">
             <img src="' . $path['img_path'] . '" alt="' . $product['prod_name'] . '">
             </div>
             ';

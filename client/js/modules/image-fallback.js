@@ -1,25 +1,37 @@
 
+function removeImgLoadingPlaceholder(el) {
+  el.classList.remove('loading');
+}
+
 // display fallback image if product photo is not found
 
-/*
-  NOTE: this does not always work. Sometimes the server
-  responds with a 404 before the event listener can be
-  attached.
-
-*/
-
 export function checkImagesLoaded() {
+
   let images = document.querySelectorAll('img');
   images.forEach(img => {
     if(img.src.match('/product-photos/')) {
-      img.addEventListener('error', (e) => {
-        e.target.src = '/images/product-photos/product-fallback.jpg';
-      })
+
+      if(!img.complete) {
+        // show fallback image on load error
+        img.addEventListener('error', (e) => {
+          e.target.src = '/images/product-photos/product-fallback.webp';
+        })
+      } else if(img.complete && img.naturalHeight < 1) {
+        // image loaded, but with error (not found)
+        img.src = '/images/product-photos/product-fallback.webp';
+      }
+
+      // remove loading placeholder animation when image is loaded
+      if(img.complete) {
+        removeImgLoadingPlaceholder(img.parentElement);
+      } else {
+        img.addEventListener('load', removeImgLoadingPlaceholder(img.parentElement))
+      }
+
+
     }
   })
 
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  checkImagesLoaded();
-})
+checkImagesLoaded();

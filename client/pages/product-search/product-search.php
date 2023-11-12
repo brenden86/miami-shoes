@@ -172,8 +172,12 @@
             <div class="product-card-wrapper">
             <a href="/pages/product-page/product-page.php?id=' . $prod_id . '" class="product-card">'
               . getProductCardBadge($products[$i]) . '
-              <div class="product-card-image">
-                <img src="' . $thumb_url . '" alt="' . $brand . ' ' . $prod_name . '">
+              <div class="product-card-image product-image-container loading">
+                <img
+                  src="'.$thumb_url.'"
+                  alt="'.$brand.' '.$prod_name.' '.$prim_color.' '.$sec_color.'"
+                  loading="lazy"
+                >
               </div>
 
               <div class="product-info">
