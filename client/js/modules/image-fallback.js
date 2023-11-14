@@ -15,6 +15,7 @@ export function checkImagesLoaded() {
         // show fallback image on load error
         img.addEventListener('error', (e) => {
           e.target.src = '/images/product-photos/product-fallback.webp';
+          removeImgLoadingPlaceholder(img.parentElement);
         })
       } else if(img.complete && img.naturalHeight < 1) {
         // image loaded, but with error (not found)

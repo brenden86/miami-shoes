@@ -57,8 +57,10 @@
         <div class="product-card-wrapper">
           <a href="/pages/product-page/product-page.php?id=' . $field['prod_id'] . '" class="product-card">'
               . getProductCardBadge($field) . '
-              <div class="product-card-image">
-                <img src="' . $field['thumb_url'] . '" alt="' . $field['brand'] . ' ' . $field['prod_name'] . '">
+              <div class="product-card-image loading">
+                <img
+                  src="' . $field['thumb_url'] . '"
+                  alt="' . $field['brand'] . ' ' . $field['prod_name'] . '">
               </div>
 
               <div class="product-info">

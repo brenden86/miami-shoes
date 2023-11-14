@@ -95,7 +95,9 @@
 
 }
 
-.product-image-container {
+.product-image-container,
+.product-card-image,
+.item-image {
   &.loading {
     animation: loadingPulse 500ms infinite alternate;
   }

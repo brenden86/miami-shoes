@@ -1502,7 +1502,9 @@ footer h3 {
   height: 180px;
 }
 
-.product-image-container.loading {
+.product-image-container.loading,
+.product-card-image.loading,
+.item-image.loading {
   animation: loadingPulse 500ms infinite alternate;
 }
 

@@ -125,7 +125,7 @@
                 
                 <div class="cart-item" data-sku='.$sku.' data-index=' . $key . '>
     
-                  <div class="item-image">
+                  <div class="item-image loading">
                     <img src="'.$thumb_url.'" alt="'.$prod_name.'">
                   </div>
     
