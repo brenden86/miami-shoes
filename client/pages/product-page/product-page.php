@@ -50,6 +50,7 @@ extract($product);
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="/styles/main.css">
+  <script src="../../js/accessibility.js"></script>
   <script src="./app.js" type="module" defer></script>
 </head>
 <body>
@@ -202,6 +203,7 @@ MAIN CONTENT
                       $disabled = 'disabled';
                     } else {
                       $disabled = '';
+                      $size_tabindex = 'tabindex="0"';
                     }
                     
                     // format size text to remove decimal for whole numbers
@@ -212,7 +214,7 @@ MAIN CONTENT
                     }
                     
                     echo '
-                    <div class="size-button ' . $disabled . '" data-size="'.$item['size'].'" data-sku="'.$item['sku'].'">'.$size_text.'</div>';
+                    <div class="size-button ' . $disabled . '" data-size="'.$item['size'].'" data-sku="'.$item['sku'].'" '. $size_tabindex . '>'.$size_text.'</div>';
                   }
                 ?>
               </div>
