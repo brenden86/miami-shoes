@@ -1,3 +1,4 @@
 config.php
 /server
 node_modules
+nginx.conf
