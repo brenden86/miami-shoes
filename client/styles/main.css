@@ -599,6 +599,7 @@ fieldset legend {
 .checkout-step h1 {
   font-size: 1.2rem;
   margin: 0;
+  text-align: center;
 }
 .checkout-step.active {
   color: #eb4791;
