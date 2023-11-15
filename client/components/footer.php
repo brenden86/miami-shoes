@@ -37,15 +37,19 @@
           <h3>Connect with us!</h3>
           <div class="social-icons">
             <a href="https://www.instagram.com" target="_blank" class="icon-link light">
+              <div class="sr-only">Instagram</div>
               <i class="bi-instagram"></i>
             </a>
             <a href="https://www.facebook.com" target="_blank" class="icon-link light">
+              <div class="sr-only">Facebook</div>
               <i class="bi-facebook"></i>
             </a>
             <a href="https://www.twitter.com" target="_blank" class="icon-link light">
+              <div class="sr-only">Twitter</div>
               <i class="bi-twitter"></i>
             </a>
             <a href="https://www.pinterest.com" target="_blank" class="icon-link light">
+              <div class="sr-only">Pinterest</div>
               <i class="bi-pinterest"></i>
             </a>
           </div>

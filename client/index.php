@@ -40,11 +40,11 @@
 
         <div class="slider-images">
           <div class="image-wrapper">
-            <div class="slider-image" style="background-image: url(/images/slider/lebron.jpg)"></div>
-            <div class="slider-image" style="background-image: url(/images/slider/boots.jpg)"></div>
-            <div class="slider-image" style="background-image: url(/images/slider/converse.jpg)"></div>
-            <div class="slider-image" style="background-image: url(/images/slider/running.jpg)"></div>
-            <div class="slider-image" style="background-image: url(/images/slider/skateboard.webp)"></div>
+            <div class="slider-image" style="background-image: url(/images/slider/lebron.jpg)" title="Slider Graphic 1"></div>
+            <div class="slider-image" style="background-image: url(/images/slider/boots.jpg)" title="Slider Graphic 2"></div>
+            <div class="slider-image" style="background-image: url(/images/slider/converse.jpg)" title="Slider Graphic 3"></div>
+            <div class="slider-image" style="background-image: url(/images/slider/running.jpg)" title="Slider Graphic 4"></div>
+            <div class="slider-image" style="background-image: url(/images/slider/skateboard.webp)" title="Slider Graphic 5"></div>
           </div>
         </div>
 
