@@ -1736,6 +1736,15 @@ footer h3 {
   max-width: 80px;
 }
 
+.apply-filters-accessible:focus {
+  clip-path: none;
+  height: auto;
+  overflow: visible;
+  position: relative;
+  width: auto;
+  color: #eb4791;
+}
+
 .cart-container {
   margin-bottom: 1rem;
 }

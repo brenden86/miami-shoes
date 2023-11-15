@@ -129,3 +129,16 @@
   min-width: 0;
   max-width: 80px;
 }
+
+// visible only when tabbing through filters
+.apply-filters-accessible {
+  
+  &:focus {
+    clip-path: none;
+    height: auto;
+    overflow: visible;
+    position: relative;
+    width: auto;
+    color: $primary-color;
+  }
+}

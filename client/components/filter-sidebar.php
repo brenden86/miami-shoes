@@ -34,7 +34,7 @@
 
       <div class="filter-submit-button text-button">
         <i class="bi-arrow-clockwise"></i>
-        update search
+        apply filters
       </div>
 
     </div>
@@ -58,7 +58,7 @@
       <div class="filters">
 
         <div class="input-wrapper inline">
-          <label for="filter-availability" class="checkbox-container">
+          <label for="filter-availability" class="checkbox-container" tabindex="0">
             <input
               id="filter-availability"
               type="checkbox" name="inStock"
@@ -82,7 +82,7 @@
       <div class="filters">
 
         <div class="input-wrapper inline">
-          <label for="filter-gender-mens" class="checkbox-container">
+          <label for="filter-gender-mens" class="checkbox-container" tabindex="0">
             <input
               id="filter-gender-mens"
               type="checkbox"
@@ -98,7 +98,7 @@
         </div>
 
         <div class="input-wrapper inline">
-          <label for="filter-gender-womens" class="checkbox-container">
+          <label for="filter-gender-womens" class="checkbox-container" tabindex="0">
             <input
               id="filter-gender-womens"
               type="checkbox"
@@ -152,7 +152,7 @@
               <input id="'.$filter_color.'" type="checkbox" name="filter-color-'.$filter_color.'" value=true
               ' . $checked . '
               >
-              <label for="'.$filter_color.'" class="checkbox '.$light_filter_class.'">
+              <label for="'.$filter_color.'" class="checkbox '.$light_filter_class.'" tabindex="0">
                 <i class="bi-check"></i>
               </label>
               </div>
@@ -208,7 +208,7 @@
 
           echo '
           <div class="input-wrapper inline shoe-type-input">
-            <label for="filter-type-' . $type['shoe_type'] . '" class="checkbox-container">
+            <label for="filter-type-' . $type['shoe_type'] . '" class="checkbox-container" tabindex="0">
               <input
                 id="filter-type-' . $type['shoe_type'] . '"
                 type="checkbox"
@@ -255,7 +255,7 @@
           
           echo '
           <div class="input-wrapper inline brand-input">
-            <label for="filter-brand-' . $no_space . '" class="checkbox-container">
+            <label for="filter-brand-' . $no_space . '" class="checkbox-container" tabindex="0">
               <input
                 id="filter-brand-' . $no_space . '"
                 type="checkbox"
@@ -278,6 +278,8 @@
       </div>
       <div id="brand-selected"></div>
       <input type="hidden" id="sort-input" name="sort" value="<?=$_SESSION['sort_order'] ?? 'popular'?>">
+
+      <span class="apply-filters-accessible sr-only" tabindex="0">apply filters</span>
 
     </div>
     
