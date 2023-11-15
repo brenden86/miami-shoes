@@ -81,14 +81,17 @@
           <span
             class="sort-option text-button <?=($sort === 'popular') ? 'selected' : ''?>"
             data-sort="popular"
+            tabindex="0"
           >popular</span>
           <span
             class="sort-option text-button <?=($sort === 'price-asc') ? 'selected' : ''?>"
             data-sort="price-asc"
+            tabindex="0"
           >price: low to high</span>
           <span
             class="sort-option text-button <?=($sort === 'price-desc') ? 'selected' : ''?>"
             data-sort="price-desc"
+            tabindex="0"
           >price: high to low</span>
         </div>
       </div>
