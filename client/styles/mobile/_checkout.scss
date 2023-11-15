@@ -96,8 +96,7 @@
 }
 
 .credit-card-container {
-  width: clamp(340px, 93vw, 480px);
-  height: clamp(calc(360px * .595), calc(93vw * 0.595), calc(480px * .595));
+  
   
   .card-input-wrapper {
     .card-input {

@@ -239,41 +239,11 @@
   <fieldset>
     <legend>Payment Method</legend>
   
-    <div class="input-wrapper inline">
+
   
-      <label for="payment-new-card" class="radio-container large">
-        <input type="radio" name="payment_method" id="payment-new-card" value="new" required checked>
-        <div class="radio"></div>
-        New Card
-  
-      </label>
-  
-      <label for="payment-visa-1234" class="radio-container large">
-        <input type="radio" name="payment_method" id="payment-visa-1234" value="saved" disabled>
-        <div class="radio"></div>
-        VISA ending in 1234
-        <span class="label-descriptor">Joe Schmoe</span>
-  
-      </label>
-  
-      <!-- MOVE TO SCRIPT FILE -->
-      <script>
-        let radioInputs = document.querySelectorAll('input[type="radio"]')
-        radioInputs.forEach(e => {
-          if (e.disabled) {
-            e.parentElement.style.color = '#b8b8b8'
-            // color matches $font-light in _var.scss
-            // MUST change manually if variable changes
-          }
-        })
-      </script>
-  
-    </div>
-  
-  </fieldset>
+
   
   <!-- credit card info -->
-  <label>Card Information</label>
   <div class="input-wrapper inline">
     <label for="credit-card-name" class="sr-only">Name on card</label>
     <input
@@ -298,7 +268,9 @@
       required
     >
   </div>
-  
+
+  </fieldset>
+
   <div class="credit-card-container">
   
     <div class="credit-card-inputs">
@@ -352,11 +324,14 @@
       </div>
   
     </div>
-  
+    
+    <?php /*
+    - Use if using PayPal API -
     <div class="payment-processor">
       <span>Powered by</span>
       <img src="/images/paypal.png" alt="paypal">
     </div>
+    */?>
   
   </div>
   

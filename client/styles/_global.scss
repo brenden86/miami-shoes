@@ -313,6 +313,27 @@ fieldset {
   }
 }
 
+// Fix inputs from overflowing container
+
+@media all and (max-width: 1150px) {
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  textarea,
+  select {
+    width: 100%;
+  }
+
+  .input-wrapper {
+    &.inline {
+      flex-wrap: wrap;
+    }
+  }
+}
+
 .logo-image {
   height: 100%;
   width: auto;

@@ -144,8 +144,8 @@
 
 .credit-card-container {
   position: relative;
-  width: 420px;
-  height: 240px;
+  width: clamp(340px, 100%, 480px);
+  height: clamp(calc(360px * .595), calc(93vw * 0.595), calc(480px * .595));
   background: $bg-dark;
   border: 2px solid $gray-md;
   border-radius: 20px;
