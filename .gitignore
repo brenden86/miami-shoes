@@ -2,3 +2,4 @@ config.php
 /server
 node_modules
 nginx.conf
+github_pat.txt
