@@ -47,7 +47,7 @@ export function updateCartCookie(sku) {
 
 export async function getQtyInStock(sku) {
   try {
-    const res = await fetch(`http://localhost:3000/ajax/get-stock.php?sku=${sku}`);
+    const res = await fetch(`/ajax/get-stock.php?sku=${sku}`);
     const result = await res.json();
     return result.data.qty;
   } catch(err) {
