@@ -22,7 +22,7 @@
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="/styles/main.css">
-  <script src="./app.js" type="module" defer></script>
+  <script src="/pages/order-confirmation/app.js" type="module" defer></script>
 </head>
 <body>
   <div id="root">

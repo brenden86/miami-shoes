@@ -6,7 +6,7 @@
   <title>FAQ | Miami Shoes</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="/styles/main.css">
-  <script type="module" src="./app.js" defer></script>
+  <script type="module" src="/pages/faq/app.js" defer></script>
 </head>
 <body>
 

@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="/styles/main.css">
   <script src="../../js/accessibility.js"></script>
-  <script src="./app.js" type="module" defer></script>
+  <script src="/pages/product-search/app.js" type="module" defer></script>
 
 
   
