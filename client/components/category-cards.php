@@ -2,7 +2,7 @@
 <div class="category-cards-container">
   <div class="category-cards-wrapper">
 
-    <a href="/pages/product-search/product-search.php?type-filter-running=running&shoe-type-selected=true" class="category-card">
+    <a href="/products?type-filter-running=running&shoe-type-selected=true" class="category-card">
 
       <div class="card-image">
         <svg class="stroke-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296.48 267.37">
@@ -17,7 +17,7 @@
       <div class="card-title">Running</div>
 
     </a>
-    <a href="/pages/product-search/product-search.php?type-filter-sneaker=sneaker&shoe-type-selected=true" class="category-card">
+    <a href="/products?type-filter-sneaker=sneaker&shoe-type-selected=true" class="category-card">
 
       <div class="card-image">
         <svg class="stroke-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296.48 267.37">
@@ -47,7 +47,7 @@
       <div class="card-title">Casual</div>
 
     </a>
-    <a href="/pages/product-search/product-search.php?type-filter-boot=boot&shoe-type-selected=true" class="category-card">
+    <a href="/products?type-filter-boot=boot&shoe-type-selected=true" class="category-card">
 
       <div class="card-image">
         <svg class="stroke-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296.48 267.37">
@@ -62,7 +62,7 @@
       <div class="card-title">Boots</div>
 
     </a>
-    <a href="/pages/product-search/product-search.php?type-filter-formal=formal&shoe-type-selected=true" class="category-card">
+    <a href="/products?type-filter-formal=formal&shoe-type-selected=true" class="category-card">
 
       <div class="card-image">
         <svg class="stroke-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296.48 267.37">

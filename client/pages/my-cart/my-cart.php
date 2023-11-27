@@ -71,7 +71,7 @@
               if($cart_cookie && count($cart_cookie) > 0) {
                 echo '
                   <div class="form-navigation-buttons">
-                    <a href="/pages/product-search/product-search.php" class="text-button">Continue Shopping</a>
+                    <a href="/products" class="text-button">Continue Shopping</a>
                     <a href="/pages/checkout/checkout.php" class="button next">
                       Checkout
                       <i class="bi-caret-right-fill"></i>

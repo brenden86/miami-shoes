@@ -1,3 +1,5 @@
+
+
 <div class="product-card-container">
 
   <div class="carousel-control prev icon-link">
@@ -51,11 +53,10 @@
 
         // loop through products
         foreach($products as $product => $field) {
-        
         // output html
         echo '
         <div class="product-card-wrapper">
-          <a href="/pages/product-page/product-page.php?id=' . $field['prod_id'] . '" class="product-card">'
+          <a href="/products/'.$field['prod_id'].'/'.productPageSlug($field['prod_name']).'" class="product-card">'
               . getProductCardBadge($field) . '
               <div class="product-card-image loading">
                 <img

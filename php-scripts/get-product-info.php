@@ -1,5 +1,9 @@
 <?php
 
+  function productPageSlug($prod_name) {
+    return str_replace('.', '-', $prod_name);
+  }
+
   function buildProductTitle($product) {
 
     // extract product properties to variables

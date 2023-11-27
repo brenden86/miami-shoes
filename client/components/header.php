@@ -15,35 +15,35 @@
       <nav class="header-navigation">
         <ul class="nav-items nolist">
           <li>
-            <a href="/pages/product-search/product-search.php?mens=true" class="nav-link">Mens</a>
+            <a href="/products?mens=true" class="nav-link">Mens</a>
           </li>
           <li>
-            <a href="/pages/product-search/product-search.php?womens=true" class="nav-link">Womens</a>
+            <a href="/products?womens=true" class="nav-link">Womens</a>
           </li>
           <li>
-            <a href="/pages/product-search/product-search.php" id="brands-header" class="nav-link">Brands</a>
+            <a href="/products" id="brands-header" class="nav-link">Brands</a>
             <div class="header-mega-menu">
               <div class="header-mega-menu-wrapper">
                 <div class="header-brands-wrapper">
-                  <a class="brand-card" href="/pages/product-search/product-search.php?brand-filter-adidas=adidas">
+                  <a class="brand-card" href="/products?brand-filter-adidas=adidas">
                     <img src="/images/logos/Adidas_Logo.png" alt="adidas">
                   </a>
-                  <a class="brand-card" href="/pages/product-search/product-search.php?brand-filter-nike=nike">
+                  <a class="brand-card" href="/products?brand-filter-nike=nike">
                     <img src="/images/logos/Nike-Logo.png" alt="nike">
                   </a>
-                  <a class="brand-card" href="/pages/product-search/product-search.php?brand-filter-vans=vans">
+                  <a class="brand-card" href="/products?brand-filter-vans=vans">
                     <img src="/images/logos/vans logo.png" alt="vans">
                   </a>
-                  <a class="brand-card" href="/pages/product-search/product-search.php?brand-filter-converse=converse">
+                  <a class="brand-card" href="/products?brand-filter-converse=converse">
                     <img src="/images/logos/converse-logo.png" alt="converse">
                   </a>
-                  <a class="brand-card" href="/pages/product-search/product-search.php?brand-filter-dockers=dockers">
+                  <a class="brand-card" href="/products?brand-filter-dockers=dockers">
                     <img src="/images/logos/dockers.png" alt="dockers">
                   </a>
-                  <a class="brand-card" href="/pages/product-search/product-search.php?brand-filter-heydude=heydude">
+                  <a class="brand-card" href="/products?brand-filter-heydude=heydude">
                     <img src="/images/logos/heydude.png" alt="heydude">
                   </a>
-                  <a class="brand-card" href="/pages/product-search/product-search.php?brand-filter-newbalance=new+balance">
+                  <a class="brand-card" href="/products?brand-filter-newbalance=new+balance">
                     <img src="/images/logos/new-balance.png" alt="new balance">
                   </a>
                 </div>
@@ -120,8 +120,8 @@
 		<div id="mobile-nav-container" class="">
 			<nav class="mobile-nav">
 				<ul class="nolist nav-items">
-					<li><a href="/pages/product-search/product-search.php?mens=true" class="nav-link">Mens</a></li>
-					<li><a href="/pages/product-search/product-search.php?womens=true" class="nav-link">Womens</a></li>
+					<li><a href="/products?mens=true" class="nav-link">Mens</a></li>
+					<li><a href="/products?womens=true" class="nav-link">Womens</a></li>
 					<li>
             <span id="brands-header-mobile" class="nav-link">Brands<i class="bi-chevron-down"></i></span>
             
@@ -129,25 +129,25 @@
             <div class="header-mega-menu mobile">
               <div class="header-mega-menu-wrapper">
                 <div class="header-brands-wrapper">
-                  <a class="brand-card" href="/pages/product-search/product-search.php?brand-filter-adidas=adidas">
+                  <a class="brand-card" href="/products?brand-filter-adidas=adidas">
                     <img src="/images/logos/Adidas_Logo.png" alt="adidas">
                   </a>
-                  <a class="brand-card" href="/pages/product-search/product-search.php?brand-filter-nike=nike">
+                  <a class="brand-card" href="/products?brand-filter-nike=nike">
                     <img src="/images/logos/Nike-Logo.png" alt="nike">
                   </a>
-                  <a class="brand-card" href="/pages/product-search/product-search.php?brand-filter-vans=vans">
+                  <a class="brand-card" href="/products?brand-filter-vans=vans">
                     <img src="/images/logos/vans logo.png" alt="vans">
                   </a>
-                  <a class="brand-card" href="/pages/product-search/product-search.php?brand-filter-converse=converse">
+                  <a class="brand-card" href="/products?brand-filter-converse=converse">
                     <img src="/images/logos/converse-logo.png" alt="converse">
                   </a>
-                  <a class="brand-card" href="/pages/product-search/product-search.php?brand-filter-dockers=dockers">
+                  <a class="brand-card" href="/products?brand-filter-dockers=dockers">
                     <img src="/images/logos/dockers.png" alt="dockers">
                   </a>
-                  <a class="brand-card" href="/pages/product-search/product-search.php?brand-filter-heydude=heydude">
+                  <a class="brand-card" href="/products?brand-filter-heydude=heydude">
                     <img src="/images/logos/heydude.png" alt="heydude">
                   </a>
-                  <a class="brand-card" href="/pages/product-search/product-search.php?brand-filter-newbalance=new+balance">
+                  <a class="brand-card" href="/products?brand-filter-newbalance=new+balance">
                     <img src="/images/logos/new-balance.png" alt="new balance">
                   </a>
                 </div>

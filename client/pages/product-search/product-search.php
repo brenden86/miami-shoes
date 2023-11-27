@@ -174,7 +174,7 @@
             
             echo '
             <div class="product-card-wrapper">
-            <a href="/pages/product-page/product-page.php?id=' . $prod_id . '" class="product-card">'
+            <a href="/products/'.$prod_id.'/'.productPageSlug($prod_name).'" class="product-card">'
               . getProductCardBadge($products[$i]) . '
               <div class="product-card-image product-image-container loading">
                 <img

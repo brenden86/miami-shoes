@@ -3,7 +3,7 @@ let lastPageUrl;
 if(document.referrer.match(/product-search/)) {
   lastPageUrl = document.referrer
 } else {
-  lastPageUrl = '/pages/product-search/product-search.php';
+  lastPageUrl = '/products';
 }
 
 const addToCartHTML = `
