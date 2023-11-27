@@ -32,7 +32,7 @@
       <div class="card-title">Sneakers</div>
 
     </a>
-    <a href="product-search.php?type-filter-casual=casual&shoe-type-selected=true" class="category-card">
+    <a href="products?type-filter-casual=casual&shoe-type-selected=true" class="category-card">
 
       <div class="card-image">
         <svg class="stroke-back" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 296.48 267.37">

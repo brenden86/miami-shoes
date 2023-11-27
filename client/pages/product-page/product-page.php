@@ -7,7 +7,7 @@ session_start();
 include_once '../../../database/dbconnect.php';
 include_once '../../../php-scripts/get-product-info.php';
 
-$uri_components = explode('/', $_SERVER['REQUREST_URI']);
+$uri_components = explode('/', $_SERVER['REQUEST_URI']);
 $id = $uri_components[2]; // product ID from URL
 
 // Get product info from DB
