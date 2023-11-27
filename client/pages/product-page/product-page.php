@@ -37,7 +37,7 @@ extract($product);
 
 // fix URI if user types it incorrectly
 $uri_slug = end(explode("/", $_SERVER['REQUEST_URI']));
-$product_page_slug = productPageSlug($prod_name);
+$product_page_slug = slugify($brand.'-'.$prod_name);
 if ($uri_slug != $product_page_slug) {
   header('location: /products/'.$prod_id.'/'.$product_page_slug);
   exit;
@@ -177,7 +177,7 @@ MAIN CONTENT
                     
                     echo '
                     <a
-                    href="/products/'.$variant['prod_id'].'/'.productPageSlug($prod_name).'"
+                    href="/products/'.$variant['prod_id'].'/'.slugify($brand.'-'.$prod_name).'"
                     class="product-color '.$selected.'"';
                     $color2 = '';
                     if($variant['sec_color']) {

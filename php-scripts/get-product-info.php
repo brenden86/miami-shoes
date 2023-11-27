@@ -1,7 +1,7 @@
 <?php
 
-  function productPageSlug($prod_name) {
-    return str_replace('.', '-', $prod_name);
+  function slugify($slug) {
+    return preg_replace('/(\.|\s)+/', '-', $slug);
   }
 
   function buildProductTitle($product) {

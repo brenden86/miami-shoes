@@ -56,7 +56,7 @@
         // output html
         echo '
         <div class="product-card-wrapper">
-          <a href="/products/'.$field['prod_id'].'/'.productPageSlug($field['prod_name']).'" class="product-card">'
+          <a href="/products/'.$field['prod_id'].'/'.slugify($field['brand'].'-'.$field['prod_name']).'" class="product-card">'
               . getProductCardBadge($field) . '
               <div class="product-card-image loading">
                 <img
