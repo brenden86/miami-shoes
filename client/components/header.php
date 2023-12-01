@@ -5,7 +5,7 @@
 
     <div class="header-section left">
       <a href="/">
-        <img src="/images/logo-placeholder.jpg" class="logo-image" alt="logo" />
+        <img src="/images/logo.png" class="logo-image" alt="logo" />
       </a>
     </div>
     
@@ -57,7 +57,7 @@
     <!--header right section-->
     <div class="header-section right">
       <div class="header-section-wrapper">
-        <a href="/pages/my-cart/my-cart.php" id="header-cart-link" class="icon-link">
+        <a href="/cart" id="header-cart-link" class="icon-link">
           <i class="bi-cart"></i>
           Cart<span id="header-cart-count">
           <?php

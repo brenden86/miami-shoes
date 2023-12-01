@@ -25,8 +25,8 @@
         <!-- footer column 2 -->
         <div class="footer-column">
           <h3>Help</h3>
-          <a href="/pages/faq/faq.php">FAQ</a>
-          <a href="/pages/return-policy/return-policy.php">Return Policy</a>
+          <a href="/faq">FAQ</a>
+          <a href="/return-policy">Return Policy</a>
         </div>
 
         <!-- footer column 3 -->
@@ -68,7 +68,7 @@
     <div class="footer-wrapper">
 
       <a href="/" class="footer-logo">
-        <img src="/images/logo-placeholder.jpg" class="logo-image" alt="logo" />
+        <img src="/images/logo.png" class="logo-image" alt="logo" />
       </a>
 
       <div class="copyright">&copy; 2023 Miami Shoes, LLC</div>
