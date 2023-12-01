@@ -905,7 +905,7 @@ header {
   height: 7rem;
 }
 .header-section.left .logo-image {
-  padding: 1rem;
+  padding: 1.2rem;
 }
 .header-section.center {
   display: flex;
@@ -1094,7 +1094,7 @@ footer h3 {
 }
 
 .footer-logo {
-  height: 100px;
+  height: 85px;
 }
 
 .site-links {
