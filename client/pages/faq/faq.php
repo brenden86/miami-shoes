@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FAQ | Miami Shoes</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="/styles/main.css">
   <script type="module" src="/pages/faq/app.js" defer></script>
