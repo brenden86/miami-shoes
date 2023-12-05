@@ -1,0 +1,4 @@
+CREATE TABLE inventory (
+	sku INT NOT NULL,
+    recv_date DATETIME DEFAULT CURRENT_TIMESTAMP
+);

@@ -4,3 +4,4 @@ node_modules
 nginx.conf
 github_pat.txt
 sconf.sh
+client/test.php

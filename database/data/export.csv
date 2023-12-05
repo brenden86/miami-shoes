@@ -1,0 +1,91 @@
+prod_id,prod_name,brand,prim_color,sec_color
+1,"lite racer adapt 5.0",adidas,navy,red
+2,"lite racer adapt 5.0",adidas,black,white
+3,"lite racer adapt 5.0",adidas,grey,yellow
+4,"lite racer adapt 5.0",adidas,olive,black
+5,"lite racer adapt 5.0",adidas,red,white
+6,"hoops 3.0 low",adidas,lightgrey,emerald
+7,"hoops 3.0 low",adidas,white,brown
+8,"hoops 3.0 low",adidas,white,royal
+9,"hoops 3.0 mid",adidas,beige,black
+10,"hoops 3.0 mid",adidas,black,red
+11,"hoops 3.0 mid",adidas,white,lightgrey
+12,"hoops 3.0 mid",adidas,white,navy
+13,"hoops 3.0 mid",adidas,white,teal
+14,"racer tr23",adidas,navy,white
+15,"racer tr23",adidas,teal,white
+16,"racer tr23",adidas,white,ivory
+17,"run 80s",adidas,black,chocolate
+18,"run 80s",adidas,lightgrey,burgundy
+19,"runfalcon 3.0",adidas,black,black
+20,"runfalcon 3.0",adidas,charcoal,black
+21,"chuck taylor all star high street high top",converse,black,red
+22,"chuck taylor all star high street high top",converse,black,white
+23,"chuck taylor all star high street high top",converse,charcoal,electric
+24,"chuck taylor all star high street high top",converse,lightgrey,white
+25,"chuck taylor all star high street ox",converse,black,white
+26,"chuck taylor all star high street ox",converse,white,red
+27,emptor,dockers,black,
+28,"garfield cap toe oxford",dockers,brown,
+29,laguna,dockers,brown,
+30,newpage,dockers,charcoal,
+31,newpage,dockers,brown,
+32,rawls,dockers,black,brown
+33,"rowan moc toe",dockers,black,grey
+34,"rowan moc toe",dockers,brown,tan
+35,"rowan moc toe",dockers,darkbrown,black
+36,wally,heydude,orange,red
+37,wally,heydude,red,denim
+38,wally,heydude,sand,brown
+39,wally,heydude,seashell,white
+40,wally,heydude,tomato,white
+41,"wally funk",heydude,grey,white
+42,"wally funk",heydude,slate,white
+43,"wally funk",heydude,tan,ivory
+44,"237 retro",new-balance,black,grey
+45,"237 retro",new-balance,ivory,black
+46,"237 retro",new-balance,lightgrey,red
+47,"237 retro",new-balance,navy,cardinal
+48,"237 retro",new-balance,tan,navy
+49,"515 retro",new-balance,army,ivory
+50,"515 retro",new-balance,cream,white
+51,"515 retro",new-balance,lightgrey,cardinal
+52,"515 retro",new-balance,navy,white
+53,"997 retro",new-balance,black,grey
+54,"997 retro",new-balance,navy,burgundy
+55,"997 retro",new-balance,pine,yellow
+56,"997 retro",new-balance,royal,red
+57,"fresh foam roav",new-balance,black,cerulean
+58,"fresh foam roav",new-balance,black,grey
+59,"air max excee",nike,black,red
+60,"air max excee",nike,grey,cerulean
+61,"air max excee",nike,white,royal
+62,"air max excee",nike,white,tomato
+63,"air monarch iv",nike,white,navy
+64,"court vision low",nike,black,cerulean
+65,"court vision low",nike,black,red
+66,"court vision low",nike,lightgrey,red
+67,"court vision low",nike,white,black
+68,"court vision low",nike,white,navy
+69,"revolution 6",nike,black,white
+70,"revolution 6",nike,navy,white
+71,"revolution 6",nike,salmon,black
+72,"revolution 6",nike,white,electric
+73,"waffle debut retro",nike,black,white
+74,"waffle debut retro",nike,lightgrey,white
+75,"waffle debut retro",nike,navy,ivory
+76,"waffle debut retro",nike,white,cerulean
+77,"atwood deluxe",vans,black,brown
+78,"atwood deluxe",vans,brown,chocolate
+79,"atwood deluxe",vans,burgundy,tan
+80,"atwood deluxe",vans,charcoal,brown
+81,filmore,vans,charcoal,brown
+82,filmore,vans,emerald,white
+83,filmore,vans,smoke,black
+84,"range exp",vans,black,white
+85,"range exp",vans,grey,black
+86,"range exp",vans,grey,white
+87,"range exp",vans,white,black
+88,"ward low",vans,black,white
+89,"ward low",vans,lightgrey,white
+90,"ward low",vans,red,white
