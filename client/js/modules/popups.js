@@ -39,6 +39,13 @@ const dataConsentHTML = `
   <div class="popup-buttons">
     <button class="data-consent-button">I Understand</button>
   </div>
+`;
+
+const selectSizeHTML = `
+  <div class="popup-icon">
+    <i class="bi-exclamation-circle"></i>
+    <h1>Please select a size.</h1>
+  </div>
 `
 
 
@@ -65,6 +72,8 @@ export function showPopup(type, noClose = false) {
     popupContent = outOfStockHTML;
   } else if(type === 'dataConsent') {
     popupContent = dataConsentHTML;
+  } else if(type === 'selectSize') {
+    popupContent = selectSizeHTML;
   }
   // create popup HTML
   let popup = document.createElement('div');
