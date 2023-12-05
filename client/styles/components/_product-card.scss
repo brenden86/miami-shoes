@@ -122,7 +122,14 @@
   position: relative;
   flex-shrink: 0;
   box-shadow: $box-shadow-small;
-  overflow: hidden;
+
+  .color-swatch-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
   
   .color-swatch {
     width: 100%;

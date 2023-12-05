@@ -8,8 +8,10 @@ include_once '../../../database/dbconnect.php';
 include_once '../../../php-scripts/get-product-info.php';
 
 
-$uri_components = explode('/', $_SERVER['REQUEST_URI']);
-$id = $uri_components[2]; // product ID from URI
+// $uri_components = explode('/', $_SERVER['REQUEST_URI']);
+// $id = $uri_components[2]; // product ID from URI
+
+$id = $_GET['id'];
 
 // Get product info from DB
 $product_query = $db->prepare('
@@ -38,12 +40,12 @@ extract($product);
 
 
 // fix URI if user types it incorrectly
-$uri_slug = end(explode("/", $_SERVER['REQUEST_URI']));
-$product_page_slug = slugify($brand.'-'.$prod_name);
-if ($uri_slug != $product_page_slug) {
-  header('location: /products/'.$prod_id.'/'.$product_page_slug);
-  exit;
-}
+// $uri_slug = end(explode("/", $_SERVER['REQUEST_URI']));
+// $product_page_slug = slugify($brand.'-'.$prod_name);
+// if ($uri_slug != $product_page_slug) {
+//   header('location: /products/'.$prod_id.'/'.$product_page_slug);
+//   exit;
+// }
 
 ?>
 
@@ -189,8 +191,10 @@ MAIN CONTENT
                     echo '
                     title="' . $variant['prim_color'] . $color2 . '"
                     >
-                    <div class="color-swatch secondary" style="background: #'.$color_hex_values[$variant['sec_color']].'"></div>
-                    <div class="color-swatch primary" style="background: #'.$color_hex_values[$variant['prim_color']].'"></div>
+                    <div class="color-swatch-wrapper">
+                      <div class="color-swatch secondary" style="background: #'.$color_hex_values[$variant['sec_color']].'"></div>
+                      <div class="color-swatch primary" style="background: #'.$color_hex_values[$variant['prim_color']].'"></div>
+                    </div>
                     </a>
                     ';
                   }
