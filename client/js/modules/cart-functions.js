@@ -66,7 +66,7 @@ export async function addToCart(sku) {
         showPopup("outOfStock");
       }
     } else {
-      alert('Please select a size.');
+      showPopup('selectSize');
     }
     // do nothing if disabled
   } 
