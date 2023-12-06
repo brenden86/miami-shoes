@@ -9,6 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Products | Miami Shoes</title>
+  <meta name="description" content="Find your fit–shop your favorite brands, styles, and colors of shoes.">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
   <!-- Bootstrap Icons -->

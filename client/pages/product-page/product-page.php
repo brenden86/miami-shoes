@@ -55,6 +55,7 @@ if ($uri_slug != $product_page_slug) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?=ucwords($brand) . ' ' . ucwords($prod_name) . ' | Miami Shoes'?></title>
+  <meta name="description" content="<?='Shop '.$brand.' '.$prod_name.' at Miami shoes.'?>">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 
   <!-- Bootstrap Icons -->

@@ -11,6 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miami Shoes</title>
+    <meta name="description" content="Shop the latest styles of mens and womens shoes. Fast and free shipping anywhere in the US.">
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     
     <!-- Bootstrap Icons -->
