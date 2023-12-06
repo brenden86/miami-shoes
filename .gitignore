@@ -1,7 +1,10 @@
 config.php
 /server
-node_modules
+client/node_modules
 nginx.conf
 github_pat.txt
 sconf.sh
 client/test.php
+database/data
+database/queries
+datatbase/scripts
