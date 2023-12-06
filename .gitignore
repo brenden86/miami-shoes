@@ -4,4 +4,7 @@ node_modules
 nginx.conf
 github_pat.txt
 sconf.sh
-client/test.php
+/client/test.php
+/database/data
+/database/queries
+/database/scripts
