@@ -41,21 +41,50 @@
     <div class="content-block mobile-full-width">
       <div class="slider-container">
 
-        <div class="slider-images">
-          <div class="image-wrapper">
-            <div class="slider-image" style="background-image: url(/images/slider/lebron.jpg)" title="Slider Graphic 1"></div>
-            <div class="slider-image" style="background-image: url(/images/slider/boots.jpg)" title="Slider Graphic 2"></div>
-            <div class="slider-image" style="background-image: url(/images/slider/converse.jpg)" title="Slider Graphic 3"></div>
-            <div class="slider-image" style="background-image: url(/images/slider/running.jpg)" title="Slider Graphic 4"></div>
-            <div class="slider-image" style="background-image: url(/images/slider/skateboard.webp)" title="Slider Graphic 5"></div>
-          </div>
-        </div>
-
-        <div id="slider-prev" class="slider-control prev icon-link">
+        <div id="slider-prev"
+          role="button"
+          aria-label="previous slide"
+          class="slider-control prev icon-link"
+          tabindex="0"
+        >
           <i class="bi-caret-left-fill"></i>
         </div>
 
-        <div id="slider-next" class="slider-control next icon-link">
+        <div class="slider-images">
+          <div class="image-wrapper">
+            
+            <div class="slider-image"  aria-hidden="true">
+              <img src="/images/slider/lebron.jpg" alt="Lebron James Holding Nike Shoe">
+            </div>
+
+            <div class="slider-image" aria-hidden="true">
+              <img src="/images/slider/skateboard.webp" alt="Skateboarder in Vans Shoes">
+            </div>
+
+            <div class="slider-image"  aria-hidden="true">
+              <img src="/images/slider/boots.jpg" alt="Man in Boots Walking Up Steps">
+            </div>
+
+            <div class="slider-image"  aria-hidden="true">
+              <img src="/images/slider/converse.jpg" alt="Black Converse Sneakers">
+            </div>
+
+            <div class="slider-image"  aria-hidden="true">
+              <img src="/images/slider/running.jpg" alt="Woman Runner in Nike Shoes">
+            </div>
+
+          </div>
+        </div>
+
+        
+
+        <div
+          id="slider-next"
+          role="button"
+          aria-label="next slide"
+          class="slider-control next icon-link"
+          tabindex="0"
+        >
           <i class="bi-caret-right-fill"></i>
         </div>
 

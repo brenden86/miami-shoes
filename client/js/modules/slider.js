@@ -12,50 +12,57 @@ export function nextSlide() {
   slideIndex++
   if (slideIndex >= sliderImages.length) {
     // reset index on last image
-    slideIndex = 0
+    slideIndex = 0;
   }
-  sliderWrapper.style.left = `-${slideIndex * 100}%`
+  sliderWrapper.style.left = `-${slideIndex * 100}%`;
+  updateSlideARIA(slideIndex);
 }
 
 export function prevSlide() {
-  slideIndex--
+  slideIndex--;
   if (slideIndex < 0) {
     // go to last slide
-    slideIndex = sliderImages.length - 1
+    slideIndex = sliderImages.length - 1;
   }
-  sliderWrapper.style.left = `-${slideIndex * 100}%`
+  sliderWrapper.style.left = `-${slideIndex * 100}%`;
+  updateSlideARIA(slideIndex);
 }
 
 export function resetTimer() {
   sliderTimers.forEach(t => {
-    clearInterval(t)
+    clearInterval(t);
   })
   let timer = setInterval(() => {
       nextSlide()
   }, slideDuration)
-  sliderTimers.push(timer)
+  sliderTimers.push(timer);
+}
+
+export function updateSlideARIA(slideIndex) {
+  console.log(`slide index: ${slideIndex}`)
+  sliderImages.forEach((img, i) => {
+    if(i === slideIndex) {
+      img.setAttribute('aria-hidden', 'false');
+    } else {
+      img.setAttribute('aria-hidden', 'true');
+    }
+  })
 }
 
 // EVENT HANDLERS
-if(nextSlideButton) {
-  nextSlideButton.addEventListener('click', () => {
-    nextSlide()
-    resetTimer()
-  })
-}
+nextSlideButton.addEventListener('click', () => {
+  nextSlide()
+  resetTimer()
+})
 
-if(prevSlideButton) {
-  prevSlideButton.addEventListener('click', () => {
-    prevSlide()
-    resetTimer()
-  })
-}
+prevSlideButton.addEventListener('click', () => {
+  prevSlide()
+  resetTimer()
+})
 
 
 // start slide rotation
-if(sliderWrapper) {
-  resetTimer()
-}
+resetTimer()
 
 
 
