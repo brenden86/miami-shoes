@@ -2,12 +2,12 @@
 
 <div class="product-card-container">
 
-  <div class="carousel-control prev icon-link">
+  <div
+    class="carousel-control prev icon-link"
+    role="button"
+    aria-label="Carousel Backward"
+  >
     <i class="bi-caret-left-fill"></i>
-  </div>
-
-  <div class="carousel-control next icon-link">
-    <i class="bi-caret-right-fill"></i>
   </div>
 
   <div class="product-cards-wrapper">
@@ -66,7 +66,7 @@
 
               <div class="product-info">
                 <div class="brand">' . strtoupper($field['brand']) . '</div>
-                <div class="product-name">' . strtoupper($field['prod_name']) . '</div>
+                <div class="product-name" aria-label=">' . strtoupper($field['prod_name']) . '</div>
                 ' . getProductColorsCount($field) . '
                 <div class="price">$' . $field['price'] . '</div>
               </div>
@@ -83,6 +83,12 @@
 
   </div>
 
-
+  <div
+    class="carousel-control next icon-link"
+    role="button"
+    aria-label="Carousel Forward"
+  >
+    <i class="bi-caret-right-fill"></i>
+  </div>
 
 </div>
