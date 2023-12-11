@@ -2,7 +2,13 @@
 
 export function toggleNav() {
   
-  toggleIcon.classList.toggle('active');
+  if (toggleIcon.classList.contains('active')) {
+    toggleIcon.classList.remove('active');
+    toggleIcon.setAttribute('aria-pressed', 'false');
+  } else {
+    toggleIcon.classList.add('active');
+    toggleIcon.setAttribute('aria-pressed', 'true');
+  }
   navContainer.classList.toggle('show');
   
 }
@@ -18,7 +24,13 @@ toggleIcon.addEventListener('click', () => {
 // brands toggle
 
 export function toggleBrands() {
-  brandsToggle.classList.toggle('active');
+  if (brandsToggle.classList.contains('active')) {
+    brandsToggle.classList.remove('active');
+    brandsToggle.setAttribute('aria-pressed', 'false');
+  } else {
+    brandsToggle.classList.add('active');
+    brandsToggle.setAttribute('aria-pressed', 'true')
+  }
 }
 
 const brandsToggle = document.querySelector('#brands-header-mobile');
