@@ -1,5 +1,5 @@
 
-<div class="sidebar-container">
+<aside class="sidebar-container">
 
   <div class="filter-sort-container">
 
@@ -7,10 +7,10 @@
 
       <div class="filter-sort-wrapper">
         <div class="filter-icon icon-link">
-          <i class="bi-funnel"></i>
+          <i class="bi-funnel" role="presentation"></i>
         </div>
         <div class="sort-icon icon-link">
-          <i class="bi-arrow-down-up"></i>
+          <i class="bi-arrow-down-up" role="presentation"></i>
         </div>
       </div>
 
@@ -22,9 +22,9 @@
           ?>
         </div>
         <div class="sort-options-wrapper">
-          <span class="sort-option" data-sort="popular">popular</span>
-          <span class="sort-option" data-sort="price-asc">price: low to high</span>
-          <span class="sort-option" data-sort="price-desc">price: high to low</span>
+          <span class="sort-option" data-sort="popular" role="button">popular</span>
+          <span class="sort-option" data-sort="price-asc" role="button">price: low to high</span>
+          <span class="sort-option" data-sort="price-desc" role="button">price: high to low</span>
         </div>
       </div>
 
@@ -32,8 +32,8 @@
     
     <div class="filter-sort-right">
 
-      <div class="filter-submit-button text-button">
-        <i class="bi-arrow-clockwise"></i>
+      <div class="filter-submit-button text-button" role="button">
+        <i class="bi-arrow-clockwise" role="presentation"></i>
         apply filters
       </div>
 
@@ -136,7 +136,7 @@
                 $checked = '';
               }
 
-              // give the white filter color a darker check so it is visible
+              // give light filter colors a darker check so it is visible
               if($filter_color === 'white' || $filter_color === 'yellow') {
                 $light_filter_class = 'light-color';
               } else {
@@ -149,11 +149,11 @@
                 class="filter-color checkbox-container"
                 style="background: #'.$color['filter_hex'].'"
               >
-              <input id="'.$filter_color.'" type="checkbox" name="filter-color-'.$filter_color.'" value=true
+              <input id="'.$filter_color.'" type="checkbox" aria-label="'.$filter_color.'" name="filter-color-'.$filter_color.'" value=true
               ' . $checked . '
               >
               <label for="'.$filter_color.'" class="checkbox '.$light_filter_class.'" tabindex="0">
-                <i class="bi-check"></i>
+                <i class="bi-check" role="presentation"></i>
               </label>
               </div>
               ';
@@ -177,10 +177,12 @@
       <div class="filters">
         <div class="input-wrapper inline mobile-inline small">
           <span>$</span>
+          <label for="filter-price-min" class="sr-only">minimum price</label>
           <input id="filter-price-min" type="text" name="priceMin" placeholder="min." maxlength="8"
           value=<?=$_REQUEST['priceMin'] ?? '';?>
           >
           <span>to</span>
+          <label for="filter-price-max" class="sr-only">maximum price</label>
           <input id="filter-price-max" type="text" name="priceMax" placeholder="max." maxlength="8"
           value=<?=$_REQUEST['priceMax'] ?? '';?>
           >
@@ -285,4 +287,4 @@
     
   </form>
   
-</div>
+</aside>

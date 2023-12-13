@@ -76,24 +76,27 @@
       <!-- Product search results -->
       <div class="content-block mobile-full-width">
 
-      <div class="sort-wrapper">
-        <div>Sort by: </div>
+      <div class="sort-wrapper" role="group" aria-label="sort products">
+        <span>Sort by: </span>
         
         <div class="sort-options-wrapper">
           <span
             class="sort-option text-button <?=($sort === 'popular') ? 'selected' : ''?>"
             data-sort="popular"
             tabindex="0"
+            role="button"
           >popular</span>
           <span
             class="sort-option text-button <?=($sort === 'price-asc') ? 'selected' : ''?>"
             data-sort="price-asc"
             tabindex="0"
+            role="button"
           >price: low to high</span>
           <span
             class="sort-option text-button <?=($sort === 'price-desc') ? 'selected' : ''?>"
             data-sort="price-desc"
             tabindex="0"
+            role="button"
           >price: high to low</span>
         </div>
       </div>
@@ -146,7 +149,7 @@
           ';
         } else {
           echo '
-           <div class="product-card-container card">
+           <section class="product-card-container card" aria-label="product grid">
             <div class="product-cards">
           ';
           
@@ -208,7 +211,7 @@
               // END product card container divs
               echo '
                 </div>
-                </div>
+                </section>
               ';
             }
           ?>
