@@ -1,27 +1,6 @@
 
 <?php
 
-// <div class="content-block">
-//   <div class="pagination-container">
-//     <div class="pagination-wrapper">
-
-//       <div class="page-buttons">
-//         <button class="prev"><i class="bi-caret-left-fill"></i>prev</button>
-//         <button class="next">next<i class="bi-caret-right-fill"></i></button>
-//       </div>
-
-//       <div class="page-numbers">
-//         <a href="#" class="selected">1</a>
-//         <a href="#">2</a>
-//         <a href="#">3</a>
-//         <span>...</span>
-//         <a href="#">4</a>
-//       </div>
-
-//     </div>
-//   </div>
-// </div>
-
 // get dynamic page URLs while maintaining other query params
 
 function getPaginatedUrl($page_num) {
@@ -85,14 +64,14 @@ function getDisplayedPages() {
   // echo page numbers html
   foreach($page_array as $page) {
     if($page === $current_page) {
-      echo '<a class="selected">'.$page.'</a>';
+      echo '<a class="selected" aria-label="page '.$page.'">'.$page.'</a>';
     } else {
-      echo '<a href="'.getPaginatedUrl($page).'">'.$page.'</a>';
+      echo '<a href="'.getPaginatedUrl($page).'" aria-label="page '.$page.'">'.$page.'</a>';
     }
   }
 
   if($page_array[count($page_array)-1] < $num_pages) {
-    echo '<span>...</span>';
+    echo '<span role="presentation">...</span>';
   }
   
 }
@@ -112,7 +91,7 @@ if($num_pages > 1) {
               <a
                 href="' . getPaginatedUrl($current_page - 1) . '"
                 class="button prev"
-              ><i class="bi-caret-left-fill"></i>prev</a>
+              ><i class="bi-caret-left-fill" role="presentation"></i>prev</a>
             ';
           }
           // show next button if not at end
@@ -121,7 +100,7 @@ if($num_pages > 1) {
               <a
                 href="' . getPaginatedUrl($current_page + 1) . '"
                 class="button next"
-              >next<i class="bi-caret-right-fill"></i></a>
+              >next<i class="bi-caret-right-fill" role="presentation"></i></a>
             ';
           }
 
