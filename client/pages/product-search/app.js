@@ -1,3 +1,4 @@
+import { checkUserDataConsent } from '/js/modules/data-consent.js';
 import { toggleNav, toggleBrands } from '../../js/modules/header-nav-toggle.js';
 import { checkImagesLoaded } from '../../js/modules/image-fallback.js';
 import { changeSortOrder } from '../../js/modules/select-sort.js';
