@@ -11,6 +11,17 @@ include_once '../../../php-scripts/get-product-info.php';
 $uri_components = explode('/', $_SERVER['REQUEST_URI']);
 $id = $uri_components[2]; // product ID from URI
 
+// DEBUG: use ID from query string when testing instead of URL component
+if($_GET['debug'] === '1') {
+  $testing = true;
+} else {
+  $testing = false;
+}
+
+if($testing) {
+  $id = $_GET['id'];
+}
+
 // Get product info from DB
 $product_query = $db->prepare('
   SELECT
@@ -36,13 +47,17 @@ $product = $product_query->fetch(PDO::FETCH_ASSOC);
 // Extract fields into variables
 extract($product);
 
+// DEBUG: rewrite URL if NOT testing
+if(!$testing) {
 
-// fix URI if user types it incorrectly
-$uri_slug = end(explode("/", $_SERVER['REQUEST_URI']));
-$product_page_slug = slugify($brand.'-'.$prod_name);
-if ($uri_slug != $product_page_slug) {
-  header('location: /products/'.$prod_id.'/'.$product_page_slug);
-  exit;
+  // fix URI if user types it incorrectly
+  $uri_slug = end(explode("/", $_SERVER['REQUEST_URI']));
+  $product_page_slug = slugify($brand.'-'.$prod_name);
+  if ($uri_slug != $product_page_slug) {
+    header('location: /products/'.$prod_id.'/'.$product_page_slug);
+    exit;
+  }
+
 }
 
 ?>
@@ -61,7 +76,7 @@ if ($uri_slug != $product_page_slug) {
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="/styles/main.css">
-  <script src="../../js/accessibility.js"></script>
+  <script src="/js/accessibility.js"></script>
   <script src="/pages/product-page/app.js" type="module" defer></script>
 </head>
 <body>
@@ -80,65 +95,65 @@ MAIN CONTENT
   <div class="main-content-wrapper">
     
     
-    <!-- main content column -->
-    <div class="main-content">
-      <?php
+  <!-- main content column -->
+  <section class="main-content">
+    <?php
 
-        // Get product image URLs
-        $product_image_query = $db->prepare('SELECT * FROM prod_images WHERE prod_id = :id');
-        $product_image_query->execute(['id' => $id]);
-        $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
+      // Get product image URLs
+      $product_image_query = $db->prepare('SELECT * FROM prod_images WHERE prod_id = :id');
+      $product_image_query->execute(['id' => $id]);
+      $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
 
-      ?>
+    ?>
 
-<div class="content-block">
-  <div class="product-wrapper">
-    
-    <!-- left column -->
-    <div class="product-column">
-
-    <div class="product-info-wrapper mobile">
-      <!-- breadcrumbs -->
-      <div class="breadcrumbs">
-        <?=buildBreadcrumbs($product)?>
-      </div>
-      <!-- product text -->
-      <div class="info-group product-text">
-        <div class="brand"><?=$product['brand']?></div>
-        <h1 class="product-title">
-          <?=buildProductTitle($product)?>
-        </h1>
-        <?=($qty < 1) ? '<div class="out-of-stock">Out of Stock</div>' : '' ?>
-        <div class="price">$<?=$price?></div>
-      </div>
-    </div>
-      
-      <div class="selected-image product-image-container loading">
-        <img
-        src="<?=$thumb_url?>"
-        alt="<?=$prod_name?>"
-        >
-      </div>
-      
-      <div class="thumbnail-wrapper">
-        <?php
-          // populate product images
-          foreach($product_images as $image => $path) {
-            echo '
-            <div class="thumbnail product-image-container loading">
-            <img src="' . $path['img_path'] . '" alt="' . $product['prod_name'] . '">
-            </div>
-            ';
-          }
-        ?>
-            
-            
-        </div>
-          
-        </div>
+    <div class="content-block">
+      <div class="product-wrapper">
         
+        <!-- left column -->
+        <div class="product-column">
+
+          <div class="product-info-wrapper mobile">
+            <!-- breadcrumbs -->
+            <div class="breadcrumbs">
+              <?=buildBreadcrumbs($product)?>
+            </div>
+            <!-- product text -->
+            <div class="info-group product-text">
+              <div class="brand"><?=$product['brand']?></div>
+              <h1 class="product-title">
+                <?=buildProductTitle($product)?>
+              </h1>
+              <?=($qty < 1) ? '<div class="out-of-stock">Out of Stock</div>' : '' ?>
+              <div class="price">$<?=$price?></div>
+            </div>
+
+          </div>
+          
+          <div class="selected-image product-image-container loading">
+            <img
+            src="<?=$thumb_url?>"
+            alt="<?=$prod_name?>"
+            >
+          </div>
+          
+          <div class="thumbnail-wrapper">
+            <?php
+              // populate product images
+              foreach($product_images as $image => $path) {
+                echo '
+                <div class="thumbnail product-image-container loading">
+                  <img src="' . $path['img_path'] . '" alt="' . $product['prod_name'] . '">
+                </div>
+                ';
+              }
+            ?>
+          </div>
+              
+        </div>
+            
         <!-- right column -->
         <div class="product-column">
+
           <div class="product-info-wrapper">
             
             <!-- breadcrumbs -->
@@ -189,6 +204,7 @@ MAIN CONTENT
                     }
                     echo '
                     title="' . $variant['prim_color'] . $color2 . '"
+                    aria-label="' . $variant['prim_color'] . $color2 . '"
                     >
                     <div class="color-swatch-wrapper">
                       <div class="color-swatch secondary" style="background: #'.$color_hex_values[$variant['sec_color']].'"></div>
@@ -202,8 +218,8 @@ MAIN CONTENT
             </div>
             
             <!-- available sizes -->
-            <div class="info-group">
-              <h2>Size:</h2>
+            <div class="info-group" role="radiogroup" aria-labelledby="size-title">
+              <h2 id="size-title">Size:</h2>
               <div class="sizes-wrapper">
                 <?php 
                   $shoe_sizes = $db->getSizesInStock($prod_id);
@@ -227,7 +243,13 @@ MAIN CONTENT
                     }
                     
                     echo '
-                    <div class="size-button ' . $disabled . '" data-size="'.$item['size'].'" data-sku="'.$item['sku'].'" '. $size_tabindex . '>'.$size_text.'</div>';
+                    <div
+                      class="size-button ' . $disabled . '"
+                      data-size="'.$item['size'].'"
+                      data-sku="'.$item['sku'].'"
+                      '. $size_tabindex . '
+                      role="radio"
+                    >'.$size_text.'</div>';
                   }
                 ?>
               </div>
@@ -251,14 +273,16 @@ MAIN CONTENT
             
             
           </div>
+          
+        <!-- end second column  -->
         </div>
-        
+            
       </div>
     </div>
-    
-  </div>
   
-</div>
+  </section>
+
+  </div>
 </main>
 
 
