@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="/styles/main.css">
   <script src="/pages/my-cart/app.js" type="module" defer></script>
+  <script src="/js/accessibility.js" type="module" defer></script>
 </head>
 <body>
   <div id="root">
@@ -73,7 +74,7 @@
                 echo '
                   <div class="form-navigation-buttons">
                     <a href="/products" class="text-button">Continue Shopping</a>
-                    <a href="/pages/checkout/checkout.php" class="button next">
+                    <a href="/checkout" class="button next">
                       Checkout
                       <i class="bi-caret-right-fill"></i>
                     </a>
@@ -144,8 +145,8 @@
     
                     <div class="item-details right">
                       <div class="price">$'.$price.'</div>
-                      <div class="remove-item icon-link">
-                        <i class="bi-trash"></i>
+                      <div class="remove-item icon-link" role="button" tabindex="0">
+                        <i class="bi-trash" role="presentation"></i>
                       </div>
                     </div>
                     
@@ -165,8 +166,8 @@
             <?php
               if($cart_cookie && count($cart_cookie) > 0) {
                 echo '
-                  <div id="clear-cart-button" class="text-button">
-                    <i class="bi-cart-x"></i>Clear cart
+                  <div id="clear-cart-button" class="text-button" role="button" tabindex="0">
+                    <i class="bi-cart-x" role="presentation"></i>Clear cart
                   </div>
                 ';
               }
