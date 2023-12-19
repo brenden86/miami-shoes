@@ -249,6 +249,7 @@ MAIN CONTENT
                       data-sku="'.$item['sku'].'"
                       '. $size_tabindex . '
                       role="radio"
+                      aria-checked="false"
                     >'.$size_text.'</div>';
                   }
                 ?>

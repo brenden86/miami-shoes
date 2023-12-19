@@ -11,11 +11,13 @@ export function selectSize(button) {
     sizeButtons.forEach(el => {
       if(el.classList.contains('selected')) {
         el.classList.remove('selected');
+        el.setAttribute('aria-checked', 'false');
       }
     })
     // give selected class to selected button
     if(!button.classList.contains('selected')) {
       button.classList.add('selected');
+      button.setAttribute('aria-checked', 'true');
     }
   }
   // set selected SKU for addToCart()
