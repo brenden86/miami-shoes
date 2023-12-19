@@ -16,7 +16,7 @@ const addToCartHTML = `
 
 <div class="popup-buttons">
   <a href="${lastPageUrl}" class="text-button">Continue Shopping</a>
-  <a href="/pages/my-cart/my-cart.php" class="button next">
+  <a href="/cart" class="button next">
     Go To Cart
     <i class="bi-caret-right-fill" role="presentation"></i>
   </a>
