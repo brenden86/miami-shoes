@@ -94,7 +94,7 @@
 		<div class="header-section center">
 			
 			<a href="/">
-				<img src="/images/logo-placeholder.jpg" class="logo-image" alt="logo" />
+				<img src="/images/logo.png" class="logo-image" alt="logo" />
 			</a>
 		
 		</div>
