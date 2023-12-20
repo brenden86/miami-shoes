@@ -156,13 +156,6 @@ function validateCheckout($step) {
     if(!empty($_POST['delivery_instructions'])) {
       $_SESSION['checkout_info']['delivery_instructions'] = filter_var($_POST['delivery_instructions'], FILTER_SANITIZE_SPECIAL_CHARS);
     }
-    
-    // payment method
-    if(!empty($_POST['payment_method'])) {
-      $_SESSION['checkout_info']['payment_method'] = filter_var($_POST['payment_method'], FILTER_SANITIZE_SPECIAL_CHARS);
-    } else {
-      checkoutValidationError('Please select a payment method.');
-    }
 
     // credit card name
     if(!empty($_POST['credit_card_name'])) {
