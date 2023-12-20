@@ -143,7 +143,7 @@
 
 
             // DEBUGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
-            $current_step = 3;
+            // $current_step = 3
 
             // show correct form fields
             if($current_step === 1) {
