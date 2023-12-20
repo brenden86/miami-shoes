@@ -5,7 +5,7 @@ include_once __DIR__ . '/../php-scripts/get-cart-info.php';
 // set error message and return to checkout page
 function checkoutValidationError($message) {
   $_SESSION['checkout_error'] = $message;
-  header('location: /checkout.php');
+  header('location: /checkout');
   exit;
 }
 

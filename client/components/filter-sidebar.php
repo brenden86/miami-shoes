@@ -61,8 +61,10 @@
           <label for="filter-availability" class="checkbox-container" tabindex="0">
             <input
               id="filter-availability"
-              type="checkbox" name="inStock"
+              type="checkbox"
+              name="inStock"
               value=true
+              tabindex="-1"
               <?=($_REQUEST['inStock']==='true') ? 'checked' : '';?>
 
             >
@@ -88,10 +90,11 @@
               type="checkbox"
               name="mens"
               value=true
+              tabindex="-1"
               <?=($_REQUEST['mens']==='true') ? 'checked' : '';?>
             >
             <div class="checkbox">
-              <i class="bi-check"></i>
+              <i class="bi-check" role="presentation"></i>
             </div>
             Mens
           </label>
@@ -104,10 +107,11 @@
               type="checkbox"
               name="womens"
               value=true
+              tabindex="-1"
               <?=($_REQUEST['womens']==='true') ? 'checked' : '';?>
             >
             <div class="checkbox">
-              <i class="bi-check"></i>
+              <i class="bi-check" role="presentation"></i>
             </div>
             Womens
           </label>
@@ -149,7 +153,7 @@
                 class="filter-color checkbox-container"
                 style="background: #'.$color['filter_hex'].'"
               >
-              <input id="'.$filter_color.'" type="checkbox" aria-label="'.$filter_color.'" name="filter-color-'.$filter_color.'" value=true
+              <input id="'.$filter_color.'" type="checkbox" tabindex="-1" name="filter-color-'.$filter_color.'" value=true
               ' . $checked . '
               >
               <label for="'.$filter_color.'" class="checkbox '.$light_filter_class.'" tabindex="0">
@@ -214,12 +218,13 @@
               <input
                 id="filter-type-' . $type['shoe_type'] . '"
                 type="checkbox"
+                tabindex="-1"
                 name="type-filter-' . $type['shoe_type'] . '"
                 value="'.$type['shoe_type'].'" ' . 
                 $checked . '
               >
               <div class="checkbox">
-                <i class="bi-check"></i>
+                <i class="bi-check" role="presentation"></i>
               </div>
               ' . ucwords($type['shoe_type']) . '
             </label>
@@ -261,12 +266,13 @@
               <input
                 id="filter-brand-' . $no_space . '"
                 type="checkbox"
+                tabindex="-1"
                 name="brand-filter-' . $no_space . '"
                 value="'.$brand['brand'].'" ' . 
                 $checked . '
               >
               <div class="checkbox">
-                <i class="bi-check"></i>
+                <i class="bi-check" role="presentation"></i>
               </div>
               ' . ucwords($brand['brand']) . '
             </label>

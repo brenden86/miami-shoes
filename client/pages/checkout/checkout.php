@@ -24,7 +24,7 @@
 
   // redirect to cart page if no items in cart
   if(!$cart_items) {
-    header('location: /my-cart.php');
+    header('location: /cart');
     exit;
   }
   // remove item if out of stock
@@ -51,7 +51,7 @@
     $_SESSION['checkout_info']['current_step'] -= 1;
     // this is to change the url so the query params are not included
     // in the served file, to prevent going back on a refresh
-    header('location: /checkout.php');
+    header('location: /checkout');
     exit;
   }
 
@@ -143,7 +143,7 @@
 
 
             // DEBUGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
-            // $current_step = 3;
+            $current_step = 3;
 
             // show correct form fields
             if($current_step === 1) {
