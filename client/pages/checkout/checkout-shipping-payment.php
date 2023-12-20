@@ -1,7 +1,7 @@
 <!-- checkout form fields - SHIPPING & PAYMENT -->
 <form
   id="checkout-form-shipping-payment"
-  action="/pages/checkout/checkout-submit.php"
+  action="/checkout-submit"
   method="post"
 >
   <div id="shipping-payment-fields" class="checkout-fields">

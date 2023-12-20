@@ -15,19 +15,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 // go to next checkout step
 if($step === 1) {
   $_SESSION['checkout_info']['current_step'] = 2;
-  header("location: /pages/checkout/checkout.php");
+  header("location: /checkout");
   exit;
 } elseif($step === 2) {
   $_SESSION['checkout_info']['current_step'] = 3;
-  header("location: /pages/checkout/checkout.php");
+  header("location: /checkout");
   exit;
 } elseif($step === 3) {
   $_SESSION['checkout_info']['current_step'] = 4;
-  header("location: /pages/order-confirmation/order-confirmation.php");
+  header("location: /order-confirmation");
   exit;
 } else {
   $_SESSION['checkout_info']['current_step'] = 1;
-  header("location: /pages/checkout/checkout.php");
+  header("location: /checkout");
   exit;
 }
 

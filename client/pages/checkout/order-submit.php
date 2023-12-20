@@ -4,12 +4,10 @@
   include_once '../../../database/dbconnect.php';
   include_once '../../../php-scripts/get-order-info.php';
 
-  // set timezone to US
-
   // on error, send back to checkout page with error message.
   function orderError($message) {
     $_SESSION['order_error'] = $message;
-    header('location: /checkout.php');
+    header('location: /checkout');
     exit;
   }
 
@@ -159,7 +157,7 @@
   }
 
 
-  header('location: /pages/order-confirmation/order-confirmation.php');
+  header('location: /order-confirmation');
   exit;
 
 ?>
