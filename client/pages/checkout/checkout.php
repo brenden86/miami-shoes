@@ -165,9 +165,6 @@
       
     </section>
     
-    
-    
-  </div>
   
   <!-- order summary sidebar -->
 
