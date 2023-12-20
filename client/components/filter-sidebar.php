@@ -22,9 +22,9 @@
           ?>
         </div>
         <div class="sort-options-wrapper">
-          <span class="sort-option" data-sort="popular" role="button">popular</span>
-          <span class="sort-option" data-sort="price-asc" role="button">price: low to high</span>
-          <span class="sort-option" data-sort="price-desc" role="button">price: high to low</span>
+          <span class="sort-option" data-sort="popular" role="button" tabindex="0">popular</span>
+          <span class="sort-option" data-sort="price-asc" role="button" tabindex="0">price: low to high</span>
+          <span class="sort-option" data-sort="price-desc" role="button" tabindex="0">price: high to low</span>
         </div>
       </div>
 
@@ -32,7 +32,7 @@
     
     <div class="filter-sort-right">
 
-      <div class="filter-submit-button text-button" role="button">
+      <div class="filter-submit-button text-button" role="button" tabindex="0">
         <i class="bi-arrow-clockwise" role="presentation"></i>
         apply filters
       </div>
@@ -67,7 +67,7 @@
 
             >
             <div class="checkbox">
-              <i class="bi-check"></i>
+              <i class="bi-check" role="presentation"></i>
             </div>
             In Stock
           </label>

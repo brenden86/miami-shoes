@@ -14,7 +14,6 @@
         <input
           type="radio"
           id="shipping-standard"
-          class="sr-only"
           tabindex="-1"
           name="shipping_type"
           value="standard"
@@ -29,7 +28,6 @@
           <input
           type="radio"
           id="shipping-expedited"
-          class="sr-only"
           tabindex="-1"
           name="shipping_type"
           value="expedited"
@@ -51,7 +49,6 @@
     <label for="same-as-billing" class="checkbox-container" tabindex="0">
       <input
       type="checkbox"
-      class="sr-only"
       tabindex="-1"
       id="same-as-billing"
       name="same_address"

@@ -1175,6 +1175,15 @@ footer h3 {
 .checkbox-container:hover {
   cursor: pointer;
 }
+.checkbox-container input {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
 .checkbox-container .checkbox {
   display: flex;
   flex-direction: row;
@@ -1215,6 +1224,15 @@ footer h3 {
   border: 2px solid #eb4791;
   position: relative;
   flex-shrink: 0;
+}
+.radio-container input {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 .radio-container.large {
   position: relative;
