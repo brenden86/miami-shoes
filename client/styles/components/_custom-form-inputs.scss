@@ -11,13 +11,6 @@
   &:hover {
     cursor: pointer;
   }
-  
-  // hide input element
-  input {
-    height: 0;
-    width: 0;
-    display: none;
-  }
 
   .checkbox {
     @include flex(row, center, center);
@@ -76,12 +69,6 @@
     color: $font-light;
     font-size: initial;
     font-weight: initial;
-  }
-
-  input {
-    width: 0;
-    height: 0;
-    display: none;
   }
 
   input:checked ~ .radio {

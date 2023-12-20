@@ -40,8 +40,8 @@
         <?php
         if(!$billing_company) {
           echo '
-            <div id="add-billing-company-field" class="add-field-button">
-              <i class="bi-plus-circle-fill"></i>
+            <div id="add-billing-company-field" class="add-field-button" role="button" tabindex="0">
+              <i class="bi-plus-circle-fill" role="presentation"></i>
               Add Company
             </div>
           ';
@@ -161,7 +161,7 @@
         >
       </div>
   
-    </fieldset>
+  </fieldset>
   
     <div class="input-wrapper">
       <label for="email">Email</label>
@@ -195,7 +195,7 @@
       <a href="#" class="empty-link"></a>
       <button class="button next" type="submit">
         Continue to Shipping
-        <i class="bi-caret-right-fill"></i>
+        <i class="bi-caret-right-fill" role="presentation"></i>
       </button>
     </div>
 

@@ -1175,11 +1175,6 @@ footer h3 {
 .checkbox-container:hover {
   cursor: pointer;
 }
-.checkbox-container input {
-  height: 0;
-  width: 0;
-  display: none;
-}
 .checkbox-container .checkbox {
   display: flex;
   flex-direction: row;
@@ -1234,11 +1229,6 @@ footer h3 {
   color: #b8b8b8;
   font-size: initial;
   font-weight: initial;
-}
-.radio-container input {
-  width: 0;
-  height: 0;
-  display: none;
 }
 .radio-container input:checked ~ .radio::after {
   content: "";

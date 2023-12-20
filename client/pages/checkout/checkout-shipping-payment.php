@@ -9,30 +9,36 @@
   <fieldset>
     <legend>Shipping Information</legend>
     <!-- shipping -->
-    <div class="input-wrapper inline">
-      <label for="shipping-standard" class="radio-container large">
+    <div class="input-wrapper inline" role="radiogroup">
+      <label for="shipping-standard" class="radio-container large" tabindex="0">
         <input
           type="radio"
           id="shipping-standard"
+          class="sr-only"
+          tabindex="-1"
           name="shipping_type"
           value="standard"
+          aria-describedby="shp-std-desc"
           <?=($_SESSION['checkout_info']['shipping_type'] === 'standard') ? 'checked' : '';?>
         >
           <div class="radio"></div>
           Standard Shipping - FREE
-          <span class="label-descriptor">3-5 business days</span>
+          <span class="label-descriptor" id="shp-std-desc">3-5 business days</span>
         </label>
-        <label for="shipping-expedited" class="radio-container large">
+        <label for="shipping-expedited" class="radio-container large" tabindex="0">
           <input
           type="radio"
           id="shipping-expedited"
+          class="sr-only"
+          tabindex="-1"
           name="shipping_type"
           value="expedited"
+          aria-describedby="shp-exp-desc"
           <?=($_SESSION['checkout_info']['shipping_type'] === 'expedited') ? 'checked' : '';?>
         >
         <div class="radio"></div>
         Expedited Shipping - $14.99
-        <span class="label-descriptor">1-2 business days</span>
+        <span class="label-descriptor" id="shp-exp-desc">1-2 business days</span>
       </label>
     </div>
   
@@ -42,16 +48,18 @@
     <!-- shipping address -->
     
     
-    <label for="same-as-billing" class="checkbox-container">
+    <label for="same-as-billing" class="checkbox-container" tabindex="0">
       <input
       type="checkbox"
+      class="sr-only"
+      tabindex="-1"
       id="same-as-billing"
       name="same_address"
       value="true"
       <?=($_SESSION['checkout_info']['same_address'] === 'true') ? 'checked' : '';?>
       >
       <div class="checkbox">
-        <i class="bi-check"></i>
+        <i class="bi-check" role="presentation"></i>
       </div>
       Shipping address same as billing
     </label>
@@ -85,8 +93,8 @@
         <?php
           if(!$shipping_company) {
             echo '
-              <div id="add-shipping-company-field" class="add-field-button">
-                <i class="bi-plus-circle-fill"></i>
+              <div id="add-shipping-company-field" class="add-field-button" role="button" tabindex="0">
+                <i class="bi-plus-circle-fill" role="presentation"></i>
                 Add Company
               </div>
             ';
@@ -213,8 +221,8 @@
       <?php
         if(!$delivery_instructions) {
           echo '
-          <div id="add-delivery-instructions-field" class="add-field-button">
-            <i class="bi-plus-circle-fill"></i>
+          <div id="add-delivery-instructions-field" class="add-field-button" role="button" tabindex="0">
+            <i class="bi-plus-circle-fill" role="presentation"></i>
             Add Delivery Instructions
           </div>
           ';
@@ -238,10 +246,6 @@
   <!-- payment method -->
   <fieldset>
     <legend>Payment Method</legend>
-  
-
-  
-
   
   <!-- credit card info -->
   <div class="input-wrapper inline">
@@ -325,22 +329,15 @@
   
     </div>
     
-    <?php /*
-    - Use if using PayPal API -
-    <div class="payment-processor">
-      <span>Powered by</span>
-      <img src="/images/paypal.png" alt="paypal">
-    </div>
-    */?>
   
   </div>
   
   </div>
   <div class="form-navigation-buttons">
-    <a href="/checkout.php?prev_step=1" class="text-button">Back</a>
+    <a href="/checkout?prev_step=1" class="text-button">Back</a>
     <button class="button next" type="submit">
       Continue to Review
-      <i class="bi-caret-right-fill"></i>
+      <i class="bi-caret-right-fill" role="presentation"></i>
     </button>
   </div>
 </form>

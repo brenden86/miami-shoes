@@ -61,7 +61,7 @@
     <a href="/pages/checkout/checkout.php?prev_step=1" class="text-button">Back</a>
     <a href="/pages/checkout/order-submit.php" class="button next">
       Place Order
-      <i class="bi-send"></i>
+      <i class="bi-send" role="presentation"></i>
     </a>
   </div>
   

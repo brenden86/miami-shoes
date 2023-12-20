@@ -70,6 +70,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="/styles/main.css">
   <script src="/pages/checkout/app.js" type="module" defer ></script>
+  <script src="/js/accessibility.js" type="module" defer ></script>
 </head>
 <body>
   <div id="root">
@@ -92,7 +93,7 @@
 
 
     <!-- main content column -->
-    <div class="main-content narrow">
+    <section class="main-content narrow">
 
       <!-- cart items -->
       <div class="content-block mobile-full-width">
@@ -114,7 +115,7 @@
               <div class="alert error">
                 <div class="alert-wrapper">
                   <div class="alert-icon">
-                    <i class="bi-exclamation-circle"></i>
+                    <i class="bi-exclamation-circle" role="presentation"></i>
                   </div>
                   <div class="alert-message">'.$_SESSION['checkout_error'].'</div>
                 </div>
@@ -130,7 +131,7 @@
               <div class="alert error">
                 <div class="alert-wrapper">
                   <div class="alert-icon">
-                    <i class="bi-exclamation-circle"></i>
+                    <i class="bi-exclamation-circle" role="presentation"></i>
                   </div>
                   <div class="alert-message">'.$_SESSION['order_error'].'</div>
                 </div>
@@ -162,7 +163,7 @@
         </div>
       </div>
       
-    </div>
+    </section>
     
     
     
@@ -186,16 +187,16 @@
     }
   ?>
 
-  <div class="order-summary-container">
+  <aside class="order-summary-container">
     
     <div class="order-summary-wrapper">
 
       <h1>Order Summary</h1>
-      <div class="order-summary-toggle icon-link">
-        <i class="bi-chevron-up"></i>
+      <div class="order-summary-toggle icon-link" role="button" tabindex="0" aria-expanded="false" aria-controls="order-summary-details">
+        <i class="bi-chevron-up" role="presentation"></i>
       </div>
       
-      <div class="order-summary-items">
+      <div class="order-summary-items" id="order-summary-details">
         <div class="order-summary-item-wrapper">
           <div>Subtotal</div>
           <div class="summary-item-value">
@@ -239,7 +240,7 @@
         </div>
       
       
-  </div>
+  </aside>
     
   </div>
 </main>
