@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/styles/main.css">
     <script src="/pages/404/app.js" type="module" defer></script>
+    <script src="/js/accessibility.js" type="module" defer></script>
 
   </head> 
   <body>
@@ -28,7 +29,7 @@
 <main>
   <div class="main-content-wrapper">
     
-    <div class="main-content">
+    <section class="main-content">
 
     <div class="page-not-found-container">
       <h1>Oops!</h1>
@@ -43,7 +44,7 @@
       </span>
     </div>
     
-    </div>
+    </section>
 
   </div>
 </main>
