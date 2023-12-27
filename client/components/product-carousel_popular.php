@@ -66,7 +66,7 @@
 
               <div class="product-info">
                 <div class="brand">' . strtoupper($field['brand']) . '</div>
-                <div class="product-name" aria-label=">' . strtoupper($field['prod_name']) . '</div>
+                <div class="product-name">' . strtoupper($field['prod_name']) . '</div>
                 ' . getProductColorsCount($field) . '
                 <div class="price">$' . $field['price'] . '</div>
               </div>
