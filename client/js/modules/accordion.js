@@ -1,9 +1,17 @@
 
 const faqHeaders = document.querySelectorAll('.accordion-header');
 
-export function toggleAccordion(header) {
-  header.nextElementSibling.classList.toggle('show');
-  header.firstElementChild.classList.toggle('active');
+export function toggleAccordion(accordionHeader) {
+  // show/hide FAQ body
+  accordionHeader.nextElementSibling.classList.toggle('show');
+  // toggle button states
+  if(accordionHeader.firstElementChild.classList.contains('active')) {
+    accordionHeader.firstElementChild.classList.remove('active')
+    accordionHeader.firstElementChild.setAttribute('aria-expanded', 'false');
+  } else {
+    accordionHeader.firstElementChild.classList.add('active')
+    accordionHeader.firstElementChild.setAttribute('aria-expanded', 'true');
+  }
 }
 
 faqHeaders.forEach(el => {
