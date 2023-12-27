@@ -79,7 +79,7 @@
 
 		<div class="header-section left">
 
-      <div class="mobile-nav-toggle" role="button" aria-pressed="false">
+      <div class="mobile-nav-toggle" role="button" aria-expanded="false" tabindex="0">
         <div class="icon-link">
           <div class="nav-toggle-icon">
             <div class="icon-line"></div>
@@ -130,7 +130,8 @@
               id="brands-header-mobile"
               class="nav-link"
               role="button"
-              aria-pressed="false"
+              aria-expanded="false"
+              tabindex="0"
             >Brands<i class="bi-chevron-down" role="presentation"></i></span>
             
 

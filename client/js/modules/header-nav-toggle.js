@@ -4,10 +4,10 @@ export function toggleNav() {
   
   if (toggleIcon.classList.contains('active')) {
     toggleIcon.classList.remove('active');
-    toggleIcon.setAttribute('aria-pressed', 'false');
+    toggleIcon.setAttribute('aria-expanded', 'false');
   } else {
     toggleIcon.classList.add('active');
-    toggleIcon.setAttribute('aria-pressed', 'true');
+    toggleIcon.setAttribute('aria-expanded', 'true');
   }
   navContainer.classList.toggle('show');
   
@@ -26,10 +26,10 @@ toggleIcon.addEventListener('click', () => {
 export function toggleBrands() {
   if (brandsToggle.classList.contains('active')) {
     brandsToggle.classList.remove('active');
-    brandsToggle.setAttribute('aria-pressed', 'false');
+    brandsToggle.setAttribute('aria-expanded', 'false');
   } else {
     brandsToggle.classList.add('active');
-    brandsToggle.setAttribute('aria-pressed', 'true')
+    brandsToggle.setAttribute('aria-expanded', 'true')
   }
 }
 
