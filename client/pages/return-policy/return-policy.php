@@ -8,6 +8,7 @@
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="/styles/main.css">
+  <script type="module" src="/js/accessibililty.js" defer></script>
   <script type="module" src="/pages/return-policy/app.js" defer></script>
 </head>
 <body>
@@ -40,11 +41,11 @@
         <div class="contact-methods-container">
           <div class="contact-methods-wrapper">
             <div class="contact-method">
-              <i class="bi-telephone"></i>
+              <i class="bi-telephone" role="presentation"></i>
               <a href="tel:1-800-555-5555">1-800-555-5555</a>
             </div>
             <div class="contact-method">
-              <i class="bi-envelope"></i>
+              <i class="bi-envelope" role="presentation"></i>
               <a href="mailto:support@nodomain.com">support@maimishoes.com</a>
             </div>
           </div>
