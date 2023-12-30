@@ -66,9 +66,9 @@ header {
   @include flex(row, center, stretch);
 
   li:hover {
-    .header-hover-menu {
-      @include flex(column, center, center);
-    }
+    // .header-hover-menu {
+    //   @include flex(column, center, center);
+    // }
   }
 
 }
@@ -83,7 +83,7 @@ header {
   color: $font-color;
   padding: $header-padding-bottom 2rem;
 
-  &:hover {
+  &:hover, &:focus {
     color: $primary-color;
     text-decoration: none;
     &:after {
@@ -100,17 +100,21 @@ header {
 }
 
 .header-mega-menu {
-  // @include flex(row, center, center);
-  display: none;
+  // display: none;
+  @include flex(row, center, center);
   position: absolute;
   background: white;
   left: 0;
   width: 100%;
   box-shadow: $box-shadow-main;
 
-  &:hover {
-    @include flex(row, center, center);
+  // &:hover, &:focus-within {
+  //   @include flex(row, center, center);
+  // }
+  &:not(:hover, :focus, :focus-within) {
+    display: none;
   }
+
 
   .header-mega-menu-wrapper {
     width: $column-width-main;
@@ -127,8 +131,11 @@ header {
   margin: 1rem;
 }
 
-#brands-header:hover {
-  &~.header-mega-menu {
-    @include flex(row, center, center);
+#brands-header {
+  &:hover, &:focus {
+    &~.header-mega-menu {
+      @include flex(row, center, center);
+    }
   }
+
 }

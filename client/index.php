@@ -47,7 +47,7 @@
           class="slider-control prev icon-link"
           tabindex="0"
         >
-          <i class="bi-caret-left-fill"></i>
+          <i class="bi-caret-left-fill" role="presentation"></i>
         </div>
 
         <div class="slider-images">
@@ -85,7 +85,7 @@
           class="slider-control next icon-link"
           tabindex="0"
         >
-          <i class="bi-caret-right-fill"></i>
+          <i class="bi-caret-right-fill" role="presentation"></i>
         </div>
 
       </div>

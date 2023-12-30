@@ -6,10 +6,10 @@
     <div class="filter-sort-left">
 
       <div class="filter-sort-wrapper">
-        <div class="filter-icon icon-link">
+        <div class="filter-icon icon-link" tabindex="0">
           <i class="bi-funnel" role="presentation"></i>
         </div>
-        <div class="sort-icon icon-link">
+        <div class="sort-icon icon-link" tabindex="0">
           <i class="bi-arrow-down-up" role="presentation"></i>
         </div>
       </div>

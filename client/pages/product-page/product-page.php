@@ -141,7 +141,7 @@ MAIN CONTENT
               // populate product images
               foreach($product_images as $image => $path) {
                 echo '
-                <div class="thumbnail product-image-container loading">
+                <div class="thumbnail product-image-container loading" tabindex="0">
                   <img src="' . $path['img_path'] . '" alt="' . $product['prod_name'] . '">
                 </div>
                 ';

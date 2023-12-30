@@ -16,7 +16,7 @@
   border-radius: $border-radius-main;
   width: clamp(150px, 25%, 350px);
 
-  &:hover {
+  &:hover, &:focus {
     svg {
       &.stroke-front {
         transform: rotate(-5deg);
