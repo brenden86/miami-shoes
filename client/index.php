@@ -54,23 +54,19 @@
           <div class="image-wrapper">
             
             <div class="slider-image"  aria-hidden="true">
-              <img src="/images/slider/lebron.jpg" alt="Lebron James Holding Nike Shoe">
+              <img src="/images/slider/vans-ward.webp" alt="Vans Ward Sneakers">
             </div>
 
             <div class="slider-image" aria-hidden="true">
-              <img src="/images/slider/skateboard.webp" alt="Skateboarder in Vans Shoes">
+              <img src="/images/slider/heydude_slider.webp" alt="Hey Dude Shoes">
+            </div>
+            
+            <div class="slider-image"  aria-hidden="true">
+              <img src="/images/slider/fast-free-shipping.webp" alt="Fast And Free Shipping">
             </div>
 
             <div class="slider-image"  aria-hidden="true">
-              <img src="/images/slider/boots.jpg" alt="Man in Boots Walking Up Steps">
-            </div>
-
-            <div class="slider-image"  aria-hidden="true">
-              <img src="/images/slider/converse.jpg" alt="Black Converse Sneakers">
-            </div>
-
-            <div class="slider-image"  aria-hidden="true">
-              <img src="/images/slider/running.jpg" alt="Woman Runner in Nike Shoes">
+              <img src="/images/slider/adidas_new_2024.webp" alt="Adidas New For 2024">
             </div>
 
           </div>
