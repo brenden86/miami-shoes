@@ -7,7 +7,7 @@
     role="button"
     aria-label="Carousel Backward"
   >
-    <i class="bi-caret-left-fill"></i>
+    <i class="bi-caret-left-fill" role="presentation"></i>
   </div>
 
   <div class="product-cards-wrapper">
@@ -88,7 +88,7 @@
     role="button"
     aria-label="Carousel Forward"
   >
-    <i class="bi-caret-right-fill"></i>
+    <i class="bi-caret-right-fill" role="presentation"></i>
   </div>
 
 </div>

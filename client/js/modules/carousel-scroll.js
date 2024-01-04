@@ -3,14 +3,16 @@
 const productCardsWrapper = document.querySelectorAll('.product-card-wrapper');
 const productCards = document.querySelector('.product-cards');
 const productCardsContainer = document.querySelector('.product-card-container');
-const carouselButtonPrev = document.querySelector('.carousel-control.prev')
-const carouselButtonNext = document.querySelector('.carousel-control.next')
+const carouselButtonPrev = document.querySelector('.carousel-control.prev');
+const carouselButtonNext = document.querySelector('.carousel-control.next');
+
+let scrollingActive = false;
 
 
 
 
-// scroll distance is half of container
-const scrollDistance = (productCardsContainer?.getBoundingClientRect().width / 2)
+// incremental scroll distance is half of container
+const scrollDistance = (productCardsContainer.getBoundingClientRect().width / 2)
 let leftOffset = productCardsWrapper[0].offsetLeft;
 let atLastCarouselItem = false;
 
@@ -28,9 +30,6 @@ const carouselObserver = new IntersectionObserver(entries => {
 })
 
 carouselObserver.observe(productCardsWrapper[productCardsWrapper.length-1]);
-  
-
-
 
 export const scrollCarouselLeft = () => {
   if((productCards.offsetLeft + scrollDistance) > 0) {
@@ -43,10 +42,12 @@ export const scrollCarouselLeft = () => {
 }
 
 export const scrollCarouselRight = () => {
+
+  if(scrollingActive) return; // do nothing if still scrolling from last button click
+  scrollingActive = true;
   let lastCardBound = productCardsWrapper[productCardsWrapper.length - 1].getBoundingClientRect().right;
   let containerBound = productCardsContainer.getBoundingClientRect().right;
   
-
   if((lastCardBound - containerBound) < scrollDistance) {
     leftOffset -= (lastCardBound - containerBound);
     productCards.style.left = `${leftOffset}px`;
@@ -54,18 +55,22 @@ export const scrollCarouselRight = () => {
     leftOffset -= scrollDistance;
     productCards.style.left = `${leftOffset}px`;
   }
-  
+
 }
 
-carouselButtonPrev?.addEventListener('click', e => {
+carouselButtonPrev.addEventListener('click', e => {
   scrollCarouselLeft()
 })
 
-
-carouselButtonNext?.addEventListener('click', e => {
+carouselButtonNext.addEventListener('click', e => {
   if(!atLastCarouselItem) {
     scrollCarouselRight()
   }
+})
+
+// listen for end of scroll
+productCards.addEventListener('transitionend', () => {
+  scrollingActive = false;
 })
 
 

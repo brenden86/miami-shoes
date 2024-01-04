@@ -38,7 +38,7 @@
   justify-items: center;
   position: relative;
   left: 0;
-  transition: left .5s;
+  transition: left 300ms;
 
   &.card {
     .product-card:hover {
