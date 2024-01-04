@@ -39,7 +39,6 @@ export function resetTimer() {
 }
 
 export function updateSlideARIA(slideIndex) {
-  console.log(`slide index: ${slideIndex}`)
   sliderImages.forEach((img, i) => {
     if(i === slideIndex) {
       img.setAttribute('aria-hidden', 'false');

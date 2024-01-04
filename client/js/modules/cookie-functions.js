@@ -26,5 +26,4 @@ export function removeCookie(name) {
   if(!cookie) return console.error(`ERROR: Cannot remove cookie, no cookie found with the name of: ${name}`);
   // remove cookie if found by setting exp date in the past
   setCookie(name, '', -1);
-  console.log(`removed cookie ${name}`)
 }

@@ -19,7 +19,6 @@ const carouselObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if(entry.isIntersecting) {
       atLastCarouselItem = true;
-      console.log('at last item')
     } else {
       atLastCarouselItem = false;
     }

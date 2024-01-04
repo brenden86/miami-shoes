@@ -8,7 +8,6 @@ export const featureBlockObserver = new IntersectionObserver(entries => {
     if(window.innerWidth <= mobileBreakpoint) {
       // show individual blocks when visible on mobile
       entry.target.classList.toggle('show', entry.isIntersecting);
-      console.log('showing block')
     } else {
       // show all blocks when visible
       featureBlocks.forEach(block => {

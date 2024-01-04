@@ -9,5 +9,4 @@ export const setAdaptiveFontSize = (function() {
       }
     });
   }
-  console.log('set font size')
 })();
