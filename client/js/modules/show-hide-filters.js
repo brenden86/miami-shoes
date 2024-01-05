@@ -27,7 +27,6 @@ textInputs.forEach(input => {
 })
 
 filterToggle.addEventListener('click', () => {
-  filtersForm.classList.toggle('show');
   if (filtersForm.classList.contains('show')) {
     filtersForm.classList.remove('show');
     filterToggle.setAttribute('aria-expanded', 'false')
