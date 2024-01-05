@@ -10,9 +10,9 @@
     extract($product);
 
     // handle gender
-    if ($gender === 1) {
+    if ($gender == 1) {
       $gender_text = "mens ";
-    } else if ($gender === 2) {
+    } else if ($gender == 2) {
       $gender_text = "womens ";
     } else {
       $gender_text = "";
@@ -39,9 +39,9 @@
     extract($product);
     
     // get gender text
-    if ($gender === 1) {
+    if ($gender == 1) {
       $gender_text = "mens";
-    } elseif ($gender === 2) {
+    } elseif ($gender == 2) {
       $gender_text = "womens";
     }
 
