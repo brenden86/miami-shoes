@@ -6,6 +6,7 @@
   <title>FAQ | Miami Shoes</title>
   <meta name="description" content="Frequently asked questions about shopping at Miami Shoes.">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css" as="style">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
   <link rel="stylesheet" href="/styles/main.css">
   <script type="module" src="/pages/faq/app.js" defer></script>

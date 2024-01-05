@@ -72,6 +72,7 @@ if(!$testing) {
   <title><?=ucwords($brand) . ' ' . ucwords($prod_name) . ' | Miami Shoes'?></title>
   <meta name="description" content="<?='Shop '.$brand.' '.$prod_name.' at Miami shoes.'?>">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css" as="style">
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">

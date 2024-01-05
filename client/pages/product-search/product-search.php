@@ -11,6 +11,7 @@
   <title>Products | Miami Shoes</title>
   <meta name="description" content="Find your fit–shop your favorite brands, styles, and colors of shoes.">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css" as="style">
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
