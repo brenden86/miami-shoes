@@ -145,7 +145,7 @@
     
                     <div class="item-details right">
                       <div class="price">$'.$price.'</div>
-                      <div class="remove-item icon-link" role="button" tabindex="0">
+                      <div class="remove-item icon-link" role="button" aria-label="remove item" tabindex="0">
                         <i class="bi-trash" role="presentation"></i>
                       </div>
                     </div>
