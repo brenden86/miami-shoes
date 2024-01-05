@@ -28,13 +28,26 @@ textInputs.forEach(input => {
 
 filterToggle.addEventListener('click', () => {
   filtersForm.classList.toggle('show');
+  if (filtersForm.classList.contains('show')) {
+    filtersForm.classList.remove('show');
+    filterToggle.setAttribute('aria-expanded', 'false')
+  } else {
+    filtersForm.classList.add('show');
+    filterToggle.setAttribute('aria-expanded', 'true');
+  }
 })
 
 applyFiltersButton.addEventListener('click', validateProductFilters)
 accessibleApplyFilters.addEventListener('click', validateProductFilters)
 
 sortToggle.addEventListener('click', () => {
-  sortOptions.classList.toggle('show');
+  if(sortOptions.classList.contains('show')) {
+    sortOptions.classList.remove('show');
+    sortToggle.setAttribute('aria-expanded', 'false');
+  } else {
+    sortOptions.classList.add('show');
+    sortToggle.setAttribute('aria-expanded', 'true');
+  }
 })
 
 

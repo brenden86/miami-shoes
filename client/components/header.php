@@ -4,7 +4,7 @@
   <!-- header left section -->
 
     <div class="header-section left">
-      <a href="/">
+      <a href="/" title="home">
         <img src="/images/logo.png" class="logo-image" alt="logo" />
       </a>
     </div>
@@ -79,7 +79,7 @@
 
 		<div class="header-section left">
 
-      <div class="mobile-nav-toggle" role="button" aria-expanded="false" tabindex="0">
+      <div class="mobile-nav-toggle" role="button" aria-expanded="false" aria-label="navigation menu" tabindex="0">
         <div class="icon-link">
           <div class="nav-toggle-icon">
             <div class="icon-line"></div>
@@ -101,7 +101,7 @@
 
 		<div class="header-section right">
 
-			<a href="/pages/my-cart/my-cart.php" id="header-cart-link test" class="icon-link">
+			<a href="/pages/my-cart/my-cart.php" id="header-cart-link test" class="icon-link" aria-label="my cart">
         <i class="bi-cart" role="presentation"></i>
         <span id="header-cart-count">
         <?php
