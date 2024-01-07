@@ -31,8 +31,8 @@
   <div id="root">
     
 <?php include_once '../../../database/dbconnect.php' ?>
-<?php include_once '../../../php-scripts/get-product-info.php' ?>
-<?php include_once '../../../php-scripts/get-cart-info.php' ?>
+<?php include_once '../../../php-modules/get-product-info.php' ?>
+<?php include_once '../../../php-modules/get-cart-info.php' ?>
 <!----------- 
     HEADER    
 ------------->

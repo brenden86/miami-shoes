@@ -5,7 +5,7 @@ session_start();
 
 $step = $_SESSION['checkout_info']['current_step'];
 
-include_once '../../../php-scripts/validate-checkout.php';
+include_once '../../../php-modules/validate-checkout.php';
 
 // validate, sanitize, and save input to session
 if($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -1,6 +1,6 @@
 <?php
 
-include_once __DIR__ . '/../php-scripts/get-cart-info.php';
+include_once __DIR__ . '/../php-modules/get-cart-info.php';
 
 // set error message and return to checkout page
 function checkoutValidationError($message) {

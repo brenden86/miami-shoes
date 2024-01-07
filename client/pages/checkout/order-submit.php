@@ -2,7 +2,7 @@
   session_start();
 
   include_once '../../../database/dbconnect.php';
-  include_once '../../../php-scripts/get-order-info.php';
+  include_once '../../../php-modules/get-order-info.php';
 
   // on error, send back to checkout page with error message.
   function orderError($message) {

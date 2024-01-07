@@ -2,8 +2,8 @@
   session_start();
   
   include_once '../../../database/dbconnect.php';
-  include_once '../../../php-scripts/get-product-info.php';
-  include_once '../../../php-scripts/get-cart-info.php';
+  include_once '../../../php-modules/get-product-info.php';
+  include_once '../../../php-modules/get-cart-info.php';
   
   // ****** DEBUG - CLEAR SESSION DATA *******
   // $_SESSION['checkout_info'] = array();

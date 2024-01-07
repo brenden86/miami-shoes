@@ -28,8 +28,8 @@
   <?php
     // IMPORT PHP FUNCTIONS
     include_once '../../../database/dbconnect.php';
-    include_once '../../../php-scripts/get-sql-params.php';
-    include_once '../../../php-scripts/get-product-info.php';
+    include_once '../../../php-modules/get-sql-params.php';
+    include_once '../../../php-modules/get-product-info.php';
 
   ?>
     

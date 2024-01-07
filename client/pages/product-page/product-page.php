@@ -5,7 +5,7 @@ session_start();
 
 // INCLUDES
 include_once '../../../database/dbconnect.php';
-include_once '../../../php-scripts/get-product-info.php';
+include_once '../../../php-modules/get-product-info.php';
 
 
 $uri_components = explode('/', $_SERVER['REQUEST_URI']);
