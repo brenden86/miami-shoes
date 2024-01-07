@@ -24,7 +24,7 @@ function getProductSqlParams() {
   // handle GENDER
 
   if(isset($_REQUEST['mens']) && isset($_REQUEST['womens'])) {
-    return; // all genders
+    // all genders (do nothing)
   } elseif(isset($_REQUEST['mens'])) {
     // only mens (and unisex)
     $condition = '(gender = 1 OR gender = 0)';
