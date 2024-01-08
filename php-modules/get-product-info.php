@@ -87,8 +87,8 @@
       return '<div class="badge low-stock">low stock</div>';
 
     } elseif(
-      $product['avail_date'] > date('Y-m-d', strtotime('today - 30 days')) &&
-      $product['avail_date'] <= date('Y-m-d')
+      $product['avail_date'] > date('Y-m-d H:i:s', strtotime('today - 30 days')) &&
+      $product['avail_date'] <= date('Y-m-d H:i:s')
       ) {
       // NEW - displayed if first available date is within last 30 days
       return '<div class="badge">new</div>';
