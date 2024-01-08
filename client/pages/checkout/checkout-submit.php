@@ -2,7 +2,6 @@
 // script for handling checkout form info
 session_start();
 
-
 $step = $_SESSION['checkout_info']['current_step'];
 
 include_once '../../../php-modules/validate-checkout.php';
@@ -12,7 +11,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
   validateCheckout($step);
 }
 
-// go to next checkout step
+// go to next checkout step after validating input
 if($step === 1) {
   $_SESSION['checkout_info']['current_step'] = 2;
   header("location: /checkout");

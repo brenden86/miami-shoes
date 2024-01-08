@@ -11,6 +11,8 @@ const accessibleApplyFilters = document.querySelector('.apply-filters-accessible
 
 
 export function showUpdateButton() {
+
+  // show button to update product search filters
   
   if(!applyFiltersButton.classList.contains('show')) {
     applyFiltersButton.classList.add('show');
@@ -18,6 +20,7 @@ export function showUpdateButton() {
 
 }
 
+// show update filters button when any of the inputs change
 checkboxInputs.forEach(input => {
   input.addEventListener('change', showUpdateButton) 
 })

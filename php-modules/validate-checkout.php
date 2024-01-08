@@ -2,8 +2,8 @@
 
 include_once __DIR__ . '/../php-modules/get-cart-info.php';
 
-// set error message and return to checkout page
 function checkoutValidationError($message) {
+  // set error message and return to checkout page
   $_SESSION['checkout_error'] = $message;
   header('location: /checkout');
   exit;
@@ -81,7 +81,7 @@ function validateCheckout($step) {
       }
     }
     
-
+  // validate shipping and payment info
   } elseif($step === 2) {
     
     // shipping type

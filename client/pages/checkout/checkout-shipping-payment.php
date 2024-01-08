@@ -44,8 +44,6 @@
     <br>
     
     <!-- shipping address -->
-    
-    
     <label for="same-as-billing" class="checkbox-container" tabindex="0">
       <input
       type="checkbox"
@@ -138,7 +136,6 @@
             required
           >
     
-          <!-- USE JAVASCRIPT TO STYLE STATE PLACEHOLDER COLOR -->
           <label for="shipping-state" class="sr-only">state</label>
           <select name="shipping_state" id="shipping-state" required>
             <option value="" disabled <?=(!$shipping_state) ? 'selected' : ''?>>State</option>
@@ -213,9 +210,8 @@
     
     <div class="input-wrapper">
 
-      <!-- SHOW DELIVERY INSTRUCTIONS FIELD -->
-      
       <?php
+      // delivery instructions field
         if(!$delivery_instructions) {
           echo '
           <div id="add-delivery-instructions-field" class="add-field-button" role="button" tabindex="0">
@@ -325,11 +321,9 @@
       </div>
   
     </div>
-    
-  
+
   </div>
   
-  </div>
   <div class="form-navigation-buttons">
     <a href="/checkout?prev_step=1" class="text-button">Back</a>
     <button class="button next" type="submit">
@@ -337,4 +331,5 @@
       <i class="bi-caret-right-fill" role="presentation"></i>
     </button>
   </div>
+  
 </form>

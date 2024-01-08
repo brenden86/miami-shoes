@@ -3,8 +3,6 @@
   <section class="footer-main">
 
     <div class="footer-wrapper">
-      <!-- social bar -->
-      
 
       <!-- footer links -->
       <div class="footer-links">
@@ -31,31 +29,31 @@
 
         <!-- footer column 3 -->
         <div class="footer-column">
-        
-        <div class="social-bar">
 
-          <h3>Connect with us!</h3>
-          <div class="social-icons">
-            <a href="https://www.instagram.com" target="_blank" class="icon-link light" title="Instagram" aria-label="Instagram">
-              <i class="bi-instagram" role="presentation"></i>
-            </a>
-            <a href="https://www.facebook.com" target="_blank" class="icon-link light" title="Facebook" aria-label="Facebook">
-              <i class="bi-facebook"  role="presentation"></i>
-            </a>
-            <a href="https://www.twitter.com" target="_blank" class="icon-link light" title="Twitter" aria-label="Twitter">
-              <i class="bi-twitter"  role="presentation"></i>
-            </a>
-            <a href="https://www.pinterest.com" target="_blank" class="icon-link light" title="Pinterest" aria-label="Pinterest">
-              <i class="bi-pinterest"  role="presentation"></i>
-            </a>
+          <div class="social-bar">
+            <h3>Connect with us!</h3>
+            <div class="social-icons">
+              <a href="https://www.instagram.com" target="_blank" class="icon-link light" title="Instagram" aria-label="Instagram">
+                <i class="bi-instagram" role="presentation"></i>
+              </a>
+              <a href="https://www.facebook.com" target="_blank" class="icon-link light" title="Facebook" aria-label="Facebook">
+                <i class="bi-facebook"  role="presentation"></i>
+              </a>
+              <a href="https://www.twitter.com" target="_blank" class="icon-link light" title="Twitter" aria-label="Twitter">
+                <i class="bi-twitter"  role="presentation"></i>
+              </a>
+              <a href="https://www.pinterest.com" target="_blank" class="icon-link light" title="Pinterest" aria-label="Pinterest">
+                <i class="bi-pinterest"  role="presentation"></i>
+              </a>
+            </div>
           </div>
 
         </div>
 
-        </div>
-
       </div>
+
     </div>
+
   </section>
 
   <!-- secondary footer -->

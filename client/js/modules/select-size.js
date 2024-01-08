@@ -1,3 +1,6 @@
+
+// select size buttons on product page
+
 const sizeButtons = document.querySelectorAll('.size-button');
 let selectedSize;
 export let selectedItem;
@@ -24,7 +27,6 @@ export function selectSize(button) {
   selectedItem = sku;
 
 }
-
 
 document.addEventListener('click', e => {
   if(

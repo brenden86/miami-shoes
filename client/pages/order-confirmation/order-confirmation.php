@@ -30,15 +30,11 @@
   <div id="root">
     
 
-<!----------- 
-    HEADER    
-------------->
+<!-- header -->
 <?php include '../../components/header.php';?>
 
-<!------------------
-    MAIN CONTENT    
--------------------->
 
+<!-- main content -->
 <main>
   <div class="main-content-wrapper">
 
@@ -50,19 +46,13 @@
         <div class="order-confirmation-wrapper">
 
           <div class="confirmation-status">
-            <i class="bi-clipboard-check"></i>
+            <i class="bi-clipboard-check" role="presentation"></i>
             <h1>Order Placed!</h1>
           </div>
+
           <div class="confirmation-message">
             Your items are on the way!
           </div>
-
-          <?php
-          if(isset($_COOKIE['cart-items'])) {
-            print_r($_COOKIE['cart-items']);
-
-          }
-          ?>
 
         </div>
 
@@ -82,9 +72,10 @@
 
             <div class="order-details-wrapper">
 
+              <!-- personal info -->
               <div class="order-detail">
                 <div class="detail-icon">
-                  <i class="bi-person"></i>
+                  <i class="bi-person" role="presentation"></i>
                 </div>
                 <div class="detail-text">
                   <div class="detail before">Shipping to</div>
@@ -104,9 +95,10 @@
                 </div>
               </div>
 
+              <!-- shipping info -->
               <div class="order-detail">
                 <div class="detail-icon">
-                  <i class="bi-calendar-check"></i>
+                  <i class="bi-calendar-check" role="presentation"></i>
                 </div>
                 <div class="detail-text">
                   <div class="detail before">Arriving by</div>
@@ -115,20 +107,24 @@
                 </div>
               </div>
 
+              <!-- order price -->
               <div class="order-detail">
+
                 <div class="detail-icon">
                   <i class="bi-currency-dollar"></i>
                 </div>
+
                 <div class="detail-text">
                   <div class="detail before">Order total</div>
                   <div class="detail value"><?= array_sum([$cart_subtotal, $shipping_cost, $sales_tax]); ?></div>
                 </div>
+
               </div>
 
             </div>
 
             
-            <!-- ORDER ITEMS -->
+            <!-- order items -->
 
             <div class="cart-contents">
 
@@ -138,7 +134,7 @@
             
               <?php
 
-                // DISPLAY ORDER ITEMS
+                // loop through ordered items & output HTML
 
                 foreach($_SESSION['cart_items'] as $item) {
 
@@ -164,7 +160,7 @@
                       </div>
 
                       <div class="item-details right">
-                        <div class="price">$' . $price . '</div>
+                        <div class="price" aria-label="item price">$' . $price . '</div>
                       </div>
                       
                     </div>
@@ -193,15 +189,13 @@
 </main>
 
 <?php
-  // clear previous order info from session
+  // clear previous order info from session after displaying on page
   unset($_SESSION['checkout_info']);
   unset($_SESSION['order_submitted']);
   unset($_SESSION['cart_items']);
 ?>
 
-<!----------- 
-  FOOTER    
-------------->
+<!-- footer -->
 <?php include '../../components/footer.php';?>
 
 </div>

@@ -1,4 +1,7 @@
 <?php
+
+  // script for submitting order, redirect to order confirmation page if successful
+
   session_start();
 
   include_once '../../../database/dbconnect.php';
@@ -24,14 +27,14 @@
     array_push($skus, $item['sku']);
   }
 
-  // get quantity of each sku in cart (most likely one, but
+  // get quantity of each sku in cart against database (most likely one, but
   // just in case someone orders multiple products of same size)
 
-  $sku_counts = array_count_values($skus);
-  foreach($sku_counts as $sku => $count) {
+  $sku_qty = array_count_values($skus);
+  foreach($sku_qty as $sku => $qty) {
     // check qty of sku in stock
     $qty_in_stock = $db->getQtyInStock($sku);
-    if($qty_in_stock < $count) {
+    if($qty_in_stock < $qty) {
       // get product name for order error message
       $product = $db->queryAndFetch('SELECT prod_name, brand FROM products LEFT JOIN stock USING(prod_id) WHERE sku = ' . $sku);
       orderError('Sorry, the quantity of ' . strtoupper($product[0]['brand'] . ' ' . $product[0]['prod_name']) . ' in stock is not sufficient to fulfill this order.');
@@ -140,7 +143,7 @@
       $order_items_query->execute(['id' => $_SESSION['checkout_info']['order_id'], 'sku' => $item['sku']]);
     }
 
-    // remove items from inventory
+    // remove purchased items from inventory
     foreach($skus as $sku) {
       $query = $db->prepare('DELETE FROM inventory WHERE sku = :sku LIMIT 1');
       $query->execute(['sku' => $sku]);
@@ -151,12 +154,11 @@
     // clear cart items cookie
     setcookie('cart-items', '', time() - 3600, '/');
 
-
   } catch(Exception $e) {
     orderError('Sorry, we were unable to complete your order. Please double check your information and try again.<br>' . $e->getMessage());
   }
 
-
+  // redirect to confirmation page on success
   header('location: /order-confirmation');
   exit;
 

@@ -1,4 +1,6 @@
 
+// functions for show/hiding various popup messages
+
 let lastPageUrl;
 let lastActiveElement;
 
@@ -49,8 +51,6 @@ const selectSizeHTML = `
     <h1 id="popup-title">Please select a size.</h1>
   </div>
 `
-
-
 
 export function showPopup(type, noClose = false) {
 

@@ -1,4 +1,6 @@
 
+// functions for manipulating cart information
+
 import { getCookie, setCookie } from "./cookie-functions.js";
 import { showPopup, closePopup } from "./popups.js";
 import { selectedItem } from "./select-size.js";
@@ -8,6 +10,9 @@ const addToCartButton = document.querySelector('#add-to-cart');
 // DOM elements for the size buttons are already declared in 'select-size.js'
 
 export function updateHeaderCartCount(count) {
+
+  // updates cart items count in header
+
   let headerCartCount = document.querySelector('#header-cart-count');
   if(count > 0) {
     headerCartCount.textContent = `(${count})`;
@@ -17,6 +22,9 @@ export function updateHeaderCartCount(count) {
 }
 
 export function updateCartCount(count) {
+
+  // updates cart item count on cart page
+
   let cartCount = document.querySelector('#cart-count');
   if(count > 0) {
     cartCount.textContent = `(${count})`;
@@ -26,6 +34,8 @@ export function updateCartCount(count) {
 }
 
 export function updateCartCookie(sku) {
+
+  // stores SKUs of products added to cart in a cookie
   
   let cartCookie = getCookie('cart-items');
   // create cart cookie if it does not exist.
@@ -46,6 +56,9 @@ export function updateCartCookie(sku) {
 }
 
 export async function getQtyInStock(sku) {
+
+  // queries DB for quantity of SKU in stock
+
   try {
     const res = await fetch(`/ajax/get-stock.php?sku=${sku}`);
     const result = await res.json();
@@ -56,8 +69,12 @@ export async function getQtyInStock(sku) {
 }
 
 export async function addToCart(sku) {
+
+  // add SKU to user's cart
+
   if(!addToCartButton.classList.contains('disabled')) {
     if(selectedItem) {
+      // check if item is in stock before adding to cart
       let qty = await getQtyInStock(sku);
       if(qty > 1) {
         updateCartCookie(selectedItem);
@@ -79,8 +96,6 @@ addToCartButton?.addEventListener('click', (e) => {
   addToCart(selectedItem);
 })
 
-
-
 export function removeFromCart(item) {
   // remove item from cart cookie
   let cartCookie = JSON.parse(getCookie('cart-items'));
@@ -91,7 +106,7 @@ export function removeFromCart(item) {
   
 }
 
-// REMOVE ITEM FROM CART click handler
+// REMOVE ITEM FROM CART (trash icon) click handler
 
 let cartItems = document.querySelectorAll('.cart-item')
 cartItems.forEach(item => {
@@ -101,9 +116,10 @@ cartItems.forEach(item => {
   })
 })
 
-// CLEAR CART
-
 export function clearCart() {
+
+  // clear all items from cart cookie
+
   // check cart cookie
   let cartCookie = JSON.parse(getCookie('cart-items'));
   if(cartCookie.length < 1) {
@@ -117,9 +133,7 @@ export function clearCart() {
 
 const clearCartButton = document.querySelector('#clear-cart-button')
 
-clearCartButton?.addEventListener('click', () => {
-  clearCart();
-})
+clearCartButton.addEventListener('click', clearCart);
 
   
 

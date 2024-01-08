@@ -1,3 +1,6 @@
+
+// functions for interacting with product images
+
 const thumbnails = document.querySelectorAll('.thumbnail')
 const selectedImageContainer = document.querySelector('.selected-image')
 
@@ -8,17 +11,13 @@ export function selectImage(image) {
   selectedImageContainer.firstElementChild.replaceWith(selectedImage)
 }
 
-if(thumbnails) {
-
-  thumbnails.forEach(el => {
-    el.addEventListener('click', () => {
-      selectImage(el)
-    })
+thumbnails.forEach(el => {
+  el.addEventListener('click', () => {
+    selectImage(el);
   })
-  
-  // prevent dragging thumbnail images
-  thumbnails.forEach(thumb => {
-    thumb.querySelector('img').draggable = false
-  })
+})
 
-}
+// prevent dragging thumbnail images
+thumbnails.forEach(thumb => {
+  thumb.querySelector('img').draggable = false
+})

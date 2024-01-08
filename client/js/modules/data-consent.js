@@ -1,3 +1,6 @@
+
+// check if user has acknowledged user data notice
+
 import { getCookie, removeCookie, setCookie } from './cookie-functions.js';
 import { showPopup, closePopup } from './popups.js';
 
@@ -13,9 +16,7 @@ export function checkUserDataConsent() {
   
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  checkUserDataConsent();
-})
+document.addEventListener('DOMContentLoaded', checkUserDataConsent);
 
 document.addEventListener('click', (e) => {
   if(e.target.classList.contains('data-consent-button')) {

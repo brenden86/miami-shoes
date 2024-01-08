@@ -1,8 +1,12 @@
 <?php
 
+// functions for querying product info for items in cart
+
 include_once __DIR__ . '/../database/dbconnect.php';
 
-function getCartItems() {
+function getCartItemsFromCookie() {
+
+  // get product SKUs from cart cookie and query database for product information
 
   global $db;
 
@@ -14,7 +18,6 @@ function getCartItems() {
     foreach($cart_items as $item) {
 
       // query each cart item's info and push to new array
-
       $cart_item_query = $db->prepare('
         SELECT
           sku,
@@ -48,6 +51,8 @@ function getCartItems() {
 
 function getCartSubtotal() {
 
+// returns total price of all SKUs in cart
+
 global $db;
 
   // get prices from DB
@@ -55,17 +60,22 @@ global $db;
   $cart_items = json_decode($_COOKIE['cart-items']);
 
   foreach($cart_items as $sku) {
-    $price_query = $db->prepare('SELECT price FROM stock LEFT JOIN products USING(prod_id) WHERE sku = :sku');
-    $price_query->execute(['sku' => $sku]);
-    $item_price = $price_query->fetch();
-    array_push($item_prices, $item_price['price']);
+    try {
+      $price_query = $db->prepare('SELECT price FROM stock LEFT JOIN products USING(prod_id) WHERE sku = :sku');
+      $price_query->execute(['sku' => $sku]);
+      $item_price = $price_query->fetch();
+      array_push($item_prices, $item_price['price']);
+    } catch(Error $e) {
+      return 'an error occurred.';
+    }
   }
-
   return array_sum($item_prices);
 }
 
 
 function getShippingCost($ship_type) {
+
+  // return shipping cost from DB based on shipping type selected (free or expedited)
 
   global $db;
 
@@ -78,6 +88,8 @@ function getShippingCost($ship_type) {
 }
 
 function getTaxRate($state) {
+
+  // return tax rate for state items are purchased in
   
   global $db;
   

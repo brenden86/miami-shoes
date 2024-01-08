@@ -1,9 +1,12 @@
 <?php
 
+// script that gets the quantity in stock of an SKU
+
 include_once '../../database/dbconnect.php';
 
 $response = array(
   'status' => 'failure',
+  // default to failure status
 );
 
 try {
@@ -14,13 +17,11 @@ try {
     $qty = $query->fetch(PDO::FETCH_ASSOC);
     $response['data'] = $qty;
     $response['status'] = 'success';
-  
   }
 
 } catch (Error $e) {
   $response['message'] = $e->getMessage();
 }
-
 
 $db = null;
 

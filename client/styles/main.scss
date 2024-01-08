@@ -1,16 +1,13 @@
 @import 'global';
 @import 'layout';
-@import 'header';
-@import 'footer';
 @import 'components';
 @import 'mobile';
 
-// class to highlight elements when debugging css
+// classes to highlight elements when debugging css
 .debug {
   border: 1px dashed orange !important;
 }
 
 .debug2 {
   border: 1px dotted purple !important;
-
 }

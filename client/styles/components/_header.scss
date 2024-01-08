@@ -1,5 +1,5 @@
-@import 'var';
-@import 'mixins';
+@import '../var';
+@import '../mixins';
 
 header {
   @include flex(row, center, stretch);

@@ -117,7 +117,7 @@
 
             <?php
               
-              $cart_items = getCartItems();
+              $cart_items = getCartItemsFromCookie();
 
               // loop through cart items & echo HTML
               foreach($cart_items as $key => $item) {
@@ -158,7 +158,6 @@
                 ';
    
               }
-              
               ?>
               </div>
 

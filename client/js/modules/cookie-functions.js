@@ -1,8 +1,13 @@
+
+// basic functions for manipulating browser cookies
+
 export function getCookie(cookieName) {
   let decodedCookie = decodeURIComponent(document.cookie);
+  // split cookies into array by semicolon
   let cookieArray = decodedCookie.split(';');
   let regexp = new RegExp("^\\s?" + cookieName + "=");
 
+  // look through array of browser cookies for desired cookie
   const cookie = cookieArray.find(cookie => cookie.search(regexp) >= 0);
 
   if(cookie) {

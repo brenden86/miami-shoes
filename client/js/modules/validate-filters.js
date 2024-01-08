@@ -1,29 +1,23 @@
 
+// validate inputs on product search filter sidebar
+
 export const filtersForm = document.getElementById('product-filters-form');
 
 const priceMinInput = document.getElementById('filter-price-min');
 const priceMaxInput = document.getElementById('filter-price-max');
 
+// only allow typing numbers into price inputs
+priceMinInput.addEventListener('keypress', (e) => {
+  if(!e.key.match(/\d+/)) {
+    e.preventDefault();
+  }
+})
 
-if(filtersForm) {
-
-  // only allow typing numbers into price inputs
-  priceMinInput.addEventListener('keypress', (e) => {
-    if(!e.key.match(/\d+/)) {
-      e.preventDefault();
-    }
-  })
-  
-  priceMaxInput.addEventListener('keypress', (e) => {
-    if(!e.key.match(/\d+/)) {
-      e.preventDefault();
-    }
-  })
-
-}
-
-
-
+priceMaxInput.addEventListener('keypress', (e) => {
+  if(!e.key.match(/\d+/)) {
+    e.preventDefault();
+  }
+})
 
 // run validation before submitting
 export function validateProductFilters() {

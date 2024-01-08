@@ -1,4 +1,6 @@
 
+// show/hide order summary drawer on mobile layout
+
 const orderSummaryToggle = document.querySelector('.order-summary-toggle');
 
 export function toggleOrderSummary() {
@@ -11,6 +13,4 @@ export function toggleOrderSummary() {
   }
 }
 
-orderSummaryToggle?.addEventListener('click', () => {
-  toggleOrderSummary();
-})
+orderSummaryToggle.addEventListener('click', toggleOrderSummary);

@@ -1,4 +1,3 @@
-// shift carousel
 
 const productCardsWrapper = document.querySelectorAll('.product-card-wrapper');
 const productCards = document.querySelector('.product-cards');
@@ -7,9 +6,6 @@ const carouselButtonPrev = document.querySelector('.carousel-control.prev');
 const carouselButtonNext = document.querySelector('.carousel-control.next');
 
 let scrollingActive = false;
-
-
-
 
 // incremental scroll distance is half of container
 const scrollDistance = (productCardsContainer.getBoundingClientRect().width / 2)
@@ -32,6 +28,10 @@ const carouselObserver = new IntersectionObserver(entries => {
 carouselObserver.observe(productCardsWrapper[productCardsWrapper.length-1]);
 
 export const scrollCarouselLeft = () => {
+
+  // calculate scroll position using left offset and update
+  // the left CSS property to shift carousel
+
   if((productCards.offsetLeft + scrollDistance) > 0) {
     leftOffset = 0;
     productCards.style.left = `${leftOffset}px`;
@@ -49,6 +49,7 @@ export const scrollCarouselRight = () => {
   let containerBound = productCardsContainer.getBoundingClientRect().right;
   
   if((lastCardBound - containerBound) < scrollDistance) {
+    // scroll the remaining distance if less than incremental scroll distance
     leftOffset -= (lastCardBound - containerBound);
     productCards.style.left = `${leftOffset}px`;
   } else {
@@ -68,7 +69,7 @@ carouselButtonNext.addEventListener('click', e => {
   }
 })
 
-// listen for end of scroll
+// listen for end of scroll CSS transition
 productCards.addEventListener('transitionend', () => {
   scrollingActive = false;
 })

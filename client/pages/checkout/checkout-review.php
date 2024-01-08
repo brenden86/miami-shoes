@@ -3,57 +3,57 @@
 
   <div id="checkout-review" class="checkout-fields">
   
-  <!-- cart heading -->
-  <div class="cart-header">
-    <h1>Items in this order</h1>
-    <div class="form-navigation-buttons">
-      <a href="/cart" class="text-button">Back to cart</a>
-    </div>
-  </div>
-  
-  <!-- cart contents -->
-  <div class="cart-contents">
-
-    <?php
-
-    foreach($_SESSION['cart_items'] as $item) {
-
-      extract($item);    
-    
-      echo '
-    
-      <div class="cart-item">
-    
-        <div class="item-image">
-          <img src="'.$thumb_url.'" alt="'.$prod_name.'">
-        </div>
-    
-        <div class="item-details-wrapper">
-    
-          <div class="item-details">
-            <div class="item-name">'.buildProductTitle($item).'</div>
-            <div class="item-property">
-              Color: <span>'.getProductColorNames($item).'</span>
-            </div>
-            <div class="item-property">
-              Size: <span>'.$size.'</span>
-            </div>
-          </div>
-    
-          <div class="item-details right">
-            <div class="price">'.$price.'</div>
-          </div>
-    
-        </div>
-    
+    <!-- cart heading -->
+    <div class="cart-header">
+      <h1>Items in this order</h1>
+      <div class="form-navigation-buttons">
+        <a href="/cart" class="text-button">Back to cart</a>
       </div>
+    </div>
+    
+    <!-- cart contents -->
+    <div class="cart-contents">
 
-      ';
-    }
-  
-    ?>
-  
-  </div>
+      <?php
+
+      // loop through cart items
+      foreach($_SESSION['cart_items'] as $item) {
+
+        extract($item);    
+      
+        echo '
+      
+        <div class="cart-item">
+      
+          <div class="item-image">
+            <img src="'.$thumb_url.'" alt="'.$prod_name.'">
+          </div>
+      
+          <div class="item-details-wrapper">
+      
+            <div class="item-details">
+              <div class="item-name">'.buildProductTitle($item).'</div>
+              <div class="item-property">
+                Color: <span>'.getProductColorNames($item).'</span>
+              </div>
+              <div class="item-property">
+                Size: <span>'.$size.'</span>
+              </div>
+            </div>
+      
+            <div class="item-details right">
+              <div class="price">'.$price.'</div>
+            </div>
+      
+          </div>
+      
+        </div>
+
+        ';
+      }
+      ?>
+    
+    </div>
   
   </div>
 

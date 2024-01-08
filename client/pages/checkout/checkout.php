@@ -18,25 +18,27 @@
   if(!isset($_SESSION['cart_items'])) {
     $_SESSION['cart_items'] = array();
   }
-  // store cart contents to session from cookie
 
-  $cart_items = getCartItems();
+  // store cart contents to session from cookie
+  $cart_items = getCartItemsFromCookie();
 
   // redirect to cart page if no items in cart
   if(!$cart_items) {
     header('location: /cart');
     exit;
   }
-  // remove item if out of stock
+
+  // remove item from cart items if out of stock
   foreach($cart_items as $item_index => $item) {
     if($item['qty'] < 1) {
       unset($cart_items[$item_index]);
     }
   }
 
+  // store cart items info in session
   $_SESSION['cart_items'] = $cart_items;
 
-  // reset checkout step if coming from a different page
+  // reset checkout step if coming to checkout from a different page
   if(!preg_match('/checkout/', $_SERVER['HTTP_REFERER'])) {
     $_SESSION['checkout_info']['current_step'] = 1;
   }
@@ -46,11 +48,11 @@
     extract($_SESSION['checkout_info']);
   }
 
-  // go to previous checkout page if requested
+  // go to previous checkout step if indicated in URI
   if($_GET['prev_step'] === '1' && $_SESSION['checkout_info']['current_step'] > 1) {
     $_SESSION['checkout_info']['current_step'] -= 1;
     // this is to change the url so the query params are not included
-    // in the served file, to prevent going back on a refresh
+    // in the served file, to prevent going back again on a refresh
     header('location: /checkout');
     exit;
   }
@@ -77,40 +79,28 @@
   <div id="root">
     
 
-<!----------- 
-    HEADER    
-------------->
+ <!-- header  -->
 <?php include '../../components/header.php';?>
 
-<!------------------
-    MAIN CONTENT    
--------------------->
-
-
-
+<!-- main content -->
 <main>
   <div class="main-content-wrapper">
-
-
 
     <!-- main content column -->
     <section class="main-content narrow">
 
-      <!-- cart items -->
       <div class="content-block mobile-full-width">
         
         <div class="checkout-container card">
           <div class="checkout-wrapper">
 
-            
-            
             <!-- checkout forms -->
             <?php
 
+            // checkout progress bar
             include_once '../../components/checkout-progress.php';
 
-
-            // display checkout validation error message
+            // display checkout validation error message here, if present
             if(isset($_SESSION['checkout_error'])) {
               echo '
               <div class="alert error">
@@ -122,7 +112,7 @@
                 </div>
               </div>
               ';
-              // clear checkout error message after displaying
+              // clear checkout error message after displaying once
               unset($_SESSION['checkout_error']);
             }
 
@@ -138,15 +128,11 @@
                 </div>
               </div>
               ';
-              // clear order error message after diaplaying
+              // clear order error message after displaying
               unset($_SESSION['order_error']);
             }
 
-
-            // DEBUGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
-            // $current_step = 3
-
-            // show correct form fields
+            // show correct form fields based on checkout step
             if($current_step === 1) {
               include_once './checkout-basic-info.php';
             } elseif ($current_step === 2) {
@@ -168,12 +154,12 @@
     
   
   <!-- order summary sidebar -->
-
   <?php
-    // calculate subtotal, shipping cost, and taxes
 
+    // calculate subtotal, shipping cost, and taxes
     $_SESSION['checkout_info']['cart_subtotal'] = getCartSubtotal();
 
+    // get correct shipping cost based on shipping type selected
     if(isset($_SESSION['checkout_info']['shipping_type'])) {
       $_SESSION['checkout_info']['shipping_cost'] = getShippingCost($_SESSION['checkout_info']['shipping_type']);
     }
@@ -220,22 +206,22 @@
 
       </div>
       
-        <div class="order-summary-item-wrapper total">
-          <div>Total</div>
-          <div class="summary-item-value">
+      <div class="order-summary-item-wrapper total">
+        <div>Total</div>
+        <div class="summary-item-value">
 
-            <?='$' . 
-              array_sum([
-                  $_SESSION['checkout_info']['cart_subtotal'],
-                  $_SESSION['checkout_info']['shipping_cost'],
-                  $_SESSION['checkout_info']['sales_tax']
-                ]);
+          <?='$' . 
+            array_sum([
+                $_SESSION['checkout_info']['cart_subtotal'],
+                $_SESSION['checkout_info']['shipping_cost'],
+                $_SESSION['checkout_info']['sales_tax']
+              ]);
 
-            ?>
-          </div>
-          </div>
-          
+          ?>
         </div>
+      </div>
+        
+    </div>
       
       
   </aside>
@@ -243,9 +229,7 @@
   </div>
 </main>
 
-<!----------- 
-  FOOTER    
-------------->
+<!-- footer -->
 <?php include '../../components/footer.php';?>
 
 </div>

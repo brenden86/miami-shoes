@@ -1,21 +1,25 @@
 
 <?php
 
-// get dynamic page URLs while maintaining other query params
-
+// add correct page number to URI while maintaining other query params
 function getPaginatedUrl($page_num) {
-  // if page parameter already exists, replace page number
+  // if page parameter already exists in URI, just replace the page number
   if(preg_match('/page=\d+/', $_SERVER['REQUEST_URI'])) {
     return preg_replace('/page=\d+/', 'page='.$page_num, $_SERVER['REQUEST_URI']);
-  // if other parameters have been passed, don't include question mark
+    // if other parameters are present in URI, don't include question mark
   } elseif (preg_match('/.*[?].*/', $_SERVER['REQUEST_URI'])) {
     return $_SERVER['REQUEST_URI'] . '&page='.$page_num;
   } else {
-    // no query params have been passed, include "?"
+    // no query params have been added to URI yet, include "?"
     return $_SERVER['REQUEST_URI'] . '?page='.$page_num;
   } 
 }
 
+/*
+  Display up to 5 page numbers for page navigation. Starts from
+  current page and displays the next and previous page numbers
+  until there are 5 pages displayed.
+*/
 function getDisplayedPages() {
   global $num_pages;
   global $current_page;
@@ -23,7 +27,8 @@ function getDisplayedPages() {
   $turn = 1;
   $left_index = 1;
   $right_index = 1;
-  $loops = 0;
+  $loops = 0; // loops counter for preventing infinite loop
+
   // get maximum num of pages to be displayed
   if($num_pages < 5) {
     $total_pages = $num_pages;
@@ -31,15 +36,16 @@ function getDisplayedPages() {
     $total_pages = 5;
   }
 
-  // populate array with sequence of pages
+  // populate array with sequence of up to 5 pages
   while(count($page_array) < $total_pages) {
     $loops++;
+
     if($turn === 1 && $current_page - $left_index > 0) {
       array_unshift($page_array, $current_page - $left_index);
       $left_index++;
       $turn = 0;
     } elseif($turn === 0 && $current_page + $right_index <= $num_pages) {
-      // push right page
+      // push right (next) page
       array_push($page_array, $current_page + $right_index);
       $right_index++;
       $turn = 1;
@@ -57,6 +63,7 @@ function getDisplayedPages() {
 
   }
 
+  // indicate more PREVIOUS pages with ellipsis
   if($page_array[0] > 1) {
     echo '<span>...</span>';
   }
@@ -70,6 +77,7 @@ function getDisplayedPages() {
     }
   }
 
+  // indicate more pages with ellipsis
   if($page_array[count($page_array)-1] < $num_pages) {
     echo '<span role="presentation">...</span>';
   }
@@ -107,9 +115,9 @@ if($num_pages > 1) {
         echo '
         </div>
 
-        <div class="page-numbers">';
-        getDisplayedPages();
-        echo '
+        <div class="page-numbers">' . 
+        getDisplayedPages()
+        . '
         </div>
 
       </div>
@@ -117,11 +125,5 @@ if($num_pages > 1) {
   </div>
   ';
 }
-
-  
-
-
-
-
 
 ?>

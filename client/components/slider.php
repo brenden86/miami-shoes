@@ -31,8 +31,6 @@
     </div>
   </div>
 
-  
-
   <div
     id="slider-next"
     role="button"

@@ -16,8 +16,10 @@
 
 <div id="root">
 
+<!-- header -->
 <?php include '../../components/header.php' ?>
 
+<!-- main content column -->
 <main>
   <div class="main-content-wrapper">
     <div class="main-content">
@@ -62,6 +64,7 @@
   </div>
 </main>
 
+<!-- footer -->
 <?php include '../../components/footer.php';?>
 
 </div>

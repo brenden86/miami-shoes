@@ -1,8 +1,10 @@
 
 <aside class="sidebar-container">
 
+  <!-- filter sort (mobile layout) -->
   <div class="filter-sort-container">
 
+    <!-- mobile only -->
     <div class="filter-sort-left">
 
       <div class="filter-sort-wrapper">
@@ -46,12 +48,8 @@
     action=""
     method="GET"
     class="filters-wrapper"
-  >
-    
-    
-    <!-- update search button; executes query based on filters selected -->
-    
-    
+  > 
+    <!-- availability filter -->
     <div class="filter-group">
 
       <div class="filter-group-name">Availability</div>
@@ -74,12 +72,14 @@
             In Stock
           </label>
         </div>
+
       </div>
+
     </div>
     
+    <!-- gender filters -->
     <div class="filter-group">
 
-      <!-- gender filter -->
       <div class="filter-group-name">Gender</div>
       <div class="filters">
 
@@ -116,24 +116,28 @@
             Womens
           </label>
         </div>
+
       </div>
       
     </div>
     
     <!-- color filters -->
     <div class="filter-group">
+
       <div class="filter-group-name">Colors</div>
       <div class="filters">
         <div class="filter-colors-wrapper">
           
           <?php
-            // get distinct filter colors
+            // get all unique filter colors from DB
             $filter_colors = $db->queryAndFetch('SELECT DISTINCT filter_color, filter_hex FROM prod_colors');
+
+            // loop through each color and output HTML
             foreach($filter_colors as $color) {
               
               extract($color);
               
-              // persist checks
+              // class for adding checkmark to selected colors
               if($_REQUEST['filter-color-'.$filter_color]==='true') {
                 $checked = 'checked';
               } else {
@@ -147,6 +151,7 @@
                 $light_filter_class = '';
               }
 
+              // output HTML for each color
               echo '
               
               <div
@@ -161,22 +166,20 @@
               </label>
               </div>
               ';
-            }
-          
-          
+            } // end loop
           ?>
 
-          <!--  -->
-
+          <?php // this is a placeholder div for attaching a hidden input via JS ?>
           <div id="color-selected"></div>
 
         </div>
       </div>
+
     </div>
     
-    <!-- PRICE FILTER -->
-
+    <!-- price filter -->
     <div class="filter-group">
+
       <div class="filter-group-name">Price</div>
       <div class="filters">
         <div class="input-wrapper inline mobile-inline small">
@@ -192,26 +195,27 @@
           >
         </div>
       </div>
+
     </div>
 
+    <!-- shoe type filter -->
     <div class="filter-group">
-
-      <!-- shoe type filter -->
 
       <div class="filter-group-name">Shoe Type</div>
       <div class="filters">
         
       <?php
 
-        // get distinct shoe types from products in stock
+        // get all unique shoe types from products in stock
         $types = $db->queryAndFetch('SELECT DISTINCT shoe_type FROM stock LEFT JOIN products USING(prod_id) ORDER BY shoe_type DESC');
-
         
+        // loop through shoe types and output HTML
         foreach($types as $type) {
 
           // persist checked inputs
           ($_REQUEST['type-filter-'.$type['shoe_type']] === $type['shoe_type']) ? $checked = 'checked' : $checked = '';
 
+          // output HTML
           echo '
           <div class="input-wrapper inline shoe-type-input">
             <label for="filter-type-' . $type['shoe_type'] . '" class="checkbox-container" tabindex="0">
@@ -236,30 +240,32 @@
       ?>
       </div>
 
+      <?php // placeholder div for adding hidden input via JS ?>
       <div id="shoe-type-selected"></div>
 
     </div>
 
+    <!-- brand filters -->
     <div class="filter-group">
 
-      <!-- brand filter -->
       <div class="filter-group-name">Brands</div>
       <div class="filters">
 
       <?php
-        // populate filters for brands that are being stocked
 
-        // get distinct brands from stock table
+        // get unique brands from stock
         $brands = $db->queryAndFetch('SELECT DISTINCT brand FROM stock LEFT JOIN products USING(prod_id)');
 
+        // loop through each brand and output html
         foreach($brands as $brand) {
           
-          // remove spaces from brand names with multiple words (new balance)
+          // remove spaces from brand names with multiple words (e.g. new balance)
           $no_space = preg_replace("/\s+/", "", $brand['brand']);
 
           // persist checked filters
           ($_REQUEST['brand-filter-'.$brand['brand']]===$brand['brand']) ? $checked = 'checked' : $checked = '';
           
+          // output html
           echo '
           <div class="input-wrapper inline brand-input">
             <label for="filter-brand-' . $no_space . '" class="checkbox-container" tabindex="0">
@@ -284,9 +290,14 @@
       ?>
 
       </div>
+
+      <?php // placeholder div for adding hidden input via JS ?>
+
       <div id="brand-selected"></div>
+
       <input type="hidden" id="sort-input" name="sort" value="<?=$_SESSION['sort_order'] ?? 'popular'?>">
 
+      <!-- alternate apply filters button for keyboard accessibility -->
       <span class="apply-filters-accessible sr-only" tabindex="0">apply filters</span>
 
     </div>

@@ -6,11 +6,13 @@
       <h2>Fast n' Free Shipping</h2>
       <p>Free shipping available on <em>every</em> pair, expedited shipping is also available if you just can't wait.</p>
     </div>
+
     <div class="feature-block">
       <i class="bi-clipboard-check"  role="presentation"></i>
       <h2>Every Pair Checked for Quality</h2>
       <p>From the laces down to the very sole, every pair is checked for any defects in quality, color, and durability before they leave the store.</p>
     </div>
+    
     <div class="feature-block">
       <i class="bi-award"  role="presentation"></i>
       <h2>Award-winning Customer Service</h2>

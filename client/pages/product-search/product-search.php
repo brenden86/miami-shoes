@@ -1,5 +1,9 @@
 <?php
   session_start();
+
+  include_once '../../../database/dbconnect.php';
+  include_once '../../../php-modules/get-sql-params.php';
+  include_once '../../../php-modules/get-product-info.php';
 ?>
 
 <!DOCTYPE html>
@@ -25,29 +29,16 @@
 <body>
   <div id="root">
 
-  <?php
-    // IMPORT PHP FUNCTIONS
-    include_once '../../../database/dbconnect.php';
-    include_once '../../../php-modules/get-sql-params.php';
-    include_once '../../../php-modules/get-product-info.php';
-
-  ?>
-    
-<!----------- 
-    HEADER    
-------------->
+<!-- header -->
 <?php include '../../components/header.php';?>
 
-<!------------------
-    MAIN CONTENT    
--------------------->
-
+<!-- main content -->
 <main>
   <div class="main-content-wrapper mobile-column">
 
     <?php
-      // get sort order from request
-      // default to sort by popular
+      // get sort order from request, default to sort
+      // by popular items (most ordered)
 
       if(isset($_REQUEST['sort'])) {
         $_SESSION['sort_order'] = $_REQUEST['sort'];
@@ -62,13 +53,9 @@
         $sort = 'popular';
       }
 
-      // save sort order to session
-      // $_SESSSION['sort_order'] = $sort;
-
     ?>
 
     <!-- Filter sidebar -->
-
     <?php include_once '../../components/filter-sidebar.php'?>
     
     <!-- main content column -->
@@ -104,7 +91,7 @@
 
       <?php
 
-        // get products
+        // query products from DB
         $products = $db->queryAndFetch('
           SELECT
             products.prod_id AS prod_id,
@@ -169,13 +156,14 @@
             $current_page = 1;
           }
           
+          // get index of first item to be displayed for this page
           $start_prod_index = $prod_per_page * ($current_page - 1);
           $end_prod_index = $start_prod_index + $prod_per_page;
-          // loop through products on page
+
+          // loop through products from query and output HTML
           for($i=$start_prod_index; $i<$end_prod_index; $i++) {
             
             // extract variables from array
-
             extract($products[$i]);
             
             echo '
@@ -201,46 +189,35 @@
             </div>
             '; // END ECHO
 
-              // break out of loop if on last product but products per page limit not reached.
-              if($i === count($products) - 1) {
-                break;
-              }
-                
-                // END for loop
-              }
-
-              // END product card container divs
-              echo '
-                </div>
-                </section>
-              ';
+            // break out of loop if on last product but products per page limit not reached.
+            if($i === count($products) - 1) {
+              break;
             }
-          ?>
+                
+            // END for loop
+          }
 
-
-
+          // END product card container divs
+          echo '
+            </div>
+            </section>
+          ';
+        }
+      ?>
 
 </div>
 
-<?php
-  // pagination
-  include_once '../../components/pagination.php';
-?>
+<?php include_once '../../components/pagination.php';?>
     
-    </div>
-  </div>
-
+</div>
+</div>
 
 </main>
 
-<!----------- 
-    FOOTER    
-------------->
+<!-- footer -->
 <?php include '../../components/footer.php';?>
 
-<?php
-  $db = null;
-?>
+<?php $db = null;?>
 
 </div>
 </body>

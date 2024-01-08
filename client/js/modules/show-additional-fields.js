@@ -1,4 +1,5 @@
 
+// function for showing additional fields on checkout pages that are hidden initially
 
 // Show extra field buttons
 const showBillingCompanyButton = document.querySelector('#add-billing-company-field');
@@ -19,36 +20,35 @@ export function showCheckoutInput(input, button = null) {
   if(button) button.remove();
 }
 
-// show billing company
+// show billing company field
 showBillingCompanyButton?.addEventListener('click', () => {
-  showCheckoutInput(billingCompanyInput, showBillingCompanyButton);
-})
+  showCheckoutInput(billingCompanyInput, showBillingCompanyButton)
+});
 
-// show shipping company
+// show shipping company field
 showShippingCompanyButton?.addEventListener('click', () => {
   showCheckoutInput(shippingCompanyInput, showShippingCompanyButton)
-})
+});
 
-// show delivery instructions
+// show delivery instructions field
 showDeliveryInstructionsButton?.addEventListener('click', () => {
-  showCheckoutInput(deliveryInstructionsInput, showDeliveryInstructionsButton);
-})
+  showCheckoutInput(deliveryInstructionsInput, showDeliveryInstructionsButton)
+});
 
-// hide shipping address & clear values if addresses are the same
+// hide shipping address & clear values if billing and shipping addresses are the same
 if(sameAsBillingCheckbox) {
   
   // hide fields initially if checked
   if(sameAsBillingCheckbox.checked && !shippingAddressFields.classList.contains('hide')) {
     shippingAddressFields.classList.add('hide');
-    // remove required attribute from fields, will be populated server-side
-    
+
   }
 
   let requiredShippingInputs = shippingAddressFields.querySelectorAll('[required]');
 
   sameAsBillingCheckbox.addEventListener('change', () => {
 
-    // hide/unhide fields
+    // hide/unhide fields when clicking checkbox
     shippingAddressFields.classList.toggle('hide');
 
     // remove required attributes if hidden

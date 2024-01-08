@@ -1,8 +1,8 @@
 <header class="">
   
   <div class="header-wrapper-main">
-  <!-- header left section -->
 
+    <!-- header left section -->
     <div class="header-section left">
       <a href="/" title="home">
         <img src="/images/logo.png" class="logo-image" alt="logo" />
@@ -11,17 +11,23 @@
     
     <!-- header center section -->
     <div class="header-section center">
-      <!--nav links-->
+
       <nav class="header-navigation" aria-label="main navigation">
+
         <ul class="nav-items nolist">
+
           <li>
             <a href="/products?mens=true" class="nav-link">Mens</a>
           </li>
+
           <li>
             <a href="/products?womens=true" class="nav-link">Womens</a>
           </li>
+
           <li>
             <a href="/products" id="brands-header" class="nav-link">Brands</a>
+
+            <!-- brands submenu -->
             <nav class="header-mega-menu" aria-label="brands navigation">
               <div class="header-mega-menu-wrapper">
                 <div class="header-brands-wrapper">
@@ -49,13 +55,18 @@
                 </div>
               </div>
             </nav>
+
           </li>
+
         </ul>
+
       </nav>
+
     </div>
     
     <!--header right section-->
     <div class="header-section right">
+
       <div class="header-section-wrapper">
         <a href="/cart" id="header-cart-link" class="icon-link">
           <i class="bi-cart" role="presentation"></i>
@@ -71,12 +82,15 @@
           ?></span>
         </a>
       </div>
+
     </div>
 
   </div>
 
+  <!-- mobile header -->
   <div class="header-wrapper-mobile">
 
+    <!-- header left section -->
 		<div class="header-section left">
 
       <div class="mobile-nav-toggle" role="button" aria-expanded="false" aria-label="navigation menu" tabindex="0">
@@ -91,6 +105,7 @@
 
     </div>
 
+    <!-- header center section -->
 		<div class="header-section center">
 			
 			<a href="/">
@@ -99,9 +114,10 @@
 		
 		</div>
 
+    <!-- header right section -->
 		<div class="header-section right">
 
-			<a href="/pages/my-cart/my-cart.php" id="header-cart-link test" class="icon-link" aria-label="my cart">
+			<a href="/cart" id="header-cart-link" class="icon-link" aria-label="my cart">
         <i class="bi-cart" role="presentation"></i>
         <span id="header-cart-count">
         <?php
@@ -117,12 +133,12 @@
 			
 		</div>
 
-
-    
-		
+    <!-- mobile navigation -->
 		<div id="mobile-nav-container" class="">
+
 			<nav class="mobile-nav" aria-label="mobile navigation">
 				<ul class="nolist nav-items">
+
 					<li><a href="/products?mens=true" class="nav-link">Mens</a></li>
 					<li><a href="/products?womens=true" class="nav-link">Womens</a></li>
 					<li>
@@ -133,41 +149,52 @@
               aria-expanded="false"
               tabindex="0"
             >Brands<i class="bi-chevron-down" role="presentation"></i></span>
-            
 
+            <!-- mobile brands submenu -->
             <nav class="header-mega-menu mobile">
+
               <div class="header-mega-menu-wrapper">
                 <div class="header-brands-wrapper">
+
                   <a class="brand-card" href="/products?brand-filter-adidas=adidas">
                     <img src="/images/logos/Adidas_Logo.png" alt="adidas">
                   </a>
+
                   <a class="brand-card" href="/products?brand-filter-nike=nike">
                     <img src="/images/logos/Nike-Logo.png" alt="nike">
                   </a>
+
                   <a class="brand-card" href="/products?brand-filter-vans=vans">
                     <img src="/images/logos/vans logo.png" alt="vans">
                   </a>
+
                   <a class="brand-card" href="/products?brand-filter-converse=converse">
                     <img src="/images/logos/converse-logo.png" alt="converse">
                   </a>
+
                   <a class="brand-card" href="/products?brand-filter-dockers=dockers">
                     <img src="/images/logos/dockers.png" alt="dockers">
                   </a>
+
                   <a class="brand-card" href="/products?brand-filter-heydude=heydude">
                     <img src="/images/logos/heydude.png" alt="heydude">
                   </a>
+
                   <a class="brand-card" href="/products?brand-filter-newbalance=new+balance">
                     <img src="/images/logos/new-balance.png" alt="new balance">
                   </a>
+
                 </div>
               </div>
+
             </nav>
 
           </li>
+
 				</ul>
 			</nav>
+
 		</div>
-		
 
 	</div>
   

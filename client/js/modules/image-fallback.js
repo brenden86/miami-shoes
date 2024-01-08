@@ -1,14 +1,17 @@
 
+// show fallback image if product image not found
+
 function removeImgLoadingPlaceholder(el) {
+  // remove class that shows loading image animation
   el.classList.remove('loading');
 }
-
-// display fallback image if product photo is not found
 
 export function checkImagesLoaded() {
 
   let images = document.querySelectorAll('img');
   images.forEach(img => {
+
+    // only check product images
     if(img.src.match('/product-photos/')) {
 
       if(!img.complete) {
@@ -28,7 +31,6 @@ export function checkImagesLoaded() {
       } else {
         img.addEventListener('load', removeImgLoadingPlaceholder(img.parentElement))
       }
-
 
     }
   })

@@ -1,4 +1,5 @@
 
+// functions for toggling header navigation and brands on mobile layouts
 
 export function toggleNav() {
   
@@ -16,13 +17,9 @@ export function toggleNav() {
 const toggleIcon = document.querySelector('.mobile-nav-toggle');
 const navContainer = document.querySelector('#mobile-nav-container')
 
-toggleIcon.addEventListener('click', () => {
-  toggleNav();
-})
-
+toggleIcon.addEventListener('click', toggleNav);
 
 // brands toggle
-
 export function toggleBrands() {
   if (brandsToggle.classList.contains('active')) {
     brandsToggle.classList.remove('active');
@@ -35,6 +32,4 @@ export function toggleBrands() {
 
 const brandsToggle = document.querySelector('#brands-header-mobile');
 
-brandsToggle.addEventListener('click', () => {
-  toggleBrands();
-})
+brandsToggle.addEventListener('click', toggleBrands);

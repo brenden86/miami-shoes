@@ -1,3 +1,6 @@
+
+// client-side validation of the checkout information input fields
+
 const billingZip = document.querySelector('#billing-zip');
 const shippingZip = document.querySelector('#shipping-zip');
 const phone = document.querySelector('#phone');
@@ -15,7 +18,6 @@ let numbericInputs = [
   cvv,
   cardExp
 ]
-
 
 // listen to numeric inputs and only allow digits to be entered
 
@@ -53,10 +55,7 @@ export function formatCardExp() {
 }
 
 
-
-
 // Input event listeners
-
 
 // format phone number
 phone?.addEventListener('keyup', () => {
@@ -75,12 +74,6 @@ cardExp?.addEventListener('keyup', () => {
 
 
 // format all inputs on initial load if data is present
-if(phone) {
-  formatPhoneNumber();
-}
-if(cardNumber) {
-  formatCardNumber();
-}
-if(cardExp) {
-  formatCardExp();
-}
+if(phone) formatPhoneNumber();
+if(cardNumber) formatCardNumber();
+if(cardExp) formatCardExp();

@@ -1,12 +1,14 @@
 
-const sliderWrapper = document.querySelector('.image-wrapper')
-const sliderImages = document.querySelectorAll('.slider-image')
-const slideDuration = 5000
+// functions for advancing and interacting with slider images
+
+const sliderWrapper = document.querySelector('.image-wrapper');
+const sliderImages = document.querySelectorAll('.slider-image');
+const slideDuration = 5000;
 let slideIndex = 0
 let sliderTimers = []
 
-const nextSlideButton = document.querySelector('#slider-next')
-const prevSlideButton = document.querySelector('#slider-prev')
+const nextSlideButton = document.querySelector('#slider-next');
+const prevSlideButton = document.querySelector('#slider-prev');
 
 export function nextSlide() {
   slideIndex++
@@ -29,6 +31,7 @@ export function prevSlide() {
 }
 
 export function resetTimer() {
+  // resets time interval between automatically advancing each slide
   sliderTimers.forEach(t => {
     clearInterval(t);
   })
@@ -58,7 +61,6 @@ prevSlideButton.addEventListener('click', () => {
   prevSlide()
   resetTimer()
 })
-
 
 // start slide rotation
 resetTimer()

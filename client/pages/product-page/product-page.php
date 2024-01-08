@@ -3,24 +3,12 @@
 
 session_start();
 
-// INCLUDES
 include_once '../../../database/dbconnect.php';
 include_once '../../../php-modules/get-product-info.php';
 
-
+// get product ID from URI
 $uri_components = explode('/', $_SERVER['REQUEST_URI']);
 $id = $uri_components[2]; // product ID from URI
-
-// DEBUG: use ID from query string when testing instead of URL component
-if($_GET['debug'] === '1') {
-  $testing = true;
-} else {
-  $testing = false;
-}
-
-if($testing) {
-  $id = $_GET['id'];
-}
 
 // Get product info from DB
 $product_query = $db->prepare('
@@ -47,17 +35,13 @@ $product = $product_query->fetch(PDO::FETCH_ASSOC);
 // Extract fields into variables
 extract($product);
 
-// DEBUG: rewrite URL if NOT testing
-if(!$testing) {
-
-  // fix URI if user types it incorrectly
-  $uri_slug = end(explode("/", $_SERVER['REQUEST_URI']));
-  $product_page_slug = slugify($brand.'-'.$prod_name);
-  if ($uri_slug != $product_page_slug) {
-    header('location: /products/'.$prod_id.'/'.$product_page_slug);
-    exit;
-  }
-
+// fix URI if user types it incorrectly
+$uri_slug = end(explode("/", $_SERVER['REQUEST_URI']));
+$product_page_slug = slugify($brand.'-'.$prod_name);
+// if URI is misspelled, redirect to correct URI
+if ($uri_slug != $product_page_slug) {
+  header('location: /products/'.$prod_id.'/'.$product_page_slug);
+  exit;
 }
 
 ?>
@@ -83,29 +67,16 @@ if(!$testing) {
 <body>
   <div id="root">
 
-<!----------- 
-HEADER    
-------------->
+<!-- header -->
 <?php include '../../components/header.php';?>
 
-<!------------------
-MAIN CONTENT    
--------------------->
 
+<!-- main content -->
 <main>
   <div class="main-content-wrapper">
     
-    
   <!-- main content column -->
   <section class="main-content">
-    <?php
-
-      // Get product image URLs
-      $product_image_query = $db->prepare('SELECT * FROM prod_images WHERE prod_id = :id');
-      $product_image_query->execute(['id' => $id]);
-      $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
-
-    ?>
 
     <div class="content-block">
       <div class="product-wrapper">
@@ -132,13 +103,19 @@ MAIN CONTENT
           
           <div class="selected-image product-image-container loading">
             <img
-            src="<?=$thumb_url?>"
-            alt="<?=$prod_name?>"
+              src="<?=$thumb_url?>"
+              alt="<?=$prod_name?>"
             >
           </div>
           
           <div class="thumbnail-wrapper">
             <?php
+
+              // Get product image URLs
+              $product_image_query = $db->prepare('SELECT * FROM prod_images WHERE prod_id = :id');
+              $product_image_query->execute(['id' => $id]);
+              $product_images = $product_image_query->fetchAll(PDO::FETCH_ASSOC);
+
               // populate product images
               foreach($product_images as $image => $path) {
                 echo '
@@ -148,6 +125,7 @@ MAIN CONTENT
                 ';
               }
             ?>
+
           </div>
               
         </div>
@@ -161,7 +139,8 @@ MAIN CONTENT
             <div class="breadcrumbs">
               <?=buildBreadcrumbs($product)?>
             </div>
-            <!-- product text -->
+
+            <!-- primary product info -->
             <div class="info-group product-text">
               <div class="brand"><?=$product['brand']?></div>
               <h1 class="product-title">
@@ -177,6 +156,9 @@ MAIN CONTENT
               <span><?=getProductColorNames($product)?></span>
               <div class="product-colors-wrapper">
                 <?php
+
+                  // get all of the color variants for the selected
+                  // product, used for dislaying other color options
                   $color_variants = $db->getColorVariants($prod_name, $gender);
                   $color_hex_array = $db->queryAndFetch('SELECT color_name, color_hex FROM prod_colors');
 
@@ -185,10 +167,10 @@ MAIN CONTENT
                     $color_hex_values[$color['color_name']] = $color['color_hex'];
                   }
                   
-                  // loop through variants, return color block HTML
+                  // loop through color variants, output HTML with color variant block
                   foreach($color_variants as $variant) {
                     
-                    // set selected class
+                    // selected class denotes which color user is currently viewing
                     if ($variant['prim_color'] === $product['prim_color'] && $variant['sec_color'] === $product['sec_color']) {
                       $selected = 'selected';
                     } else {
@@ -197,20 +179,20 @@ MAIN CONTENT
                     
                     echo '
                     <a
-                    href="/products/'.$variant['prod_id'].'/'.slugify($brand.'-'.$prod_name).'"
-                    class="product-color '.$selected.'"';
-                    $color2 = '';
-                    if($variant['sec_color']) {
-                      $color2 = '/' . $variant['sec_color'];
-                    }
-                    echo '
-                    title="' . $variant['prim_color'] . $color2 . '"
-                    aria-label="' . $variant['prim_color'] . $color2 . '"
+                      href="/products/'.$variant['prod_id'].'/'.slugify($brand.'-'.$prod_name).'"
+                      class="product-color '.$selected.'"';
+                      $color2 = '';
+                      if($variant['sec_color']) {
+                        $color2 = '/' . $variant['sec_color'];
+                      }
+                      echo '
+                      title="' . $variant['prim_color'] . $color2 . '"
+                      aria-label="' . $variant['prim_color'] . $color2 . '"
                     >
-                    <div class="color-swatch-wrapper">
-                      <div class="color-swatch secondary" style="background: #'.$color_hex_values[$variant['sec_color']].'"></div>
-                      <div class="color-swatch primary" style="background: #'.$color_hex_values[$variant['prim_color']].'"></div>
-                    </div>
+                      <div class="color-swatch-wrapper">
+                        <div class="color-swatch secondary" style="background: #'.$color_hex_values[$variant['sec_color']].'"></div>
+                        <div class="color-swatch primary" style="background: #'.$color_hex_values[$variant['prim_color']].'"></div>
+                      </div>
                     </a>
                     ';
                   }
@@ -222,13 +204,16 @@ MAIN CONTENT
             <div class="info-group" role="radiogroup" aria-labelledby="size-title">
               <h2 id="size-title">Size:</h2>
               <div class="sizes-wrapper">
-                <?php 
+
+                <?php
+
+                  // 
                   $shoe_sizes = $db->getSizesInStock($prod_id);
                   
                   // loop through sizes array and display
                   foreach($shoe_sizes as $item) {
 
-                    // set disabled if no qty in inventory
+                    // set button to disabled if no qty in inventory
                     if ($item['qty'] < 1) {
                       $disabled = 'disabled';
                     } else {
@@ -265,7 +250,7 @@ MAIN CONTENT
               <ul>
                 <?php
                   $product_details = $db->getProductDetails($prod_id);
-                  // iterate & echo details
+                  // iterate & display details
                   foreach($product_details as $detail) {
                     echo '<li>' . $detail['prod_detail'] . '</li>';
                   }
@@ -288,9 +273,7 @@ MAIN CONTENT
 </main>
 
 
-<!----------- 
-FOOTER    
-------------->
+<!-- footer -->
 <?php include '../../components/footer.php';?>
 
 <?php

@@ -17,6 +17,7 @@
       <div class="card-title" id="category-title-running">Running</div>
 
     </a>
+
     <a href="/products?type-filter-sneaker=sneaker&shoe-type-selected=true" class="category-card">
 
       <div class="card-image" aria-labelledby="category-title-sneakers">
@@ -32,6 +33,7 @@
       <div class="card-title" id="category-title-sneakers">Sneakers</div>
 
     </a>
+
     <a href="products?type-filter-casual=casual&shoe-type-selected=true" class="category-card">
 
       <div class="card-image" aria-labelledby="category-title-casual">
@@ -47,6 +49,7 @@
       <div class="card-title" id="category-title-casual">Casual</div>
 
     </a>
+
     <a href="/products?type-filter-boot=boot&shoe-type-selected=true" class="category-card">
 
       <div class="card-image" aria-labelledby="category-title-boots">
@@ -62,6 +65,7 @@
       <div class="card-title" id="category-title-boots">Boots</div>
 
     </a>
+    
     <a href="/products?type-filter-formal=formal&shoe-type-selected=true" class="category-card">
 
       <div class="card-image" aria-labelledby="category-title-formal">

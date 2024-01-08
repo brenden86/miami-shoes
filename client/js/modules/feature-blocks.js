@@ -1,3 +1,6 @@
+
+// fade in feature blocks as they come into view
+
 const featureBlocksWrapper = document.querySelector('.feature-block-wrapper')
 const featureBlocks = document.querySelectorAll('.feature-block')
 const mobileBreakpoint = 768;

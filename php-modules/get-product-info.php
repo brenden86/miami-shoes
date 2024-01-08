@@ -1,12 +1,16 @@
 <?php
 
+  // functions for generating dynamic product information that is not queried directly from DB
+
   function slugify($slug) {
+    // return SEO-friendly URL slug; replaces period or whitespace with hyphen for URL
     return preg_replace('/(\.|\s)+/', '-', $slug);
   }
 
   function buildProductTitle($product) {
 
-    // extract product properties to variables
+    // returns product title that includes gender and shoe type
+
     extract($product);
 
     // handle gender
@@ -32,10 +36,10 @@
 
 
 
-
   function buildBreadcrumbs($product) {
     
-    // extract product properties to variables
+    // returns HTML markup for links to previous levels of product search 'hierarchy'
+
     extract($product);
     
     // get gender text
@@ -49,17 +53,19 @@
     if ($gender != 0) {
       return
         '<a href="/products?'. $gender_text .'=1" class="text-button">'.$gender_text.'</a>
-        <i class="bi-chevron-right"></i>
+        <i class="bi-chevron-right" role="presentation"></i>
         <a href="/products?'. $gender_text . '=1&type-filter-'.$shoe_type.'='.$shoe_type.'" class="text-button">'.$shoe_type.'</a>
         ';
     } else {
       return '<a href="/products?type-filter'.$shoe_type.'='.$shoe_type.'" class="text-button">'.$shoe_type.'</a>';
     }
 
-
   }
 
   function getProductColorNames($product) {
+
+    // returns string of the product's primary and (if applicable) secondary color
+
     $color_name = $product['prim_color'];
     if ($product['sec_color'] != '') {
       $color_name .= '/' . $product['sec_color'];
@@ -68,9 +74,10 @@
   }
 
 
-  // adds badge to product card if necessary
   function getProductCardBadge($product) {
     
+    // returns HTML for badge to indicate a special status
+
     if($product['qty_in_stock'] < 1) {
       // OUT OF STOCK
       return '<div class="badge no-stock">out of stock</div>';
@@ -90,6 +97,9 @@
 
 
   function getProductColorsCount($field) {
+
+    // return string of the number of other color variants for a product
+
     if($field['num_colors'] > 1) {
       return '<div class="colors-text">' . $field['num_colors'] . ' colors</div>';
     } else {

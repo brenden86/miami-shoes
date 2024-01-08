@@ -90,7 +90,6 @@
           required
         >
   
-        <!-- USE JAVASCRIPT TO STYLE STATE PLACEHOLDER COLOR -->
         <label for="billing-state" class="sr-only">state</label>
         <select name="billing_state" id="billing-state" required>
           <option value="" disabled <?=(!$billing_state) ? 'selected' : ''?>>State</option>

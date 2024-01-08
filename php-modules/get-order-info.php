@@ -1,7 +1,11 @@
 
 <?php
 
+// functions for populating info related to the order
+
 function generateOrderId() {
+
+  // return sequence of 10 random digits prefixed by 'MS-'
 
   $order_id_digits = array();
   $id_length = 10;
@@ -18,6 +22,8 @@ function generateOrderId() {
 
 
 function getDeliveryDate($ship_type) {
+
+  // determine estimated delivery date from selected shipping method
   
   // get minimum delivery days
   if($ship_type === 'standard') {
@@ -26,11 +32,11 @@ function getDeliveryDate($ship_type) {
     $ship_days = 1;
   }
 
-  // calculate delivery date, excluding weekends
   $dlvr_date = date_create();
   $biz_days_passed = 0;
   $days_passed = 0;
-
+  
+  // calculate delivery date, excluding weekends
   while($biz_days_passed < $ship_days) {
     $days_passed++;
     $new_date = date_add(date_create(), date_interval_create_from_date_string($days_passed." days"));
