@@ -133,9 +133,8 @@ export function clearCart() {
 
 const clearCartButton = document.querySelector('#clear-cart-button')
 
-clearCartButton.addEventListener('click', clearCart);
+clearCartButton?.addEventListener('click', clearCart);
 
   
-
 
 
