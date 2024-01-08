@@ -211,11 +211,12 @@
         <div class="summary-item-value">
 
           <?='$' . 
+          number_format(
             array_sum([
-                $_SESSION['checkout_info']['cart_subtotal'],
-                $_SESSION['checkout_info']['shipping_cost'],
-                $_SESSION['checkout_info']['sales_tax']
-              ]);
+              $_SESSION['checkout_info']['cart_subtotal'],
+              $_SESSION['checkout_info']['shipping_cost'],
+              $_SESSION['checkout_info']['sales_tax']
+            ]), 2);
 
           ?>
         </div>
