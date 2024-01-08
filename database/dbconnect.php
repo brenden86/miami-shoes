@@ -1,7 +1,7 @@
 <?php
 
 // load db config constants
-require(__DIR__ . '/../config.php');
+require __DIR__ . '/../config.php';
 
 $dbname = 'miami_shoes';
 $dsn = "mysql:host=" . DB_HOST . ";dbname=$dbname";
