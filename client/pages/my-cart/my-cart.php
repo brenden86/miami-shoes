@@ -145,7 +145,7 @@
                     </div>
     
                     <div class="item-details right">
-                      <div class="price">$'.$price.'</div>
+                      <div class="price">$'.number_format($price, 2).'</div>
                       <div class="remove-item icon-link" role="button" aria-label="remove item" tabindex="0">
                         <i class="bi-trash" role="presentation"></i>
                       </div>

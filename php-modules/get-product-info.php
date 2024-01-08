@@ -52,9 +52,9 @@
     // build breadcrumbs
     if ($gender != 0) {
       return
-        '<a href="/products?'. $gender_text .'=1" class="text-button">'.$gender_text.'</a>
+        '<a href="/products?'. $gender_text .'=true" class="text-button">'.$gender_text.'</a>
         <i class="bi-chevron-right" role="presentation"></i>
-        <a href="/products?'. $gender_text . '=1&type-filter-'.$shoe_type.'='.$shoe_type.'" class="text-button">'.$shoe_type.'</a>
+        <a href="/products?'. $gender_text . '=true&type-filter-'.$shoe_type.'='.$shoe_type.'" class="text-button">'.$shoe_type.'</a>
         ';
     } else {
       return '<a href="/products?type-filter'.$shoe_type.'='.$shoe_type.'" class="text-button">'.$shoe_type.'</a>';

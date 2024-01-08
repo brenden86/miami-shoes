@@ -116,7 +116,7 @@
 
                 <div class="detail-text">
                   <div class="detail before">Order total</div>
-                  <div class="detail value"><?= array_sum([$cart_subtotal, $shipping_cost, $sales_tax]); ?></div>
+                  <div class="detail value"><?= number_format(array_sum([$cart_subtotal, $shipping_cost, $sales_tax]), 2); ?></div>
                 </div>
 
               </div>

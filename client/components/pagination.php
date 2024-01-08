@@ -115,9 +115,9 @@ if($num_pages > 1) {
         echo '
         </div>
 
-        <div class="page-numbers">' . 
-        getDisplayedPages()
-        . '
+        <div class="page-numbers">'; 
+        echo getDisplayedPages();
+        echo '
         </div>
 
       </div>

@@ -69,7 +69,7 @@ global $db;
       return 'an error occurred.';
     }
   }
-  return array_sum($item_prices);
+  return number_format(array_sum($item_prices), 2);
 }
 
 
