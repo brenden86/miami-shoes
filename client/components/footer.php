@@ -45,6 +45,9 @@
               <a href="https://www.pinterest.com" target="_blank" class="icon-link light" title="Pinterest" aria-label="Pinterest">
                 <i class="bi-pinterest"  role="presentation"></i>
               </a>
+              <a href="https://github.com/brenden86/miami-shoes" target="_blank" class="icon-link light" title="Github" aria-label="Github">
+                <i class="bi-github"  role="presentation"></i>
+              </a>
             </div>
           </div>
 
