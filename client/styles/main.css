@@ -902,10 +902,13 @@ header {
   justify-content: flex-end;
 }
 .header-section.left a {
+  display: block;
   height: 7rem;
 }
 .header-section.left .logo-image {
-  padding: 1.2rem;
+  width: 100%;
+  padding: min(8%, 1.2rem);
+  object-fit: contain;
 }
 .header-section.center {
   display: flex;
