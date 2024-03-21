@@ -1,0 +1,29 @@
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+     - 3001:3001
+    volumes:
+      - ./:/usr/share/nginx/html
+      - ./server/nginx.conf:/etc/nginx/nginx.conf
+  php-fpm:
+    # install PDO extension
+    build: .
+    volumes:
+     - ./:/usr/share/nginx/html
+  database:
+    container_name: miami-shoes-db
+    image: mariadb
+    ports:
+     - "3306"
+    environment:
+      - MARIADB_USER=${DB_USER}
+      - MARIADB_PASSWORD=${DB_PASS}
+      - MARIADB_ROOT_PASSWORD=${DB_PASS}
+      - MARIADB_DATABASE=${DB_NAME}
+    volumes:
+     - miami-db:/var/lib/mysql
+
+volumes:
+  miami-db:
