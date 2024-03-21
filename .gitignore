@@ -5,3 +5,4 @@ client/node_modules
 /database/queries
 /database/scripts
 /private
+.env

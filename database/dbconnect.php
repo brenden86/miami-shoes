@@ -1,10 +1,10 @@
 <?php
 
-// load db config constants
-require __DIR__ . '/../config.php';
+// load db environment variables
+// require __DIR__ . '/../config.php';
+$env = parse_ini_file(__DIR__ . '/../.env');
 
-$dbname = 'miami_shoes';
-$dsn = "mysql:host=" . DB_HOST . ";dbname=$dbname";
+$dsn = "mysql:host=" . $env['DB_HOST'] . ";dbname=" . $env['DB_NAME'];
 
 // extend PDO class so that I can add custom methods
 class DB extends PDO {
@@ -78,7 +78,7 @@ class DB extends PDO {
 }
 
 try {
-  $db = new DB($dsn, DB_USER, DB_PASS);
+  $db = new DB($dsn, $env['DB_USER'], $env['DB_PASS']);
 } catch (Exception $e) {
   echo $e->getMessage();
 }
