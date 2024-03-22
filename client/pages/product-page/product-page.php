@@ -1,7 +1,4 @@
-
-<?php
-
-session_start();
+<?php session_start();
 
 include_once '../../../database/dbconnect.php';
 include_once '../../../php-modules/get-product-info.php';

@@ -1,8 +1,6 @@
-<?php
+<?php session_start();
 
-  // script for submitting order, redirect to order confirmation page if successful
-
-  session_start();
+// script for submitting order, redirect to order confirmation page if successful
 
   include_once '../../../database/dbconnect.php';
   include_once '../../../php-modules/get-order-info.php';

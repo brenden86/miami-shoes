@@ -1,5 +1,4 @@
-<?php
-  session_start();
+<?php session_start();
 
   // if trying to access this page before submitting an order, go back to checkout page
   if(!$_SESSION['order_submitted']) {

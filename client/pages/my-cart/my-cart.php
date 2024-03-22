@@ -1,5 +1,4 @@
-<?php
-  session_start();
+<?php session_start();
   
   // go back to first checkout screen if cart is updated
   if($_GET['update'] === '1') {
@@ -119,6 +118,8 @@
               
               $cart_items = getCartItemsFromCookie();
 
+              if(isset($cart_items)) {
+    
               // loop through cart items & echo HTML
               foreach($cart_items as $key => $item) {
                 
@@ -158,6 +159,9 @@
                 ';
    
               }
+
+              }
+
               ?>
               </div>
 

@@ -1,6 +1,6 @@
-<?php
+<?php session_start();
+
 // script for handling checkout form info
-session_start();
 
 $step = $_SESSION['checkout_info']['current_step'];
 
