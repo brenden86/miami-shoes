@@ -1,3 +1,4 @@
+# Dockerfile for php-fpm service
 FROM php:7.0-fpm-alpine
 
 # install PDO extension for interacting with database using PDO

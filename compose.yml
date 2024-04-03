@@ -24,6 +24,8 @@ services:
       - MARIADB_DATABASE=${DB_NAME}
     volumes:
      - miami-db:/var/lib/mysql
+     # include DB backup in container
+     - ./database/db_backup.sql:/var/lib/mysql/backup
 
 volumes:
   miami-db:
