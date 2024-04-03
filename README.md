@@ -4,7 +4,12 @@
 ---
 Full-stack personal project created to practice skills accross the entire development process, from prototyping page designs to deployment on a home server. This project demonstrates practical applications of fundamental web development concepts including responsive design, communication with a web server, CRUD database operations, and much more. Use of libraries and frameworks was minimal in order to solidify understanding of core concepts, patterns, and languages.
 
-*This website is not hosted publicly, if you would like access please [send me a message](mailto:brenden.koenigsman@gmail.com).*
+
+**- What's New -**
+
+*This website now runs on Docker containers! See installation instructions below to run locally.*
+
+ 
 
 **Tech Stack**
 - PHP
@@ -33,3 +38,35 @@ Full-stack personal project created to practice skills accross the entire develo
 - Optimizing Performance
 - Version control (git)
 - Basic networking
+
+## INSTALLATION
+Docker is required to run this app locally. If you would like to see a demo at a public link (without installing docker), please [send me a message](mailto:brenden.koenigsman@gmail.com).
+
+After cloning repo:
+
+1. Navigate to project directory
+```
+cd miami-shoes
+```
+ 
+2. Set environment variables
+
+Since this is a sample website, simply remove ".sample" from the provided .env file to use the pre-populated variables.
+ 
+3. Build and run the containers
+```
+docker compose up -d
+```
+ 
+4. Restore database from provided backup (first build only)
+- Start shell session in database container
+```
+docker exec -it miami-shoes-db /bin/bash
+```
+- Restore database from file, enter root password when prompted (from .env file)
+```
+mariadb -u root -p -D miami_shoes < /var/lib/mysql/backup
+```
+- **exit** shell session
+ 
+5. Open app in browser at [localhost:3001](localhost:3001)
