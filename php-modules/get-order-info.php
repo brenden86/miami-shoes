@@ -1,4 +1,3 @@
-
 <?php
 
 // functions for populating info related to the order
@@ -51,5 +50,4 @@ function getDeliveryDate($ship_type) {
   return date_format($dlvr_date, 'Y-m-d H:i:s');
   
 }
-
 ?>
