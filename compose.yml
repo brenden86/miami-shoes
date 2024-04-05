@@ -3,7 +3,7 @@ services:
   nginx:
     image: nginx:latest
     ports:
-     - 3001:3001
+     - 80:80
     volumes:
       - ./:/usr/share/nginx/html
       - ./server/nginx.conf:/etc/nginx/nginx.conf
