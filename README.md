@@ -4,7 +4,7 @@
 ---
 Full-stack personal project created to practice skills accross the entire development process, from prototyping page designs to deployment on a home server. This project demonstrates practical applications of fundamental web development concepts including responsive design, communication with a web server, CRUD database operations, and much more. Use of libraries and frameworks was minimal in order to solidify understanding of core concepts, patterns, and languages.
 
-View project: [http://srv503876.hstgr.cloud/](http://srv503876.hstgr.cloud/)
+
 
 **- What's New -**
 
@@ -41,7 +41,7 @@ View project: [http://srv503876.hstgr.cloud/](http://srv503876.hstgr.cloud/)
 - Basic networking
 
 ## INSTALLATION
-Docker is required to run this app locally. This site is now also hosted publicly at [http://srv503876.hstgr.cloud/](http://srv503876.hstgr.cloud/)
+Docker is required to run this app locally. This site is not currently hosted publicly.
 
 After cloning repo:
 
