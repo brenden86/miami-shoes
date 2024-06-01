@@ -7,13 +7,16 @@ services:
     volumes:
       - ./:/usr/share/nginx/html
       - ./server/nginx.conf:/etc/nginx/nginx.conf
+      - ./server:/var/log/nginx
     restart: unless-stopped
+
   php-fpm:
     # install PDO extension
     build: .
     volumes:
      - ./:/usr/share/nginx/html
     restart: unless-stopped
+
   database:
     container_name: miami-shoes-db
     image: mariadb
