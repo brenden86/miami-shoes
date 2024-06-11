@@ -1,0 +1,10 @@
+{
+    "name": "brendenk/miami-shoes",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "MiamiShoes\\": ""
+        }
+    },
+    "require": {}
+}

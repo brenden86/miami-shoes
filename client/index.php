@@ -1,9 +1,7 @@
 <?php
+include __DIR__ . '/../vendor/autoload.php';
 
-// AUTOLOAD CLASSES
-spl_autoload_register(function ($class) {
-  require __DIR__ . '/../' . str_replace('\\', '/', $class) . '.php';
-});
+use MiamiShoes\Models\Router;
 
 $uri = $_SERVER['REQUEST_URI'];
 
@@ -20,7 +18,7 @@ $page_routes = array(
     "/order-confirmation" => "/pages/order-confirmation/order-confirmation.php",
 );
 
-$router = new models\Router();
+$router = new Router();
 $router->register_routes($page_routes);
 
 // serve correct page based on provided path
