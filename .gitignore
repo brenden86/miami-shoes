@@ -5,5 +5,7 @@ client/node_modules
 /database/queries
 /database/scripts
 /private
+access.log
+error.log
 .env
 .idea
