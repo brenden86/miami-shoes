@@ -9,3 +9,4 @@ access.log
 error.log
 .env
 .idea
+vendor
