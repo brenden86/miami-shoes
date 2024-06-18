@@ -1,5 +1,6 @@
 <?php
 include __DIR__ . '/../vendor/autoload.php';
+$env = parse_ini_file(__DIR__ . '/../.env');
 
 use MiamiShoes\Models\Router;
 

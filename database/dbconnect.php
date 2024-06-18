@@ -3,7 +3,6 @@
 // load db environment variables
 // require __DIR__ . '/../config.php';
 $env = parse_ini_file(__DIR__ . '/../.env');
-
 $dsn = "mysql:host=" . $env['DB_HOST'] . ";dbname=" . $env['DB_NAME'];
 
 // extend PDO class so that I can add custom methods
