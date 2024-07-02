@@ -17,9 +17,19 @@ class Database extends PDO {
     }
 
     public function getColorVariants($prod_name, $gender) {
+
+        $query = "
+            SELECT
+                prod_id,
+                prim_color,
+                sec_color
+            FROM products
+            WHERE prod_name = :name
+            AND gender = :gender";
+
         try {
             return $this
-                ->prepare("SELECT prod_id, prim_color, sec_color FROM products WHERE prod_name = :name AND gender = :gender")
+                ->prepare($query)
                 ->execute(['name' => $prod_name, 'gender' => $gender])
                 ->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {

@@ -1,6 +1,8 @@
 <?php
 namespace MiamiShoes\Models;
 
+use \Error;
+
 class Router {
 
   private $routes = [];
@@ -20,7 +22,7 @@ class Router {
   public function route_request($uri) {
 
     if(gettype($uri) !== 'string') {
-      throw new \Error('URI not a string.');
+      throw new Error('URI not a string.');
     }
     if($this->get_routes()[$uri]) {
       require $_SERVER['DOCUMENT_ROOT'] . $this->get_routes()[$uri];
